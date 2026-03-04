@@ -219,10 +219,10 @@ const CircularFoodSystems = () => {
 				'--bg-alt': '#F7F7F5',
 				'--band-divider': 'rgba(26,26,24,0.08)',
 				color: TEXT_DARK,
-				fontFamily: '"Inter", "Helvetica Neue", "Helvetica", "Arial", sans-serif',
+				fontFamily: '"Inter", sans-serif',
 				lineHeight: 1.72,
 				'& h1, & h2, & h3': {
-					fontFamily: '"Inter", "Helvetica Neue", "Helvetica", "Arial", sans-serif',
+					fontFamily: '"Inter", sans-serif',
 					letterSpacing: '-0.015em',
 					fontWeight: 500,
 					color: TEXT_DARK,
