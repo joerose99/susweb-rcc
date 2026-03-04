@@ -20,16 +20,18 @@ import biogreenHowItWorksLogo from '../../assets/biogreen-how-it-works.png';
 import howItWorksFoodIcon from '../../assets/how-it-works-food.png';
 import howItWorksSproutIcon from '../../assets/how-it-works-sprout.png';
 import howItWorksReportIcon from '../../assets/how-it-works-report.png';
-import heroKitchenImage from '../../assets/hero-kitchen.png';
+import limelightBoulderLogo from '../../assets/limelight-boulder-logo.png';
+import zeroFoodWasteEventsImage from '../../assets/zero-food-waste-events.png';
+import cornerstonePartnershipImage from '../../assets/cornerstone-partnership.png';
 
-const GREEN_PRIMARY = '#7A923B';
-const GREEN_SOFT = '#F2F5EC';
-const GREEN_BORDER = '#6B8232';
-const BG_WARM = '#F5F4F1';
-const BG_BAND = '#ECEFE5';
-const TEXT_DARK = '#2E2D33';
-const BODY_GRAY = '#57565D';
-const MUTED_GRAY = '#6B6A73';
+const GREEN_PRIMARY = '#8D9A73';
+const GREEN_SOFT = '#F5F5F3';
+const GREEN_BORDER = '#22221F';
+const BG_WARM = '#FAFAF8';
+const BG_BAND = '#F4F4F2';
+const TEXT_DARK = '#1A1A18';
+const BODY_GRAY = '#363633';
+const MUTED_GRAY = '#666661';
 const SECTION_PY = { xs: '60px', md: '78px' };
 const CONTENT_MAX = 1320;
 
@@ -214,26 +216,40 @@ const CircularFoodSystems = () => {
 				minHeight: '100vh',
 				backgroundColor: BG_WARM,
 				'--bg-base': BG_WARM,
-				'--bg-alt': '#F0F2EC',
-				'--band-divider': 'rgba(107,106,115,0.08)',
+				'--bg-alt': '#F7F7F5',
+				'--band-divider': 'rgba(26,26,24,0.08)',
 				color: TEXT_DARK,
-				fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
-				lineHeight: 1.7,
+				fontFamily: '"Inter", "Helvetica Neue", "Helvetica", "Arial", sans-serif',
+				lineHeight: 1.72,
+				'& h1, & h2, & h3': {
+					fontFamily: '"Inter", "Helvetica Neue", "Helvetica", "Arial", sans-serif',
+					letterSpacing: '-0.015em',
+					fontWeight: 500,
+					color: TEXT_DARK,
+				},
+				'& .micro-label': {
+					fontSize: '11px',
+					letterSpacing: '0.11em',
+					textTransform: 'uppercase',
+					fontWeight: 600,
+					color: MUTED_GRAY,
+				},
 				'& .lux-link': {
 					display: 'inline-flex',
 					alignItems: 'center',
 					gap: '0.3em',
 					fontWeight: 500,
-					color: 'rgba(107,106,115,0.95)',
+					color: 'rgba(54,54,51,0.95)',
 					textDecoration: 'underline',
-					textDecorationColor: 'rgba(107,106,115,0.45)',
+					textDecorationColor: 'rgba(54,54,51,0.45)',
 					textDecorationThickness: '1px',
 					textUnderlineOffset: '3px',
 					transition:
 						'color 200ms ease, text-decoration-color 200ms ease, text-decoration-thickness 200ms ease',
 					'&:hover': {
-						color: GREEN_PRIMARY,
+						color: TEXT_DARK,
 						textDecorationColor: GREEN_PRIMARY,
+						textDecorationThickness: '2px',
 					},
 					'&:focus-visible': {
 						outline: `2px solid ${GREEN_PRIMARY}`,
@@ -258,8 +274,8 @@ const CircularFoodSystems = () => {
 						'transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, color 220ms ease, font-weight 220ms ease',
 					'&:hover': {
 						transform: 'translateY(-2px)',
-						borderColor: 'rgba(122, 146, 59, 0.35)',
-						boxShadow: '0 6px 14px rgba(46,45,51,0.04)',
+						borderColor: 'rgba(141,154,115,0.5)',
+						boxShadow: '0 10px 20px rgba(26,26,24,0.08)',
 					},
 					'&:focus-visible': {
 						outline: `2px solid ${GREEN_PRIMARY}`,
@@ -271,6 +287,18 @@ const CircularFoodSystems = () => {
 					},
 					'&:hover .lux-click-indicator': {
 						opacity: 0.85,
+					},
+				},
+				'& .MuiButton-root': {
+					borderRadius: '999px',
+					textTransform: 'uppercase',
+					letterSpacing: '0.08em',
+					fontWeight: 600,
+					boxShadow: 'none',
+					transition: 'transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease',
+					'&:hover': {
+						transform: 'translateY(-1px)',
+						boxShadow: '0 8px 18px rgba(26,26,24,0.08)',
 					},
 				},
 			}}>
@@ -286,49 +314,42 @@ const CircularFoodSystems = () => {
 					},
 				}}>
 				<Box sx={{ textAlign: 'center' }}>
-					<Typography
+					<Box
+						component='img'
+						src={limelightBoulderLogo}
+						alt='Limelight Boulder'
 						sx={{
-							fontFamily: '"Inter", sans-serif',
-							fontSize: '1rem',
-							fontWeight: 500,
-							color: TEXT_DARK,
-							letterSpacing: '0.08em',
-							mb: 4,
-						}}>
-						HOTEL LOGO
-					</Typography>
+							height: { xs: 52, md: 64 },
+							width: 'auto',
+							maxWidth: '100%',
+							mb: 4.5,
+						}}
+					/>
 					<Typography
 						component='h1'
 						sx={{
-							fontFamily: '"Playfair Display", serif',
-							fontSize: { xs: '2.25rem', sm: '3rem', md: '52px' },
-							fontWeight: 300,
+							fontFamily: '"Inter", sans-serif',
+							fontSize: { xs: '2.3rem', sm: '3.1rem', md: '56px' },
+							fontWeight: 500,
 							color: TEXT_DARK,
-							lineHeight: 1.2,
+							letterSpacing: '-0.02em',
+							lineHeight: 1.12,
 							mb: 2.5,
 						}}>
-						Our Commitment to Circular Food Systems
+						Circular Food Systems at Limelight Boulder
 					</Typography>
 					<Typography
 						sx={{
 							fontFamily: '"Inter", sans-serif',
 							fontSize: '20px',
 							fontWeight: 400,
-							color: MUTED_GRAY,
+							color: BODY_GRAY,
 							mb: 1.5,
 						}}>
-						Farm to Table, Table to Farm
-					</Typography>
-					<Typography
-						sx={{
-							fontSize: '12px',
-							letterSpacing: '0.08em',
-							textTransform: 'uppercase',
-							fontWeight: 500,
-							color: MUTED_GRAY,
-							mb: 2.25,
-						}}>
 						Measured on-site. Reported with transparency.
+					</Typography>
+					<Typography className='micro-label' sx={{ mb: 2.25 }}>
+						Real numbers from daily operations.
 					</Typography>
 					<Typography
 						sx={{
@@ -338,8 +359,8 @@ const CircularFoodSystems = () => {
 							lineHeight: 1.75,
 							color: BODY_GRAY,
 						}}>
-						Every meal and event helps divert food scraps on-site-returning nutrients to the local
-						community.
+						From restaurant service to conference breaks, food scraps are captured on-site and routed back
+						into local soil systems.
 					</Typography>
 				</Box>
 
@@ -347,24 +368,23 @@ const CircularFoodSystems = () => {
 					<Box
 						component='img'
 						alt='Farm with fresh produce'
-						src='https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1400&q=80'
+						src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80'
 						sx={{
 							width: '100%',
 							height: 'auto',
-							borderRadius: '12px',
+							borderRadius: '14px',
 							objectFit: 'cover',
 							maxHeight: 520,
 							display: 'block',
-							boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+							boxShadow: '0 14px 28px rgba(0,0,0,0.09)',
 						}}
 					/>
 				</Box>
 
 				<Box sx={{ textAlign: 'center', maxWidth: 860, mx: 'auto' }}>
 					<Typography sx={{ fontSize: '18px', lineHeight: 1.75, color: BODY_GRAY }}>
-						Sustainability is woven into our guest experience-guided by measurable action. Through on-site
-						food cycling and transparent reporting, we reduce waste, support local soil health, and advance
-						our climate commitments.
+						At Limelight Boulder, circularity is part of how we host: practical on-site food cycling, clear
+						reporting, and a guest experience that stays effortless.
 					</Typography>
 				</Box>
 			</Box>
@@ -383,14 +403,14 @@ const CircularFoodSystems = () => {
 					<Typography
 						component='h2'
 						sx={{
-							fontFamily: '"Playfair Display", serif',
+							fontFamily: '"Inter", sans-serif',
 							fontSize: { xs: '28px', md: '34px' },
-							fontWeight: 400,
+							fontWeight: 500,
 							color: TEXT_DARK,
 						}}>
 						Our Impact:
 					</Typography>
-					<Typography sx={{ fontSize: '12px', color: MUTED_GRAY }}>Last updated: [MM/DD/YYYY HH:MM]</Typography>
+					<Typography className='micro-label'>Last Updated: [MM/DD/YYYY HH:MM]</Typography>
 				</Box>
 				<Typography sx={{ fontSize: '15px', lineHeight: 1.7, color: MUTED_GRAY, mb: 2 }}>
 					Live, property-specific impact estimates based on data captured through BioGreen360&apos;s on-site
@@ -401,7 +421,7 @@ const CircularFoodSystems = () => {
 						width: '100%',
 						maxWidth: 360,
 						height: '1px',
-						backgroundColor: 'rgba(122, 146, 59, 0.45)',
+						backgroundColor: 'rgba(141,154,115,0.5)',
 						mb: 2.5,
 					}}
 				/>
@@ -412,8 +432,8 @@ const CircularFoodSystems = () => {
 						flexWrap: 'wrap',
 						alignItems: 'stretch',
 						justifyContent: 'space-between',
-						borderTop: `1px solid rgba(107, 130, 50, 0.15)`,
-						borderBottom: `1px solid rgba(107, 130, 50, 0.15)`,
+						borderTop: '1px solid rgba(26,26,24,0.12)',
+						borderBottom: '1px solid rgba(26,26,24,0.12)',
 						py: 2.5,
 					}}>
 					{impactMetrics.map((metric, idx) => (
@@ -425,14 +445,17 @@ const CircularFoodSystems = () => {
 								px: { xs: 0, sm: 3 },
 								py: 1.5,
 								textAlign: 'center',
-								borderRight: idx < 2 ? { xs: 'none', md: `1px solid rgba(122, 146, 59, 0.35)` } : 'none',
+								borderRight: idx < 2 ? { xs: 'none', md: '1px solid rgba(26,26,24,0.14)' } : 'none',
 							}}>
-							<Typography sx={{ fontSize: '13px', color: MUTED_GRAY, mb: 1 }}>{metric.eyebrow}</Typography>
+							<Typography className='micro-label' sx={{ mb: 1 }}>
+								{metric.eyebrow}
+							</Typography>
 							<Typography
 								sx={{
-									fontFamily: '"Playfair Display", serif',
+									fontFamily: '"Inter", sans-serif',
 									fontSize: { xs: '36px', sm: '48px' },
-									fontWeight: 300,
+									fontWeight: 500,
+									letterSpacing: '-0.02em',
 									lineHeight: 1.15,
 									color: TEXT_DARK,
 								}}>
@@ -444,7 +467,7 @@ const CircularFoodSystems = () => {
 				</Box>
 
 				<Box sx={{ textAlign: 'center', mt: 2.25 }}>
-					<Typography sx={{ fontSize: '11px', color: 'rgba(107,106,115,0.85)', mb: 0.5 }}>
+					<Typography className='micro-label' sx={{ mb: 0.5 }}>
 						Reporting powered by BioGreen360
 					</Typography>
 					<Box component='img' src={poweredByBioGreen} alt='BioGreen360' sx={{ height: 26 }} />
@@ -477,15 +500,15 @@ const CircularFoodSystems = () => {
 					<Box>
 						<Box
 							component='img'
-							src={heroKitchenImage}
+							src={cornerstonePartnershipImage}
 							alt='On-site food cycling partnership supporting circular food systems.'
 							sx={{
 								width: '100%',
 								aspectRatio: '4 / 5',
 								objectFit: 'cover',
-								borderRadius: '12px',
-								border: '1px solid rgba(46,45,51,0.08)',
-								boxShadow: '0 4px 16px rgba(46,45,51,0.04)',
+								borderRadius: '14px',
+								border: '1px solid rgba(26,26,24,0.09)',
+								boxShadow: '0 10px 22px rgba(26,26,24,0.07)',
 							}}
 						/>
 					</Box>
@@ -493,9 +516,9 @@ const CircularFoodSystems = () => {
 						<Typography
 							component='h2'
 							sx={{
-								fontFamily: '"Playfair Display", serif',
+								fontFamily: '"Inter", sans-serif',
 								fontSize: { xs: '28px', md: '34px' },
-								fontWeight: 400,
+								fontWeight: 500,
 								lineHeight: 1.25,
 								mb: 1.5,
 							}}>
@@ -504,16 +527,8 @@ const CircularFoodSystems = () => {
 						<Typography sx={{ fontSize: '16px', color: MUTED_GRAY, maxWidth: 740, mb: 1.5 }}>
 							A long-term collaboration uniting refined hospitality with measurable sustainability outcomes.
 						</Typography>
-						<Typography
-							sx={{
-								fontSize: '11px',
-								letterSpacing: '0.08em',
-								textTransform: 'uppercase',
-								fontWeight: 600,
-								color: MUTED_GRAY,
-								mb: 1.25,
-							}}>
-							At a glance
+						<Typography className='micro-label' sx={{ mb: 1.25 }}>
+							At a Glance
 						</Typography>
 						<Box
 							sx={{
@@ -592,9 +607,9 @@ const CircularFoodSystems = () => {
 				<Typography
 					component='h2'
 					sx={{
-						fontFamily: '"Playfair Display", serif',
+						fontFamily: '"Inter", sans-serif',
 						fontSize: { xs: '28px', md: '34px' },
-						fontWeight: 400,
+						fontWeight: 500,
 						color: TEXT_DARK,
 						textAlign: 'center',
 						mb: { xs: 4, md: 6 },
@@ -644,7 +659,7 @@ const CircularFoodSystems = () => {
 										height: { xs: 116, md: 128 },
 										flexShrink: 0,
 										borderRadius: '50%',
-										border: `2px solid ${GREEN_PRIMARY}`,
+									border: '1px solid rgba(26,26,24,0.22)',
 										backgroundColor: 'transparent',
 										display: 'flex',
 										alignItems: 'center',
@@ -683,9 +698,9 @@ const CircularFoodSystems = () => {
 				<Typography
 					component='h2'
 					sx={{
-						fontFamily: '"Playfair Display", serif',
+						fontFamily: '"Inter", sans-serif',
 						fontSize: { xs: '28px', md: '34px' },
-						fontWeight: 400,
+						fontWeight: 500,
 						mb: 1.5,
 					}}>
 					Live Sustainability Impact Reporting
@@ -712,7 +727,7 @@ const CircularFoodSystems = () => {
 						ⓘ Estimates explained
 					</Box>
 				</Box>
-				<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mb: 3 }}>
+				<Typography className='micro-label' sx={{ mb: 3 }}>
 					Last Updated: MM/DD/YYYY
 				</Typography>
 				<Box
@@ -726,34 +741,29 @@ const CircularFoodSystems = () => {
 							key={tile.title}
 							sx={{
 								backgroundColor: '#FFFFFF',
-								border: '1px solid rgba(107, 130, 50, 0.2)',
-								borderRadius: '10px',
+								border: '1px solid rgba(26,26,24,0.1)',
+								borderRadius: '14px',
 								p: { xs: 2.5, md: 3 },
 								minHeight: 220,
 								display: 'flex',
 								flexDirection: 'column',
 								justifyContent: 'center',
 								textAlign: 'center',
-								boxShadow: '0 2px 10px rgba(46,45,51,0.03)',
+								boxShadow: '0 8px 22px rgba(26,26,24,0.05)',
 							}}>
 							<Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 1.25 }}>
 								<Typography
-									sx={{
-										fontSize: '11px',
-										color: MUTED_GRAY,
-										letterSpacing: '0.08em',
-										textTransform: 'uppercase',
-										fontWeight: 600,
-										mb: 0,
-									}}>
+									className='micro-label'
+									sx={{ mb: 0 }}>
 									{tile.title}
 								</Typography>
 								<Typography
 									component='h3'
 									sx={{
-										fontFamily: '"Playfair Display", serif',
+										fontFamily: '"Inter", sans-serif',
 										fontSize: { xs: '28px', md: '32px' },
-										fontWeight: 400,
+										fontWeight: 500,
+										letterSpacing: '-0.015em',
 										lineHeight: 1.25,
 										mb: 0,
 									}}>
@@ -769,32 +779,25 @@ const CircularFoodSystems = () => {
 								key={card.value}
 								sx={{
 									backgroundColor: '#FFFFFF',
-									border: '1px solid rgba(107, 130, 50, 0.2)',
-									borderRadius: '10px',
+									border: '1px solid rgba(26,26,24,0.1)',
+									borderRadius: '14px',
 									p: { xs: 2.5, md: 3 },
 									minHeight: 220,
 									display: 'flex',
 									flexDirection: 'column',
 									textAlign: 'center',
-									boxShadow: '0 2px 10px rgba(46,45,51,0.03)',
+									boxShadow: '0 8px 22px rgba(26,26,24,0.05)',
 								}}>
-								<Typography
-									sx={{
-										fontSize: '11px',
-										color: MUTED_GRAY,
-										letterSpacing: '0.08em',
-										textTransform: 'uppercase',
-										fontWeight: 600,
-										mb: 1.25,
-									}}>
+								<Typography className='micro-label' sx={{ mb: 1.25 }}>
 									{card.label}
 								</Typography>
 								<Typography
 									component='h3'
 									sx={{
-										fontFamily: '"Playfair Display", serif',
+										fontFamily: '"Inter", sans-serif',
 										fontSize: { xs: '28px', md: '32px' },
-										fontWeight: 400,
+										fontWeight: 500,
+										letterSpacing: '-0.015em',
 										lineHeight: 1.25,
 										mb: 1.5,
 									}}>
@@ -803,7 +806,7 @@ const CircularFoodSystems = () => {
 								<Icon
 									sx={{
 										fontSize: { xs: 56, md: 64 },
-										color: 'rgba(107, 130, 50, 0.85)',
+										color: 'rgba(34,34,31,0.72)',
 										mt: 'auto',
 										pt: 1.75,
 										alignSelf: 'center',
@@ -835,9 +838,9 @@ const CircularFoodSystems = () => {
 						<Typography
 							component='h2'
 							sx={{
-								fontFamily: '"Playfair Display", serif',
+								fontFamily: '"Inter", sans-serif',
 								fontSize: { xs: '28px', md: '34px' },
-								fontWeight: 400,
+								fontWeight: 500,
 								mb: 1,
 							}}>
 							Zero Food Waste Events
@@ -847,27 +850,27 @@ const CircularFoodSystems = () => {
 						</Typography>
 						<Box sx={{ width: 84, height: '2px', backgroundColor: GREEN_PRIMARY, mb: 1.5 }} />
 						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8, mb: 1 }}>
-							[Hotel Name] offers Zero Food Waste Events designed to help planners reduce environmental impact
-							without compromising experience.
+							Limelight Boulder offers Zero Food Waste Events for meetings and conferences in one of
+							Boulder&apos;s largest event venues-right in the heart of downtown.
 						</Typography>
 						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8 }}>
-							Food not consumed during qualifying events is diverted from landfill through on-site systems and
-							tracked in real time. Following the event, clients receive a customized sustainability impact
-							summary, including estimated carbon impact metrics powered by BioGreen360 reporting.
+							Unserved food from qualifying events is processed on-site and tracked throughout service. After
+							each event, your team receives a concise impact recap with diversion totals and clear
+							equivalencies.
 						</Typography>
 					</Box>
 
 					<Box
 						component='img'
-						src='https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1200&q=80'
+						src={zeroFoodWasteEventsImage}
 						alt='Hotel event space configured for a sustainable event.'
 						sx={{
 							width: '100%',
 							aspectRatio: '16 / 8',
 							objectFit: 'cover',
-							borderRadius: '12px',
-							border: '1px solid rgba(46,45,51,0.08)',
-							boxShadow: '0 4px 16px rgba(46,45,51,0.04)',
+							borderRadius: '14px',
+							border: '1px solid rgba(26,26,24,0.09)',
+							boxShadow: '0 10px 22px rgba(26,26,24,0.07)',
 						}}
 					/>
 				</Box>
@@ -883,9 +886,9 @@ const CircularFoodSystems = () => {
 					<Box>
 						<Typography
 							sx={{
-								fontFamily: '"Playfair Display", serif',
+								fontFamily: '"Inter", sans-serif',
 								fontSize: { xs: '26px', md: '30px' },
-								fontWeight: 400,
+								fontWeight: 500,
 								textAlign: 'center',
 								mb: 2.5,
 							}}>
@@ -956,7 +959,7 @@ const CircularFoodSystems = () => {
 											width: { xs: 116, md: 128 },
 											height: { xs: 116, md: 128 },
 												borderRadius: '50%',
-											border: `2px solid ${GREEN_PRIMARY}`,
+											border: '1px solid rgba(26,26,24,0.22)',
 											backgroundColor: 'transparent',
 												display: 'flex',
 												alignItems: 'center',
@@ -969,8 +972,9 @@ const CircularFoodSystems = () => {
 											component='h3'
 											sx={{
 												fontSize: '22px',
-												fontFamily: '"Playfair Display", serif',
-												fontWeight: 400,
+												fontFamily: '"Inter", sans-serif',
+												fontWeight: 500,
+												letterSpacing: '-0.015em',
 												color: TEXT_DARK,
 												textAlign: 'center',
 												lineHeight: 1.35,
@@ -1011,21 +1015,20 @@ const CircularFoodSystems = () => {
 					<Box
 						sx={{
 							backgroundColor: 'var(--bg-alt)',
-							border: `3px solid ${GREEN_PRIMARY}`,
+							border: '1px solid rgba(26,26,24,0.2)',
 							borderRadius: '26px',
 							p: { xs: 2, md: 2.5 },
 							alignSelf: { xs: 'stretch', md: 'center' },
+							boxShadow: '0 8px 20px rgba(26,26,24,0.06)',
 						}}>
 						<Typography
 							component='h3'
 							sx={{
-								fontFamily: '"Playfair Display", serif',
+								fontFamily: '"Inter", sans-serif',
 								fontSize: '22px',
-								fontWeight: 400,
+								fontWeight: 500,
 								mb: 1.1,
-								textDecoration: 'underline',
-								textDecorationColor: 'rgba(46,45,51,0.35)',
-								textUnderlineOffset: '3px',
+								letterSpacing: '-0.012em',
 							}}>
 							What Event Planners Receive:
 						</Typography>
@@ -1056,9 +1059,9 @@ const CircularFoodSystems = () => {
 							backgroundColor: GREEN_BORDER,
 							borderRadius: '9999px',
 							boxShadow: 'none',
-							'&:hover': { backgroundColor: GREEN_PRIMARY, boxShadow: 'none' },
+							'&:hover': { backgroundColor: TEXT_DARK, boxShadow: 'none' },
 						}}>
-						CONTACT OUR SALES TEAM
+						CONTACT OUR EVENTS TEAM
 					</Button>
 					<Box sx={{ mt: 1.25 }}>
 						<Box
@@ -1079,30 +1082,31 @@ const CircularFoodSystems = () => {
 				<Typography
 					component='h2'
 					sx={{
-						fontFamily: '"Playfair Display", serif',
+						fontFamily: '"Inter", sans-serif',
 						fontSize: { xs: '28px', md: '34px' },
-						fontWeight: 400,
+						fontWeight: 500,
 						mb: 1.25,
 					}}>
 					Community Impact and Local Partnerships
 				</Typography>
 				<Typography sx={{ fontSize: '16px', color: MUTED_GRAY, mb: 3.5 }}>
-					Keeping resources local-supporting soil health, education, and community resilience.
+					Keeping impact local by supporting Boulder-focused programs, education, and long-term community
+					resilience.
 				</Typography>
 				<Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' }, gap: 2 }}>
 					{[
 						{
 							title: 'Soil Support for Local Nonprofit Partners',
-							copy: 'A share of generated soil amendment is directed toward nonprofit-aligned land restoration and growing initiatives, where locally appropriate.',
+							copy: 'A portion of generated soil amendment supports local restoration and growing efforts, where seasonally and operationally appropriate.',
 							image:
-								'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1200&q=80',
+								'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1400&q=80',
 							alt: 'Community members planting in a local garden focused on soil restoration.',
 						},
 						{
 							title: 'Supporting On-Site / Local Garden Programs',
-							copy: 'Program outputs can support culinary gardens and educational touchpoints that bring circularity to life for guests and teams.',
+							copy: 'Program outputs can contribute to on-site and local garden initiatives that connect guests and teams to circular hospitality in Boulder.',
 							image:
-								'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=1200&q=80',
+								'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80',
 							alt: 'Chef harvesting herbs from an on-site garden program.',
 						},
 					].map((story) => (
@@ -1110,8 +1114,8 @@ const CircularFoodSystems = () => {
 							key={story.title}
 							sx={{
 								backgroundColor: '#FFFFFF',
-								border: '1px solid rgba(46,45,51,0.06)',
-								borderRadius: '10px',
+								border: '1px solid rgba(26,26,24,0.1)',
+								borderRadius: '14px',
 								p: 2.5,
 								minHeight: 236,
 								display: 'flex',
@@ -1127,10 +1131,10 @@ const CircularFoodSystems = () => {
 									objectFit: 'cover',
 									borderRadius: '8px',
 									mb: 1.5,
-									border: '1px solid rgba(46,45,51,0.14)',
+								border: '1px solid rgba(26,26,24,0.14)',
 								}}
 							/>
-							<Typography component='h3' sx={{ fontFamily: '"Playfair Display", serif', fontSize: '24px', fontWeight: 400, mb: 1 }}>
+							<Typography component='h3' sx={{ fontFamily: '"Inter", sans-serif', fontSize: '24px', fontWeight: 500, letterSpacing: '-0.012em', mb: 1 }}>
 								{story.title}
 							</Typography>
 							<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.7 }}>{story.copy}</Typography>
@@ -1157,9 +1161,9 @@ const CircularFoodSystems = () => {
 				<Typography
 					component='h2'
 					sx={{
-						fontFamily: '"Playfair Display", serif',
+						fontFamily: '"Inter", sans-serif',
 						fontSize: { xs: '28px', md: '34px' },
-						fontWeight: 400,
+						fontWeight: 500,
 						mb: 2.5,
 					}}>
 					Additional Sustainability Initiatives
@@ -1182,7 +1186,7 @@ const CircularFoodSystems = () => {
 								sx={{
 									backgroundColor: isBaseTile ? 'var(--bg-base)' : 'var(--bg-alt)',
 									borderRadius: '10px',
-									border: '1px solid rgba(46,45,51,0.05)',
+								border: '1px solid rgba(26,26,24,0.08)',
 									p: 2.25,
 									minHeight: 206,
 									display: 'flex',
@@ -1223,10 +1227,10 @@ const CircularFoodSystems = () => {
 							fontWeight: 500,
 							letterSpacing: '0.05em',
 							color: TEXT_DARK,
-							borderWidth: '1.5px',
-							borderColor: GREEN_BORDER,
+							borderWidth: '1px',
+							borderColor: 'rgba(26,26,24,0.34)',
 							borderRadius: '9999px',
-							'&:hover': { borderColor: GREEN_PRIMARY, backgroundColor: GREEN_SOFT },
+							'&:hover': { borderColor: TEXT_DARK, backgroundColor: GREEN_SOFT },
 						}}>
 						Explore Our Sustainability Commitments
 					</Button>
@@ -1237,8 +1241,8 @@ const CircularFoodSystems = () => {
 							fontSize: '0.84rem',
 							fontWeight: 400,
 							letterSpacing: '0.03em',
-							color: GREEN_BORDER,
-							textTransform: 'none',
+							color: TEXT_DARK,
+							textTransform: 'uppercase',
 							textDecoration: 'underline',
 							textUnderlineOffset: '3px',
 						}}>
@@ -1252,42 +1256,42 @@ const CircularFoodSystems = () => {
 				id='methodology'
 				sx={{
 					backgroundColor: BG_BAND,
-					borderTop: '1px solid rgba(46,45,51,0.08)',
-					borderBottom: '1px solid rgba(46,45,51,0.08)',
+					borderTop: '1px solid rgba(26,26,24,0.1)',
+					borderBottom: '1px solid rgba(26,26,24,0.1)',
 					scrollMarginTop: { xs: '80px', md: '96px' },
 				}}>
 				<Box sx={sectionContainerSx}>
 					<Typography
 						component='h2'
 						sx={{
-							fontFamily: '"Playfair Display", serif',
+							fontFamily: '"Inter", sans-serif',
 							fontSize: { xs: '28px', md: '34px' },
-							fontWeight: 400,
+							fontWeight: 500,
 							mb: 1.5,
 						}}>
-						Reporting Transparency and Methodology
+						Methodology and Reporting
 					</Typography>
 					<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.8, maxWidth: 1040, mb: 1.25 }}>
-						Reported values combine direct operational measurements with standardized conversion factors to
-						estimate diversion, soil amendment outputs, and climate equivalencies.
+						Metrics combine measured on-site inputs with standard conversion factors to estimate diversion,
+						soil output, and climate equivalencies.
 					</Typography>
 					<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.8, maxWidth: 1040, mb: 2 }}>
-						Where available, metrics reflect property-specific activity; selected equivalencies are provided for
-						context and communication, not as audited carbon claims.
+						Where possible, values reflect property-level activity. Equivalencies are directional and provided
+						for context-not audited carbon claims.
 					</Typography>
 
-					<Typography component='h3' sx={{ fontFamily: '"Playfair Display", serif', fontSize: '24px', fontWeight: 400, mb: 1 }}>
-						Understanding Reported Metrics
+					<Typography component='h3' sx={{ fontFamily: '"Inter", sans-serif', fontSize: '24px', fontWeight: 500, letterSpacing: '-0.012em', mb: 1 }}>
+						How to Read These Metrics
 					</Typography>
 					<Box component='ul' sx={{ m: 0, pl: 2.25, color: BODY_GRAY, mb: 2 }}>
 						<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.8 }}>
-							Food scrap diversion is based on measured on-site capture and processing inputs.
+							Food scrap diversion is based on measured on-site capture and processing volumes.
 						</Box>
 						<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.8 }}>
-							Soil amendment outputs are estimated using operational conversion assumptions.
+							Soil amendment output is estimated using operating conversion assumptions.
 						</Box>
 						<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.8 }}>
-							CO₂e equivalencies are illustrative and use standardized public reference factors.
+							CO2e equivalencies are illustrative and use standardized public reference factors.
 						</Box>
 					</Box>
 
@@ -1314,7 +1318,7 @@ const CircularFoodSystems = () => {
 								backgroundColor: GREEN_BORDER,
 								boxShadow: 'none',
 								borderRadius: '9999px',
-								'&:hover': { backgroundColor: GREEN_PRIMARY, boxShadow: 'none' },
+								'&:hover': { backgroundColor: TEXT_DARK, boxShadow: 'none' },
 							}}>
 							View Our Full Impact Report
 						</Button>
@@ -1325,8 +1329,8 @@ const CircularFoodSystems = () => {
 								fontSize: '0.84rem',
 								fontWeight: 400,
 								letterSpacing: '0.03em',
-								color: GREEN_BORDER,
-								textTransform: 'none',
+								color: TEXT_DARK,
+								textTransform: 'uppercase',
 								textDecoration: 'underline',
 								textUnderlineOffset: '3px',
 							}}>
