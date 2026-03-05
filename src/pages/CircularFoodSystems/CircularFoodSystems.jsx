@@ -34,6 +34,13 @@ const BODY_GRAY = '#363633';
 const MUTED_GRAY = '#666661';
 const SECTION_PY = { xs: '60px', md: '78px' };
 const CONTENT_MAX = 1320;
+const siteConfig = {
+	eventsEnabled: true,
+	restaurantEnabled: true,
+	processingPathwayMode: 'mixed',
+	eventTrackingMode: 'by_request',
+	showEquivalencies: true,
+};
 
 const sectionContainerSx = {
 	maxWidth: CONTENT_MAX,
@@ -208,6 +215,189 @@ const CircularFoodSystems = () => {
 			target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	};
+
+	const {
+		eventsEnabled,
+		restaurantEnabled,
+		processingPathwayMode,
+		eventTrackingMode,
+		showEquivalencies,
+	} = siteConfig;
+
+	const processingCopyByMode = {
+		onsite: {
+			overviewLabel: 'ON-SITE PROCESSING',
+			partnershipNarrative:
+				'daily operations-capturing food scraps at the point of service and returning nutrients to the local ecosystem.',
+			howItWorksProcessingLabel: 'Processed on-site with real-time tracking',
+			eventOverview:
+				'Unserved food from qualifying events is processed on-site and tracked throughout service.',
+			eventProcessingDescription:
+				'Food scraps are processed through BioGreen360’s Food Cycling™ Platform with real-time tracking.',
+		},
+		offsite: {
+			overviewLabel: 'OFF-SITE PROCESSING',
+			partnershipNarrative:
+				'daily operations-capturing food scraps at the point of service and routing them through verified partner processing pathways.',
+			howItWorksProcessingLabel: 'Processed through verified partner pathways with tracking',
+			eventOverview:
+				'Unserved food from qualifying events is captured on-site and processed through verified partner pathways.',
+			eventProcessingDescription:
+				'Food scraps are routed through verified partner processing pathways with real-time tracking.',
+		},
+		mixed: {
+			overviewLabel: 'ON-SITE PROCESSING',
+			partnershipNarrative:
+				'daily operations-capturing food scraps at the point of service and returning nutrients to the local ecosystem.',
+			howItWorksProcessingLabel: 'Processed on-site with real-time tracking',
+			eventOverview:
+				'Unserved food from qualifying events is processed on-site and tracked throughout service.',
+			eventProcessingDescription:
+				'Food scraps are processed through BioGreen360’s Food Cycling™ Platform with real-time tracking.',
+		},
+	};
+
+	const eventTrackingCopyByMode = {
+		by_request: {
+			eventRecap:
+				'After each event, your team receives a concise impact recap with diversion totals and clear equivalencies.',
+			plannerSummary:
+				'Clients receive an event-specific impact summary outlining estimated food waste diversion and carbon impact.',
+			eventsCtaLabel: 'CONTACT OUR EVENTS TEAM',
+		},
+		always_on: {
+			eventRecap:
+				'Impact recaps are automatically shared after each event with diversion totals and clear equivalencies.',
+			plannerSummary:
+				'Clients receive automated event-specific impact summaries outlining estimated food waste diversion and carbon impact.',
+			eventsCtaLabel: 'CONNECT WITH OUR EVENTS TEAM',
+		},
+		manual: {
+			eventRecap:
+				'Impact recaps are available on request, including diversion totals and clear equivalencies.',
+			plannerSummary:
+				'Clients can request an event-specific impact summary outlining estimated food waste diversion and carbon impact.',
+			eventsCtaLabel: 'REQUEST EVENT SUPPORT',
+		},
+	};
+
+	const processingCopy =
+		processingCopyByMode[processingPathwayMode] ?? processingCopyByMode.mixed;
+	const eventTrackingCopy =
+		eventTrackingCopyByMode[eventTrackingMode] ?? eventTrackingCopyByMode.by_request;
+
+	const cornerstoneOverviewLinks = [
+		{ label: processingCopy.overviewLabel, target: 'how-it-works' },
+		{ label: 'PROPERTY-LEVEL MEASUREMENT', target: 'live-impact-reporting' },
+		{ label: 'SHAREABLE IMPACT REPORTING', target: 'zero-food-waste-events' },
+	];
+
+	const primaryProcessingSteps = [
+		{
+			icon: (
+				<Box
+					component='img'
+					src={howItWorksFoodIcon}
+					alt='Food scraps are collected'
+					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+				/>
+			),
+			label: 'Food scraps are collected',
+		},
+		{
+			icon: (
+				<Box
+					component='img'
+					src={biogreenHowItWorksLogo}
+					alt={processingCopy.howItWorksProcessingLabel}
+					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+				/>
+			),
+			label: processingCopy.howItWorksProcessingLabel,
+		},
+		{
+			icon: (
+				<Box
+					component='img'
+					src={howItWorksSproutIcon}
+					alt='Returned to soil locally to support growth'
+					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+				/>
+			),
+			label: 'Returned to soil locally to support growth',
+		},
+		{
+			icon: (
+				<Box
+					component='img'
+					src={howItWorksReportIcon}
+					alt='Transparent reporting shared with stakeholders'
+					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+				/>
+			),
+			label: 'Transparent reporting shared with stakeholders',
+		},
+	];
+
+	const eventFlowSteps = [
+		{
+			icon: (
+				<Box
+					component='img'
+					src={howItWorksFoodIcon}
+					alt='During Your Event'
+					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+				/>
+			),
+			title: 'During Your Event',
+			description:
+				'Food scraps generated from kitchens and service areas are collected on-site.',
+		},
+		{
+			icon: (
+				<Box
+					component='img'
+					src={biogreenHowItWorksLogo}
+					alt='On-Site Processing & Tracking'
+					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+				/>
+			),
+			title: 'On-Site Processing & Tracking',
+			description: processingCopy.eventProcessingDescription,
+		},
+		{
+			icon: (
+				<Box
+					component='img'
+					src={howItWorksReportIcon}
+					alt='Post-Event Impact Reporting'
+					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+				/>
+			),
+			title: 'Post-Event Impact Reporting',
+			description: eventTrackingCopy.plannerSummary,
+		},
+	];
+
+	const eventPlannerDeliverables = [
+		'Event specific food-waste diversion summary',
+		'Estimated CO₂e impact metrics for stakeholder reporting',
+		'Post-event sustainability documentation suitable for internal reporting and stakeholder communications',
+	];
+
+	const eventsPrimaryCtaLabel = eventsEnabled
+		? eventTrackingCopy.eventsCtaLabel
+		: 'CONTACT OUR SUSTAINABILITY TEAM';
+	const sustainabilityTeamCtaLabel = restaurantEnabled
+		? 'Contact Our Sustainability Team'
+		: 'Contact Our Team';
+	const methodologyTeamCtaLabel = restaurantEnabled
+		? 'Inquire with Our Sustainability Team'
+		: 'Inquire with Our Team';
+	const equivalencyCardsToRender = showEquivalencies ? equivalencyCards : [];
+	const equivalencyDisclaimer = showEquivalencies
+		? 'Equivalencies are provided for context and are not audited carbon claims.'
+		: 'Impact estimates are directional and are not audited carbon claims.';
 
 	return (
 		<Box
@@ -538,11 +728,7 @@ const CircularFoodSystems = () => {
 								borderBottom: '1px solid rgba(46,45,51,0.08)',
 								mb: 2,
 							}}>
-							{[
-								{ label: 'ON-SITE PROCESSING', target: 'how-it-works' },
-								{ label: 'PROPERTY-LEVEL MEASUREMENT', target: 'live-impact-reporting' },
-								{ label: 'SHAREABLE IMPACT REPORTING', target: 'zero-food-waste-events' },
-							].map((item, index) => (
+							{cornerstoneOverviewLinks.map((item, index) => (
 								<Box
 									key={item.label}
 									component='button'
@@ -587,9 +773,8 @@ const CircularFoodSystems = () => {
 						</Box>
 						<Typography sx={{ fontSize: '16px', color: BODY_GRAY, lineHeight: 1.8 }}>
 							Since [Month YYYY], we have partnered with BioGreen360 to integrate on-site food cycling into
-							daily operations-capturing food scraps at the point of service and returning nutrients to the
-							local ecosystem. The result is a program that supports waste reduction without compromising the
-							guest experience.
+							{` ${processingCopy.partnershipNarrative} `}The result is a program that supports waste
+							reduction without compromising the guest experience.
 						</Typography>
 						<Typography sx={{ fontSize: '16px', color: BODY_GRAY, lineHeight: 1.8 }}>
 							Together, we prioritize transparency through property-level tracking and reporting-designed to
@@ -625,24 +810,7 @@ const CircularFoodSystems = () => {
 						alignItems: 'flex-start',
 						gap: { xs: 4, md: 0 },
 					}}>
-					{[
-						{
-							icon: <Box component='img' src={howItWorksFoodIcon} alt='Food scraps are collected' sx={{ height: 56, width: 'auto', objectFit: 'contain' }} />,
-							label: 'Food scraps are collected',
-						},
-						{
-							icon: <Box component='img' src={biogreenHowItWorksLogo} alt='Processed on-site with real-time tracking' sx={{ height: 56, width: 'auto', objectFit: 'contain' }} />,
-							label: 'Processed on-site with real-time tracking',
-						},
-						{
-							icon: <Box component='img' src={howItWorksSproutIcon} alt='Returned to soil locally to support growth' sx={{ height: 56, width: 'auto', objectFit: 'contain' }} />,
-							label: 'Returned to soil locally to support growth',
-						},
-						{
-							icon: <Box component='img' src={howItWorksReportIcon} alt='Transparent reporting shared with stakeholders' sx={{ height: 56, width: 'auto', objectFit: 'contain' }} />,
-							label: 'Transparent reporting shared with stakeholders',
-						},
-					].map((step, index) => (
+					{primaryProcessingSteps.map((step, index) => (
 						<React.Fragment key={step.label}>
 							<Box
 								sx={{
@@ -772,7 +940,7 @@ const CircularFoodSystems = () => {
 							</Box>
 						</Box>
 					))}
-					{equivalencyCards.map((card) => {
+					{equivalencyCardsToRender.map((card) => {
 						const Icon = card.icon;
 						return (
 							<Box
@@ -817,7 +985,7 @@ const CircularFoodSystems = () => {
 					})}
 				</Box>
 				<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 2.25 }}>
-					Equivalencies are provided for context and are not audited carbon claims.
+					{equivalencyDisclaimer}
 				</Typography>
 			</Box>
 
@@ -854,9 +1022,7 @@ const CircularFoodSystems = () => {
 							Boulder&apos;s largest event venues-right in the heart of downtown.
 						</Typography>
 						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8 }}>
-							Unserved food from qualifying events is processed on-site and tracked throughout service. After
-							each event, your team receives a concise impact recap with diversion totals and clear
-							equivalencies.
+							{processingCopy.eventOverview} {eventTrackingCopy.eventRecap}
 						</Typography>
 					</Box>
 
@@ -903,47 +1069,7 @@ const CircularFoodSystems = () => {
 								alignItems: 'flex-start',
 								gap: { xs: 3.5, md: 0 },
 							}}>
-							{[
-								{
-									icon: (
-										<Box
-											component='img'
-											src={howItWorksFoodIcon}
-											alt='During Your Event'
-											sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
-										/>
-									),
-									title: 'During Your Event',
-									description:
-										'Food scraps generated from kitchens and service areas are collected on-site.',
-								},
-								{
-									icon: (
-										<Box
-											component='img'
-											src={biogreenHowItWorksLogo}
-											alt='On-Site Processing & Tracking'
-											sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
-										/>
-									),
-									title: 'On-Site Processing & Tracking',
-									description:
-										'Food scraps are processed through BioGreen360’s Food Cycling™ Platform with real-time tracking.',
-								},
-								{
-									icon: (
-										<Box
-											component='img'
-											src={howItWorksReportIcon}
-											alt='Post-Event Impact Reporting'
-											sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
-										/>
-									),
-									title: 'Post-Event Impact Reporting',
-									description:
-										'Clients receive an event-specific impact summary outlining estimated food waste diversion and carbon impact.',
-								},
-							].map((step, idx) => (
+							{eventFlowSteps.map((step, idx) => (
 								<React.Fragment key={step.title}>
 									<Box
 										sx={{
@@ -1033,11 +1159,7 @@ const CircularFoodSystems = () => {
 							What Event Planners Receive:
 						</Typography>
 						<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_GRAY }}>
-							{[
-								'Event specific food-waste diversion summary',
-								'Estimated CO₂e impact metrics for stakeholder reporting',
-								'Post-event sustainability documentation suitable for internal reporting and stakeholder communications',
-							].map((item) => (
+							{eventPlannerDeliverables.map((item) => (
 								<Box component='li' key={item} sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.45 }}>
 									{item}
 								</Box>
@@ -1061,7 +1183,7 @@ const CircularFoodSystems = () => {
 							boxShadow: 'none',
 							'&:hover': { backgroundColor: TEXT_DARK, boxShadow: 'none' },
 						}}>
-						CONTACT OUR EVENTS TEAM
+						{eventsPrimaryCtaLabel}
 					</Button>
 					<Box sx={{ mt: 1.25 }}>
 						<Box
@@ -1246,7 +1368,7 @@ const CircularFoodSystems = () => {
 							textDecoration: 'underline',
 							textUnderlineOffset: '3px',
 						}}>
-						Contact Our Sustainability Team
+						{sustainabilityTeamCtaLabel}
 					</Button>
 				</Box>
 			</Box>
@@ -1334,7 +1456,7 @@ const CircularFoodSystems = () => {
 								textDecoration: 'underline',
 								textUnderlineOffset: '3px',
 							}}>
-							Inquire with Our Sustainability Team
+							{methodologyTeamCtaLabel}
 						</Button>
 					</Box>
 				</Box>
