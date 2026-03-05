@@ -2,7 +2,26 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
+const ACCENT_GREEN = '#8D9A73';
+
 const StickyHeader = ({ logoSrc, logoAlt = 'Hotel logo' }) => {
+	const handleAnchorClick = (event, href) => {
+		if (!href || !href.startsWith('#')) {
+			return;
+		}
+
+		event.preventDefault();
+		if (href === '#') {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+			return;
+		}
+
+		const target = document.querySelector(href);
+		if (target) {
+			target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
+	};
+
 	return (
 		<Box
 			component='header'
@@ -54,12 +73,17 @@ const StickyHeader = ({ logoSrc, logoAlt = 'Hotel logo' }) => {
 							key={item.href}
 							component='a'
 							href={item.href}
+							onClick={(event) => handleAnchorClick(event, item.href)}
 							className='lux-link'
 							sx={{
 								fontSize: '12px',
 								letterSpacing: '0.08em',
 								textTransform: 'uppercase',
 								fontWeight: 600,
+								'&:hover': {
+									color: ACCENT_GREEN,
+									fontWeight: 700,
+								},
 							}}>
 							{item.label}
 						</Box>
@@ -76,6 +100,7 @@ const StickyHeader = ({ logoSrc, logoAlt = 'Hotel logo' }) => {
 					<Button
 						component='a'
 						href='#'
+						onClick={(event) => handleAnchorClick(event, '#')}
 						variant='contained'
 						sx={{
 							px: 2.2,
@@ -83,13 +108,19 @@ const StickyHeader = ({ logoSrc, logoAlt = 'Hotel logo' }) => {
 							fontSize: '0.72rem',
 							color: '#FFFFFF',
 							backgroundColor: '#22221F',
-							'&:hover': { backgroundColor: '#1A1A18', boxShadow: 'none' },
+							'&:hover': {
+								backgroundColor: '#1A1A18',
+								boxShadow: 'none',
+								color: ACCENT_GREEN,
+								fontWeight: 700,
+							},
 						}}>
 						Book a Room
 					</Button>
 					<Button
 						component='a'
-						href='#'
+						href='#events'
+						onClick={(event) => handleAnchorClick(event, '#events')}
 						variant='outlined'
 						sx={{
 							px: 2.2,
@@ -100,6 +131,8 @@ const StickyHeader = ({ logoSrc, logoAlt = 'Hotel logo' }) => {
 							'&:hover': {
 								borderColor: '#1A1A18',
 								backgroundColor: 'rgba(245,245,243,0.7)',
+								color: ACCENT_GREEN,
+								fontWeight: 700,
 							},
 						}}>
 						Plan an Event
