@@ -678,7 +678,14 @@ const CircularFoodSystems = () => {
 			</Box>
 
 			{/* Cornerstone Partnership */}
-			<Box className='section section--base' sx={{ ...sectionContainerSx, ...sectionBandBaseSx }}>
+			<Box
+				id='community'
+				className='section section--base'
+				sx={{
+					...sectionContainerSx,
+					...sectionBandBaseSx,
+					scrollMarginTop: { xs: '90px', md: '104px' },
+				}}>
 				<Box
 					sx={{
 						display: 'grid',
