@@ -623,8 +623,8 @@ const CircularFoodSystems = () => {
 							color: BODY_GRAY,
 							mb: 1.5,
 						}}>
-						Food scraps are captured on-site and tracked through verified partners, with live reporting and a
-						downloadable impact report.
+						Food not eaten is captured on-site and tracked through verified local partners, with shareable
+						live reporting capabilities.
 					</Typography>
 					<Box
 						component='ul'
