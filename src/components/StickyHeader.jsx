@@ -119,6 +119,26 @@ const StickyHeader = ({ logoSrc, logoAlt = 'Hotel logo' }) => {
 					</Button>
 					<Button
 						component='a'
+						href='#live-impact-reporting'
+						onClick={(event) => handleAnchorClick(event, '#live-impact-reporting')}
+						variant='outlined'
+						sx={{
+							px: 2.2,
+							py: 0.75,
+							fontSize: '0.72rem',
+							color: '#1A1A18',
+							borderColor: 'rgba(26,26,24,0.34)',
+							'&:hover': {
+								borderColor: '#1A1A18',
+								backgroundColor: 'rgba(245,245,243,0.7)',
+								color: ACCENT_GREEN,
+								fontWeight: 700,
+							},
+						}}>
+						Reporting
+					</Button>
+					<Button
+						component='a'
 						href='#events'
 						onClick={(event) => handleAnchorClick(event, '#events')}
 						variant='outlined'
