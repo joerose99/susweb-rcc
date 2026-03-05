@@ -29,7 +29,7 @@ const StickyHeader = ({ logoSrc, logoAlt = 'Hotel logo' }) => {
 				position: 'sticky',
 				top: 0,
 				zIndex: 1200,
-				backgroundColor: 'var(--bg-base, #FAFAF8)',
+				backgroundColor: '#DFDFDF',
 				borderBottom: '1px solid rgba(26,26,24,0.08)',
 			}}>
 			<Box

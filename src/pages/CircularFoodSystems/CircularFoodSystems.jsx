@@ -507,17 +507,6 @@ const CircularFoodSystems = () => {
 					},
 				}}>
 				<Box sx={{ textAlign: 'center' }}>
-					<Box
-						component='img'
-						src={limelightBoulderLogo}
-						alt='Limelight Boulder'
-						sx={{
-							height: { xs: 52, md: 64 },
-							width: 'auto',
-							maxWidth: '100%',
-							mb: 4.5,
-						}}
-					/>
 					<Typography
 						component='h1'
 						sx={{
