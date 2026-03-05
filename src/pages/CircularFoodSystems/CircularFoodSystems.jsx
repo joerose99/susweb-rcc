@@ -613,7 +613,7 @@ const CircularFoodSystems = () => {
 							lineHeight: 1.12,
 							mb: 2.5,
 						}}>
-						Sustainability you can verify
+						Our Environmental Commitment, Verified.
 					</Typography>
 					<Typography
 						sx={{
@@ -637,24 +637,24 @@ const CircularFoodSystems = () => {
 							fontSize: '18px',
 							lineHeight: 1.75,
 							color: BODY_GRAY,
+							textAlign: 'left',
+							listStylePosition: 'outside',
 						}}>
 						<Box component='li'>
-							{`Live metrics: Pulled from BioGreen360's reporting system (${heroBulletLastSync})`}
+							<Box component='a' href='#live-reporting' className='lux-link lux-link--internal'>
+								Live reporting data
+							</Box>{' '}
+							pulled from BioGreen360&apos;s reporting system.
 						</Box>
 						<Box component='li'>
-							{`Property totals: ${propertyTotalsSummary} captured and tracked (definitions + scope notes below).`}
+							Food not eaten on property is converted to soil amendments in the local community where
+							possible.
 						</Box>
 						<Box component='li'>
-							Full impact report: Download the complete report{' '}
-							<Box
-								component='a'
-								href={siteConfig.impactReportUrl}
-								target='_blank'
-								rel='noopener noreferrer'
-								sx={{ color: 'inherit', textDecoration: 'underline' }}>
-								(PDF)
+							Qualifying events can receive an environmental impact report.{' '}
+							<Box component='a' href='#events' className='lux-link lux-link--internal'>
+								Learn more
 							</Box>
-							.
 						</Box>
 					</Box>
 				</Box>
