@@ -518,7 +518,7 @@ const CircularFoodSystems = () => {
 							lineHeight: 1.12,
 							mb: 2.5,
 						}}>
-						Circular Food Systems at Limelight Boulder
+						Sustainability you can verify
 					</Typography>
 					<Typography
 						sx={{
@@ -528,10 +528,11 @@ const CircularFoodSystems = () => {
 							color: BODY_GRAY,
 							mb: 1.5,
 						}}>
-						Measured on-site. Reported with transparency.
+						Food scraps are captured on-site and tracked through verified partners, with live reporting and a
+						downloadable impact report.
 					</Typography>
 					<Typography className='micro-label' sx={{ mb: 2.25 }}>
-						Real numbers from daily operations.
+						Live reporting. Clear definitions.
 					</Typography>
 					<Typography
 						sx={{
@@ -541,8 +542,7 @@ const CircularFoodSystems = () => {
 							lineHeight: 1.75,
 							color: BODY_GRAY,
 						}}>
-						From restaurant service to conference breaks, food scraps are captured on-site and routed back
-						into local soil systems.
+						1) Live metrics: Pulled from BioGreen360&apos;s reporting system (last sync: [timestamp])
 					</Typography>
 				</Box>
 
@@ -565,8 +565,12 @@ const CircularFoodSystems = () => {
 
 				<Box sx={{ textAlign: 'center', maxWidth: 860, mx: 'auto' }}>
 					<Typography sx={{ fontSize: '18px', lineHeight: 1.75, color: BODY_GRAY }}>
-						At Limelight Boulder, circularity is part of how we host: practical on-site food cycling, clear
-						reporting, and a guest experience that stays effortless.
+						2) Property totals: [insert primary metric + timeframe] with definitions and scope notes
+						<br />
+						3) Full report: Download the complete impact report and methodology anytime
+						<br />
+						Live data feed • Last sync: [timestamp] • Methodology available • Full impact report
+						downloadable
 					</Typography>
 				</Box>
 			</Box>
