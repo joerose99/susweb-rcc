@@ -41,6 +41,8 @@ const siteConfig = {
 	processingPathwayMode: 'mixed',
 	eventTrackingMode: 'by_request',
 	showEquivalencies: true,
+	lastSync: '2026-03-04T15:30:00-07:00',
+	impactReportUrl: 'https://example.com/impact-report.pdf',
 };
 
 const sectionContainerSx = {
@@ -208,6 +210,57 @@ const initiatives = [
 		icon: RocketLaunchIcon,
 	},
 ];
+
+const formatLastSync = (lastSyncValue) => {
+	if (!lastSyncValue) {
+		return null;
+	}
+
+	const parsedDate = new Date(lastSyncValue);
+	if (Number.isNaN(parsedDate.getTime())) {
+		return null;
+	}
+
+	const parts = new Intl.DateTimeFormat('en-US', {
+		month: 'short',
+		day: 'numeric',
+		year: 'numeric',
+		hour: 'numeric',
+		minute: '2-digit',
+		hour12: true,
+		timeZoneName: 'short',
+	}).formatToParts(parsedDate);
+
+	const partValue = (type) => parts.find((part) => part.type === type)?.value ?? '';
+	return `${partValue('month')} ${partValue('day')}, ${partValue('year')} ${partValue('hour')}:${partValue('minute')} ${partValue('dayPeriod')} ${partValue('timeZoneName')}`;
+};
+
+const parseMetricValue = (metricValue, fallbackTimeframe = 'all-time') => {
+	const rawValue = String(metricValue ?? '').trim();
+	const withTimeframe = rawValue.match(/^(.+?)\s+([A-Za-z]+)\s+per\s+(week|month)$/i);
+	if (withTimeframe) {
+		return {
+			value: withTimeframe[1].trim(),
+			unit: withTimeframe[2].trim(),
+			timeframe: `per ${withTimeframe[3].toLowerCase()}`,
+		};
+	}
+
+	const withUnitOnly = rawValue.match(/^(.+?)\s+([A-Za-z]+)$/);
+	if (withUnitOnly) {
+		return {
+			value: withUnitOnly[1].trim(),
+			unit: withUnitOnly[2].trim(),
+			timeframe: fallbackTimeframe,
+		};
+	}
+
+	return {
+		value: rawValue,
+		unit: '',
+		timeframe: fallbackTimeframe,
+	};
+};
 
 const CircularFoodSystems = () => {
 	const scrollToSection = (sectionId) => {
@@ -399,6 +452,45 @@ const CircularFoodSystems = () => {
 	const equivalencyDisclaimer = showEquivalencies
 		? 'Equivalencies are provided for context and are not audited carbon claims.'
 		: 'Impact estimates are directional and are not audited carbon claims.';
+	const formattedLastSync = formatLastSync(siteConfig.lastSync);
+	const lastUpdatedLabel = formattedLastSync ?? 'Last sync: unavailable';
+	const heroBulletLastSync = formattedLastSync
+		? `last sync: ${formattedLastSync}`
+		: 'Last sync: unavailable';
+	const trustLineLastSync = formattedLastSync ?? 'unavailable';
+
+	const weeklyFoodScrapMetric = reportingTiles.find(
+		(tile) =>
+			/weekly/i.test(tile.title) &&
+			/food scrap/i.test(tile.title) &&
+			/\blbs\b/i.test(tile.value),
+	);
+	const allTimeFoodScrapMetric = impactMetrics.find(
+		(metric) =>
+			/food scraps diverted/i.test(metric.eyebrow) &&
+			/\btons?\b/i.test(metric.value),
+	);
+	const monthlyFoodScrapMetric = reportingTiles.find(
+		(tile) =>
+			/per month/i.test(tile.value) &&
+			/food scrap/i.test(tile.title),
+	);
+
+	const headlineMetricSource =
+		weeklyFoodScrapMetric ??
+		allTimeFoodScrapMetric ??
+		monthlyFoodScrapMetric;
+	const headlineMetric = parseMetricValue(
+		headlineMetricSource?.value ?? '',
+		headlineMetricSource === allTimeFoodScrapMetric ? 'all-time' : undefined,
+	);
+	const propertyTotalsSummary = [
+		headlineMetric.value,
+		headlineMetric.unit,
+		headlineMetric.timeframe,
+	]
+		.filter(Boolean)
+		.join(' ');
 
 	return (
 		<Box
@@ -547,20 +639,29 @@ const CircularFoodSystems = () => {
 							color: BODY_GRAY,
 						}}>
 						<Box component='li'>
-							Live metrics: Pulled from BioGreen360&apos;s reporting system (last sync: [timestamp])
+							{`Live metrics: Pulled from BioGreen360's reporting system (${heroBulletLastSync})`}
 						</Box>
 						<Box component='li'>
-							Property totals: [insert primary metric + timeframe] with definitions and scope notes
+							{`Property totals: ${propertyTotalsSummary} captured and tracked (definitions + scope notes below).`}
 						</Box>
 						<Box component='li'>
-							Full report: Download the complete impact report and methodology anytime
+							Full impact report: Download the complete report{' '}
+							<Box
+								component='a'
+								href={siteConfig.impactReportUrl}
+								target='_blank'
+								rel='noopener noreferrer'
+								sx={{ color: 'inherit', textDecoration: 'underline' }}>
+								(PDF)
+							</Box>
+							.
 						</Box>
 					</Box>
 				</Box>
 
 				<Box sx={{ textAlign: 'center', maxWidth: 860, mx: 'auto', mt: 1.5 }}>
 					<Typography className='micro-label' sx={{ mb: 0 }}>
-						Live data feed • Last sync: [timestamp] • Methodology available • Full impact report downloadable
+						{`Live data feed • Last sync: ${trustLineLastSync} • Methodology available • Full impact report downloadable`}
 					</Typography>
 				</Box>
 
@@ -610,7 +711,7 @@ const CircularFoodSystems = () => {
 						}}>
 						Our Impact:
 					</Typography>
-					<Typography className='micro-label'>Last Updated: [MM/DD/YYYY HH:MM]</Typography>
+					<Typography className='micro-label'>{`Last Updated: ${lastUpdatedLabel}`}</Typography>
 				</Box>
 				<Typography sx={{ fontSize: '15px', lineHeight: 1.7, color: MUTED_GRAY, mb: 2 }}>
 					Live, property-specific impact estimates based on data captured through BioGreen360&apos;s on-site
@@ -908,7 +1009,7 @@ const CircularFoodSystems = () => {
 					</Box>
 				</Box>
 				<Typography className='micro-label' sx={{ mb: 3 }}>
-					Last Updated: MM/DD/YYYY
+					{`Last Updated: ${lastUpdatedLabel}`}
 				</Typography>
 				<Box
 					sx={{
