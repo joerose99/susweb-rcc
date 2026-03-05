@@ -125,18 +125,18 @@ const equivalencyCards = [
 	},
 ];
 
-const eventFlow = [
-	'During your event: food scraps captured on-site',
-	'On-site processing & tracking',
-	'Post-event impact summary and reporting',
-];
+// const eventFlow = [
+// 	'During your event: food scraps captured on-site',
+// 	'On-site processing & tracking',
+// 	'Post-event impact summary and reporting',
+// ];
 
-const plannerDeliverables = [
-	'Event-specific diversion summary',
-	'Estimated CO₂e impact',
-	'Soil/compost output estimates (where applicable)',
-	'Share-ready reporting highlights',
-];
+// const plannerDeliverables = [
+// 	'Event-specific diversion summary',
+// 	'Estimated CO₂e impact',
+// 	'Soil/compost output estimates (where applicable)',
+// 	'Share-ready reporting highlights',
+// ];
 
 const initiatives = [
 	{
