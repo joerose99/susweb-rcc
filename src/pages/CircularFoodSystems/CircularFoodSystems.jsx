@@ -507,6 +507,9 @@ const CircularFoodSystems = () => {
 					},
 				}}>
 				<Box sx={{ textAlign: 'center' }}>
+					<Typography className='micro-label' sx={{ mb: 2.25 }}>
+						LIVE REPORTING. CLEAR DEFINITIONS.
+					</Typography>
 					<Typography
 						component='h1'
 						sx={{
@@ -531,18 +534,33 @@ const CircularFoodSystems = () => {
 						Food scraps are captured on-site and tracked through verified partners, with live reporting and a
 						downloadable impact report.
 					</Typography>
-					<Typography className='micro-label' sx={{ mb: 2.25 }}>
-						Live reporting. Clear definitions.
-					</Typography>
-					<Typography
+					<Box
+						component='ul'
 						sx={{
+							listStyle: 'disc',
 							maxWidth: 820,
 							mx: 'auto',
+							mb: 0,
+							pl: 3,
 							fontSize: '18px',
 							lineHeight: 1.75,
 							color: BODY_GRAY,
 						}}>
-						1) Live metrics: Pulled from BioGreen360&apos;s reporting system (last sync: [timestamp])
+						<Box component='li'>
+							Live metrics: Pulled from BioGreen360&apos;s reporting system (last sync: [timestamp])
+						</Box>
+						<Box component='li'>
+							Property totals: [insert primary metric + timeframe] with definitions and scope notes
+						</Box>
+						<Box component='li'>
+							Full report: Download the complete impact report and methodology anytime
+						</Box>
+					</Box>
+				</Box>
+
+				<Box sx={{ textAlign: 'center', maxWidth: 860, mx: 'auto', mt: 1.5 }}>
+					<Typography className='micro-label' sx={{ mb: 0 }}>
+						Live data feed • Last sync: [timestamp] • Methodology available • Full impact report downloadable
 					</Typography>
 				</Box>
 
@@ -561,17 +579,6 @@ const CircularFoodSystems = () => {
 							boxShadow: '0 14px 28px rgba(0,0,0,0.09)',
 						}}
 					/>
-				</Box>
-
-				<Box sx={{ textAlign: 'center', maxWidth: 860, mx: 'auto' }}>
-					<Typography sx={{ fontSize: '18px', lineHeight: 1.75, color: BODY_GRAY }}>
-						2) Property totals: [insert primary metric + timeframe] with definitions and scope notes
-						<br />
-						3) Full report: Download the complete impact report and methodology anytime
-						<br />
-						Live data feed • Last sync: [timestamp] • Methodology available • Full impact report
-						downloadable
-					</Typography>
 				</Box>
 			</Box>
 
