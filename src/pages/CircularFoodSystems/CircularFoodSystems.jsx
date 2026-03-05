@@ -23,6 +23,7 @@ import howItWorksReportIcon from '../../assets/how-it-works-report.png';
 import limelightBoulderLogo from '../../assets/limelight-boulder-logo.png';
 import zeroFoodWasteEventsImage from '../../assets/zero-food-waste-events.png';
 import cornerstonePartnershipImage from '../../assets/cornerstone-partnership.png';
+import StickyHeader from '../../components/StickyHeader';
 
 const GREEN_PRIMARY = '#8D9A73';
 const GREEN_SOFT = '#F5F5F3';
@@ -289,7 +290,7 @@ const CircularFoodSystems = () => {
 	const cornerstoneOverviewLinks = [
 		{ label: processingCopy.overviewLabel, target: 'how-it-works' },
 		{ label: 'PROPERTY-LEVEL MEASUREMENT', target: 'live-impact-reporting' },
-		{ label: 'SHAREABLE IMPACT REPORTING', target: 'zero-food-waste-events' },
+		{ label: 'SHAREABLE IMPACT REPORTING', target: 'events' },
 	];
 
 	const primaryProcessingSteps = [
@@ -492,6 +493,8 @@ const CircularFoodSystems = () => {
 					},
 				},
 			}}>
+			<StickyHeader logoSrc={limelightBoulderLogo} logoAlt='Limelight Boulder' />
+
 			{/* Hero */}
 			<Box
 				className='section section--base'
@@ -580,7 +583,14 @@ const CircularFoodSystems = () => {
 			</Box>
 
 			{/* Our Impact */}
-			<Box className='section section--alt' sx={{ ...sectionContainerSx, ...sectionBandAltSx }}>
+			<Box
+				id='impact'
+				className='section section--alt'
+				sx={{
+					...sectionContainerSx,
+					...sectionBandAltSx,
+					scrollMarginTop: { xs: '90px', md: '104px' },
+				}}>
 				<Box
 					sx={{
 						display: 'flex',
@@ -991,7 +1001,7 @@ const CircularFoodSystems = () => {
 
 			{/* Zero Food Waste Events */}
 			<Box
-				id='zero-food-waste-events'
+				id='events'
 				className='section section--alt'
 				sx={{ ...sectionContainerSx, ...sectionBandAltSx, scrollMarginTop: { xs: '80px', md: '96px' } }}>
 				<Box
@@ -1279,7 +1289,14 @@ const CircularFoodSystems = () => {
 			</Box>
 
 			{/* Additional Sustainability Initiatives */}
-			<Box className='section section--alt' sx={{ ...sectionContainerSx, ...sectionBandAltSx }}>
+			<Box
+				id='initiatives'
+				className='section section--alt'
+				sx={{
+					...sectionContainerSx,
+					...sectionBandAltSx,
+					scrollMarginTop: { xs: '90px', md: '104px' },
+				}}>
 				<Typography
 					component='h2'
 					sx={{
