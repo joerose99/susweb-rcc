@@ -674,7 +674,7 @@ const CircularFoodSystems = () => {
 
 				<Box sx={{ textAlign: 'center', maxWidth: 860, mx: 'auto', mt: 1.5 }}>
 					<Typography className='micro-label' sx={{ mb: 0 }}>
-						{`Live data feed • Last sync: ${trustLineLastSync} • Methodology available • Full impact report downloadable`}
+						{`Live data feed • Last sync: ${trustLineLastSync} • Methodology available • Downloadable Example Event Impact Report`}
 					</Typography>
 				</Box>
 
