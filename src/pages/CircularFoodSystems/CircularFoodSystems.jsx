@@ -1494,21 +1494,7 @@ const CircularFoodSystems = () => {
 							borderRadius: '9999px',
 							'&:hover': { borderColor: TEXT_DARK, backgroundColor: GREEN_SOFT },
 						}}>
-						Explore Our Sustainability Commitments
-					</Button>
-					<Button
-						variant='text'
-						sx={{
-							px: 2,
-							fontSize: '0.84rem',
-							fontWeight: 400,
-							letterSpacing: '0.03em',
-							color: TEXT_DARK,
-							textTransform: 'uppercase',
-							textDecoration: 'underline',
-							textUnderlineOffset: '3px',
-						}}>
-						{sustainabilityTeamCtaLabel}
+						Contact our Sales team to Learn More
 					</Button>
 				</Box>
 			</Box>
