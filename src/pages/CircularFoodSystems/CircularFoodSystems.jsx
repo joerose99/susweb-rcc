@@ -406,9 +406,7 @@ const CircularFoodSystems = () => {
 		? 'Inquire with Our Sustainability Team'
 		: 'Inquire with Our Team';
 	const equivalencyCardsToRender = showEquivalencies ? equivalencyCards : [];
-	const equivalencyDisclaimer = showEquivalencies
-		? 'Equivalencies are provided for context and are not audited carbon claims.'
-		: 'Impact estimates are directional and are not audited carbon claims.';
+	const equivalencyDisclaimer = 'Equivalencies are provided for context and are not audited carbon claims.';
 	const formattedLastSync = formatLastSync(siteConfig.lastSync);
 	const lastUpdatedLabel = formattedLastSync ?? 'Last sync: unavailable';
 	const trustLineLastSync = formattedLastSync ?? 'unavailable';
@@ -1133,9 +1131,6 @@ const CircularFoodSystems = () => {
 						Definitions
 					</Box>
 				</Box>
-				<Typography className='micro-label' sx={{ mb: 3 }}>
-					{`Last Updated: ${lastUpdatedLabel}`}
-				</Typography>
 				<Box
 					sx={{
 						display: 'grid',
@@ -1196,6 +1191,9 @@ const CircularFoodSystems = () => {
 								}}>
 								<Typography className='micro-label' sx={{ mb: 1.25 }}>
 									{card.label}
+								</Typography>
+								<Typography sx={{ fontSize: '11px', letterSpacing: '0.09em', textTransform: 'uppercase', color: MUTED_GRAY, mb: 0.85 }}>
+									Illustrative equivalency
 								</Typography>
 								<Typography
 									component='h3'
