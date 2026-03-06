@@ -640,7 +640,14 @@ const CircularFoodSystems = () => {
 							listStylePosition: 'outside',
 						}}>
 						<Box component='li'>
-							<Box component='a' href='#live-reporting' className='lux-link lux-link--internal'>
+							<Box
+								component='a'
+								href='#live-impact-reporting'
+								onClick={(event) => {
+									event.preventDefault();
+									scrollToSection('live-impact-reporting');
+								}}
+								className='lux-link lux-link--internal'>
 								Live reporting data
 							</Box>{' '}
 							pulled from BioGreen360&apos;s reporting system.
