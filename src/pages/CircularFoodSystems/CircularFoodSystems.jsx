@@ -511,8 +511,8 @@ const CircularFoodSystems = () => {
 			requiresEvents: true,
 		},
 		{
-			title: 'What’s included?',
-			body: 'See scope notes and definitions in Methodology.',
+			title: 'How is this calculated?',
+			body: 'See definitions, scope notes, and methodology details.',
 			href: '#methodology',
 			scrollTarget: 'methodology',
 		},
@@ -753,7 +753,6 @@ const CircularFoodSystems = () => {
 								event.preventDefault();
 								scrollToSection(card.scrollTarget);
 							}}
-							className='lux-clickable'
 							sx={{
 								textDecoration: 'none',
 								color: 'inherit',
@@ -765,6 +764,16 @@ const CircularFoodSystems = () => {
 								flexDirection: 'column',
 								justifyContent: 'space-between',
 								minHeight: { xs: 140, md: 152 },
+								cursor: 'pointer',
+								transition: 'border-color 200ms ease',
+								'&:hover': {
+									borderColor: 'rgba(141,154,115,0.5)',
+								},
+								'&:focus-visible': {
+									borderColor: 'rgba(141,154,115,0.5)',
+									outline: `2px solid ${GREEN_PRIMARY}`,
+									outlineOffset: '2px',
+								},
 							}}>
 							<Typography
 								component='h3'
