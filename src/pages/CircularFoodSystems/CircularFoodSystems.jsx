@@ -302,7 +302,7 @@ const CircularFoodSystems = () => {
 
 	const cornerstoneOverviewLinks = [
 		{ label: processingCopy.overviewLabel, target: 'how-it-works' },
-		{ label: 'PROPERTY-LEVEL MEASUREMENT', target: 'live-impact-reporting' },
+		{ label: 'PROPERTY-LEVEL MEASUREMENT', target: 'live-reporting' },
 		{ label: 'SHAREABLE IMPACT REPORTING', target: 'events' },
 	];
 
@@ -423,7 +423,7 @@ const CircularFoodSystems = () => {
 			title: 'How often does this update?',
 			body: 'Metrics update automatically from BioGreen360 reporting.',
 			href: '#live-reporting',
-			scrollTarget: 'live-impact-reporting',
+			scrollTarget: 'live-reporting',
 		},
 		{
 			title: 'Can my event get a recap?',
@@ -594,7 +594,7 @@ const CircularFoodSystems = () => {
 								href='#live-impact-reporting'
 								onClick={(event) => {
 									event.preventDefault();
-									scrollToSection('live-impact-reporting');
+									scrollToSection('live-reporting');
 								}}
 								className='lux-link lux-link--internal'>
 								Live reporting data
@@ -1098,7 +1098,7 @@ const CircularFoodSystems = () => {
 
 			{/* Live Sustainability Impact Reporting */}
 			<Box
-				id='live-impact-reporting'
+				id='live-reporting'
 				className='section section--base'
 				sx={{ ...sectionContainerSx, ...sectionBandBaseSx, scrollMarginTop: { xs: '80px', md: '96px' } }}>
 				<Typography
@@ -1120,8 +1120,8 @@ const CircularFoodSystems = () => {
 						gap: 1.25,
 						mb: 1.5,
 					}}>
-					<Typography sx={{ fontSize: '16px', color: MUTED_GRAY }}>
-						Metrics shown are live or cumulative estimates based on on-site tracking.
+					<Typography sx={{ fontSize: '14px', color: MUTED_GRAY }}>
+						Live reporting data is provided through BioGreen360&apos;s reporting system.
 					</Typography>
 					<Box
 						component='a'
@@ -1130,7 +1130,7 @@ const CircularFoodSystems = () => {
 						sx={{
 							fontSize: '12px',
 						}}>
-						ⓘ Estimates explained
+						Definitions
 					</Box>
 				</Box>
 				<Typography className='micro-label' sx={{ mb: 3 }}>
