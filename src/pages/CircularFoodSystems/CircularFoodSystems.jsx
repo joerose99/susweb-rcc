@@ -721,20 +721,19 @@ const CircularFoodSystems = () => {
 						}}
 					/>
 				</Box>
-			</Box>
 
-			{/* Quick Answers */}
-			<Box className='section section--alt' sx={{ ...sectionContainerSx, ...sectionBandAltSx }}>
-				<Typography
-					component='h2'
-					sx={{
-						fontFamily: '"Inter", sans-serif',
-						fontSize: { xs: '28px', md: '34px' },
-						fontWeight: 500,
-						mb: 2.25,
-					}}>
-					Quick Answers
-				</Typography>
+				<Box sx={{ mt: { xs: 1, md: 2 } }}>
+					<Typography
+						component='h2'
+						sx={{
+							fontFamily: '"Inter", sans-serif',
+							fontSize: { xs: '28px', md: '34px' },
+							fontWeight: 500,
+							mb: 2.25,
+						}}>
+						Quick Answers
+					</Typography>
+				</Box>
 				<Box
 					sx={{
 						display: 'grid',
