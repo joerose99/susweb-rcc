@@ -442,9 +442,9 @@ const CircularFoodSystems = () => {
 	const eventsPrimaryCtaLabel = eventsEnabled
 		? eventTrackingCopy.eventsCtaLabel
 		: 'CONTACT OUR SUSTAINABILITY TEAM';
-	const sustainabilityTeamCtaLabel = restaurantEnabled
-		? 'Contact Our Sustainability Team'
-		: 'Contact Our Team';
+	// const sustainabilityTeamCtaLabel = restaurantEnabled
+	// 	? 'Contact Our Sustainability Team'
+	// 	: 'Contact Our Team';
 	const methodologyTeamCtaLabel = restaurantEnabled
 		? 'Inquire with Our Sustainability Team'
 		: 'Inquire with Our Team';
