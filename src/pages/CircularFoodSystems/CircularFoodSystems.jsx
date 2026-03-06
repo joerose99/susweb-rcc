@@ -658,7 +658,14 @@ const CircularFoodSystems = () => {
 						</Box>
 						<Box component='li'>
 							Qualifying events can receive an environmental impact report.{' '}
-							<Box component='a' href='#events' className='lux-link lux-link--internal'>
+							<Box
+								component='a'
+								href='#events'
+								onClick={(event) => {
+									event.preventDefault();
+									scrollToSection('events');
+								}}
+								className='lux-link lux-link--internal'>
 								Learn more
 							</Box>
 						</Box>
