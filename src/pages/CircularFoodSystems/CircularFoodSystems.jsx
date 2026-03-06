@@ -403,7 +403,7 @@ const CircularFoodSystems = () => {
 					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
 				/>
 			),
-			title: 'During Your Event',
+			title: 'Food scraps are collected on-site',
 			description:
 				'Food scraps generated from kitchens and service areas are collected on-site.',
 		},
@@ -416,19 +416,31 @@ const CircularFoodSystems = () => {
 					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
 				/>
 			),
-			title: 'On-Site Processing & Tracking',
+			title: 'Measured and tracked in the BioGreen360 system',
 			description: processingCopy.eventProcessingDescription,
 		},
 		{
 			icon: (
 				<Box
 					component='img'
-					src={howItWorksReportIcon}
-					alt='Post-Event Impact Reporting'
+					src={howItWorksSproutIcon}
+					alt='Managed through local composting / soil pathways'
 					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
 				/>
 			),
-			title: 'Post-Event Impact Reporting',
+			title: 'Managed through local composting / soil pathways',
+			description: 'Returned to soil locally to support growth.',
+		},
+		{
+			icon: (
+				<Box
+					component='img'
+					src={howItWorksReportIcon}
+					alt='Reporting available for guests and planners'
+					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+				/>
+			),
+			title: 'Reporting available for guests and planners',
 			description: eventTrackingCopy.plannerSummary,
 		},
 	];
@@ -1350,6 +1362,7 @@ const CircularFoodSystems = () => {
 				</Box>
 
 				<Box
+					id='how-it-works'
 					sx={{
 						display: 'grid',
 						gridTemplateColumns: { xs: '1fr', md: '7fr 3fr' },
@@ -1428,7 +1441,7 @@ const CircularFoodSystems = () => {
 											{step.description}
 										</Typography>
 									</Box>
-									{idx < 2 && (
+									{idx < eventFlowSteps.length - 1 && (
 										<Box
 											sx={{
 												display: { xs: 'none', md: 'flex' },
@@ -1444,6 +1457,13 @@ const CircularFoodSystems = () => {
 								</React.Fragment>
 							))}
 						</Box>
+						<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, textAlign: 'center', mt: 1.5 }}>
+							Processing pathways vary by property. See scope notes in{' '}
+							<Box component='a' href='#methodology' sx={{ color: 'inherit', textDecoration: 'underline' }}>
+								Methodology
+							</Box>
+							.
+						</Typography>
 					</Box>
 
 					<Box
