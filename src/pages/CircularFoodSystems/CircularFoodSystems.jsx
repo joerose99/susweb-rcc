@@ -765,14 +765,24 @@ const CircularFoodSystems = () => {
 								justifyContent: 'space-between',
 								minHeight: { xs: 140, md: 152 },
 								cursor: 'pointer',
-								transition: 'border-color 200ms ease',
+								transition: 'transform 200ms ease, border-color 200ms ease, outline-color 200ms ease',
+								outline: '2px solid transparent',
+								outlineOffset: '0px',
 								'&:hover': {
+									transform: 'scale(1.02)',
 									borderColor: 'rgba(141,154,115,0.5)',
+									outlineColor: 'rgba(141,154,115,0.55)',
 								},
 								'&:focus-visible': {
+									transform: 'scale(1.02)',
 									borderColor: 'rgba(141,154,115,0.5)',
-									outline: `2px solid ${GREEN_PRIMARY}`,
-									outlineOffset: '2px',
+									outlineColor: 'rgba(141,154,115,0.55)',
+								},
+								'@media (prefers-reduced-motion: reduce)': {
+									transition: 'border-color 200ms ease, outline-color 200ms ease',
+									'&:hover, &:focus-visible': {
+										transform: 'none',
+									},
 								},
 							}}>
 							<Typography
