@@ -135,19 +135,6 @@ const equivalencyCards = [
 	},
 ];
 
-// const eventFlow = [
-// 	'During your event: food scraps captured on-site',
-// 	'On-site processing & tracking',
-// 	'Post-event impact summary and reporting',
-// ];
-
-// const plannerDeliverables = [
-// 	'Event-specific diversion summary',
-// 	'Estimated CO₂e impact',
-// 	'Soil/compost output estimates (where applicable)',
-// 	'Share-ready reporting highlights',
-// ];
-
 const initiatives = [
 	{
 		title: 'EV Charging',
@@ -234,33 +221,6 @@ const formatLastSync = (lastSyncValue) => {
 	const partValue = (type) => parts.find((part) => part.type === type)?.value ?? '';
 	return `${partValue('month')} ${partValue('day')}, ${partValue('year')} ${partValue('hour')}:${partValue('minute')} ${partValue('dayPeriod')} ${partValue('timeZoneName')}`;
 };
-
-// const parseMetricValue = (metricValue, fallbackTimeframe = 'all-time') => {
-// 	const rawValue = String(metricValue ?? '').trim();
-// 	const withTimeframe = rawValue.match(/^(.+?)\s+([A-Za-z]+)\s+per\s+(week|month)$/i);
-// 	if (withTimeframe) {
-// 		return {
-// 			value: withTimeframe[1].trim(),
-// 			unit: withTimeframe[2].trim(),
-// 			timeframe: `per ${withTimeframe[3].toLowerCase()}`,
-// 		};
-// 	}
-//
-// 	const withUnitOnly = rawValue.match(/^(.+?)\s+([A-Za-z]+)$/);
-// 	if (withUnitOnly) {
-// 		return {
-// 			value: withUnitOnly[1].trim(),
-// 			unit: withUnitOnly[2].trim(),
-// 			timeframe: fallbackTimeframe,
-// 		};
-// 	}
-//
-// 	return {
-// 		value: rawValue,
-// 		unit: '',
-// 		timeframe: fallbackTimeframe,
-// 	};
-// };
 
 const CircularFoodSystems = () => {
 	const scrollToSection = (sectionId) => {
@@ -454,9 +414,6 @@ const CircularFoodSystems = () => {
 	const eventsPrimaryCtaLabel = eventsEnabled
 		? eventTrackingCopy.eventsCtaLabel
 		: 'CONTACT OUR SUSTAINABILITY TEAM';
-	// const sustainabilityTeamCtaLabel = restaurantEnabled
-	// 	? 'Contact Our Sustainability Team'
-	// 	: 'Contact Our Team';
 	const methodologyTeamCtaLabel = restaurantEnabled
 		? 'Inquire with Our Sustainability Team'
 		: 'Inquire with Our Team';
@@ -466,42 +423,7 @@ const CircularFoodSystems = () => {
 		: 'Impact estimates are directional and are not audited carbon claims.';
 	const formattedLastSync = formatLastSync(siteConfig.lastSync);
 	const lastUpdatedLabel = formattedLastSync ?? 'Last sync: unavailable';
-	// const heroBulletLastSync = formattedLastSync
-	// 	? `last sync: ${formattedLastSync}`
-	// 	: 'Last sync: unavailable';
 	const trustLineLastSync = formattedLastSync ?? 'unavailable';
-	// const weeklyFoodScrapMetric = reportingTiles.find(
-	// 	(tile) =>
-	// 		/weekly/i.test(tile.title) &&
-	// 		/food scrap/i.test(tile.title) &&
-	// 		/\blbs\b/i.test(tile.value),
-	// );
-	// const allTimeFoodScrapMetric = impactMetrics.find(
-	// 	(metric) =>
-	// 		/food scraps diverted/i.test(metric.eyebrow) &&
-	// 		/\btons?\b/i.test(metric.value),
-	// );
-	// const monthlyFoodScrapMetric = reportingTiles.find(
-	// 	(tile) =>
-	// 		/per month/i.test(tile.value) &&
-	// 		/food scrap/i.test(tile.title),
-	// );
-	//
-	// const headlineMetricSource =
-	// 	weeklyFoodScrapMetric ??
-	// 	allTimeFoodScrapMetric ??
-	// 	monthlyFoodScrapMetric;
-	// const headlineMetric = parseMetricValue(
-	// 	headlineMetricSource?.value ?? '',
-	// 	headlineMetricSource === allTimeFoodScrapMetric ? 'all-time' : undefined,
-	// );
-	// const propertyTotalsSummary = [
-	// 	headlineMetric.value,
-	// 	headlineMetric.unit,
-	// 	headlineMetric.timeframe,
-	// ]
-	// 	.filter(Boolean)
-	// 	.join(' ');
 	const quickAnswersCards = [
 		{
 			title: 'What happens to food scraps?',
