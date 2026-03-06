@@ -490,6 +490,33 @@ const CircularFoodSystems = () => {
 	// ]
 	// 	.filter(Boolean)
 	// 	.join(' ');
+	const quickAnswersCards = [
+		{
+			title: 'What happens to food scraps?',
+			body: 'Captured on-site and managed through local processing pathways.',
+			href: '#how-it-works',
+			scrollTarget: 'how-it-works',
+		},
+		{
+			title: 'How often does this update?',
+			body: 'Metrics update automatically from BioGreen360 reporting.',
+			href: '#live-reporting',
+			scrollTarget: 'live-impact-reporting',
+		},
+		{
+			title: 'Can my event get a recap?',
+			body: 'By request for qualifying events, subject to availability.',
+			href: '#events',
+			scrollTarget: 'events',
+			requiresEvents: true,
+		},
+		{
+			title: 'What’s included?',
+			body: 'See scope notes and definitions in Methodology.',
+			href: '#methodology',
+			scrollTarget: 'methodology',
+		},
+	].filter((card) => (card.requiresEvents ? eventsEnabled : true));
 
 	return (
 		<Box
@@ -693,6 +720,70 @@ const CircularFoodSystems = () => {
 							boxShadow: '0 14px 28px rgba(0,0,0,0.09)',
 						}}
 					/>
+				</Box>
+			</Box>
+
+			{/* Quick Answers */}
+			<Box className='section section--alt' sx={{ ...sectionContainerSx, ...sectionBandAltSx }}>
+				<Typography
+					component='h2'
+					sx={{
+						fontFamily: '"Inter", sans-serif',
+						fontSize: { xs: '28px', md: '34px' },
+						fontWeight: 500,
+						mb: 2.25,
+					}}>
+					Quick Answers
+				</Typography>
+				<Box
+					sx={{
+						display: 'grid',
+						gridTemplateColumns: {
+							xs: '1fr',
+							sm: 'repeat(2, minmax(0, 1fr))',
+							xl: 'repeat(4, minmax(0, 1fr))',
+						},
+						gap: { xs: 1.75, sm: 2 },
+					}}>
+					{quickAnswersCards.map((card) => (
+						<Box
+							key={card.title}
+							component='a'
+							href={card.href}
+							onClick={(event) => {
+								event.preventDefault();
+								scrollToSection(card.scrollTarget);
+							}}
+							className='lux-clickable'
+							sx={{
+								textDecoration: 'none',
+								color: 'inherit',
+								backgroundColor: '#FFFFFF',
+								border: '1px solid rgba(26,26,24,0.1)',
+								borderRadius: '14px',
+								p: { xs: 2, md: 2.25 },
+								display: 'flex',
+								flexDirection: 'column',
+								justifyContent: 'space-between',
+								minHeight: { xs: 140, md: 152 },
+							}}>
+							<Typography
+								component='h3'
+								sx={{
+									fontFamily: '"Inter", sans-serif',
+									fontSize: '20px',
+									fontWeight: 500,
+									letterSpacing: '-0.012em',
+									lineHeight: 1.3,
+									mb: 1,
+								}}>
+								{card.title}
+							</Typography>
+							<Typography sx={{ fontSize: '14px', color: BODY_GRAY, lineHeight: 1.65 }}>
+								{card.body}
+							</Typography>
+						</Box>
+					))}
 				</Box>
 			</Box>
 
