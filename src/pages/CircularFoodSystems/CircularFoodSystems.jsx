@@ -1006,15 +1006,88 @@ const CircularFoodSystems = () => {
 								</Box>
 							))}
 						</Box>
-						<Typography sx={{ fontSize: '16px', color: BODY_GRAY, lineHeight: 1.8 }}>
-							Since [Month YYYY], we have partnered with BioGreen360 to integrate on-site food cycling into
-							{` ${processingCopy.partnershipNarrative} `}The result is a program that supports waste
-							reduction without compromising the guest experience.
+						<Typography className='micro-label' sx={{ mb: 1.25 }}>
+							Roles
 						</Typography>
-						<Typography sx={{ fontSize: '16px', color: BODY_GRAY, lineHeight: 1.8 }}>
-							Together, we prioritize transparency through property-level tracking and reporting-designed to
-							support responsible stewardship, continuous improvement, and long-term climate commitments.
-						</Typography>
+						<Box
+							sx={{
+								display: 'grid',
+								gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' },
+								gap: 2,
+							}}>
+							<Box>
+								<Typography
+									component='h3'
+									sx={{
+										fontFamily: '"Inter", sans-serif',
+										fontSize: '22px',
+										fontWeight: 500,
+										lineHeight: 1.35,
+										mb: 0.75,
+									}}>
+									Hotel Operations
+								</Typography>
+								<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_GRAY }}>
+									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
+										Collects food scraps on-site as part of daily operations.
+									</Box>
+									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
+										Maintains collection practices that fit guest and staff workflows.
+									</Box>
+									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7 }}>
+										Coordinates with partners based on on-property logistics.
+									</Box>
+								</Box>
+							</Box>
+							<Box>
+								<Typography
+									component='h3'
+									sx={{
+										fontFamily: '"Inter", sans-serif',
+										fontSize: '22px',
+										fontWeight: 500,
+										lineHeight: 1.35,
+										mb: 0.75,
+									}}>
+									BioGreen360
+								</Typography>
+								<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_GRAY }}>
+									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
+										Provides the measurement and reporting system used for this page.
+									</Box>
+									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
+										Supports program setup, tracking, and reporting consistency.
+									</Box>
+									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7 }}>
+										Helps standardize definitions and scope notes across properties.
+									</Box>
+								</Box>
+							</Box>
+							<Box>
+								<Typography
+									component='h3'
+									sx={{
+										fontFamily: '"Inter", sans-serif',
+										fontSize: '22px',
+										fontWeight: 500,
+										lineHeight: 1.35,
+										mb: 0.75,
+									}}>
+									Local Processing Partners
+								</Typography>
+								<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_GRAY }}>
+									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
+										Convert collected scraps into local composting / soil pathways where possible.
+									</Box>
+									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
+										Processing pathways vary by property equipment and local logistics.
+									</Box>
+									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7 }}>
+										End uses and availability may vary by season and partner capacity.
+									</Box>
+								</Box>
+							</Box>
+						</Box>
 					</Box>
 				</Box>
 			</Box>
