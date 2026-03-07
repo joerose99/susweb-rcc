@@ -1102,7 +1102,6 @@ const CircularFoodSystems = () => {
 					...sectionContainerSx,
 					...sectionBandBaseSx,
 					scrollMarginTop: { xs: '80px', md: '96px' },
-					'& .lsir-card-title': { color: GREEN_PRIMARY },
 					'& .lsir-card-value': { color: TEXT_DARK },
 				}}>
 				<Typography
