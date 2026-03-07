@@ -4,7 +4,10 @@ import Button from '@mui/material/Button';
 
 const ACCENT_GREEN = '#8D9A73';
 
-const StickyHeader = ({ logoSrc, logoAlt = 'Hotel logo' }) => {
+const StickyHeader = ({ logoAlt = 'HotelName logo' }) => {
+	// TODO: replace with transparent logo asset (SVG preferred)
+	const transparentLogoSrc = '/assets/hotel-logo-transparent.svg';
+
 	const handleAnchorClick = (event, href) => {
 		if (!href || !href.startsWith('#')) {
 			return;
@@ -45,13 +48,18 @@ const StickyHeader = ({ logoSrc, logoAlt = 'Hotel logo' }) => {
 				}}>
 				<Box
 					component='img'
-					src={logoSrc}
+					src={transparentLogoSrc}
 					alt={logoAlt}
+					width={180}
+					height={40}
 					sx={{
 						height: { xs: 34, md: 40 },
 						width: 'auto',
 						maxWidth: '100%',
 						display: 'block',
+						backgroundColor: 'transparent',
+						p: 0,
+						imageRendering: '-webkit-optimize-contrast',
 					}}
 				/>
 
