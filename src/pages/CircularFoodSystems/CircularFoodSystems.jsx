@@ -1128,7 +1128,7 @@ const CircularFoodSystems = () => {
 						sx={{
 							fontSize: '12px',
 						}}>
-						Methodology →
+						Methodology
 					</Box>
 				</Box>
 				<Box
