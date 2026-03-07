@@ -1631,6 +1631,10 @@ const CircularFoodSystems = () => {
 						Methodology and Reporting
 					</Typography>
 					<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.8, maxWidth: 1040, mb: 1.25 }}>
+						These metrics combine measured on-site inputs with standard conversion factors. Definitions and
+						scope notes are provided for clarity.
+					</Typography>
+					<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.8, maxWidth: 1040, mb: 1.25 }}>
 						Metrics combine measured on-site inputs with standard conversion factors to estimate diversion,
 						soil output, and climate equivalencies.
 					</Typography>
@@ -1679,7 +1683,7 @@ const CircularFoodSystems = () => {
 								borderRadius: '9999px',
 								'&:hover': { backgroundColor: TEXT_DARK, boxShadow: 'none' },
 							}}>
-							View Our Full Impact Report
+							View our full impact report
 						</Button>
 						<Button
 							variant='text'
