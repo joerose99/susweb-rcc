@@ -1435,7 +1435,7 @@ const CircularFoodSystems = () => {
 
 			{/* Community Impact */}
 			<Box
-				id='community'
+				id='community-impact'
 				className='section section--base'
 				sx={{
 					...sectionContainerSx,
@@ -1460,14 +1460,14 @@ const CircularFoodSystems = () => {
 					{[
 						{
 							title: 'Soil Support for Local Nonprofit Partners',
-							copy: 'A portion of generated soil amendment supports local restoration and growing efforts, where seasonally and operationally appropriate.',
+							copy: 'When available, a portion of program outputs may be provided to local partners for community soil and restoration projects, where operationally appropriate.',
 							image:
 								'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1400&q=80',
 							alt: 'Community members planting in a local garden focused on soil restoration.',
 						},
 						{
 							title: 'Supporting On-Site / Local Garden Programs',
-							copy: 'Program outputs can contribute to on-site and local garden initiatives that connect guests and teams to circular hospitality in Boulder.',
+							copy: 'Where available, program outputs may contribute to on-site or local garden initiatives that connect guests and teams to circular hospitality.',
 							image:
 								'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80',
 							alt: 'Chef harvesting herbs from an on-site garden program.',
@@ -1504,6 +1504,9 @@ const CircularFoodSystems = () => {
 						</Box>
 					))}
 				</Box>
+				<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 1.25 }}>
+					Partner participation and allocation may vary by property and season.
+				</Typography>
 				<Box
 					sx={{
 						mt: 2,
