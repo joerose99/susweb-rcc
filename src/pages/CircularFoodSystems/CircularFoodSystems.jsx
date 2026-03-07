@@ -234,7 +234,6 @@ const CircularFoodSystems = () => {
 		eventsEnabled,
 		restaurantEnabled,
 		processingPathwayMode,
-		eventTrackingMode,
 		showEquivalencies,
 	} = siteConfig;
 
@@ -271,34 +270,8 @@ const CircularFoodSystems = () => {
 		},
 	};
 
-	const eventTrackingCopyByMode = {
-		by_request: {
-			eventRecap:
-				'After each event, your team receives a concise impact recap with diversion totals and clear equivalencies.',
-			plannerSummary:
-				'Clients receive an event-specific impact summary outlining estimated food waste diversion and carbon impact.',
-			eventsCtaLabel: 'CONTACT OUR EVENTS TEAM',
-		},
-		always_on: {
-			eventRecap:
-				'Impact recaps are automatically shared after each event with diversion totals and clear equivalencies.',
-			plannerSummary:
-				'Clients receive automated event-specific impact summaries outlining estimated food waste diversion and carbon impact.',
-			eventsCtaLabel: 'CONNECT WITH OUR EVENTS TEAM',
-		},
-		manual: {
-			eventRecap:
-				'Impact recaps are available on request, including diversion totals and clear equivalencies.',
-			plannerSummary:
-				'Clients can request an event-specific impact summary outlining estimated food waste diversion and carbon impact.',
-			eventsCtaLabel: 'REQUEST EVENT SUPPORT',
-		},
-	};
-
 	const processingCopy =
 		processingCopyByMode[processingPathwayMode] ?? processingCopyByMode.mixed;
-	const eventTrackingCopy =
-		eventTrackingCopyByMode[eventTrackingMode] ?? eventTrackingCopyByMode.by_request;
 
 	const cornerstoneOverviewLinks = [
 		{ label: processingCopy.overviewLabel, target: 'how-it-works' },
@@ -401,9 +374,6 @@ const CircularFoodSystems = () => {
 		'Post-event documentation suitable for internal reporting',
 	];
 
-	const eventsPrimaryCtaLabel = eventsEnabled
-		? eventTrackingCopy.eventsCtaLabel
-		: 'CONTACT OUR SUSTAINABILITY TEAM';
 	const methodologyTeamCtaLabel = restaurantEnabled
 		? 'Inquire with Our Sustainability Team'
 		: 'Inquire with Our Team';
