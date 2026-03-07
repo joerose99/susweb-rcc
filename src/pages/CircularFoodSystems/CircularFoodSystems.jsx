@@ -1127,6 +1127,8 @@ const CircularFoodSystems = () => {
 						className='lux-link lux-link--internal'
 						sx={{
 							fontSize: '12px',
+							color: GREEN_PRIMARY,
+							'&:hover': { color: GREEN_BORDER, textDecoration: 'underline' },
 						}}>
 						Methodology
 					</Box>
@@ -1142,7 +1144,8 @@ const CircularFoodSystems = () => {
 							key={tile.title}
 							sx={{
 								backgroundColor: '#FFFFFF',
-								border: '1px solid rgba(26,26,24,0.1)',
+								border: '1px solid',
+								borderColor: `${GREEN_PRIMARY}66`,
 								borderRadius: '14px',
 								p: { xs: 2.5, md: 3 },
 								minHeight: 220,
@@ -1178,6 +1181,7 @@ const CircularFoodSystems = () => {
 										fontWeight: 500,
 										letterSpacing: '-0.015em',
 										lineHeight: 1.25,
+										color: GREEN_PRIMARY,
 										mb: 0,
 									}}>
 									{tile.value}
@@ -1192,7 +1196,8 @@ const CircularFoodSystems = () => {
 								key={card.value}
 								sx={{
 									backgroundColor: '#FFFFFF',
-									border: '1px solid rgba(26,26,24,0.1)',
+									border: '1px solid',
+									borderColor: `${GREEN_PRIMARY}66`,
 									borderRadius: '14px',
 									p: { xs: 2.5, md: 3 },
 									minHeight: 220,
@@ -1215,6 +1220,7 @@ const CircularFoodSystems = () => {
 										fontWeight: 500,
 										letterSpacing: '-0.015em',
 										lineHeight: 1.25,
+										color: GREEN_PRIMARY,
 										mb: 1.5,
 									}}>
 									{card.value}
