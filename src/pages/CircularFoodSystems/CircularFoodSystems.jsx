@@ -112,7 +112,7 @@ const reportingTiles = [
 	},
 	{
 		title: 'All-Time Climate Impact (CO₂e)',
-		value: '89,000 miles of driving (illustrative)',
+		value: '89,000 miles of driving',
 		equivalency: 'Comparable to Boston ↔ LA ~10x (estimate)',
 	},
 ];
@@ -1158,6 +1158,18 @@ const CircularFoodSystems = () => {
 									sx={{ mb: 0 }}>
 									{tile.title}
 								</Typography>
+								{tile.title === 'All-Time Climate Impact (CO₂e)' && (
+									<Typography
+										sx={{
+											fontSize: '11px',
+											letterSpacing: '0.09em',
+											textTransform: 'uppercase',
+											color: MUTED_GRAY,
+											mb: 0.85,
+										}}>
+										Illustrative equivalency
+									</Typography>
+								)}
 								<Typography
 									component='h3'
 									sx={{
