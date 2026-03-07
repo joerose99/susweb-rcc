@@ -65,7 +65,7 @@ const StickyHeader = ({ logoSrc, logoAlt = 'Hotel logo' }) => {
 					}}>
 					{[
 						{ label: 'Impact', href: '#impact' },
-						{ label: 'Reporting', href: '#live-impact-reporting' },
+						{ label: 'Reporting', href: '#live-reporting' },
 						{ label: 'Events', href: '#events' },
 						{ label: 'Community', href: '#community' },
 						{ label: 'Initiatives', href: '#initiatives' },
