@@ -1102,7 +1102,6 @@ const CircularFoodSystems = () => {
 					...sectionContainerSx,
 					...sectionBandBaseSx,
 					scrollMarginTop: { xs: '80px', md: '96px' },
-					'& .live-reporting-value': { color: GREEN_PRIMARY },
 				}}>
 				<Typography
 					component='h2'
@@ -1132,8 +1131,8 @@ const CircularFoodSystems = () => {
 						className='lux-link lux-link--internal'
 						sx={{
 							fontSize: '12px',
-							color: GREEN_PRIMARY,
-							'&:hover': { color: GREEN_BORDER, textDecoration: 'underline' },
+							'&, &::after': { color: GREEN_PRIMARY },
+							'&:hover, &:hover::after': { color: GREEN_BORDER, textDecoration: 'underline' },
 						}}>
 						Methodology
 					</Box>
@@ -1163,7 +1162,7 @@ const CircularFoodSystems = () => {
 							<Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 1.25 }}>
 								<Typography
 									className='micro-label'
-									sx={{ mb: 0 }}>
+									sx={{ color: GREEN_PRIMARY, mb: 0 }}>
 									{tile.title}
 								</Typography>
 								{tile.title === 'All-Time Climate Impact (CO₂e)' && (
@@ -1187,7 +1186,7 @@ const CircularFoodSystems = () => {
 										fontWeight: 500,
 										letterSpacing: '-0.015em',
 										lineHeight: 1.25,
-										color: GREEN_PRIMARY,
+										color: TEXT_DARK,
 										mb: 0,
 									}}>
 									{tile.value}
@@ -1212,7 +1211,7 @@ const CircularFoodSystems = () => {
 									textAlign: 'center',
 									boxShadow: '0 8px 22px rgba(26,26,24,0.05)',
 								}}>
-								<Typography className='micro-label' sx={{ mb: 1.25 }}>
+								<Typography className='micro-label' sx={{ color: GREEN_PRIMARY, mb: 1.25 }}>
 									{card.label}
 								</Typography>
 								<Typography sx={{ fontSize: '11px', letterSpacing: '0.09em', textTransform: 'uppercase', color: MUTED_GRAY, mb: 0.85 }}>
@@ -1227,7 +1226,7 @@ const CircularFoodSystems = () => {
 										fontWeight: 500,
 										letterSpacing: '-0.015em',
 										lineHeight: 1.25,
-										color: GREEN_PRIMARY,
+										color: TEXT_DARK,
 										mb: 1.5,
 									}}>
 									{card.value}
