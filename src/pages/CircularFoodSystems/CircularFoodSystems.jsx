@@ -1435,7 +1435,7 @@ const CircularFoodSystems = () => {
 
 			{/* Community Impact */}
 			<Box
-				id='community-impact'
+				id='community'
 				className='section section--base'
 				sx={{
 					...sectionContainerSx,
