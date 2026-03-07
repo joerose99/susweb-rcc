@@ -376,8 +376,8 @@ const CircularFoodSystems = () => {
 					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
 				/>
 			),
-			title: 'On-Site Processing & Tracking',
-			description: processingCopy.eventProcessingDescription,
+			title: 'Tracking & Reporting',
+			description: 'Food scraps are tracked through BioGreen360’s reporting system during service.',
 		},
 		{
 			icon: (
@@ -389,14 +389,16 @@ const CircularFoodSystems = () => {
 				/>
 			),
 			title: 'Post-Event Impact Reporting',
-			description: eventTrackingCopy.plannerSummary,
+			description:
+				'Clients may receive an event-specific recap outlining measured diversion totals and optional equivalencies for context.',
 		},
 	];
 
 	const eventPlannerDeliverables = [
-		'Event specific food-waste diversion summary',
-		'Estimated CO₂e impact metrics for stakeholder reporting',
-		'Post-event sustainability documentation suitable for internal reporting and stakeholder communications',
+		'Event-specific diversion summary (when tracking is enabled)',
+		'Clear scope notes and definitions for reporting',
+		'Optional equivalencies for context (illustrative)',
+		'Post-event documentation suitable for internal reporting',
 	];
 
 	const eventsPrimaryCtaLabel = eventsEnabled
@@ -1270,11 +1272,16 @@ const CircularFoodSystems = () => {
 							}}>
 							Zero Food Waste Events
 						</Typography>
-						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8, mb: 1.25 }}>
+						<Box sx={{ width: 84, height: '2px', backgroundColor: GREEN_PRIMARY, mb: 1.5 }} />
+						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8, mb: 1 }}>
 							Qualifying meetings and group events may request food-waste tracking and a post-event
 							recap. Availability depends on scheduling and operational capacity.
 						</Typography>
-						<Box sx={{ width: 84, height: '2px', backgroundColor: GREEN_PRIMARY, mb: 1.5 }} />
+						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8 }}>
+							Food scraps from participating events are captured on-site and managed through local
+							processing pathways where possible. After the event, your team may receive a concise recap
+							with diversion totals and clear scope notes.
+						</Typography>
 					</Box>
 
 					<Box
