@@ -1097,11 +1097,13 @@ const CircularFoodSystems = () => {
 			{/* Live Sustainability Impact Reporting */}
 			<Box
 				id='live-reporting'
-				className='section section--base live-reporting-section'
+				className='section section--base live-reporting-section lsir-section'
 				sx={{
 					...sectionContainerSx,
 					...sectionBandBaseSx,
 					scrollMarginTop: { xs: '80px', md: '96px' },
+					'& .lsir-card-title': { color: GREEN_PRIMARY },
+					'& .lsir-card-value': { color: TEXT_DARK },
 				}}>
 				<Typography
 					component='h2'
@@ -1128,7 +1130,7 @@ const CircularFoodSystems = () => {
 					<Box
 						component='a'
 						href='#methodology'
-						className='lux-link lux-link--internal'
+						className='lux-link lux-link--internal lsir-methodology-link'
 						sx={{
 							fontSize: '12px',
 							'&, &::after': { color: GREEN_PRIMARY },
@@ -1161,8 +1163,8 @@ const CircularFoodSystems = () => {
 							}}>
 							<Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 1.25 }}>
 								<Typography
-									className='micro-label'
-									sx={{ color: GREEN_PRIMARY, mb: 0 }}>
+									className='micro-label lsir-card-title'
+									sx={{ mb: 0 }}>
 									{tile.title}
 								</Typography>
 								{tile.title === 'All-Time Climate Impact (CO₂e)' && (
@@ -1179,14 +1181,13 @@ const CircularFoodSystems = () => {
 								)}
 								<Typography
 									component='h3'
-									className='live-reporting-value'
+									className='lsir-card-value'
 									sx={{
 										fontFamily: '"Inter", sans-serif',
 										fontSize: { xs: '28px', md: '32px' },
 										fontWeight: 500,
 										letterSpacing: '-0.015em',
 										lineHeight: 1.25,
-										color: TEXT_DARK,
 										mb: 0,
 									}}>
 									{tile.value}
@@ -1211,7 +1212,7 @@ const CircularFoodSystems = () => {
 									textAlign: 'center',
 									boxShadow: '0 8px 22px rgba(26,26,24,0.05)',
 								}}>
-								<Typography className='micro-label' sx={{ color: GREEN_PRIMARY, mb: 1.25 }}>
+								<Typography className='micro-label lsir-card-title' sx={{ mb: 1.25 }}>
 									{card.label}
 								</Typography>
 								<Typography sx={{ fontSize: '11px', letterSpacing: '0.09em', textTransform: 'uppercase', color: MUTED_GRAY, mb: 0.85 }}>
@@ -1219,14 +1220,13 @@ const CircularFoodSystems = () => {
 								</Typography>
 								<Typography
 									component='h3'
-									className='live-reporting-value'
+									className='lsir-card-value'
 									sx={{
 										fontFamily: '"Inter", sans-serif',
 										fontSize: { xs: '28px', md: '32px' },
 										fontWeight: 500,
 										letterSpacing: '-0.015em',
 										lineHeight: 1.25,
-										color: TEXT_DARK,
 										mb: 1.5,
 									}}>
 									{card.value}
