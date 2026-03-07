@@ -1271,16 +1271,10 @@ const CircularFoodSystems = () => {
 							Zero Food Waste Events
 						</Typography>
 						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8, mb: 1.25 }}>
-							Measurable sustainability for meetings, conferences, and group events.
+							Qualifying meetings and group events may request food-waste tracking and a post-event
+							recap. Availability depends on scheduling and operational capacity.
 						</Typography>
 						<Box sx={{ width: 84, height: '2px', backgroundColor: GREEN_PRIMARY, mb: 1.5 }} />
-						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8, mb: 1 }}>
-							Limelight Boulder offers Zero Food Waste Events for meetings and conferences in one of
-							Boulder&apos;s largest event venues-right in the heart of downtown.
-						</Typography>
-						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8 }}>
-							{processingCopy.eventOverview} {eventTrackingCopy.eventRecap}
-						</Typography>
 					</Box>
 
 					<Box
