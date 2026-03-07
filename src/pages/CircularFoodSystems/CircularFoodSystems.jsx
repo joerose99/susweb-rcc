@@ -1103,6 +1103,16 @@ const CircularFoodSystems = () => {
 					...sectionBandBaseSx,
 					scrollMarginTop: { xs: '80px', md: '96px' },
 					'& .lsir-card-value': { color: TEXT_DARK },
+					'& .lsir-methodology-link': {
+						color: GREEN_PRIMARY,
+						fontWeight: 500,
+						transition: 'color 200ms ease, font-weight 200ms ease',
+					},
+					'& .lsir-methodology-link::after': { color: 'currentColor' },
+					'& .lsir-methodology-link:hover, & .lsir-methodology-link:focus-visible': {
+						color: '#000',
+						fontWeight: 700,
+					},
 				}}>
 				<Typography
 					component='h2'
@@ -1132,8 +1142,6 @@ const CircularFoodSystems = () => {
 						className='lux-link lux-link--internal lsir-methodology-link'
 						sx={{
 							fontSize: '12px',
-							'&, &::after': { color: GREEN_PRIMARY },
-							'&:hover, &:hover::after': { color: GREEN_BORDER, textDecoration: 'underline' },
 						}}>
 						Methodology
 					</Box>
