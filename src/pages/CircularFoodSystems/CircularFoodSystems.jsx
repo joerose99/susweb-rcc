@@ -38,6 +38,8 @@ const CONTENT_MAX = 1320;
 const siteConfig = {
 	eventsEnabled: true,
 	restaurantEnabled: true,
+	bookingUrl: '#',
+	reservationUrl: '#',
 	processingPathwayMode: 'mixed',
 	eventTrackingMode: 'by_request',
 	showEquivalencies: true,
@@ -374,9 +376,6 @@ const CircularFoodSystems = () => {
 		'Post-event documentation suitable for internal reporting',
 	];
 
-	const methodologyTeamCtaLabel = restaurantEnabled
-		? 'Inquire with Our Sustainability Team'
-		: 'Inquire with Our Team';
 	const equivalencyCardsToRender = showEquivalencies ? equivalencyCards : [];
 	const equivalencyDisclaimer = 'Equivalencies are provided for context and are not audited carbon claims.';
 	const formattedLastSync = formatLastSync(siteConfig.lastSync);
@@ -1670,6 +1669,8 @@ const CircularFoodSystems = () => {
 
 					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
 						<Button
+							component='a'
+							href={siteConfig.bookingUrl}
 							variant='contained'
 							sx={{
 								px: 3,
@@ -1683,22 +1684,26 @@ const CircularFoodSystems = () => {
 								borderRadius: '9999px',
 								'&:hover': { backgroundColor: TEXT_DARK, boxShadow: 'none' },
 							}}>
-							View our full impact report
+							Book a Room
 						</Button>
-						<Button
-							variant='text'
-							sx={{
-								px: 2,
-								fontSize: '0.84rem',
-								fontWeight: 400,
-								letterSpacing: '0.03em',
-								color: TEXT_DARK,
-								textTransform: 'uppercase',
-								textDecoration: 'underline',
-								textUnderlineOffset: '3px',
-							}}>
-							{methodologyTeamCtaLabel}
-						</Button>
+						{restaurantEnabled && (
+							<Button
+								component='a'
+								href={siteConfig.reservationUrl}
+								variant='text'
+								sx={{
+									px: 2,
+									fontSize: '0.84rem',
+									fontWeight: 400,
+									letterSpacing: '0.03em',
+									color: TEXT_DARK,
+									textTransform: 'uppercase',
+									textDecoration: 'underline',
+									textUnderlineOffset: '3px',
+								}}>
+								Reserve a table
+							</Button>
+						)}
 					</Box>
 				</Box>
 			</Box>
