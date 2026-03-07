@@ -1097,8 +1097,13 @@ const CircularFoodSystems = () => {
 			{/* Live Sustainability Impact Reporting */}
 			<Box
 				id='live-reporting'
-				className='section section--base'
-				sx={{ ...sectionContainerSx, ...sectionBandBaseSx, scrollMarginTop: { xs: '80px', md: '96px' } }}>
+				className='section section--base live-reporting-section'
+				sx={{
+					...sectionContainerSx,
+					...sectionBandBaseSx,
+					scrollMarginTop: { xs: '80px', md: '96px' },
+					'& .live-reporting-value': { color: GREEN_PRIMARY },
+				}}>
 				<Typography
 					component='h2'
 					sx={{
@@ -1175,6 +1180,7 @@ const CircularFoodSystems = () => {
 								)}
 								<Typography
 									component='h3'
+									className='live-reporting-value'
 									sx={{
 										fontFamily: '"Inter", sans-serif',
 										fontSize: { xs: '28px', md: '32px' },
@@ -1214,6 +1220,7 @@ const CircularFoodSystems = () => {
 								</Typography>
 								<Typography
 									component='h3'
+									className='live-reporting-value'
 									sx={{
 										fontFamily: '"Inter", sans-serif',
 										fontSize: { xs: '28px', md: '32px' },
