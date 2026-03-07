@@ -112,7 +112,7 @@ const reportingTiles = [
 	},
 	{
 		title: 'All-Time Climate Impact (CO₂e)',
-		value: '89,000 miles driven avoided',
+		value: '89,000 miles of driving (illustrative)',
 		equivalency: 'Comparable to Boston ↔ LA ~10x (estimate)',
 	},
 ];
