@@ -1441,8 +1441,11 @@ const CircularFoodSystems = () => {
 							boxShadow: 'none',
 							'&:hover': { backgroundColor: TEXT_DARK, boxShadow: 'none' },
 						}}>
-						{eventsPrimaryCtaLabel}
+						Inquire About Event Tracking
 					</Button>
+					<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 0.75 }}>
+						Tracking is available for qualifying events, subject to operational capacity.
+					</Typography>
 					<Box sx={{ mt: 1.25 }}>
 						<Box
 							component='a'
@@ -1453,6 +1456,9 @@ const CircularFoodSystems = () => {
 							sx={{ fontSize: '14px' }}>
 							Download a Sample Event Impact Summary
 						</Box>
+						<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 0.45 }}>
+							Sample shown for illustration. Deliverables may vary by event type and availability.
+						</Typography>
 					</Box>
 				</Box>
 			</Box>
