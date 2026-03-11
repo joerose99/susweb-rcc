@@ -1,13 +1,11 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import limelightBoulderLogoTransparent from '../assets/limelight-boulder-logo-transparent.png';
 
 const ACCENT_GREEN = '#8D9A73';
 
 const StickyHeader = ({ logoAlt = 'HotelName logo' }) => {
-	// TODO: replace with transparent logo asset (SVG preferred)
-	const transparentLogoSrc = '/assets/hotel-logo-transparent.svg';
-
 	const handleAnchorClick = (event, href) => {
 		if (!href || !href.startsWith('#')) {
 			return;
@@ -48,7 +46,7 @@ const StickyHeader = ({ logoAlt = 'HotelName logo' }) => {
 				}}>
 				<Box
 					component='img'
-					src={transparentLogoSrc}
+					src={limelightBoulderLogoTransparent}
 					alt={logoAlt}
 					width={180}
 					height={40}
