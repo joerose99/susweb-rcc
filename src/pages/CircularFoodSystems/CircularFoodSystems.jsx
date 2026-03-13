@@ -1063,6 +1063,90 @@ const CircularFoodSystems = () => {
 					</Box>
 					.
 				</Typography>
+				<Box
+					sx={{
+						mt: { xs: 5, md: 7 },
+						display: 'grid',
+						gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 1fr) minmax(0, 1fr)' },
+						gap: { xs: 3, md: 4.5 },
+						alignItems: 'stretch',
+					}}>
+					<Box>
+						{/* Placeholder image source; replace with approved local partner photo. */}
+						<Box
+							component='img'
+							src='https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=1400&q=80'
+							alt='Local composting partner site with soil amendment piles'
+							sx={{
+								width: '100%',
+								aspectRatio: { xs: '16 / 10', md: '4 / 3' },
+								objectFit: 'cover',
+								borderRadius: '14px',
+								border: '1px solid rgba(26,26,24,0.1)',
+								boxShadow: '0 10px 22px rgba(26,26,24,0.07)',
+								display: 'block',
+							}}
+						/>
+					</Box>
+					<Box>
+						<Typography className='micro-label' sx={{ mb: 1 }}>
+							LOCAL PROCESSING PARTNER
+						</Typography>
+						<Typography
+							component='h3'
+							sx={{
+								fontFamily: '"Inter", sans-serif',
+								fontSize: { xs: '26px', md: '30px' },
+								fontWeight: 500,
+								letterSpacing: '-0.015em',
+								lineHeight: 1.3,
+								mb: 1.5,
+								color: TEXT_DARK,
+							}}>
+							From Food Scraps to Soil Amendments
+						</Typography>
+						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
+							Food scraps captured at the property are brought to a local composting partner that
+							processes organic material into soil amendments for beneficial local use.
+						</Typography>
+						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
+							BioGreen360 helps track materials through the process and can work with the property to
+							help identify where those soil outputs are used, depending on partner reporting and local
+							program availability.
+						</Typography>
+						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 2 }}>
+							Local processing partners and end uses vary by property. Add the partner name, site
+							details, and approved website link below when available.
+						</Typography>
+						<Box
+							sx={{
+								backgroundColor: '#FFFFFF',
+								border: '1px solid rgba(26,26,24,0.1)',
+								borderRadius: '10px',
+								px: { xs: 1.5, md: 2 },
+								py: { xs: 1.25, md: 1.5 },
+								mb: 1.4,
+							}}>
+							<Typography sx={{ fontSize: '13px', color: BODY_GRAY, lineHeight: 1.65 }}>
+								Partner: [insert local composting partner]
+							</Typography>
+							<Typography sx={{ fontSize: '13px', color: BODY_GRAY, lineHeight: 1.65 }}>
+								Location: [insert city, state]
+							</Typography>
+							<Typography sx={{ fontSize: '13px', color: BODY_GRAY, lineHeight: 1.65 }}>
+								End-use examples: [insert farms, landscaping, restoration, gardens, etc.]
+							</Typography>
+						</Box>
+						<Box
+							component='a'
+							href='[insert partner website]'
+							target='_blank'
+							rel='noopener noreferrer'
+							className='lux-link lux-link--external'>
+							Visit partner website
+						</Box>
+					</Box>
+				</Box>
 			</Box>
 
 			{/* Live Sustainability Impact Reporting */}
