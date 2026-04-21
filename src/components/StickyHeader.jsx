@@ -2,6 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import theMavenWordmarkHeader from '../assets/the-maven-wordmark-header.png';
+import { MAVEN_EVENTS_INQUIRY_URL, MAVEN_RESERVATIONS_URL } from '../constants/mavenExternalLinks';
 
 const MAVEN_BLUE = '#394F71';
 const MAVEN_TAN = '#AF986E';
@@ -135,8 +136,9 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 					}}>
 					<Button
 						component='a'
-						href='#'
-						onClick={(event) => handleAnchorClick(event, '#')}
+						href={MAVEN_RESERVATIONS_URL}
+						target='_blank'
+						rel='noopener noreferrer'
 						variant='contained'
 						disableElevation
 						sx={{
@@ -165,8 +167,9 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 					</Button>
 					<Button
 						component='a'
-						href='#events'
-						onClick={(event) => handleAnchorClick(event, '#events')}
+						href={MAVEN_EVENTS_INQUIRY_URL}
+						target='_blank'
+						rel='noopener noreferrer'
 						variant='outlined'
 						disableElevation
 						sx={{

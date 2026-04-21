@@ -21,6 +21,11 @@ import zeroFoodWasteEventsImage from '../../assets/zero-food-waste-events.png';
 import cornerstonePartnershipImage from '../../assets/cornerstone-partnership.png';
 import heroMavenLobbyImage from '../../assets/hero-maven-lobby.png';
 import StickyHeader from '../../components/StickyHeader';
+import {
+	MAVEN_EVENTS_INQUIRY_URL,
+	MAVEN_RESERVATIONS_URL,
+	MAVEN_SALES_MAILTO,
+} from '../../constants/mavenExternalLinks';
 
 const MAVEN_BLUE = '#394F71';
 const MAVEN_TAN = '#AF986E';
@@ -48,8 +53,7 @@ const CONTENT_MAX = 1320;
 const siteConfig = {
 	eventsEnabled: true,
 	restaurantEnabled: true,
-	bookingUrl: '#',
-	reservationUrl: '#',
+	bookingUrl: MAVEN_RESERVATIONS_URL,
 	processingPathwayMode: 'mixed',
 	eventTrackingMode: 'by_request',
 	showEquivalencies: true,
@@ -629,12 +633,10 @@ const CircularFoodSystems = () => {
 							capacity.{' '}
 							<Box
 								component='a'
-								href='#events'
-								onClick={(event) => {
-									event.preventDefault();
-									scrollToSection('events');
-								}}
-								className='lux-link lux-link--internal'>
+								href={MAVEN_EVENTS_INQUIRY_URL}
+								target='_blank'
+								rel='noopener noreferrer'
+								className='lux-link lux-link--external'>
 								Learn more
 							</Box>
 						</Box>
@@ -1490,6 +1492,10 @@ const CircularFoodSystems = () => {
 
 				<Box sx={{ textAlign: 'center' }}>
 					<Button
+						component='a'
+						href={MAVEN_EVENTS_INQUIRY_URL}
+						target='_blank'
+						rel='noopener noreferrer'
 						variant='contained'
 						sx={{
 							px: 3,
@@ -1509,13 +1515,12 @@ const CircularFoodSystems = () => {
 						Tracking is available for qualifying events, subject to scheduling and operational capacity.
 					</Typography>
 					<Box sx={{ mt: 1.25 }}>
+						{/* TODO: wire href when sample Event Impact Summary PDF URL is approved */}
 						<Box
-							component='a'
-							href='https://example.com/sample-event-impact-summary.pdf'
-							target='_blank'
-							rel='noopener noreferrer'
+							component='span'
 							className='lux-link'
-							sx={{ fontSize: '14px' }}>
+							aria-disabled='true'
+							sx={{ fontSize: '14px', pointerEvents: 'none', cursor: 'default' }}>
 							Download a Sample Event Impact Summary ↗
 						</Box>
 						<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 0.45 }}>
@@ -1680,13 +1685,9 @@ const CircularFoodSystems = () => {
 				<Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
 					<Button
 						component='a'
-						href='#events'
+						href={MAVEN_SALES_MAILTO}
 						variant='outlined'
 						disableElevation
-						onClick={(event) => {
-							event.preventDefault();
-							scrollToSection('events');
-						}}
 						sx={{
 							px: { xs: 1.75, sm: 2.2 },
 							py: 0.7,
@@ -1777,6 +1778,8 @@ const CircularFoodSystems = () => {
 						<Button
 							component='a'
 							href={siteConfig.bookingUrl}
+							target='_blank'
+							rel='noopener noreferrer'
 							variant='contained'
 							disableElevation
 							sx={{
@@ -1804,10 +1807,11 @@ const CircularFoodSystems = () => {
 							Book a Room
 						</Button>
 						{restaurantEnabled && (
+							/* TODO: wire real restaurant reservation URL when available (no placeholder) */
 							<Button
-								component='a'
-								href={siteConfig.reservationUrl}
 								variant='outlined'
+								component='button'
+								type='button'
 								disableElevation
 								sx={{
 									px: { xs: 1.75, sm: 2.2 },
