@@ -99,17 +99,17 @@ const impactMetrics = [
 	{
 		eyebrow: 'Food scraps diverted',
 		value: '500 tons',
-		note: 'estimated from measured on-site inputs',
+		note: 'measured from captured on-site inputs',
 	},
 	{
 		eyebrow: 'Soil amendment generated (estimate)',
 		value: '3200+',
-		note: 'acres of farmland equivalent',
+		note: 'estimated using standard conversion factors',
 	},
 	{
-		eyebrow: 'Estimated CO₂e avoided (equivalency)',
+		eyebrow: 'Climate equivalency',
 		value: '250 trees',
-		note: 'illustrative environmental equivalency',
+		note: 'illustrative context only',
 	},
 ];
 
@@ -780,8 +780,8 @@ const CircularFoodSystems = () => {
 					<Typography className='micro-label'>{`Last Updated: ${lastUpdatedLabel}`}</Typography>
 				</Box>
 				<Typography sx={{ fontSize: '15px', lineHeight: 1.7, color: MUTED_GRAY, mb: 2 }}>
-					Live, property-specific impact estimates based on data captured through BioGreen360&apos;s on-site
-					systems.
+					Property-level sustainability reporting based on data captured through BioGreen360&apos;s reporting
+					system.
 				</Typography>
 				<Box
 					sx={{
