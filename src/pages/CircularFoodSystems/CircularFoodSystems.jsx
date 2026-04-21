@@ -892,7 +892,8 @@ const CircularFoodSystems = () => {
 							A Cornerstone Partnership with BioGreen360
 						</Typography>
 						<Typography sx={{ fontSize: '16px', color: MUTED_GRAY, maxWidth: 740, mb: 1.5 }}>
-							A long-term collaboration uniting refined hospitality with measurable sustainability outcomes.
+							A practical collaboration that helps The Maven capture food scraps on-site, track property-level
+							reporting, and share clear sustainability information with guests and planners.
 						</Typography>
 						<Typography className='micro-label' sx={{ mb: 1.25 }}>
 							At a Glance
@@ -972,13 +973,13 @@ const CircularFoodSystems = () => {
 								</Typography>
 								<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_GRAY }}>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
-										Collects food scraps on-site as part of daily operations.
+										Captures food scraps on-site as part of daily operations.
 									</Box>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
-										Maintains collection practices that fit guest and staff workflows.
+										Supports collection practices that fit guest, kitchen, and staff workflows.
 									</Box>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7 }}>
-										Coordinates with partners based on on-property logistics.
+										Coordinates program participation based on property logistics and event activity.
 									</Box>
 								</Box>
 							</Box>
@@ -1001,7 +1002,7 @@ const CircularFoodSystems = () => {
 										Supports program setup, tracking, and reporting consistency.
 									</Box>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7 }}>
-										Helps standardize definitions and scope notes across properties.
+										Helps organize definitions and scope notes so reporting is easier to understand.
 									</Box>
 								</Box>
 							</Box>
@@ -1018,13 +1019,13 @@ const CircularFoodSystems = () => {
 								</Typography>
 								<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_GRAY }}>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
-										Convert collected scraps into local composting / soil pathways where possible.
+										Manage collected material through local processing pathways based on partner availability.
 									</Box>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
-										Processing pathways vary by property equipment and local logistics.
+										Processing pathways vary by property equipment, logistics, and approved local options.
 									</Box>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7 }}>
-										End uses and availability may vary by season and partner capacity.
+										End uses may vary by season, partner capacity, and program availability.
 									</Box>
 								</Box>
 							</Box>
