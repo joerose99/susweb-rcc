@@ -380,6 +380,7 @@ const CircularFoodSystems = () => {
 	const equivalencyDisclaimer = 'Equivalencies are provided for context and are not audited carbon claims.';
 	const formattedLastSync = formatLastSync(siteConfig.lastSync);
 	const lastUpdatedLabel = formattedLastSync ?? 'Last sync: unavailable';
+	const trustLineLastSync = formattedLastSync ?? 'unavailable';
 	const quickAnswersCards = [
 		{
 			title: 'What happens to food scraps?',
@@ -537,13 +538,39 @@ const CircularFoodSystems = () => {
 							fontSize: '20px',
 							fontWeight: 400,
 							color: BODY_GRAY,
-							mb: 1.5,
+							mb: 0,
 						}}>
 						At The Maven, we believe great stays should leave a lasting impression—on you, not the
 						planet—through thoughtful, local choices rooted in community and character. From partnering
 						with neighborhood makers to reducing waste behind the scenes, we&apos;re committed to doing
 						better together. Stay Bold. Stay Curious. Stay Thoughtful.
 					</Typography>
+				</Box>
+
+				<Box sx={{ width: '100%', mt: { xs: 5, md: 7 }, mb: 0 }}>
+					<Box
+						component='img'
+						alt='Farm with fresh produce'
+						src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80'
+						sx={{
+							width: '100%',
+							height: 'auto',
+							borderRadius: '14px',
+							objectFit: 'cover',
+							maxHeight: 520,
+							display: 'block',
+							boxShadow: '0 14px 28px rgba(0,0,0,0.09)',
+						}}
+					/>
+				</Box>
+
+				<Box
+					sx={{
+						maxWidth: 900,
+						mx: 'auto',
+						mt: { xs: 3, md: 3.5 },
+						mb: { xs: 5, md: 6 },
+					}}>
 					<Box
 						component='ul'
 						sx={{
@@ -586,31 +613,15 @@ const CircularFoodSystems = () => {
 									scrollToSection('events');
 								}}
 								className='lux-link lux-link--internal'>
-								Learn more →
+								Learn more
 							</Box>
 						</Box>
 					</Box>
-				</Box>
-
-				<Box sx={{ textAlign: 'center', maxWidth: 860, mx: 'auto', mt: 1.5 }}>
-					<Typography className='micro-label' sx={{ mb: 0 }} />
-				</Box>
-
-				<Box sx={{ width: '100%', mt: { xs: 5, md: 7 }, mb: { xs: 5, md: 6 } }}>
-					<Box
-						component='img'
-						alt='Farm with fresh produce'
-						src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80'
-						sx={{
-							width: '100%',
-							height: 'auto',
-							borderRadius: '14px',
-							objectFit: 'cover',
-							maxHeight: 520,
-							display: 'block',
-							boxShadow: '0 14px 28px rgba(0,0,0,0.09)',
-						}}
-					/>
+					<Box sx={{ textAlign: 'center', maxWidth: 860, mx: 'auto', mt: { xs: 2.25, md: 2.5 } }}>
+						<Typography className='micro-label' sx={{ mb: 0, lineHeight: 1.65 }}>
+							{`LIVE DATA FEED • LAST SYNC: ${trustLineLastSync} • METHODOLOGY AVAILABLE • DOWNLOADABLE SAMPLE EVENT REPORT`}
+						</Typography>
+					</Box>
 				</Box>
 
 				<Box sx={{ mt: { xs: 1, md: 2 } }}>
