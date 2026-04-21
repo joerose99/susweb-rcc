@@ -19,6 +19,7 @@ import howItWorksSproutIcon from '../../assets/how-it-works-sprout.png';
 import howItWorksReportIcon from '../../assets/how-it-works-report.png';
 import zeroFoodWasteEventsImage from '../../assets/zero-food-waste-events.png';
 import cornerstonePartnershipImage from '../../assets/cornerstone-partnership.png';
+import heroMavenLobbyImage from '../../assets/hero-maven-lobby.png';
 import StickyHeader from '../../components/StickyHeader';
 
 const MAVEN_BLUE = '#394F71';
@@ -571,8 +572,8 @@ const CircularFoodSystems = () => {
 				<Box sx={{ width: '100%', mt: { xs: 4, md: 5.5 }, mb: 0 }}>
 					<Box
 						component='img'
-						alt='Farm with fresh produce'
-						src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80'
+						alt='Bright hotel lobby lounge with skylight, wood and stone finishes, and seating areas.'
+						src={heroMavenLobbyImage}
 						sx={{
 							width: '100%',
 							height: 'auto',
@@ -840,7 +841,7 @@ const CircularFoodSystems = () => {
 						<Box
 							component='img'
 							src={cornerstonePartnershipImage}
-							alt='On-site food cycling partnership supporting circular food systems.'
+							alt='Modern hotel suite interior with dining table, wet bar, and natural light.'
 							sx={{
 								width: '100%',
 								aspectRatio: '4 / 5',
