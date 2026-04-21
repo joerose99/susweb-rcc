@@ -150,7 +150,7 @@ const initiatives = [
 	{
 		title: 'Hotel for Trees',
 		description:
-			'Plant a tree while you stay. One tree is planted for each member room night booked at The Maven, and for each in-room bottled water purchased.',
+			'Plant a tree while you stay. One tree is planted for each member room night booked at The Maven, and for each in-room bottled water purchase.',
 		icon: ForestIcon,
 	},
 	{
@@ -167,7 +167,7 @@ const initiatives = [
 	{
 		title: 'Clean the World',
 		description:
-			'Our partnership with Clean the World helps ensure the plastic from soaps, conditioners, and body washes is kept out of the waste stream.',
+			'Our partnership with Clean the World helps keep plastic from soaps, conditioners, and body washes out of the waste stream.',
 		icon: RecyclingIcon,
 	},
 	{
@@ -177,8 +177,7 @@ const initiatives = [
 	},
 	{
 		title: 'More Initiatives Coming Soon',
-		description:
-			'Additional property initiatives may be added here as details are approved.',
+		description: 'Additional property initiatives may be added here as details are approved.',
 		icon: HourglassEmptyIcon,
 	},
 ];
@@ -1675,29 +1674,6 @@ const CircularFoodSystems = () => {
 							</Box>
 						);
 					})}
-				</Box>
-
-				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5, mt: 3 }}>
-					<Button
-						variant='outlined'
-						sx={{
-							px: 3,
-							py: 1.15,
-							fontSize: '0.84rem',
-							fontWeight: 500,
-							letterSpacing: '0.05em',
-							color: TEXT_DARK,
-							borderWidth: '1px',
-							borderColor: MAVEN_TAN,
-							borderRadius: '9999px',
-							'&:hover': {
-								borderColor: '#9c865c',
-								backgroundColor: GREEN_SOFT,
-								color: MAVEN_BLUE,
-							},
-						}}>
-						Contact our Sales team to Learn More
-					</Button>
 				</Box>
 			</Box>
 
