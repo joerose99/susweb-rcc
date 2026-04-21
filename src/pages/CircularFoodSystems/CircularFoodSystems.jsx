@@ -299,18 +299,18 @@ const CircularFoodSystems = () => {
 				<Box
 					component='img'
 					src={howItWorksFoodIcon}
-					alt='Food scraps are collected'
+					alt='Food scraps are captured on-site'
 					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
 				/>
 			),
-			label: 'Food scraps are collected on-site',
+			label: 'Food scraps are captured on-site',
 		},
 		{
 			icon: (
 				<Box
 					component='img'
 					src={biogreenHowItWorksLogo}
-					alt={processingCopy.howItWorksProcessingLabel}
+					alt='Measured and tracked in the BioGreen360 system'
 					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
 				/>
 			),
@@ -321,11 +321,11 @@ const CircularFoodSystems = () => {
 				<Box
 					component='img'
 					src={howItWorksSproutIcon}
-					alt='Returned to soil locally to support growth'
+					alt='Managed through local processing pathways'
 					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
 				/>
 			),
-			label: 'Managed through local composting / soil pathways',
+			label: 'Managed through local processing pathways',
 		},
 		{
 			icon: (
@@ -1152,20 +1152,18 @@ const CircularFoodSystems = () => {
 								mb: 1.5,
 								color: TEXT_DARK,
 							}}>
-							From Food Scraps to Soil Amendments
+							From Food Scraps to Local Processing Pathways
 						</Typography>
 						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
-							Food scraps captured at the property are brought to a local composting partner that
-							processes organic material into soil amendments for beneficial local use.
+							Food scraps captured at the property are managed through local processing pathways based on
+							partner availability, site logistics, and approved program operations.
 						</Typography>
 						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
-							BioGreen360 helps track materials through the process and can work with the property to
-							help identify where those soil outputs are used, depending on partner reporting and local
-							program availability.
+							BioGreen360 helps track materials through the process and supports reporting consistency,
+							while downstream handling and end uses may vary by property and partner.
 						</Typography>
 						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 2 }}>
-							Local processing partners and end uses vary by property. Add the partner name, site
-							details, and approved website link below when available.
+							Partner details and end-use examples can be added here once approved for publication.
 						</Typography>
 						<Box
 							sx={{
@@ -1177,23 +1175,18 @@ const CircularFoodSystems = () => {
 								mb: 1.4,
 							}}>
 							<Typography sx={{ fontSize: '13px', color: BODY_GRAY, lineHeight: 1.65 }}>
-								Partner: [insert local composting partner]
+								Partner details: available upon approval
 							</Typography>
 							<Typography sx={{ fontSize: '13px', color: BODY_GRAY, lineHeight: 1.65 }}>
-								Location: [insert city, state]
+								Location: varies by local program setup
 							</Typography>
 							<Typography sx={{ fontSize: '13px', color: BODY_GRAY, lineHeight: 1.65 }}>
-								End-use examples: [insert farms, landscaping, restoration, gardens, etc.]
+								End-use examples: may vary by partner and approved pathway
 							</Typography>
 						</Box>
-						<Box
-							component='a'
-							href='[insert partner website]'
-							target='_blank'
-							rel='noopener noreferrer'
-							className='lux-link lux-link--external'>
-							Visit partner website
-						</Box>
+						<Typography sx={{ fontSize: '14px', color: MUTED_GRAY, fontFamily: FONT_UI, letterSpacing: '0.02em' }}>
+							Partner details coming soon
+						</Typography>
 					</Box>
 				</Box>
 			</Box>
