@@ -1675,6 +1675,44 @@ const CircularFoodSystems = () => {
 						);
 					})}
 				</Box>
+
+				<Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
+					<Button
+						component='a'
+						href='#events'
+						variant='outlined'
+						disableElevation
+						onClick={(event) => {
+							event.preventDefault();
+							scrollToSection('events');
+						}}
+						sx={{
+							px: { xs: 1.75, sm: 2.2 },
+							py: 0.7,
+							fontFamily: FONT_UI,
+							fontSize: '0.7rem',
+							fontWeight: 600,
+							letterSpacing: '0.1em',
+							textTransform: 'uppercase',
+							color: TEXT_DARK,
+							backgroundColor: 'rgba(255, 255, 255, 0.35)',
+							borderRadius: '999px',
+							borderColor: MAVEN_TAN,
+							borderWidth: '1px',
+							boxShadow: 'none',
+							'&:hover': {
+								backgroundColor: 'rgba(226, 205, 169, 0.22)',
+								borderColor: '#9c865c',
+								color: MAVEN_BLUE,
+								boxShadow: 'none',
+							},
+							'&:focus-visible': {
+								boxShadow: `0 0 0 2px ${BG_WARM}, 0 0 0 4px ${MAVEN_TAN}`,
+							},
+						}}>
+						Plan an Event
+					</Button>
+				</Box>
 			</Box>
 
 			{/* Methodology / Transparency */}
