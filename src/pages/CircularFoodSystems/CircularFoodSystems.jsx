@@ -352,19 +352,20 @@ const CircularFoodSystems = () => {
 			),
 			title: 'During Your Event',
 			description:
-				'Food scraps generated from kitchens and service areas are collected on-site.',
+				'Food scraps generated from kitchens and service areas may be collected during qualifying events.',
 		},
 		{
 			icon: (
 				<Box
 					component='img'
 					src={biogreenHowItWorksLogo}
-					alt='On-Site Processing & Tracking'
+					alt='Tracking & Reporting'
 					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
 				/>
 			),
 			title: 'Tracking & Reporting',
-			description: 'Food scraps are tracked through BioGreen360’s reporting system during service.',
+			description:
+				"Food scraps are tracked through BioGreen360's reporting system during service when event tracking is enabled.",
 		},
 		{
 			icon: (
@@ -377,15 +378,15 @@ const CircularFoodSystems = () => {
 			),
 			title: 'Post-Event Impact Reporting',
 			description:
-				'Clients may receive an event-specific recap outlining measured diversion totals and optional equivalencies for context.',
+				'Clients may receive an event-specific recap outlining measured diversion totals, scope notes, and illustrative equivalencies for context.',
 		},
 	];
 
 	const eventPlannerDeliverables = [
-		'Event-specific diversion summary (when tracking is enabled)',
+		'Event-specific diversion summary when tracking is enabled',
 		'Clear scope notes and definitions for reporting',
-		'Optional equivalencies for context (illustrative)',
-		'Post-event documentation suitable for internal reporting',
+		'Optional equivalencies for context',
+		'Post-event documentation suitable for internal sharing',
 	];
 
 	const equivalencyCardsToRender = showEquivalencies ? equivalencyCards : [];
@@ -1340,7 +1341,7 @@ const CircularFoodSystems = () => {
 				</Typography>
 			</Box>
 
-			{/* Zero Food Waste Events */}
+			{/* Events — impact reporting */}
 			<Box
 				id='events'
 				className='section section--alt'
@@ -1361,17 +1362,19 @@ const CircularFoodSystems = () => {
 								fontWeight: 500,
 								mb: 1,
 							}}>
-							Zero Food Waste Events
+							Event Impact Reporting
 						</Typography>
 						<Box sx={{ width: 84, height: '2px', backgroundColor: GREEN_PRIMARY, mb: 1.5 }} />
 						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8, mb: 1 }}>
-							Qualifying meetings and group events may request food-waste tracking and a post-event
-							recap. Availability depends on scheduling and operational capacity.
+							Qualifying meetings, weddings, and group events may request food-waste tracking and a
+							post-event impact recap. Availability depends on scheduling, event scope, and operational
+							capacity.
 						</Typography>
 						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8 }}>
-							Food scraps from participating events are captured on-site and managed through local
-							processing pathways where possible. After the event, your team may receive a concise recap
-							with diversion totals and clear scope notes.
+							Food scraps captured from participating events are tracked through BioGreen360&apos;s
+							reporting system and may be managed through local processing pathways based on property
+							operations and partner availability. After the event, your team may receive a concise summary
+							with diversion totals, scope notes, and illustrative equivalencies for context.
 						</Typography>
 					</Box>
 
@@ -1529,10 +1532,10 @@ const CircularFoodSystems = () => {
 							boxShadow: 'none',
 							'&:hover': { backgroundColor: '#2f425c', boxShadow: 'none' },
 						}}>
-						Inquire About Event Tracking
+						Plan an Event
 					</Button>
 					<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 0.75 }}>
-						Tracking is available for qualifying events, subject to operational capacity.
+						Tracking is available for qualifying events, subject to scheduling and operational capacity.
 					</Typography>
 					<Box sx={{ mt: 1.25 }}>
 						<Box
@@ -1540,12 +1543,12 @@ const CircularFoodSystems = () => {
 							href='https://example.com/sample-event-impact-summary.pdf'
 							target='_blank'
 							rel='noopener noreferrer'
-							className='lux-link lux-link--external'
+							className='lux-link'
 							sx={{ fontSize: '14px' }}>
-							Download a Sample Event Impact Summary
+							Download a Sample Event Impact Summary ↗
 						</Box>
 						<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 0.45 }}>
-							Sample shown for illustration. Deliverables may vary by event type and availability.
+							Sample shown for illustration. Deliverables may vary by event type, scope, and availability.
 						</Typography>
 					</Box>
 				</Box>
