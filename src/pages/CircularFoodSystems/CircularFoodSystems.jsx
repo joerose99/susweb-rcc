@@ -380,7 +380,6 @@ const CircularFoodSystems = () => {
 	const equivalencyDisclaimer = 'Equivalencies are provided for context and are not audited carbon claims.';
 	const formattedLastSync = formatLastSync(siteConfig.lastSync);
 	const lastUpdatedLabel = formattedLastSync ?? 'Last sync: unavailable';
-	const trustLineLastSync = formattedLastSync ?? 'unavailable';
 	const quickAnswersCards = [
 		{
 			title: 'What happens to food scraps?',
@@ -545,9 +544,14 @@ const CircularFoodSystems = () => {
 						with neighborhood makers to reducing waste behind the scenes, we&apos;re committed to doing
 						better together. Stay Bold. Stay Curious. Stay Thoughtful.
 					</Typography>
+					<Box sx={{ textAlign: 'center', maxWidth: 860, mx: 'auto', mt: { xs: 2.25, md: 2.5 } }}>
+						<Typography className='micro-label' sx={{ mb: 0, lineHeight: 1.65 }}>
+							PROPERTY-LEVEL DATA • METHODOLOGY AVAILABLE • EVENT REPORTING BY REQUEST
+						</Typography>
+					</Box>
 				</Box>
 
-				<Box sx={{ width: '100%', mt: { xs: 5, md: 7 }, mb: 0 }}>
+				<Box sx={{ width: '100%', mt: { xs: 4, md: 5.5 }, mb: 0 }}>
 					<Box
 						component='img'
 						alt='Farm with fresh produce'
@@ -616,11 +620,6 @@ const CircularFoodSystems = () => {
 								Learn more
 							</Box>
 						</Box>
-					</Box>
-					<Box sx={{ textAlign: 'center', maxWidth: 860, mx: 'auto', mt: { xs: 2.25, md: 2.5 } }}>
-						<Typography className='micro-label' sx={{ mb: 0, lineHeight: 1.65 }}>
-							{`LIVE DATA FEED • LAST SYNC: ${trustLineLastSync} • METHODOLOGY AVAILABLE • DOWNLOADABLE SAMPLE EVENT REPORT`}
-						</Typography>
 					</Box>
 				</Box>
 
