@@ -17,7 +17,7 @@ import biogreenHowItWorksLogo from '../../assets/biogreen-how-it-works.png';
 import howItWorksFoodIcon from '../../assets/how-it-works-food.png';
 import howItWorksSproutIcon from '../../assets/how-it-works-sprout.png';
 import howItWorksReportIcon from '../../assets/how-it-works-report.png';
-import zeroFoodWasteEventsImage from '../../assets/zero-food-waste-events.png';
+import eventsMavenMeetingSpaceImage from '../../assets/events-maven-meeting-space.png';
 import cornerstonePartnershipImage from '../../assets/cornerstone-partnership.png';
 import heroMavenLobbyImage from '../../assets/hero-maven-lobby.png';
 import StickyHeader from '../../components/StickyHeader';
@@ -1353,8 +1353,8 @@ const CircularFoodSystems = () => {
 
 					<Box
 						component='img'
-						src={zeroFoodWasteEventsImage}
-						alt='Hotel event space configured for a sustainable event.'
+						src={eventsMavenMeetingSpaceImage}
+						alt='The Maven meeting room with classroom seating, exposed brick, wood beams, and a projection screen showing The Maven wordmark.'
 						sx={{
 							width: '100%',
 							aspectRatio: '16 / 8',
