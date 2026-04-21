@@ -380,7 +380,6 @@ const CircularFoodSystems = () => {
 	const equivalencyDisclaimer = 'Equivalencies are provided for context and are not audited carbon claims.';
 	const formattedLastSync = formatLastSync(siteConfig.lastSync);
 	const lastUpdatedLabel = formattedLastSync ?? 'Last sync: unavailable';
-	const trustLineLastSync = formattedLastSync ?? 'unavailable';
 	const quickAnswersCards = [
 		{
 			title: 'What happens to food scraps?',
@@ -530,7 +529,7 @@ const CircularFoodSystems = () => {
 							lineHeight: 1.12,
 							mb: 2.5,
 						}}>
-						Our Environmental Commitment, Verified.
+						Sustainability, The Maven Way.
 					</Typography>
 					<Typography
 						sx={{
@@ -540,8 +539,10 @@ const CircularFoodSystems = () => {
 							color: BODY_GRAY,
 							mb: 1.5,
 						}}>
-						Food not eaten is captured on-site and tracked through verified local partners, with shareable
-						live reporting capabilities.
+						At The Maven, we believe great stays should leave a lasting impression—on you, not the
+						planet—through thoughtful, local choices rooted in community and character. From partnering
+						with neighborhood makers to reducing waste behind the scenes, we&apos;re committed to doing
+						better together. Stay Bold. Stay Curious. Stay Thoughtful.
 					</Typography>
 					<Box
 						component='ul'
@@ -568,14 +569,15 @@ const CircularFoodSystems = () => {
 								className='lux-link lux-link--internal'>
 								Live reporting data
 							</Box>{' '}
-							pulled from BioGreen360&apos;s reporting system.
+							is pulled from BioGreen360&apos;s reporting system.
 						</Box>
 						<Box component='li'>
-							Food not eaten on property is converted to soil amendments in the local community where
-							possible.
+							Food scraps captured on-site are managed through local processing pathways based on property
+							operations and partner availability.
 						</Box>
 						<Box component='li'>
-							Qualifying events can receive an environmental impact report.{' '}
+							Qualifying events may request impact reporting, subject to availability and operational
+							capacity.{' '}
 							<Box
 								component='a'
 								href='#events'
@@ -584,16 +586,14 @@ const CircularFoodSystems = () => {
 									scrollToSection('events');
 								}}
 								className='lux-link lux-link--internal'>
-								Learn more
+								Learn more →
 							</Box>
 						</Box>
 					</Box>
 				</Box>
 
 				<Box sx={{ textAlign: 'center', maxWidth: 860, mx: 'auto', mt: 1.5 }}>
-					<Typography className='micro-label' sx={{ mb: 0 }}>
-						{`Live data feed • Last sync: ${trustLineLastSync} • Methodology available • Downloadable Example Event Report`}
-					</Typography>
+					<Typography className='micro-label' sx={{ mb: 0 }} />
 				</Box>
 
 				<Box sx={{ width: '100%', mt: { xs: 5, md: 7 }, mb: { xs: 5, md: 6 } }}>
