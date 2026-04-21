@@ -3,17 +3,14 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
-import HomeIcon from '@mui/icons-material/Home';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import SchoolIcon from '@mui/icons-material/School';
-import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import TvIcon from '@mui/icons-material/Tv';
-import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl';
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import PlaceIcon from '@mui/icons-material/Place';
-import SummarizeIcon from '@mui/icons-material/Summarize';
 import ForestIcon from '@mui/icons-material/Forest';
 import GrassIcon from '@mui/icons-material/Grass';
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
+import GroupsIcon from '@mui/icons-material/Groups';
+import RecyclingIcon from '@mui/icons-material/Recycling';
+import ElectricCarIcon from '@mui/icons-material/ElectricCar';
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import poweredByBioGreen from '../../assets/PoweredByBioGreen.svg';
 import biogreenHowItWorksLogo from '../../assets/biogreen-how-it-works.png';
@@ -151,64 +148,38 @@ const equivalencyCards = [
 
 const initiatives = [
 	{
-		title: 'EV Charging',
-		description: 'On-site charging supports lower-emission guest and fleet travel.',
-		icon: LocalGroceryStoreIcon,
-	},
-	{
-		title: 'LEED / Green Building Commitments',
-		description: 'Building operations align with recognized sustainability standards.',
-		icon: HomeIcon,
-	},
-	{
-		title: 'Energy Efficiency',
-		description: 'Operational optimization reduces energy intensity over time.',
-		icon: BarChartIcon,
-	},
-	{
-		title: 'Indoor Air Quality',
-		description: 'Ventilation and filtration practices support healthier shared spaces.',
+		title: 'Hotel for Trees',
+		description:
+			'Plant a tree while you stay. One tree is planted for each member room night booked at The Maven, and for each in-room bottled water purchased.',
 		icon: ForestIcon,
 	},
 	{
-		title: 'Water Stewardship',
-		description: 'Targeted efficiency measures support responsible water use.',
-		icon: GrassIcon,
+		title: 'Procure Impact',
+		description:
+			"We're honored to carry items from Procure Impact, a B2B marketplace focused on increasing access to the dignity of work for individuals with underestimated potential.",
+		icon: VolunteerActivismIcon,
 	},
 	{
-		title: 'Recycling & Diversion',
-		description: 'Integrated streams keep valuable materials out of landfill.',
-		icon: ChecklistRtlIcon,
+		title: 'Community Connections',
+		description: 'The Maven team contributes 120 hours of community service each year.',
+		icon: GroupsIcon,
 	},
 	{
-		title: 'Sustainable Mobility',
-		description: 'Mobility offerings encourage lower-impact transportation options.',
-		icon: DirectionsCarIcon,
+		title: 'Clean the World',
+		description:
+			'Our partnership with Clean the World helps ensure the plastic from soaps, conditioners, and body washes is kept out of the waste stream.',
+		icon: RecyclingIcon,
 	},
 	{
-		title: 'Digital Room Keys',
-		description: 'Digital-first access reduces physical material consumption.',
-		icon: TvIcon,
+		title: 'Ride in Style',
+		description: "Guests can get around town in The Maven's electric courtesy car.",
+		icon: ElectricCarIcon,
 	},
 	{
-		title: 'Linen & Towel Program',
-		description: 'Guest-centered reuse options reduce laundry energy and water demand.',
-		icon: PlaceIcon,
-	},
-	{
-		title: 'Eco-Conscious Cleaning Products',
-		description: 'Preferred products support healthier operations and indoor environments.',
-		icon: SchoolIcon,
-	},
-	{
-		title: 'Sustainable Purchasing',
-		description: 'Procurement prioritizes responsible sourcing and supplier transparency.',
-		icon: SummarizeIcon,
-	},
-	{
-		title: 'Reduced Single-Use Plastics',
-		description: 'Material choices reduce disposable plastics across guest touchpoints.',
-		icon: RocketLaunchIcon,
+		title: 'More Initiatives Coming Soon',
+		description:
+			'Additional property initiatives may be added here as details are approved.',
+		icon: HourglassEmptyIcon,
 	},
 ];
 
@@ -1698,10 +1669,6 @@ const CircularFoodSystems = () => {
 										fontSize: '13px',
 										color: BODY_GRAY,
 										lineHeight: 1.6,
-										display: '-webkit-box',
-										overflow: 'hidden',
-										WebkitLineClamp: 2,
-										WebkitBoxOrient: 'vertical',
 									}}>
 									{initiative.description}
 								</Typography>
