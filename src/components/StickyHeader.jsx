@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import theMavenWordmarkBlue from '../assets/the-maven-wordmark-blue.png';
+import theMavenWordmarkHeader from '../assets/the-maven-wordmark-header.png';
 
 const MAVEN_BLUE = '#394F71';
 const MAVEN_TAN = '#AF986E';
@@ -9,7 +9,7 @@ const MAVEN_DARK = '#2B2320';
 const HEADER_BG = '#FFFCF9';
 const FONT_CONDENSED = '"Roboto Condensed", "Helvetica Neue", Arial, sans-serif';
 
-const StickyHeader = ({ logoSrc = theMavenWordmarkBlue, logoAlt = 'The Maven Hotel' }) => {
+const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven Hotel' }) => {
 	const handleAnchorClick = (event, href) => {
 		if (!href || !href.startsWith('#')) {
 			return;
