@@ -1710,7 +1710,7 @@ const CircularFoodSystems = () => {
 								boxShadow: `0 0 0 2px ${BG_WARM}, 0 0 0 4px ${MAVEN_TAN}`,
 							},
 						}}>
-						Plan an Event
+						Contact Sales Team
 					</Button>
 				</Box>
 			</Box>
