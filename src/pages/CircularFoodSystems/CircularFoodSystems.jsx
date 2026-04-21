@@ -1719,9 +1719,9 @@ const CircularFoodSystems = () => {
 			<Box
 				id='methodology'
 				sx={{
-					backgroundColor: BG_BAND,
-					borderTop: `1px solid ${LINE_SUBTLE}`,
-					borderBottom: `1px solid ${LINE_SUBTLE}`,
+					backgroundColor: BG_WARM,
+					borderTop: '1px solid rgba(57, 79, 113, 0.09)',
+					borderBottom: '1px solid rgba(57, 79, 113, 0.09)',
 					scrollMarginTop: { xs: '80px', md: '96px' },
 				}}>
 				<Box sx={sectionContainerSx}>
@@ -1758,7 +1758,7 @@ const CircularFoodSystems = () => {
 							Soil amendment output is estimated using operating conversion assumptions.
 						</Box>
 						<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.8 }}>
-							CO2e equivalencies are illustrative and use standardized public reference factors.
+							Climate equivalencies are illustrative and use standardized reference factors.
 						</Box>
 					</Box>
 
@@ -1772,22 +1772,33 @@ const CircularFoodSystems = () => {
 						factors; actual impacts may vary.
 					</Typography>
 
-					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
+					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5, alignItems: 'center' }}>
 						<Button
 							component='a'
 							href={siteConfig.bookingUrl}
 							variant='contained'
+							disableElevation
 							sx={{
-								px: 3,
-								py: 1.15,
-								fontSize: '0.84rem',
+								px: { xs: 1.75, sm: 2.2 },
+								py: 0.7,
+								fontFamily: FONT_UI,
+								fontSize: '0.7rem',
 								fontWeight: 600,
-								letterSpacing: '0.08em',
+								letterSpacing: '0.1em',
+								textTransform: 'uppercase',
 								color: MAVEN_WHITE,
 								backgroundColor: MAVEN_BLUE,
+								borderRadius: '999px',
+								border: `1px solid ${MAVEN_BLUE}`,
 								boxShadow: 'none',
-								borderRadius: '9999px',
-								'&:hover': { backgroundColor: '#2f425c', boxShadow: 'none' },
+								'&:hover': {
+									backgroundColor: '#2f425c',
+									borderColor: '#2f425c',
+									boxShadow: '0 6px 16px rgba(57, 79, 113, 0.22)',
+								},
+								'&:focus-visible': {
+									boxShadow: `0 0 0 2px ${BG_WARM}, 0 0 0 4px ${MAVEN_TAN}`,
+								},
 							}}>
 							Book a Room
 						</Button>
@@ -1795,21 +1806,30 @@ const CircularFoodSystems = () => {
 							<Button
 								component='a'
 								href={siteConfig.reservationUrl}
-								variant='text'
+								variant='outlined'
+								disableElevation
 								sx={{
-									px: 2,
-									fontSize: '0.84rem',
+									px: { xs: 1.75, sm: 2.2 },
+									py: 0.7,
+									fontFamily: FONT_UI,
+									fontSize: '0.7rem',
 									fontWeight: 600,
-									letterSpacing: '0.08em',
-									color: MAVEN_BLUE,
+									letterSpacing: '0.1em',
 									textTransform: 'uppercase',
-									textDecoration: 'none',
-									borderBottom: '1px solid rgba(175, 152, 110, 0.45)',
-									borderRadius: 0,
+									color: TEXT_DARK,
+									backgroundColor: 'rgba(255, 255, 255, 0.35)',
+									borderRadius: '999px',
+									borderColor: MAVEN_TAN,
+									borderWidth: '1px',
+									boxShadow: 'none',
 									'&:hover': {
-										color: MAVEN_TAN,
-										backgroundColor: 'transparent',
-										borderBottomColor: 'rgba(175, 152, 110, 0.75)',
+										backgroundColor: 'rgba(226, 205, 169, 0.22)',
+										borderColor: '#9c865c',
+										color: MAVEN_BLUE,
+										boxShadow: 'none',
+									},
+									'&:focus-visible': {
+										boxShadow: `0 0 0 2px ${BG_WARM}, 0 0 0 4px ${MAVEN_TAN}`,
 									},
 								}}>
 								Reserve a table
