@@ -20,7 +20,6 @@ import biogreenHowItWorksLogo from '../../assets/biogreen-how-it-works.png';
 import howItWorksFoodIcon from '../../assets/how-it-works-food.png';
 import howItWorksSproutIcon from '../../assets/how-it-works-sprout.png';
 import howItWorksReportIcon from '../../assets/how-it-works-report.png';
-import limelightBoulderLogo from '../../assets/limelight-boulder-logo.png';
 import zeroFoodWasteEventsImage from '../../assets/zero-food-waste-events.png';
 import cornerstonePartnershipImage from '../../assets/cornerstone-partnership.png';
 import StickyHeader from '../../components/StickyHeader';
@@ -501,7 +500,7 @@ const CircularFoodSystems = () => {
 					},
 				},
 			}}>
-			<StickyHeader logoSrc={limelightBoulderLogo} logoAlt='Limelight Boulder' />
+			<StickyHeader />
 
 			{/* Hero */}
 			<Box
