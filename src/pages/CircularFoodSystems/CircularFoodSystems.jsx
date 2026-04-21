@@ -378,7 +378,7 @@ const CircularFoodSystems = () => {
 			),
 			title: 'Post-Event Impact Reporting',
 			description:
-				'Clients may receive an event-specific recap outlining measured diversion totals, scope notes, and illustrative equivalencies for context.',
+				'Clients may receive an event-specific recap outlining measured diversion totals, scope notes, and illustrative equivalencies tied to diversion through a local composting partner.',
 		},
 	];
 
@@ -1372,7 +1372,7 @@ const CircularFoodSystems = () => {
 						</Typography>
 						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8 }}>
 							Food scraps captured from participating events are tracked through BioGreen360&apos;s
-							reporting system and may be managed through local processing pathways based on property
+							reporting system and diverted through a local composting partner based on property
 							operations and partner availability. After the event, your team may receive a concise summary
 							with diversion totals, scope notes, and illustrative equivalencies for context.
 						</Typography>
