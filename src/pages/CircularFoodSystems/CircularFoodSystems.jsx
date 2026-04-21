@@ -24,15 +24,28 @@ import zeroFoodWasteEventsImage from '../../assets/zero-food-waste-events.png';
 import cornerstonePartnershipImage from '../../assets/cornerstone-partnership.png';
 import StickyHeader from '../../components/StickyHeader';
 
-const GREEN_PRIMARY = '#8D9A73';
-const GREEN_SOFT = '#F5F5F3';
-const GREEN_BORDER = '#22221F';
-const BG_WARM = '#FAFAF8';
-const BG_BAND = '#F4F4F2';
-const TEXT_DARK = '#1A1A18';
-const BODY_GRAY = '#363633';
-const MUTED_GRAY = '#666661';
-const SECTION_PY = { xs: '60px', md: '78px' };
+const MAVEN_BLUE = '#394F71';
+const MAVEN_TAN = '#AF986E';
+const MAVEN_TEXT = '#2B2320';
+const MAVEN_WHITE = '#FFFFFF';
+const FONT_DISPLAY = '"Sorts Mill Goudy", "Goudy Old Style", Georgia, serif';
+const FONT_UI = '"Roboto Condensed", "Helvetica Neue", Arial, sans-serif';
+const FONT_BODY = '"Inter", sans-serif';
+
+const GREEN_PRIMARY = MAVEN_BLUE;
+const GREEN_SOFT = 'rgba(226, 205, 169, 0.24)';
+const GREEN_BORDER = MAVEN_BLUE;
+const BG_WARM = '#FFFCF9';
+const BG_BAND = '#F7F3EC';
+const TEXT_DARK = MAVEN_TEXT;
+const BODY_GRAY = 'rgba(43, 35, 32, 0.9)';
+const MUTED_GRAY = 'rgba(57, 79, 113, 0.5)';
+const SECTION_PY = { xs: '64px', md: '88px' };
+const RADIUS_CARD = '12px';
+const SHADOW_CARD = '0 12px 32px rgba(57, 79, 113, 0.07)';
+const SHADOW_IMAGE = '0 16px 40px rgba(57, 79, 113, 0.09)';
+const LINE_SUBTLE = 'rgba(57, 79, 113, 0.12)';
+const LINE_MUTED = 'rgba(57, 79, 113, 0.1)';
 const CONTENT_MAX = 1320;
 const siteConfig = {
 	eventsEnabled: true,
@@ -413,21 +426,34 @@ const CircularFoodSystems = () => {
 			sx={{
 				minHeight: '100vh',
 				backgroundColor: BG_WARM,
-				'--bg-base': BG_WARM,
-				'--bg-alt': '#F7F7F5',
-				'--band-divider': 'rgba(26,26,24,0.08)',
+				'--bg-base': MAVEN_WHITE,
+				'--bg-alt': BG_BAND,
+				'--band-divider': LINE_MUTED,
 				color: TEXT_DARK,
-				fontFamily: '"Inter", sans-serif',
+				fontFamily: FONT_BODY,
 				lineHeight: 1.72,
-				'& h1, & h2, & h3': {
-					fontFamily: '"Inter", sans-serif',
+				'& h1': {
+					fontFamily: FONT_DISPLAY,
+					letterSpacing: '-0.02em',
+					fontWeight: 400,
+					color: TEXT_DARK,
+				},
+				'& h2': {
+					fontFamily: FONT_DISPLAY,
 					letterSpacing: '-0.015em',
+					fontWeight: 400,
+					color: TEXT_DARK,
+				},
+				'& h3': {
+					fontFamily: FONT_BODY,
+					letterSpacing: '-0.012em',
 					fontWeight: 500,
 					color: TEXT_DARK,
 				},
 				'& .micro-label': {
+					fontFamily: FONT_UI,
 					fontSize: '11px',
-					letterSpacing: '0.11em',
+					letterSpacing: '0.14em',
 					textTransform: 'uppercase',
 					fontWeight: 600,
 					color: MUTED_GRAY,
@@ -436,34 +462,37 @@ const CircularFoodSystems = () => {
 					display: 'inline-flex',
 					alignItems: 'center',
 					gap: '0.3em',
+					fontFamily: FONT_UI,
 					fontWeight: 500,
-					color: 'rgba(54,54,51,0.95)',
-					textDecoration: 'underline',
-					textDecorationColor: 'rgba(54,54,51,0.45)',
+					color: MAVEN_BLUE,
+					textDecoration: 'none',
 					textDecorationThickness: '1px',
 					textUnderlineOffset: '3px',
+					borderBottom: '1px solid transparent',
 					transition:
-						'color 200ms ease, text-decoration-color 200ms ease, text-decoration-thickness 200ms ease',
+						'color 180ms ease, border-color 180ms ease, text-decoration-color 180ms ease, text-decoration-thickness 180ms ease',
 					'&:hover': {
-						color: TEXT_DARK,
-						textDecorationColor: GREEN_PRIMARY,
-						textDecorationThickness: '2px',
+						color: MAVEN_TAN,
+						textDecoration: 'underline',
+						textDecorationColor: 'rgba(175, 152, 110, 0.55)',
+						textDecorationThickness: '1px',
+						borderBottomColor: 'transparent',
 					},
 					'&:focus-visible': {
-						outline: `2px solid ${GREEN_PRIMARY}`,
-						outlineOffset: '2px',
-						textDecorationThickness: '2px',
+						outline: `2px solid ${MAVEN_TAN}`,
+						outlineOffset: '3px',
+						borderRadius: '2px',
 					},
 				},
 				'& .lux-link--internal::after': {
 					content: '"→"',
 					fontSize: '0.9em',
-					opacity: 0.9,
+					opacity: 0.85,
 				},
 				'& .lux-link--external::after': {
 					content: '"↗"',
 					fontSize: '0.86em',
-					opacity: 0.9,
+					opacity: 0.85,
 				},
 				'& .lux-clickable': {
 					position: 'relative',
@@ -471,12 +500,11 @@ const CircularFoodSystems = () => {
 					transition:
 						'transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, color 220ms ease, font-weight 220ms ease',
 					'&:hover': {
-						transform: 'translateY(-2px)',
-						borderColor: 'rgba(141,154,115,0.5)',
-						boxShadow: '0 10px 20px rgba(26,26,24,0.08)',
+						transform: 'translateY(-1px)',
+						boxShadow: '0 12px 28px rgba(57, 79, 113, 0.1)',
 					},
 					'&:focus-visible': {
-						outline: `2px solid ${GREEN_PRIMARY}`,
+						outline: `2px solid ${MAVEN_TAN}`,
 						outlineOffset: '2px',
 					},
 					'& .lux-click-indicator': {
@@ -484,19 +512,39 @@ const CircularFoodSystems = () => {
 						transition: 'opacity 220ms ease',
 					},
 					'&:hover .lux-click-indicator': {
-						opacity: 0.85,
+						opacity: 0.8,
 					},
 				},
 				'& .MuiButton-root': {
+					fontFamily: FONT_UI,
 					borderRadius: '999px',
 					textTransform: 'uppercase',
-					letterSpacing: '0.08em',
+					letterSpacing: '0.1em',
 					fontWeight: 600,
 					boxShadow: 'none',
-					transition: 'transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease',
+					transition: 'transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease, border-color 200ms ease',
+					'&.MuiButton-contained': {
+						backgroundColor: MAVEN_BLUE,
+						color: MAVEN_WHITE,
+						'&:hover': {
+							backgroundColor: '#2f425c',
+							boxShadow: '0 10px 24px rgba(57, 79, 113, 0.22)',
+						},
+					},
+					'&.MuiButton-outlined': {
+						color: TEXT_DARK,
+						borderWidth: '1px',
+						borderColor: MAVEN_TAN,
+						backgroundColor: 'rgba(255, 252, 249, 0.5)',
+						'&:hover': {
+							borderColor: '#9c865c',
+							backgroundColor: GREEN_SOFT,
+							color: MAVEN_BLUE,
+							boxShadow: 'none',
+						},
+					},
 					'&:hover': {
 						transform: 'translateY(-1px)',
-						boxShadow: '0 8px 18px rgba(26,26,24,0.08)',
 					},
 				},
 			}}>
@@ -520,9 +568,9 @@ const CircularFoodSystems = () => {
 					<Typography
 						component='h1'
 						sx={{
-							fontFamily: '"Inter", sans-serif',
+							fontFamily: FONT_DISPLAY,
 							fontSize: { xs: '2.3rem', sm: '3.1rem', md: '56px' },
-							fontWeight: 500,
+							fontWeight: 400,
 							color: TEXT_DARK,
 							letterSpacing: '-0.02em',
 							lineHeight: 1.12,
@@ -532,7 +580,6 @@ const CircularFoodSystems = () => {
 					</Typography>
 					<Typography
 						sx={{
-							fontFamily: '"Inter", sans-serif',
 							fontSize: '20px',
 							fontWeight: 400,
 							color: BODY_GRAY,
@@ -558,11 +605,11 @@ const CircularFoodSystems = () => {
 						sx={{
 							width: '100%',
 							height: 'auto',
-							borderRadius: '14px',
+							borderRadius: RADIUS_CARD,
 							objectFit: 'cover',
 							maxHeight: 520,
 							display: 'block',
-							boxShadow: '0 14px 28px rgba(0,0,0,0.09)',
+							boxShadow: SHADOW_IMAGE,
 						}}
 					/>
 				</Box>
@@ -626,7 +673,6 @@ const CircularFoodSystems = () => {
 					<Typography
 						component='h2'
 						sx={{
-							fontFamily: '"Inter", sans-serif',
 							fontSize: { xs: '28px', md: '34px' },
 							fontWeight: 500,
 							mb: 2.25,
@@ -656,9 +702,9 @@ const CircularFoodSystems = () => {
 							sx={{
 								textDecoration: 'none',
 								color: 'inherit',
-								backgroundColor: '#FFFFFF',
-								border: '1px solid rgba(26,26,24,0.1)',
-								borderRadius: '14px',
+								backgroundColor: MAVEN_WHITE,
+								border: `1px solid ${LINE_SUBTLE}`,
+								borderRadius: RADIUS_CARD,
 								p: { xs: 2, md: 2.25 },
 								display: 'flex',
 								flexDirection: 'column',
@@ -670,13 +716,13 @@ const CircularFoodSystems = () => {
 								outlineOffset: '0px',
 								'&:hover': {
 									transform: 'scale(1.02)',
-									borderColor: 'rgba(141,154,115,0.5)',
-									outlineColor: 'rgba(141,154,115,0.55)',
+									borderColor: 'rgba(175, 152, 110, 0.45)',
+									outlineColor: 'rgba(175, 152, 110, 0.5)',
 								},
 								'&:focus-visible': {
 									transform: 'scale(1.02)',
-									borderColor: 'rgba(141,154,115,0.5)',
-									outlineColor: 'rgba(141,154,115,0.55)',
+									borderColor: 'rgba(175, 152, 110, 0.45)',
+									outlineColor: 'rgba(175, 152, 110, 0.5)',
 								},
 								'@media (prefers-reduced-motion: reduce)': {
 									transition: 'border-color 200ms ease, outline-color 200ms ease',
@@ -688,7 +734,6 @@ const CircularFoodSystems = () => {
 							<Typography
 								component='h3'
 								sx={{
-									fontFamily: '"Inter", sans-serif',
 									fontSize: '20px',
 									fontWeight: 500,
 									letterSpacing: '-0.012em',
@@ -726,7 +771,6 @@ const CircularFoodSystems = () => {
 					<Typography
 						component='h2'
 						sx={{
-							fontFamily: '"Inter", sans-serif',
 							fontSize: { xs: '28px', md: '34px' },
 							fontWeight: 500,
 							color: TEXT_DARK,
@@ -744,7 +788,7 @@ const CircularFoodSystems = () => {
 						width: '100%',
 						maxWidth: 360,
 						height: '1px',
-						backgroundColor: 'rgba(141,154,115,0.5)',
+						backgroundColor: 'rgba(175, 152, 110, 0.35)',
 						mb: 2.5,
 					}}
 				/>
@@ -755,8 +799,8 @@ const CircularFoodSystems = () => {
 						flexWrap: 'wrap',
 						alignItems: 'stretch',
 						justifyContent: 'space-between',
-						borderTop: '1px solid rgba(26,26,24,0.12)',
-						borderBottom: '1px solid rgba(26,26,24,0.12)',
+						borderTop: `1px solid ${LINE_SUBTLE}`,
+						borderBottom: `1px solid ${LINE_SUBTLE}`,
 						py: 2.5,
 					}}>
 					{impactMetrics.map((metric, idx) => (
@@ -768,14 +812,13 @@ const CircularFoodSystems = () => {
 								px: { xs: 0, sm: 3 },
 								py: 1.5,
 								textAlign: 'center',
-								borderRight: idx < 2 ? { xs: 'none', md: '1px solid rgba(26,26,24,0.14)' } : 'none',
+								borderRight: idx < 2 ? { xs: 'none', md: `1px solid ${LINE_SUBTLE}` } : 'none',
 							}}>
 							<Typography className='micro-label' sx={{ mb: 1 }}>
 								{metric.eyebrow}
 							</Typography>
 							<Typography
 								sx={{
-									fontFamily: '"Inter", sans-serif',
 									fontSize: { xs: '36px', sm: '48px' },
 									fontWeight: 500,
 									letterSpacing: '-0.02em',
@@ -831,9 +874,9 @@ const CircularFoodSystems = () => {
 								width: '100%',
 								aspectRatio: '4 / 5',
 								objectFit: 'cover',
-								borderRadius: '14px',
-								border: '1px solid rgba(26,26,24,0.09)',
-								boxShadow: '0 10px 22px rgba(26,26,24,0.07)',
+								borderRadius: RADIUS_CARD,
+								border: `1px solid ${LINE_MUTED}`,
+								boxShadow: SHADOW_IMAGE,
 							}}
 						/>
 					</Box>
@@ -841,7 +884,6 @@ const CircularFoodSystems = () => {
 						<Typography
 							component='h2'
 							sx={{
-								fontFamily: '"Inter", sans-serif',
 								fontSize: { xs: '28px', md: '34px' },
 								fontWeight: 500,
 								lineHeight: 1.25,
@@ -859,8 +901,8 @@ const CircularFoodSystems = () => {
 							sx={{
 								display: 'grid',
 								gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' },
-								borderTop: '1px solid rgba(46,45,51,0.08)',
-								borderBottom: '1px solid rgba(46,45,51,0.08)',
+								borderTop: `1px solid ${LINE_MUTED}`,
+								borderBottom: `1px solid ${LINE_MUTED}`,
 								mb: 2,
 							}}>
 							{cornerstoneOverviewLinks.map((item, index) => (
@@ -877,16 +919,18 @@ const CircularFoodSystems = () => {
 										px: 1.25,
 										textAlign: 'center',
 										cursor: 'pointer',
-										fontSize: '12px',
+										fontSize: '11.5px',
 										color: BODY_GRAY,
-										letterSpacing: '0.04em',
 										fontWeight: 500,
 										position: 'relative',
 										borderRight:
-											index < 2 ? { xs: 'none', md: '1px solid rgba(46,45,51,0.08)' } : 'none',
+											index < 2 ? { xs: 'none', md: `1px solid ${LINE_MUTED}` } : 'none',
+										fontFamily: FONT_UI,
+										textTransform: 'uppercase',
+										letterSpacing: '0.08em',
 										'&:hover': {
-											color: GREEN_PRIMARY,
-											fontWeight: 700,
+											color: MAVEN_BLUE,
+											fontWeight: 600,
 										},
 									}}>
 									{item.label}
@@ -919,7 +963,6 @@ const CircularFoodSystems = () => {
 								<Typography
 									component='h3'
 									sx={{
-										fontFamily: '"Inter", sans-serif',
 										fontSize: '22px',
 										fontWeight: 500,
 										lineHeight: 1.35,
@@ -943,7 +986,6 @@ const CircularFoodSystems = () => {
 								<Typography
 									component='h3'
 									sx={{
-										fontFamily: '"Inter", sans-serif',
 										fontSize: '22px',
 										fontWeight: 500,
 										lineHeight: 1.35,
@@ -967,7 +1009,6 @@ const CircularFoodSystems = () => {
 								<Typography
 									component='h3'
 									sx={{
-										fontFamily: '"Inter", sans-serif',
 										fontSize: '22px',
 										fontWeight: 500,
 										lineHeight: 1.35,
@@ -1001,7 +1042,6 @@ const CircularFoodSystems = () => {
 				<Typography
 					component='h2'
 					sx={{
-						fontFamily: '"Inter", sans-serif',
 						fontSize: { xs: '28px', md: '34px' },
 						fontWeight: 500,
 						color: TEXT_DARK,
@@ -1036,7 +1076,7 @@ const CircularFoodSystems = () => {
 										height: { xs: 116, md: 128 },
 										flexShrink: 0,
 										borderRadius: '50%',
-									border: '1px solid rgba(26,26,24,0.22)',
+										border: `1px solid rgba(57, 79, 113, 0.2)`,
 										backgroundColor: 'transparent',
 										display: 'flex',
 										alignItems: 'center',
@@ -1065,9 +1105,9 @@ const CircularFoodSystems = () => {
 						</React.Fragment>
 					))}
 				</Box>
-				<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, textAlign: 'center', mt: 1.5 }}>
+				<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, textAlign: 'center', mt: 1.5, fontFamily: FONT_UI }}>
 					Processing pathways vary by property. See scope notes in{' '}
-					<Box component='a' href='#methodology' sx={{ color: 'inherit', textDecoration: 'underline' }}>
+					<Box component='a' href='#methodology' className='lux-link' sx={{ fontSize: 'inherit' }}>
 						Methodology
 					</Box>
 					.
@@ -1090,9 +1130,9 @@ const CircularFoodSystems = () => {
 								width: '100%',
 								aspectRatio: { xs: '16 / 10', md: '4 / 3' },
 								objectFit: 'cover',
-								borderRadius: '14px',
-								border: '1px solid rgba(26,26,24,0.1)',
-								boxShadow: '0 10px 22px rgba(26,26,24,0.07)',
+								borderRadius: RADIUS_CARD,
+								border: `1px solid ${LINE_SUBTLE}`,
+								boxShadow: SHADOW_IMAGE,
 								display: 'block',
 							}}
 						/>
@@ -1104,7 +1144,6 @@ const CircularFoodSystems = () => {
 						<Typography
 							component='h3'
 							sx={{
-								fontFamily: '"Inter", sans-serif',
 								fontSize: { xs: '26px', md: '30px' },
 								fontWeight: 500,
 								letterSpacing: '-0.015em',
@@ -1129,9 +1168,9 @@ const CircularFoodSystems = () => {
 						</Typography>
 						<Box
 							sx={{
-								backgroundColor: '#FFFFFF',
-								border: '1px solid rgba(26,26,24,0.1)',
-								borderRadius: '10px',
+								backgroundColor: MAVEN_WHITE,
+								border: `1px solid ${LINE_SUBTLE}`,
+								borderRadius: RADIUS_CARD,
 								px: { xs: 1.5, md: 2 },
 								py: { xs: 1.25, md: 1.5 },
 								mb: 1.4,
@@ -1171,7 +1210,6 @@ const CircularFoodSystems = () => {
 				<Typography
 					component='h2'
 					sx={{
-						fontFamily: '"Inter", sans-serif',
 						fontSize: { xs: '28px', md: '34px' },
 						fontWeight: 500,
 						mb: 1.5,
@@ -1210,17 +1248,17 @@ const CircularFoodSystems = () => {
 						<Box
 							key={tile.title}
 							sx={{
-								backgroundColor: '#FFFFFF',
+								backgroundColor: MAVEN_WHITE,
 								border: '1px solid',
-								borderColor: `${GREEN_PRIMARY}66`,
-								borderRadius: '14px',
+								borderColor: 'rgba(57, 79, 113, 0.18)',
+								borderRadius: RADIUS_CARD,
 								p: { xs: 2.5, md: 3 },
 								minHeight: 220,
 								display: 'flex',
 								flexDirection: 'column',
 								justifyContent: 'center',
 								textAlign: 'center',
-								boxShadow: '0 8px 22px rgba(26,26,24,0.05)',
+								boxShadow: SHADOW_CARD,
 							}}>
 							<Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 1.25 }}>
 								<Typography
@@ -1244,7 +1282,6 @@ const CircularFoodSystems = () => {
 									component='h3'
 									className='lsir-card-value'
 									sx={{
-										fontFamily: '"Inter", sans-serif',
 										fontSize: { xs: '28px', md: '32px' },
 										fontWeight: 500,
 										letterSpacing: '-0.015em',
@@ -1262,16 +1299,16 @@ const CircularFoodSystems = () => {
 							<Box
 								key={card.value}
 								sx={{
-									backgroundColor: '#FFFFFF',
+									backgroundColor: MAVEN_WHITE,
 									border: '1px solid',
-									borderColor: `${GREEN_PRIMARY}66`,
-									borderRadius: '14px',
+									borderColor: 'rgba(57, 79, 113, 0.18)',
+									borderRadius: RADIUS_CARD,
 									p: { xs: 2.5, md: 3 },
 									minHeight: 220,
 									display: 'flex',
 									flexDirection: 'column',
 									textAlign: 'center',
-									boxShadow: '0 8px 22px rgba(26,26,24,0.05)',
+									boxShadow: SHADOW_CARD,
 								}}>
 								<Typography className='micro-label lsir-card-title' sx={{ mb: 1.25 }}>
 									{card.label}
@@ -1283,7 +1320,6 @@ const CircularFoodSystems = () => {
 									component='h3'
 									className='lsir-card-value'
 									sx={{
-										fontFamily: '"Inter", sans-serif',
 										fontSize: { xs: '28px', md: '32px' },
 										fontWeight: 500,
 										letterSpacing: '-0.015em',
@@ -1295,7 +1331,7 @@ const CircularFoodSystems = () => {
 								<Icon
 									sx={{
 										fontSize: { xs: 56, md: 64 },
-										color: 'rgba(34,34,31,0.72)',
+										color: 'rgba(57, 79, 113, 0.42)',
 										mt: 'auto',
 										pt: 1.75,
 										alignSelf: 'center',
@@ -1327,7 +1363,6 @@ const CircularFoodSystems = () => {
 						<Typography
 							component='h2'
 							sx={{
-								fontFamily: '"Inter", sans-serif',
 								fontSize: { xs: '28px', md: '34px' },
 								fontWeight: 500,
 								mb: 1,
@@ -1354,9 +1389,9 @@ const CircularFoodSystems = () => {
 							width: '100%',
 							aspectRatio: '16 / 8',
 							objectFit: 'cover',
-							borderRadius: '14px',
-							border: '1px solid rgba(26,26,24,0.09)',
-							boxShadow: '0 10px 22px rgba(26,26,24,0.07)',
+							borderRadius: RADIUS_CARD,
+							border: `1px solid ${LINE_MUTED}`,
+							boxShadow: SHADOW_IMAGE,
 						}}
 					/>
 				</Box>
@@ -1372,7 +1407,6 @@ const CircularFoodSystems = () => {
 					<Box>
 						<Typography
 							sx={{
-								fontFamily: '"Inter", sans-serif',
 								fontSize: { xs: '26px', md: '30px' },
 								fontWeight: 500,
 								textAlign: 'center',
@@ -1405,7 +1439,7 @@ const CircularFoodSystems = () => {
 											width: { xs: 116, md: 128 },
 											height: { xs: 116, md: 128 },
 												borderRadius: '50%',
-											border: '1px solid rgba(26,26,24,0.22)',
+											border: `1px solid rgba(57, 79, 113, 0.2)`,
 											backgroundColor: 'transparent',
 												display: 'flex',
 												alignItems: 'center',
@@ -1418,7 +1452,6 @@ const CircularFoodSystems = () => {
 											component='h3'
 											sx={{
 												fontSize: '22px',
-												fontFamily: '"Inter", sans-serif',
 												fontWeight: 500,
 												letterSpacing: '-0.015em',
 												color: TEXT_DARK,
@@ -1461,16 +1494,15 @@ const CircularFoodSystems = () => {
 					<Box
 						sx={{
 							backgroundColor: 'var(--bg-alt)',
-							border: '1px solid rgba(26,26,24,0.2)',
+							border: `1px solid ${LINE_SUBTLE}`,
 							borderRadius: '26px',
 							p: { xs: 2, md: 2.5 },
 							alignSelf: { xs: 'stretch', md: 'center' },
-							boxShadow: '0 8px 20px rgba(26,26,24,0.06)',
+							boxShadow: SHADOW_CARD,
 						}}>
 						<Typography
 							component='h3'
 							sx={{
-								fontFamily: '"Inter", sans-serif',
 								fontSize: '22px',
 								fontWeight: 500,
 								mb: 1.1,
@@ -1495,13 +1527,13 @@ const CircularFoodSystems = () => {
 							px: 3,
 							py: 1.2,
 							fontSize: '0.84rem',
-							fontWeight: 500,
-							letterSpacing: '0.06em',
-							color: '#FFFFFF',
-							backgroundColor: GREEN_BORDER,
+							fontWeight: 600,
+							letterSpacing: '0.08em',
+							color: MAVEN_WHITE,
+							backgroundColor: MAVEN_BLUE,
 							borderRadius: '9999px',
 							boxShadow: 'none',
-							'&:hover': { backgroundColor: TEXT_DARK, boxShadow: 'none' },
+							'&:hover': { backgroundColor: '#2f425c', boxShadow: 'none' },
 						}}>
 						Inquire About Event Tracking
 					</Button>
@@ -1537,7 +1569,6 @@ const CircularFoodSystems = () => {
 				<Typography
 					component='h2'
 					sx={{
-						fontFamily: '"Inter", sans-serif',
 						fontSize: { xs: '28px', md: '34px' },
 						fontWeight: 500,
 						mb: 1.25,
@@ -1568,9 +1599,9 @@ const CircularFoodSystems = () => {
 						<Box
 							key={story.title}
 							sx={{
-								backgroundColor: '#FFFFFF',
-								border: '1px solid rgba(26,26,24,0.1)',
-								borderRadius: '14px',
+								backgroundColor: MAVEN_WHITE,
+								border: `1px solid ${LINE_SUBTLE}`,
+								borderRadius: RADIUS_CARD,
 								p: 2.5,
 								minHeight: 236,
 								display: 'flex',
@@ -1586,10 +1617,10 @@ const CircularFoodSystems = () => {
 									objectFit: 'cover',
 									borderRadius: '8px',
 									mb: 1.5,
-								border: '1px solid rgba(26,26,24,0.14)',
+									border: `1px solid ${LINE_SUBTLE}`,
 								}}
 							/>
-							<Typography component='h3' sx={{ fontFamily: '"Inter", sans-serif', fontSize: '24px', fontWeight: 500, letterSpacing: '-0.012em', mb: 1 }}>
+							<Typography component='h3' sx={{ fontSize: '24px', fontWeight: 500, letterSpacing: '-0.012em', mb: 1 }}>
 								{story.title}
 							</Typography>
 							<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.7 }}>{story.copy}</Typography>
@@ -1603,12 +1634,13 @@ const CircularFoodSystems = () => {
 					sx={{
 						mt: 2,
 						backgroundColor: GREEN_SOFT,
-						borderRadius: '10px',
+						borderRadius: RADIUS_CARD,
 						px: 2,
 						py: 1.5,
 						display: 'inline-flex',
+						border: `1px solid ${LINE_MUTED}`,
 					}}>
-					<Typography sx={{ fontSize: '14px', color: BODY_GRAY }}>
+					<Typography sx={{ fontSize: '14px', color: BODY_GRAY, fontFamily: FONT_UI, letterSpacing: '0.04em' }}>
 						Upcoming Community Engagement - Earth Day 2026
 					</Typography>
 				</Box>
@@ -1626,7 +1658,6 @@ const CircularFoodSystems = () => {
 				<Typography
 					component='h2'
 					sx={{
-						fontFamily: '"Inter", sans-serif',
 						fontSize: { xs: '28px', md: '34px' },
 						fontWeight: 500,
 						mb: 2.5,
@@ -1650,8 +1681,8 @@ const CircularFoodSystems = () => {
 								key={initiative.title}
 								sx={{
 									backgroundColor: isBaseTile ? 'var(--bg-base)' : 'var(--bg-alt)',
-									borderRadius: '10px',
-								border: '1px solid rgba(26,26,24,0.08)',
+									borderRadius: RADIUS_CARD,
+								border: `1px solid ${LINE_MUTED}`,
 									p: 2.25,
 									minHeight: 206,
 									display: 'flex',
@@ -1693,9 +1724,13 @@ const CircularFoodSystems = () => {
 							letterSpacing: '0.05em',
 							color: TEXT_DARK,
 							borderWidth: '1px',
-							borderColor: 'rgba(26,26,24,0.34)',
+							borderColor: MAVEN_TAN,
 							borderRadius: '9999px',
-							'&:hover': { borderColor: TEXT_DARK, backgroundColor: GREEN_SOFT },
+							'&:hover': {
+								borderColor: '#9c865c',
+								backgroundColor: GREEN_SOFT,
+								color: MAVEN_BLUE,
+							},
 						}}>
 						Contact our Sales team to Learn More
 					</Button>
@@ -1707,15 +1742,14 @@ const CircularFoodSystems = () => {
 				id='methodology'
 				sx={{
 					backgroundColor: BG_BAND,
-					borderTop: '1px solid rgba(26,26,24,0.1)',
-					borderBottom: '1px solid rgba(26,26,24,0.1)',
+					borderTop: `1px solid ${LINE_SUBTLE}`,
+					borderBottom: `1px solid ${LINE_SUBTLE}`,
 					scrollMarginTop: { xs: '80px', md: '96px' },
 				}}>
 				<Box sx={sectionContainerSx}>
 					<Typography
 						component='h2'
 						sx={{
-							fontFamily: '"Inter", sans-serif',
 							fontSize: { xs: '28px', md: '34px' },
 							fontWeight: 500,
 							mb: 1.5,
@@ -1735,7 +1769,7 @@ const CircularFoodSystems = () => {
 						for context-not audited carbon claims.
 					</Typography>
 
-					<Typography component='h3' sx={{ fontFamily: '"Inter", sans-serif', fontSize: '24px', fontWeight: 500, letterSpacing: '-0.012em', mb: 1 }}>
+					<Typography component='h3' sx={{ fontSize: '24px', fontWeight: 500, letterSpacing: '-0.012em', mb: 1 }}>
 						How to Read These Metrics
 					</Typography>
 					<Box component='ul' sx={{ m: 0, pl: 2.25, color: BODY_GRAY, mb: 2 }}>
@@ -1769,13 +1803,13 @@ const CircularFoodSystems = () => {
 								px: 3,
 								py: 1.15,
 								fontSize: '0.84rem',
-								fontWeight: 500,
-								letterSpacing: '0.05em',
-								color: '#FFFFFF',
-								backgroundColor: GREEN_BORDER,
+								fontWeight: 600,
+								letterSpacing: '0.08em',
+								color: MAVEN_WHITE,
+								backgroundColor: MAVEN_BLUE,
 								boxShadow: 'none',
 								borderRadius: '9999px',
-								'&:hover': { backgroundColor: TEXT_DARK, boxShadow: 'none' },
+								'&:hover': { backgroundColor: '#2f425c', boxShadow: 'none' },
 							}}>
 							Book a Room
 						</Button>
@@ -1787,12 +1821,18 @@ const CircularFoodSystems = () => {
 								sx={{
 									px: 2,
 									fontSize: '0.84rem',
-									fontWeight: 400,
-									letterSpacing: '0.03em',
-									color: TEXT_DARK,
+									fontWeight: 600,
+									letterSpacing: '0.08em',
+									color: MAVEN_BLUE,
 									textTransform: 'uppercase',
-									textDecoration: 'underline',
-									textUnderlineOffset: '3px',
+									textDecoration: 'none',
+									borderBottom: '1px solid rgba(175, 152, 110, 0.45)',
+									borderRadius: 0,
+									'&:hover': {
+										color: MAVEN_TAN,
+										backgroundColor: 'transparent',
+										borderBottomColor: 'rgba(175, 152, 110, 0.75)',
+									},
 								}}>
 								Reserve a table
 							</Button>
