@@ -2,7 +2,11 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import theMavenWordmarkHeader from '../assets/the-maven-wordmark-header.png';
-import { MAVEN_EVENTS_INQUIRY_URL, MAVEN_RESERVATIONS_URL } from '../constants/mavenExternalLinks';
+import {
+	MAVEN_EVENTS_INQUIRY_URL,
+	MAVEN_HOTEL_HOME_URL,
+	MAVEN_RESERVATIONS_URL,
+} from '../constants/mavenExternalLinks';
 
 const MAVEN_BLUE = '#394F71';
 const MAVEN_TAN = '#AF986E';
@@ -59,18 +63,37 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 						py: 1,
 					}}>
 					<Box
-						component='img'
-						src={logoSrc}
-						alt={logoAlt}
+						component='a'
+						href={MAVEN_HOTEL_HOME_URL}
+						target='_blank'
+						rel='noopener noreferrer'
+						aria-label={`${logoAlt} — visit hotel website`}
 						sx={{
-							height: { xs: 30, md: 36 },
-							width: 'auto',
-							maxWidth: { xs: 200, sm: 240, md: 280 },
-							display: 'block',
-							objectFit: 'contain',
-							objectPosition: 'left center',
-						}}
-					/>
+							display: 'inline-flex',
+							alignItems: 'center',
+							lineHeight: 0,
+							textDecoration: 'none',
+							color: 'inherit',
+							'&:focus-visible': {
+								outline: `2px solid ${MAVEN_TAN}`,
+								outlineOffset: 4,
+								borderRadius: '2px',
+							},
+						}}>
+						<Box
+							component='img'
+							src={logoSrc}
+							alt={logoAlt}
+							sx={{
+								height: { xs: 30, md: 36 },
+								width: 'auto',
+								maxWidth: { xs: 200, sm: 240, md: 280 },
+								display: 'block',
+								objectFit: 'contain',
+								objectPosition: 'left center',
+							}}
+						/>
+					</Box>
 				</Box>
 
 				<Box
