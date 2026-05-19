@@ -12,6 +12,9 @@ import RecyclingIcon from '@mui/icons-material/Recycling';
 import ElectricCarIcon from '@mui/icons-material/ElectricCar';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import DinnerDiningOutlinedIcon from '@mui/icons-material/DinnerDiningOutlined';
+import EcoOutlinedIcon from '@mui/icons-material/EcoOutlined';
+import ForestOutlinedIcon from '@mui/icons-material/ForestOutlined';
 import poweredByBioGreen from '../../assets/PoweredByBioGreen.svg';
 import biogreenHowItWorksLogo from '../../assets/biogreen-how-it-works.png';
 import howItWorksFoodIcon from '../../assets/how-it-works-food.png';
@@ -788,42 +791,47 @@ const CircularFoodSystems = () => {
 						py: 2.5,
 					}}>
 					{impactMetrics.map((metric, idx) => {
-						const ImpactMetricIcon = [RecyclingIcon, GrassIcon, ForestIcon][idx];
+						const ImpactMetricIcon = [DinnerDiningOutlinedIcon, EcoOutlinedIcon, ForestOutlinedIcon][idx];
 						return (
-						<Box
-							key={metric.eyebrow}
-							sx={{
-								flex: '1 1 0',
-								minWidth: 220,
-								px: { xs: 0, sm: 3 },
-								py: 1.5,
-								textAlign: 'center',
-								borderRight: idx < 2 ? { xs: 'none', md: `1px solid ${LINE_SUBTLE}` } : 'none',
-							}}>
-							<ImpactMetricIcon
-								aria-hidden
+							<Box
+								key={metric.eyebrow}
 								sx={{
-									fontSize: 28,
-									color: HEADING_ACCENT,
-									mb: 1.1,
-									opacity: 0.92,
-								}}
-							/>
-							<Typography className='micro-label' sx={{ mb: 1 }}>
-								{metric.eyebrow}
-							</Typography>
-							<Typography
-								sx={{
-									fontSize: { xs: '36px', sm: '48px' },
-									fontWeight: 500,
-									letterSpacing: '-0.02em',
-									lineHeight: 1.15,
-									color: HEADING_COLOR,
+									flex: '1 1 0',
+									minWidth: 220,
+									px: { xs: 0, sm: 3 },
+									py: 1.5,
+									textAlign: 'center',
+									borderRight: idx < 2 ? { xs: 'none', md: `1px solid ${LINE_SUBTLE}` } : 'none',
 								}}>
-								{metric.value}
-							</Typography>
-							<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 1 }}>{metric.note}</Typography>
-						</Box>
+								<Box
+									sx={{
+										display: 'flex',
+										justifyContent: 'center',
+										mb: 1.25,
+									}}>
+									<ImpactMetricIcon
+										aria-hidden
+										sx={{
+											fontSize: { xs: 34, sm: 38 },
+											color: HEADING_COLOR,
+										}}
+									/>
+								</Box>
+								<Typography className='micro-label' sx={{ mb: 1 }}>
+									{metric.eyebrow}
+								</Typography>
+								<Typography
+									sx={{
+										fontSize: { xs: '36px', sm: '48px' },
+										fontWeight: 500,
+										letterSpacing: '-0.02em',
+										lineHeight: 1.15,
+										color: HEADING_COLOR,
+									}}>
+									{metric.value}
+								</Typography>
+								<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 1 }}>{metric.note}</Typography>
+							</Box>
 						);
 					})}
 				</Box>
