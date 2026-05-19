@@ -787,7 +787,9 @@ const CircularFoodSystems = () => {
 						borderBottom: `1px solid ${LINE_SUBTLE}`,
 						py: 2.5,
 					}}>
-					{impactMetrics.map((metric, idx) => (
+					{impactMetrics.map((metric, idx) => {
+						const ImpactMetricIcon = [RecyclingIcon, GrassIcon, ForestIcon][idx];
+						return (
 						<Box
 							key={metric.eyebrow}
 							sx={{
@@ -798,6 +800,15 @@ const CircularFoodSystems = () => {
 								textAlign: 'center',
 								borderRight: idx < 2 ? { xs: 'none', md: `1px solid ${LINE_SUBTLE}` } : 'none',
 							}}>
+							<ImpactMetricIcon
+								aria-hidden
+								sx={{
+									fontSize: 28,
+									color: HEADING_ACCENT,
+									mb: 1.1,
+									opacity: 0.92,
+								}}
+							/>
 							<Typography className='micro-label' sx={{ mb: 1 }}>
 								{metric.eyebrow}
 							</Typography>
@@ -813,7 +824,8 @@ const CircularFoodSystems = () => {
 							</Typography>
 							<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 1 }}>{metric.note}</Typography>
 						</Box>
-					))}
+						);
+					})}
 				</Box>
 
 				<Box sx={{ textAlign: 'center', mt: 2.25 }}>
