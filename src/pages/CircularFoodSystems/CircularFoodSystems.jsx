@@ -576,13 +576,14 @@ const CircularFoodSystems = () => {
 				<Box sx={{ width: '100%', mt: { xs: 4, md: 5.5 }, mb: 0 }}>
 					<Box
 						component='img'
-						alt='Bright hotel lobby lounge with skylight, wood and stone finishes, and seating areas.'
+						alt='The Maven Hotel lobby with the Maven Hand sculpture suspended from a wood-slat ceiling above leather seating and a geometric rug.'
 						src={heroMavenLobbyImage}
 						sx={{
 							width: '100%',
 							height: 'auto',
 							borderRadius: RADIUS_CARD,
 							objectFit: 'cover',
+							objectPosition: 'center 28%',
 							maxHeight: 520,
 							display: 'block',
 							boxShadow: SHADOW_IMAGE,
