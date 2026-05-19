@@ -32,7 +32,6 @@ import {
 
 const MAVEN_BLUE = '#394F71';
 const MAVEN_TAN = '#AF986E';
-const MAVEN_CREAM = '#E2CDA9';
 const MAVEN_TEXT = '#2B2320';
 const MAVEN_WHITE = '#FFFFFF';
 const FONT_DISPLAY = '"Sorts Mill Goudy", "Goudy Old Style", Georgia, serif';
