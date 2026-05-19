@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 
 const baseSx = {
 	margin: 0,
-	color: 'rgba(54,54,51,0.92)',
+	color: 'rgba(57, 79, 113, 0.72)',
 	fontFamily: '"Inter", sans-serif',
 	lineHeight: 1.5,
 };

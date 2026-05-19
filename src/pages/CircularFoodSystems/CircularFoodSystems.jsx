@@ -29,6 +29,7 @@ import {
 
 const MAVEN_BLUE = '#394F71';
 const MAVEN_TAN = '#AF986E';
+const MAVEN_CREAM = '#E2CDA9';
 const MAVEN_TEXT = '#2B2320';
 const MAVEN_WHITE = '#FFFFFF';
 const FONT_DISPLAY = '"Sorts Mill Goudy", "Goudy Old Style", Georgia, serif';
@@ -41,8 +42,10 @@ const GREEN_BORDER = MAVEN_BLUE;
 const BG_WARM = '#FFFCF9';
 const BG_BAND = '#F7F3EC';
 const TEXT_DARK = MAVEN_TEXT;
-const BODY_GRAY = 'rgba(43, 35, 32, 0.9)';
-const MUTED_GRAY = 'rgba(57, 79, 113, 0.5)';
+const BODY_GRAY = 'rgba(43, 35, 32, 0.88)';
+const MUTED_GRAY = 'rgba(57, 79, 113, 0.65)';
+const HEADING_COLOR = MAVEN_BLUE;
+const HEADING_ACCENT = MAVEN_TAN;
 const SECTION_PY = { xs: '64px', md: '88px' };
 const RADIUS_CARD = '12px';
 const SHADOW_CARD = '0 12px 32px rgba(57, 79, 113, 0.07)';
@@ -412,19 +415,19 @@ const CircularFoodSystems = () => {
 					fontFamily: FONT_DISPLAY,
 					letterSpacing: '-0.02em',
 					fontWeight: 400,
-					color: TEXT_DARK,
+					color: HEADING_COLOR,
 				},
 				'& h2': {
 					fontFamily: FONT_DISPLAY,
 					letterSpacing: '-0.015em',
 					fontWeight: 400,
-					color: TEXT_DARK,
+					color: HEADING_COLOR,
 				},
 				'& h3': {
 					fontFamily: FONT_BODY,
 					letterSpacing: '-0.012em',
 					fontWeight: 500,
-					color: TEXT_DARK,
+					color: HEADING_COLOR,
 				},
 				'& .micro-label': {
 					fontFamily: FONT_UI,
@@ -432,7 +435,7 @@ const CircularFoodSystems = () => {
 					letterSpacing: '0.14em',
 					textTransform: 'uppercase',
 					fontWeight: 600,
-					color: MUTED_GRAY,
+					color: HEADING_ACCENT,
 				},
 				'& .lux-link': {
 					display: 'inline-flex',
@@ -547,7 +550,6 @@ const CircularFoodSystems = () => {
 							fontFamily: FONT_DISPLAY,
 							fontSize: { xs: '2.3rem', sm: '3.1rem', md: '56px' },
 							fontWeight: 400,
-							color: TEXT_DARK,
 							letterSpacing: '-0.02em',
 							lineHeight: 1.12,
 							mb: 2.5,
@@ -756,7 +758,6 @@ const CircularFoodSystems = () => {
 						sx={{
 							fontSize: { xs: '28px', md: '34px' },
 							fontWeight: 500,
-							color: TEXT_DARK,
 						}}>
 						Our Impact:
 					</Typography>
@@ -806,7 +807,7 @@ const CircularFoodSystems = () => {
 									fontWeight: 500,
 									letterSpacing: '-0.02em',
 									lineHeight: 1.15,
-									color: TEXT_DARK,
+									color: HEADING_COLOR,
 								}}>
 								{metric.value}
 							</Typography>
@@ -1028,7 +1029,6 @@ const CircularFoodSystems = () => {
 					sx={{
 						fontSize: { xs: '28px', md: '34px' },
 						fontWeight: 500,
-						color: TEXT_DARK,
 						textAlign: 'center',
 						mb: { xs: 4, md: 6 },
 					}}>
@@ -1133,7 +1133,6 @@ const CircularFoodSystems = () => {
 								letterSpacing: '-0.015em',
 								lineHeight: 1.3,
 								mb: 1.5,
-								color: TEXT_DARK,
 							}}>
 							From Food Scraps to Local Processing Pathways
 						</Typography>
@@ -1182,7 +1181,7 @@ const CircularFoodSystems = () => {
 					...sectionContainerSx,
 					...sectionBandBaseSx,
 					scrollMarginTop: { xs: '80px', md: '96px' },
-					'& .lsir-card-value': { color: TEXT_DARK },
+					'& .lsir-card-value': { color: HEADING_COLOR },
 				}}>
 				<Typography
 					component='h2'
@@ -1308,7 +1307,7 @@ const CircularFoodSystems = () => {
 								<Icon
 									sx={{
 										fontSize: { xs: 56, md: 64 },
-										color: 'rgba(57, 79, 113, 0.42)',
+										color: 'rgba(57, 79, 113, 0.55)',
 										mt: 'auto',
 										pt: 1.75,
 										alignSelf: 'center',
@@ -1346,7 +1345,7 @@ const CircularFoodSystems = () => {
 							}}>
 							Event Impact Reporting
 						</Typography>
-						<Box sx={{ width: 84, height: '2px', backgroundColor: GREEN_PRIMARY, mb: 1.5 }} />
+						<Box sx={{ width: 84, height: '2px', backgroundColor: HEADING_ACCENT, mb: 1.5 }} />
 						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8, mb: 1 }}>
 							Qualifying meetings, weddings, and group events may request food-waste tracking and a
 							post-event impact recap. Availability depends on scheduling, event scope, and operational
@@ -1433,7 +1432,6 @@ const CircularFoodSystems = () => {
 												fontSize: '22px',
 												fontWeight: 500,
 												letterSpacing: '-0.015em',
-												color: TEXT_DARK,
 												textAlign: 'center',
 												lineHeight: 1.35,
 												mb: 0.75,
@@ -1675,7 +1673,7 @@ const CircularFoodSystems = () => {
 									gap: 0.7,
 								}}>
 								<Icon sx={{ color: GREEN_BORDER, fontSize: 38 }} />
-								<Typography component='h3' sx={{ fontSize: '17px', fontWeight: 600, color: TEXT_DARK, mb: 0 }}>
+								<Typography component='h3' sx={{ fontSize: '17px', fontWeight: 600, mb: 0 }}>
 									{initiative.title}
 								</Typography>
 								<Typography

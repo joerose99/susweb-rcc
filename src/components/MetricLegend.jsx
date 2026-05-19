@@ -49,7 +49,7 @@ const MetricLegend = () => (
 						aria-label={`${item.label}: ${item.description}`}
 						sx={{
 							appearance: 'none',
-							border: '1px solid rgba(26,26,24,0.25)',
+							border: '1px solid rgba(57, 79, 113, 0.28)',
 							backgroundColor: '#FFFFFF',
 							borderRadius: '9999px',
 							px: 1.25,
@@ -57,14 +57,15 @@ const MetricLegend = () => (
 							fontSize: '12px',
 							lineHeight: 1.4,
 							fontWeight: 500,
-							color: 'rgba(26,26,24,0.92)',
+							color: '#2B2320',
 							cursor: 'help',
 							fontFamily: '"Inter", sans-serif',
 							'&:hover': {
-								borderColor: 'rgba(26,26,24,0.45)',
+								borderColor: 'rgba(175, 152, 110, 0.55)',
+								color: '#394F71',
 							},
 							'&:focus-visible': {
-								outline: '2px solid rgba(141,154,115,0.95)',
+								outline: '2px solid rgba(175, 152, 110, 0.95)',
 								outlineOffset: '2px',
 							},
 						}}>
