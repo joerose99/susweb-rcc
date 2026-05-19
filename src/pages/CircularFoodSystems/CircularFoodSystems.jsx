@@ -12,9 +12,7 @@ import RecyclingIcon from '@mui/icons-material/Recycling';
 import ElectricCarIcon from '@mui/icons-material/ElectricCar';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import DinnerDiningOutlinedIcon from '@mui/icons-material/DinnerDiningOutlined';
-import GrassOutlinedIcon from '@mui/icons-material/GrassOutlined';
-import ForestOutlinedIcon from '@mui/icons-material/ForestOutlined';
+import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
 import poweredByBioGreen from '../../assets/PoweredByBioGreen.svg';
 import biogreenHowItWorksLogo from '../../assets/biogreen-how-it-works.png';
 import howItWorksFoodIcon from '../../assets/how-it-works-food.png';
@@ -804,7 +802,6 @@ const CircularFoodSystems = () => {
 								{metric.eyebrow}
 							</Typography>
 							<Box
-								aria-hidden
 								sx={{
 									display: 'flex',
 									justifyContent: 'center',
@@ -812,41 +809,12 @@ const CircularFoodSystems = () => {
 									width: '100%',
 									minHeight: 48,
 									mb: 1,
-									color: '#394F71',
 								}}>
 								{idx === 0 && (
-									<DinnerDiningOutlinedIcon
-										sx={{
-											fontSize: 44,
-											width: 44,
-											height: 44,
-											color: '#394F71',
-											'& path': { strokeWidth: 1.35 },
-										}}
-									/>
+									<DinnerDiningIcon sx={{ fontSize: 40, color: '#394F71' }} aria-hidden />
 								)}
-								{idx === 1 && (
-									<GrassOutlinedIcon
-										sx={{
-											fontSize: 44,
-											width: 44,
-											height: 44,
-											color: '#394F71',
-											'& path': { strokeWidth: 1.35 },
-										}}
-									/>
-								)}
-								{idx === 2 && (
-									<ForestOutlinedIcon
-										sx={{
-											fontSize: 44,
-											width: 44,
-											height: 44,
-											color: '#394F71',
-											'& path': { strokeWidth: 1.35 },
-										}}
-									/>
-								)}
+								{idx === 1 && <GrassIcon sx={{ fontSize: 40, color: '#394F71' }} aria-hidden />}
+								{idx === 2 && <ForestIcon sx={{ fontSize: 40, color: '#394F71' }} aria-hidden />}
 							</Box>
 							<Typography
 								sx={{
