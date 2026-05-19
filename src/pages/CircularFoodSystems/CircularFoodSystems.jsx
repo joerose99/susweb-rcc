@@ -580,11 +580,11 @@ const CircularFoodSystems = () => {
 						src={heroMavenLobbyImage}
 						sx={{
 							width: '100%',
-							height: 'auto',
+							height: { xs: 'auto', md: 580 },
 							borderRadius: RADIUS_CARD,
 							objectFit: 'cover',
-							objectPosition: 'center 28%',
-							maxHeight: 520,
+							objectPosition: 'center top',
+							maxHeight: { xs: 420, md: 580 },
 							display: 'block',
 							boxShadow: SHADOW_IMAGE,
 						}}
