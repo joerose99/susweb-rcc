@@ -13,7 +13,7 @@ import ElectricCarIcon from '@mui/icons-material/ElectricCar';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DinnerDiningOutlinedIcon from '@mui/icons-material/DinnerDiningOutlined';
-import EcoOutlinedIcon from '@mui/icons-material/EcoOutlined';
+import GrassOutlinedIcon from '@mui/icons-material/GrassOutlined';
 import ForestOutlinedIcon from '@mui/icons-material/ForestOutlined';
 import poweredByBioGreen from '../../assets/PoweredByBioGreen.svg';
 import biogreenHowItWorksLogo from '../../assets/biogreen-how-it-works.png';
@@ -790,50 +790,78 @@ const CircularFoodSystems = () => {
 						borderBottom: `1px solid ${LINE_SUBTLE}`,
 						py: 2.5,
 					}}>
-					{impactMetrics.map((metric, idx) => {
-						const ImpactMetricIcon = [DinnerDiningOutlinedIcon, EcoOutlinedIcon, ForestOutlinedIcon][idx];
-						return (
+					{impactMetrics.map((metric, idx) => (
+						<Box
+							key={metric.eyebrow}
+							sx={{
+								flex: '1 1 0',
+								minWidth: 220,
+								px: { xs: 0, sm: 3 },
+								py: 1.5,
+								textAlign: 'center',
+								borderRight: idx < 2 ? { xs: 'none', md: `1px solid ${LINE_SUBTLE}` } : 'none',
+							}}>
+							<Typography className='micro-label' sx={{ mb: 0.75, display: 'block' }}>
+								{metric.eyebrow}
+							</Typography>
 							<Box
-								key={metric.eyebrow}
+								aria-hidden
 								sx={{
-									flex: '1 1 0',
-									minWidth: 220,
-									px: { xs: 0, sm: 3 },
-									py: 1.5,
-									textAlign: 'center',
-									borderRight: idx < 2 ? { xs: 'none', md: `1px solid ${LINE_SUBTLE}` } : 'none',
+									display: 'flex',
+									justifyContent: 'center',
+									alignItems: 'center',
+									width: '100%',
+									minHeight: 48,
+									mb: 1,
+									color: '#394F71',
 								}}>
-								<Box
-									sx={{
-										display: 'flex',
-										justifyContent: 'center',
-										mb: 1.25,
-									}}>
-									<ImpactMetricIcon
-										aria-hidden
+								{idx === 0 && (
+									<DinnerDiningOutlinedIcon
 										sx={{
-											fontSize: { xs: 34, sm: 38 },
-											color: HEADING_COLOR,
+											fontSize: 44,
+											width: 44,
+											height: 44,
+											color: '#394F71',
+											'& path': { strokeWidth: 1.35 },
 										}}
 									/>
-								</Box>
-								<Typography className='micro-label' sx={{ mb: 1 }}>
-									{metric.eyebrow}
-								</Typography>
-								<Typography
-									sx={{
-										fontSize: { xs: '36px', sm: '48px' },
-										fontWeight: 500,
-										letterSpacing: '-0.02em',
-										lineHeight: 1.15,
-										color: HEADING_COLOR,
-									}}>
-									{metric.value}
-								</Typography>
-								<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 1 }}>{metric.note}</Typography>
+								)}
+								{idx === 1 && (
+									<GrassOutlinedIcon
+										sx={{
+											fontSize: 44,
+											width: 44,
+											height: 44,
+											color: '#394F71',
+											'& path': { strokeWidth: 1.35 },
+										}}
+									/>
+								)}
+								{idx === 2 && (
+									<ForestOutlinedIcon
+										sx={{
+											fontSize: 44,
+											width: 44,
+											height: 44,
+											color: '#394F71',
+											'& path': { strokeWidth: 1.35 },
+										}}
+									/>
+								)}
 							</Box>
-						);
-					})}
+							<Typography
+								sx={{
+									fontSize: { xs: '36px', sm: '48px' },
+									fontWeight: 500,
+									letterSpacing: '-0.02em',
+									lineHeight: 1.15,
+									color: HEADING_COLOR,
+								}}>
+								{metric.value}
+							</Typography>
+							<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 1 }}>{metric.note}</Typography>
+						</Box>
+					))}
 				</Box>
 
 				<Box sx={{ textAlign: 'center', mt: 2.25 }}>
