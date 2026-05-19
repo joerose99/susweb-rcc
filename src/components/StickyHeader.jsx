@@ -85,12 +85,15 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 							src={logoSrc}
 							alt={logoAlt}
 							sx={{
-								height: { xs: 30, md: 36 },
+								height: { xs: 32, md: 38 },
 								width: 'auto',
-								maxWidth: { xs: 200, sm: 240, md: 280 },
+								maxWidth: { xs: 210, sm: 250, md: 290 },
 								display: 'block',
 								objectFit: 'contain',
 								objectPosition: 'left center',
+								backgroundColor: 'transparent',
+								border: 0,
+								boxShadow: 'none',
 							}}
 						/>
 					</Box>
