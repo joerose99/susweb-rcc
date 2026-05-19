@@ -573,18 +573,26 @@ const CircularFoodSystems = () => {
 					</Box>
 				</Box>
 
-				<Box sx={{ width: '100%', mt: { xs: 4, md: 5.5 }, mb: 0 }}>
+				<Box
+					sx={{
+						width: { xs: '100%', md: `min(${CONTENT_MAX}px, calc(100% + 64px))` },
+						maxWidth: CONTENT_MAX,
+						mx: 'auto',
+						ml: { xs: 'auto', md: -4 },
+						mr: { xs: 'auto', md: -4 },
+						mt: { xs: 4, md: 5.5 },
+						mb: 0,
+						lineHeight: 0,
+					}}>
 					<Box
 						component='img'
 						alt='The Maven Hotel lobby with the Maven Hand sculpture suspended from a wood-slat ceiling above leather seating and a geometric rug.'
 						src={heroMavenLobbyImage}
 						sx={{
 							width: '100%',
-							height: { xs: 'auto', md: 580 },
+							height: 'auto',
+							aspectRatio: '1024 / 731',
 							borderRadius: RADIUS_CARD,
-							objectFit: 'cover',
-							objectPosition: 'center top',
-							maxHeight: { xs: 420, md: 580 },
 							display: 'block',
 							boxShadow: SHADOW_IMAGE,
 						}}
