@@ -1375,9 +1375,11 @@ const CircularFoodSystems = () => {
 						</Typography>
 						<Box sx={{ width: 84, height: '2px', backgroundColor: HEADING_ACCENT, mb: 1.5 }} />
 						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8, mb: 1 }}>
-							Qualifying meetings, weddings, and group events may request food-waste tracking and a
-							post-event impact recap. Availability depends on scheduling, event scope, and operational
-							capacity.
+							Qualifying meetings, weddings, and gatherings at The Maven may request food-waste tracking and a
+							post-event impact recap as part of an experience designed with creativity, connection, and conscious
+							hospitality in mind. Rooted in community and inspired by thoughtful gathering, this optional initiative
+							allows events to leave a meaningful impact beyond the final toast. Participation is based on event scope,
+							scheduling, and operational availability.
 						</Typography>
 						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8 }}>
 							Food scraps captured from participating events are tracked through BioGreen360&apos;s
@@ -1525,43 +1527,43 @@ const CircularFoodSystems = () => {
 					</Box>
 				</Box>
 
-				<Box sx={{ textAlign: 'center' }}>
+				<Box
+					sx={{
+						textAlign: 'center',
+						pt: { xs: 2, md: 2.5 },
+						pb: { xs: 1, md: 1.5 },
+					}}>
 					<Button
 						component='a'
 						href={MAVEN_EVENTS_INQUIRY_URL}
 						target='_blank'
 						rel='noopener noreferrer'
 						variant='contained'
+						disableElevation
 						sx={{
-							px: 3,
-							py: 1.2,
-							fontSize: '0.84rem',
+							px: { xs: 3.25, md: 4.5 },
+							py: { xs: 1.45, md: 1.6 },
+							fontFamily: FONT_UI,
+							fontSize: { xs: '0.82rem', md: '0.9rem' },
 							fontWeight: 600,
-							letterSpacing: '0.08em',
+							letterSpacing: '0.1em',
+							textTransform: 'uppercase',
 							color: MAVEN_WHITE,
 							backgroundColor: MAVEN_BLUE,
-							borderRadius: '9999px',
-							boxShadow: 'none',
-							'&:hover': { backgroundColor: '#2f425c', boxShadow: 'none' },
+							border: `1px solid ${MAVEN_BLUE}`,
+							borderRadius: '999px',
+							boxShadow: '0 10px 28px rgba(57, 79, 113, 0.26)',
+							'&:hover': {
+								backgroundColor: '#2f425c',
+								borderColor: '#2f425c',
+								boxShadow: '0 12px 32px rgba(57, 79, 113, 0.32)',
+							},
+							'&:focus-visible': {
+								boxShadow: `0 0 0 2px ${BG_BAND}, 0 0 0 4px ${MAVEN_TAN}`,
+							},
 						}}>
 						Plan an Event
 					</Button>
-					<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 0.75 }}>
-						Tracking is available for qualifying events, subject to scheduling and operational capacity.
-					</Typography>
-					<Box sx={{ mt: 1.25 }}>
-						{/* TODO: wire href when sample Event Impact Summary PDF URL is approved */}
-						<Box
-							component='span'
-							className='lux-link'
-							aria-disabled='true'
-							sx={{ fontSize: '14px', pointerEvents: 'none', cursor: 'default' }}>
-							Download a Sample Event Impact Summary ↗
-						</Box>
-						<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 0.45 }}>
-							Sample shown for illustration. Deliverables may vary by event type, scope, and availability.
-						</Typography>
-					</Box>
 				</Box>
 			</Box>
 
