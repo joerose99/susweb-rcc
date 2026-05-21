@@ -21,6 +21,7 @@ import howItWorksReportIcon from '../../assets/how-it-works-report.png';
 import eventsMavenMeetingSpaceImage from '../../assets/events-maven-meeting-space.png';
 import cornerstonePartnershipImage from '../../assets/cornerstone-partnership.png';
 import heroMavenLobbyImage from '../../assets/hero-maven-lobby.png';
+import foodScrapsProcessingPathwaysImage from '../../assets/food-scraps-processing-pathways.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
 	MAVEN_EVENTS_INQUIRY_URL,
@@ -1154,15 +1155,15 @@ const CircularFoodSystems = () => {
 						alignItems: 'stretch',
 					}}>
 					<Box>
-						{/* Placeholder image source; replace with approved local partner photo. */}
 						<Box
 							component='img'
-							src='https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=1400&q=80'
-							alt='Local composting partner site with soil amendment piles'
+							src={foodScrapsProcessingPathwaysImage}
+							alt='Restaurant table setting with fries, dipping sauces, and a cocktail on white marble.'
 							sx={{
 								width: '100%',
 								aspectRatio: { xs: '16 / 10', md: '4 / 3' },
 								objectFit: 'cover',
+								objectPosition: 'center 55%',
 								borderRadius: RADIUS_CARD,
 								border: `1px solid ${LINE_SUBTLE}`,
 								boxShadow: SHADOW_IMAGE,
@@ -1193,30 +1194,8 @@ const CircularFoodSystems = () => {
 							BioGreen360 helps track materials through the process and supports reporting consistency,
 							while downstream handling and end uses may vary by property and partner.
 						</Typography>
-						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 2 }}>
+						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 0 }}>
 							Partner details and end-use examples can be added here once approved for publication.
-						</Typography>
-						<Box
-							sx={{
-								backgroundColor: MAVEN_WHITE,
-								border: `1px solid ${LINE_SUBTLE}`,
-								borderRadius: RADIUS_CARD,
-								px: { xs: 1.5, md: 2 },
-								py: { xs: 1.25, md: 1.5 },
-								mb: 1.4,
-							}}>
-							<Typography sx={{ fontSize: '13px', color: BODY_GRAY, lineHeight: 1.65 }}>
-								Partner details: available upon approval
-							</Typography>
-							<Typography sx={{ fontSize: '13px', color: BODY_GRAY, lineHeight: 1.65 }}>
-								Location: varies by local program setup
-							</Typography>
-							<Typography sx={{ fontSize: '13px', color: BODY_GRAY, lineHeight: 1.65 }}>
-								End-use examples: may vary by partner and approved pathway
-							</Typography>
-						</Box>
-						<Typography sx={{ fontSize: '14px', color: MUTED_GRAY, fontFamily: FONT_UI, letterSpacing: '0.02em' }}>
-							Partner details coming soon
 						</Typography>
 					</Box>
 				</Box>
