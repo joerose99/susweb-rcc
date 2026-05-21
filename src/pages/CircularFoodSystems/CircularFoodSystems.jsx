@@ -2,7 +2,6 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import PlaceIcon from '@mui/icons-material/Place';
 import ForestIcon from '@mui/icons-material/Forest';
 import GrassIcon from '@mui/icons-material/Grass';
@@ -13,6 +12,7 @@ import ElectricCarIcon from '@mui/icons-material/ElectricCar';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
+import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined';
 import poweredByBioGreen from '../../assets/PoweredByBioGreen.svg';
 import biogreenHowItWorksLogo from '../../assets/biogreen-how-it-works.png';
 import howItWorksFoodIcon from '../../assets/how-it-works-food.png';
@@ -139,9 +139,9 @@ const reportingTiles = [
 
 const equivalencyCards = [
 	{
-		icon: LocalGroceryStoreIcon,
+		icon: BackHandOutlinedIcon,
 		label: 'Monthly Equivalent',
-		value: '~2 elephants',
+		value: '~8 Maven Hands',
 	},
 	{
 		icon: GrassIcon,
