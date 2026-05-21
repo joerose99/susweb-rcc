@@ -225,7 +225,6 @@ const CircularFoodSystems = () => {
 
 	const {
 		eventsEnabled,
-		restaurantEnabled,
 		processingPathwayMode,
 		showEquivalencies,
 	} = siteConfig;
@@ -1585,75 +1584,11 @@ const CircularFoodSystems = () => {
 					}}>
 					Community Impact and Local Partnerships
 				</Typography>
-				<Typography sx={{ fontSize: '16px', color: MUTED_GRAY, mb: 3.5 }}>
-					Keeping impact local by supporting Boulder-focused programs, education, and long-term community
-					resilience.
+				<Typography sx={{ fontSize: '16px', color: MUTED_GRAY, mb: 0, maxWidth: 820, lineHeight: 1.8 }}>
+					Community impact at The Maven reflects thoughtful local partnerships and team engagement rooted in
+					hospitality, connection, and place. Additional community stories may be shared here as programs are
+					confirmed for publication.
 				</Typography>
-				<Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' }, gap: 2 }}>
-					{[
-						{
-							title: 'Soil Support for Local Nonprofit Partners',
-							copy: 'When available, a portion of program outputs may be provided to local partners for community soil and restoration projects, where operationally appropriate.',
-							image:
-								'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1400&q=80',
-							alt: 'Community members planting in a local garden focused on soil restoration.',
-						},
-						{
-							title: 'Supporting On-Site / Local Garden Programs',
-							copy: 'Where available, program outputs may contribute to on-site or local garden initiatives that connect guests and teams to circular hospitality.',
-							image:
-								'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80',
-							alt: 'Chef harvesting herbs from an on-site garden program.',
-						},
-					].map((story) => (
-						<Box
-							key={story.title}
-							sx={{
-								backgroundColor: MAVEN_WHITE,
-								border: `1px solid ${LINE_SUBTLE}`,
-								borderRadius: RADIUS_CARD,
-								p: 2.5,
-								minHeight: 236,
-								display: 'flex',
-								flexDirection: 'column',
-							}}>
-							<Box
-								component='img'
-								src={story.image}
-								alt={story.alt}
-								sx={{
-									width: '100%',
-									aspectRatio: '16 / 9',
-									objectFit: 'cover',
-									borderRadius: '8px',
-									mb: 1.5,
-									border: `1px solid ${LINE_SUBTLE}`,
-								}}
-							/>
-							<Typography component='h3' sx={{ fontSize: '24px', fontWeight: 500, letterSpacing: '-0.012em', mb: 1 }}>
-								{story.title}
-							</Typography>
-							<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.7 }}>{story.copy}</Typography>
-						</Box>
-					))}
-				</Box>
-				<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 1.25 }}>
-					Partner participation and allocation may vary by property and season.
-				</Typography>
-				<Box
-					sx={{
-						mt: 2,
-						backgroundColor: GREEN_SOFT,
-						borderRadius: RADIUS_CARD,
-						px: 2,
-						py: 1.5,
-						display: 'inline-flex',
-						border: `1px solid ${LINE_MUTED}`,
-					}}>
-					<Typography sx={{ fontSize: '14px', color: BODY_GRAY, fontFamily: FONT_UI, letterSpacing: '0.04em' }}>
-						Upcoming Community Engagement - Earth Day 2026
-					</Typography>
-				</Box>
 			</Box>
 
 			{/* Additional Sustainability Initiatives */}
@@ -1843,40 +1778,39 @@ const CircularFoodSystems = () => {
 							}}>
 							Book a Room
 						</Button>
-						{restaurantEnabled && (
-							/* TODO: wire real restaurant reservation URL when available (no placeholder) */
-							<Button
-								variant='outlined'
-								component='button'
-								type='button'
-								disableElevation
-								sx={{
-									px: { xs: 1.75, sm: 2.2 },
-									py: 0.7,
-									fontFamily: FONT_UI,
-									fontSize: '0.7rem',
-									fontWeight: 600,
-									letterSpacing: '0.1em',
-									textTransform: 'uppercase',
-									color: TEXT_DARK,
-									backgroundColor: 'rgba(255, 255, 255, 0.35)',
-									borderRadius: '999px',
-									borderColor: MAVEN_TAN,
-									borderWidth: '1px',
+						<Button
+							component='a'
+							href={MAVEN_EVENTS_INQUIRY_URL}
+							target='_blank'
+							rel='noopener noreferrer'
+							variant='outlined'
+							disableElevation
+							sx={{
+								px: { xs: 1.75, sm: 2.2 },
+								py: 0.7,
+								fontFamily: FONT_UI,
+								fontSize: '0.7rem',
+								fontWeight: 600,
+								letterSpacing: '0.1em',
+								textTransform: 'uppercase',
+								color: TEXT_DARK,
+								backgroundColor: 'rgba(255, 255, 255, 0.35)',
+								borderRadius: '999px',
+								borderColor: MAVEN_TAN,
+								borderWidth: '1px',
+								boxShadow: 'none',
+								'&:hover': {
+									backgroundColor: 'rgba(226, 205, 169, 0.22)',
+									borderColor: '#9c865c',
+									color: MAVEN_BLUE,
 									boxShadow: 'none',
-									'&:hover': {
-										backgroundColor: 'rgba(226, 205, 169, 0.22)',
-										borderColor: '#9c865c',
-										color: MAVEN_BLUE,
-										boxShadow: 'none',
-									},
-									'&:focus-visible': {
-										boxShadow: `0 0 0 2px ${BG_WARM}, 0 0 0 4px ${MAVEN_TAN}`,
-									},
-								}}>
-								Reserve a table
-							</Button>
-						)}
+								},
+								'&:focus-visible': {
+									boxShadow: `0 0 0 2px ${BG_WARM}, 0 0 0 4px ${MAVEN_TAN}`,
+								},
+							}}>
+							Plan an Event
+						</Button>
 					</Box>
 				</Box>
 			</Box>
