@@ -868,11 +868,12 @@ const CircularFoodSystems = () => {
 						<Box
 							component='img'
 							src={cornerstonePartnershipImage}
-							alt='Modern hotel suite interior with dining table, wet bar, and natural light.'
+							alt='Overhead view of colorful restaurant dishes, tacos, and beverages on a warm wood table.'
 							sx={{
 								width: '100%',
 								aspectRatio: '4 / 5',
 								objectFit: 'cover',
+								objectPosition: 'center 42%',
 								borderRadius: RADIUS_CARD,
 								border: `1px solid ${LINE_MUTED}`,
 								boxShadow: SHADOW_IMAGE,
@@ -916,10 +917,10 @@ const CircularFoodSystems = () => {
 										border: 'none',
 										background: 'transparent',
 										py: 1.5,
-										px: 1.25,
+										px: { xs: 1, md: 0.75 },
 										textAlign: 'center',
 										cursor: 'pointer',
-										fontSize: '11.5px',
+										fontSize: { xs: '10px', md: '10.5px' },
 										color: BODY_GRAY,
 										fontWeight: 500,
 										position: 'relative',
@@ -927,7 +928,9 @@ const CircularFoodSystems = () => {
 											index < 2 ? { xs: 'none', md: `1px solid ${LINE_MUTED}` } : 'none',
 										fontFamily: FONT_UI,
 										textTransform: 'uppercase',
-										letterSpacing: '0.08em',
+										letterSpacing: '0.055em',
+										lineHeight: 1.35,
+										whiteSpace: { xs: 'normal', md: 'nowrap' },
 										'&:hover': {
 											color: MAVEN_BLUE,
 											fontWeight: 600,
@@ -957,9 +960,10 @@ const CircularFoodSystems = () => {
 							sx={{
 								display: 'grid',
 								gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' },
-								gap: 2,
+								gap: { xs: 2, md: 2.5 },
+								alignItems: 'start',
 							}}>
-							<Box>
+							<Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
 								<Typography
 									component='h3'
 									sx={{
@@ -967,10 +971,18 @@ const CircularFoodSystems = () => {
 										fontWeight: 500,
 										lineHeight: 1.35,
 										mb: 0.75,
+										minHeight: { md: '3.05em' },
 									}}>
 									Hotel Operations
 								</Typography>
-								<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_GRAY }}>
+								<Box
+									component='ul'
+									sx={{
+										m: 0,
+										pl: 2.1,
+										color: BODY_GRAY,
+										listStylePosition: 'outside',
+									}}>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
 										Captures food scraps on-site as part of daily operations.
 									</Box>
@@ -982,7 +994,7 @@ const CircularFoodSystems = () => {
 									</Box>
 								</Box>
 							</Box>
-							<Box>
+							<Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
 								<Typography
 									component='h3'
 									sx={{
@@ -990,10 +1002,18 @@ const CircularFoodSystems = () => {
 										fontWeight: 500,
 										lineHeight: 1.35,
 										mb: 0.75,
+										minHeight: { md: '3.05em' },
 									}}>
 									BioGreen360
 								</Typography>
-								<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_GRAY }}>
+								<Box
+									component='ul'
+									sx={{
+										m: 0,
+										pl: 2.1,
+										color: BODY_GRAY,
+										listStylePosition: 'outside',
+									}}>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
 										Provides the measurement and reporting system used for this page.
 									</Box>
@@ -1005,7 +1025,7 @@ const CircularFoodSystems = () => {
 									</Box>
 								</Box>
 							</Box>
-							<Box>
+							<Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
 								<Typography
 									component='h3'
 									sx={{
@@ -1013,10 +1033,18 @@ const CircularFoodSystems = () => {
 										fontWeight: 500,
 										lineHeight: 1.35,
 										mb: 0.75,
+										minHeight: { md: '3.05em' },
 									}}>
 									Local Processing Partners
 								</Typography>
-								<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_GRAY }}>
+								<Box
+									component='ul'
+									sx={{
+										m: 0,
+										pl: 2.1,
+										color: BODY_GRAY,
+										listStylePosition: 'outside',
+									}}>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
 										Manage collected material through local processing pathways based on partner availability.
 									</Box>
