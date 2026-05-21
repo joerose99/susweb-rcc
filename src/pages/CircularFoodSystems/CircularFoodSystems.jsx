@@ -970,8 +970,10 @@ const CircularFoodSystems = () => {
 										fontSize: '22px',
 										fontWeight: 500,
 										lineHeight: 1.35,
+										letterSpacing: '-0.01em',
 										mb: 0.75,
 										minHeight: { md: '3.05em' },
+										whiteSpace: { md: 'nowrap' },
 									}}>
 									Hotel Operations
 								</Typography>
@@ -1001,8 +1003,10 @@ const CircularFoodSystems = () => {
 										fontSize: '22px',
 										fontWeight: 500,
 										lineHeight: 1.35,
+										letterSpacing: '-0.01em',
 										mb: 0.75,
 										minHeight: { md: '3.05em' },
+										whiteSpace: { md: 'nowrap' },
 									}}>
 									BioGreen360
 								</Typography>
@@ -1032,10 +1036,12 @@ const CircularFoodSystems = () => {
 										fontSize: '22px',
 										fontWeight: 500,
 										lineHeight: 1.35,
+										letterSpacing: '-0.01em',
 										mb: 0.75,
 										minHeight: { md: '3.05em' },
+										whiteSpace: { md: 'nowrap' },
 									}}>
-									Local Processing Partners
+									Local Partners
 								</Typography>
 								<Box
 									component='ul'
