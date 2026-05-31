@@ -281,7 +281,7 @@ const CircularFoodSystems = () => {
 					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
 				/>
 			),
-			label: 'Food scraps are captured on-site',
+			label: 'Food scraps are captured on\u2011site',
 		},
 		{
 			icon: (
@@ -1125,10 +1125,10 @@ const CircularFoodSystems = () => {
 									sx={{
 										display: { xs: 'none', md: 'flex' },
 										alignItems: 'center',
+										justifyContent: 'center',
 										flexShrink: 0,
 										px: 1.25,
-										alignSelf: 'center',
-										mt: -14,
+										height: { md: 128 },
 									}}>
 									<ArrowForwardIcon sx={{ color: GREEN_PRIMARY, fontSize: 34 }} />
 								</Box>
