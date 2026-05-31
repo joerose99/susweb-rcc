@@ -577,11 +577,9 @@ const CircularFoodSystems = () => {
 
 				<Box
 					sx={{
-						width: { xs: '100%', md: `min(${CONTENT_MAX}px, calc(100% + 64px))` },
-						maxWidth: CONTENT_MAX,
+						width: '100%',
+						maxWidth: 1024,
 						mx: 'auto',
-						ml: { xs: 'auto', md: -4 },
-						mr: { xs: 'auto', md: -4 },
 						mt: { xs: 4, md: 5.5 },
 						mb: 0,
 						lineHeight: 0,
@@ -593,7 +591,7 @@ const CircularFoodSystems = () => {
 						sx={{
 							width: '100%',
 							height: 'auto',
-							aspectRatio: '1024 / 731',
+							aspectRatio: '1024 / 727',
 							borderRadius: RADIUS_CARD,
 							display: 'block',
 							boxShadow: SHADOW_IMAGE,
