@@ -1245,10 +1245,11 @@ const CircularFoodSystems = () => {
 						gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' },
 						gap: 2,
 					}}>
-					{reportingTiles.map((tile) => (
+					{reportingTiles.map((tile, idx) => (
 						<Box
 							key={tile.title}
 							sx={{
+								order: { xs: idx * 2, md: 0 },
 								backgroundColor: MAVEN_WHITE,
 								border: '1px solid',
 								borderColor: 'rgba(57, 79, 113, 0.18)',
@@ -1294,12 +1295,14 @@ const CircularFoodSystems = () => {
 							</Box>
 						</Box>
 					))}
-					{equivalencyCardsToRender.map((card) => {
+					{equivalencyCardsToRender.map((card, idx) => {
 						const Icon = card.icon;
+						const isMavenHands = card.value.includes('Maven Hands');
 						return (
 							<Box
 								key={card.value}
 								sx={{
+									order: { xs: idx * 2 + 1, md: 0 },
 									backgroundColor: MAVEN_WHITE,
 									border: '1px solid',
 									borderColor: 'rgba(57, 79, 113, 0.18)',
@@ -1325,10 +1328,23 @@ const CircularFoodSystems = () => {
 										fontWeight: 500,
 										letterSpacing: '-0.015em',
 										lineHeight: 1.25,
-										mb: 1.5,
+										mb: isMavenHands ? 0.75 : 1.5,
 									}}>
 									{card.value}
 								</Typography>
+								{isMavenHands && (
+									<Typography
+										sx={{
+											fontSize: '12px',
+											color: MUTED_GRAY,
+											lineHeight: 1.5,
+											mb: 1.5,
+											maxWidth: 240,
+											mx: 'auto',
+										}}>
+										Each Maven Hand sculpture weighs approximately 500 lbs.
+									</Typography>
+								)}
 								<Icon
 									sx={{
 										fontSize: { xs: 56, md: 64 },
