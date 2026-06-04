@@ -13,6 +13,7 @@ import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
 import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined';
+import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
 import poweredByBioGreen from '../../assets/PoweredByBioGreen.svg';
 import biogreenHowItWorksLogo from '../../assets/biogreen-how-it-works.png';
 import howItWorksFoodIcon from '../../assets/how-it-works-food.png';
@@ -166,7 +167,7 @@ const reportingTiles = [
 	{
 		title: 'Weekly Soil Amendment Generated',
 		value: '3+ cubic yards per week',
-		equivalency: 'Annual coverage: ~50 football fields (estimate)',
+		equivalency: 'Annual coverage: ~32 Red Rocks Amphitheaters (estimate)',
 	},
 	{
 		title: 'All-Time Climate Impact (CO₂e)',
@@ -180,11 +181,13 @@ const equivalencyCards = [
 		icon: BackHandOutlinedIcon,
 		label: 'Monthly Equivalent',
 		value: '~8 Maven Hands',
+		note: 'Each Maven Hand sculpture weighs approximately 500 lbs.',
 	},
 	{
-		icon: GrassIcon,
+		icon: TheaterComedyIcon,
 		label: 'Annual Coverage',
-		value: '~50 football fields',
+		value: '~32 Red Rocks Amphitheaters',
+		note: 'Red Rocks Amphitheatre is approximately 90,000 sq ft.',
 	},
 	{
 		icon: PlaceIcon,
@@ -1380,7 +1383,7 @@ const CircularFoodSystems = () => {
 					))}
 					{equivalencyCardsToRender.map((card, idx) => {
 						const Icon = card.icon;
-						const isMavenHands = card.value.includes('Maven Hands');
+						const isAnnualCoverage = card.label === 'Annual Coverage';
 						return (
 							<Box
 								key={card.value}
@@ -1407,15 +1410,26 @@ const CircularFoodSystems = () => {
 									component='h3'
 									className='lsir-card-value'
 									sx={{
-										fontSize: { xs: '28px', md: '32px' },
+										fontSize: isAnnualCoverage
+											? { xs: '22px', md: '26px' }
+											: { xs: '28px', md: '32px' },
 										fontWeight: 500,
 										letterSpacing: '-0.015em',
 										lineHeight: 1.25,
-										mb: isMavenHands ? 0.75 : 1.5,
+										mb: card.note ? 0.75 : 1.5,
 									}}>
-									{card.value}
+									{isAnnualCoverage ? (
+										<>
+											~32{' '}
+											<Box component='span' sx={{ whiteSpace: 'nowrap' }}>
+												Red Rocks Amphitheaters
+											</Box>
+										</>
+									) : (
+										card.value
+									)}
 								</Typography>
-								{isMavenHands && (
+								{card.note && (
 									<Typography
 										sx={{
 											fontSize: '12px',
@@ -1425,7 +1439,7 @@ const CircularFoodSystems = () => {
 											maxWidth: 240,
 											mx: 'auto',
 										}}>
-										Each Maven Hand sculpture weighs approximately 500 lbs.
+										{card.note}
 									</Typography>
 								)}
 								<Icon
