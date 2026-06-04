@@ -1259,18 +1259,23 @@ const CircularFoodSystems = () => {
 								lineHeight: 1.3,
 								mb: 1.5,
 							}}>
-							From Food Scraps to Local Processing Pathways
+							From Food Scraps to{' '}
+							<Box component='span' sx={{ whiteSpace: 'nowrap' }}>
+								Local Soil Product
+							</Box>
 						</Typography>
 						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
-							Food scraps captured at the property are managed through local processing pathways based on
-							partner availability, site logistics, and approved program operations.
+							Food scraps captured at The Maven are managed in partnership with BioGreen360 through local
+							processing pathways with Compost Colorado, a local logistics provider and composter.
 						</Typography>
 						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
-							<BioGreenLink /> helps track materials through the process and supports reporting consistency,
-							while downstream handling and end uses may vary by property and partner.
+							Compost Colorado uses in-vessel composting to help accelerate material breakdown and convert
+							food scraps into usable soil product.
 						</Typography>
 						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 0 }}>
-							Partner details and end-use examples can be added here once approved for publication.
+							BioGreen360 works with The Maven and Compost Colorado to help identify the highest and best
+							use for the finished soil product, with the goal of keeping the impact local, returning
+							carbon to Colorado soil, and supporting future food growth where possible.
 						</Typography>
 					</Box>
 				</Box>
