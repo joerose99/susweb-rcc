@@ -25,6 +25,7 @@ import foodScrapsProcessingPathwaysImage from '../../assets/food-scraps-processi
 import communityMavenMuralImage from '../../assets/community-maven-mural.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
+	BIOGREEN360_URL,
 	MAVEN_EVENTS_INQUIRY_URL,
 	MAVEN_RESERVATIONS_URL,
 	MAVEN_SALES_MAILTO,
@@ -35,8 +36,7 @@ const MAVEN_BLUE = '#394F71';
 const MAVEN_TAN = '#AF986E';
 const MAVEN_TEXT = '#2B2320';
 const MAVEN_WHITE = '#FFFFFF';
-const FONT_DISPLAY = '"Sorts Mill Goudy", "Goudy Old Style", Georgia, serif';
-const FONT_UI = '"Roboto Condensed", "Helvetica Neue", Arial, sans-serif';
+const FONT_HEADER = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 const FONT_BODY = '"Inter", sans-serif';
 
 const GREEN_PRIMARY = MAVEN_BLUE;
@@ -56,6 +56,42 @@ const SHADOW_IMAGE = '0 16px 40px rgba(57, 79, 113, 0.09)';
 const LINE_SUBTLE = 'rgba(57, 79, 113, 0.12)';
 const LINE_MUTED = 'rgba(57, 79, 113, 0.1)';
 const CONTENT_MAX = 1320;
+
+const BIOGREEN_LINK_SX = {
+	color: 'inherit',
+	textDecoration: 'none',
+	cursor: 'pointer',
+	transition: 'color 160ms ease, text-decoration-color 160ms ease',
+	'&:hover': {
+		color: MAVEN_BLUE,
+		textDecoration: 'underline',
+		textDecorationColor: 'rgba(57, 79, 113, 0.5)',
+		textUnderlineOffset: '2px',
+	},
+	'&:focus-visible': { outline: `2px solid ${MAVEN_TAN}`, outlineOffset: '2px', borderRadius: '2px' },
+};
+
+const BioGreenLink = () => (
+	<Box
+		component='a'
+		href={BIOGREEN360_URL}
+		target='_blank'
+		rel='noopener noreferrer'
+		sx={BIOGREEN_LINK_SX}>
+		BioGreen360
+	</Box>
+);
+
+const renderWithBioGreenLink = (text) => {
+	const parts = String(text).split('BioGreen360');
+	return parts.map((part, index) => (
+		<React.Fragment key={index}>
+			{part}
+			{index < parts.length - 1 && <BioGreenLink />}
+		</React.Fragment>
+	));
+};
+
 const siteConfig = {
 	eventsEnabled: true,
 	restaurantEnabled: true,
@@ -288,11 +324,24 @@ const CircularFoodSystems = () => {
 		{
 			icon: (
 				<Box
-					component='img'
-					src={biogreenHowItWorksLogo}
-					alt='Measured and tracked in the BioGreen360 system'
-					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
-				/>
+					component='a'
+					href={BIOGREEN360_URL}
+					target='_blank'
+					rel='noopener noreferrer'
+					aria-label='BioGreen360 — visit website'
+					sx={{
+						display: 'inline-flex',
+						lineHeight: 0,
+						borderRadius: '4px',
+						'&:focus-visible': { outline: `2px solid ${MAVEN_TAN}`, outlineOffset: '3px' },
+					}}>
+					<Box
+						component='img'
+						src={biogreenHowItWorksLogo}
+						alt='Measured and tracked in the BioGreen360 system'
+						sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+					/>
+				</Box>
 			),
 			label: 'Measured and tracked in the BioGreen360 system',
 		},
@@ -337,11 +386,24 @@ const CircularFoodSystems = () => {
 		{
 			icon: (
 				<Box
-					component='img'
-					src={biogreenHowItWorksLogo}
-					alt='Tracking & Reporting'
-					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
-				/>
+					component='a'
+					href={BIOGREEN360_URL}
+					target='_blank'
+					rel='noopener noreferrer'
+					aria-label='BioGreen360 — visit website'
+					sx={{
+						display: 'inline-flex',
+						lineHeight: 0,
+						borderRadius: '4px',
+						'&:focus-visible': { outline: `2px solid ${MAVEN_TAN}`, outlineOffset: '3px' },
+					}}>
+					<Box
+						component='img'
+						src={biogreenHowItWorksLogo}
+						alt='Tracking & Reporting'
+						sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+					/>
+				</Box>
 			),
 			title: 'Tracking & Reporting',
 			description:
@@ -414,25 +476,25 @@ const CircularFoodSystems = () => {
 				fontFamily: FONT_BODY,
 				lineHeight: 1.72,
 				'& h1': {
-					fontFamily: FONT_DISPLAY,
+					fontFamily: FONT_HEADER,
 					letterSpacing: '-0.02em',
 					fontWeight: 400,
 					color: HEADING_COLOR,
 				},
 				'& h2': {
-					fontFamily: FONT_DISPLAY,
+					fontFamily: FONT_HEADER,
 					letterSpacing: '-0.015em',
 					fontWeight: 400,
 					color: HEADING_COLOR,
 				},
 				'& h3': {
-					fontFamily: FONT_BODY,
+					fontFamily: FONT_HEADER,
 					letterSpacing: '-0.012em',
 					fontWeight: 500,
 					color: HEADING_COLOR,
 				},
 				'& .micro-label': {
-					fontFamily: FONT_UI,
+					fontFamily: FONT_HEADER,
 					fontSize: '11px',
 					letterSpacing: '0.14em',
 					textTransform: 'uppercase',
@@ -443,7 +505,7 @@ const CircularFoodSystems = () => {
 					display: 'inline-flex',
 					alignItems: 'center',
 					gap: '0.3em',
-					fontFamily: FONT_UI,
+					fontFamily: FONT_HEADER,
 					fontWeight: 500,
 					color: MAVEN_BLUE,
 					textDecoration: 'none',
@@ -497,7 +559,7 @@ const CircularFoodSystems = () => {
 					},
 				},
 				'& .MuiButton-root': {
-					fontFamily: FONT_UI,
+					fontFamily: FONT_HEADER,
 					borderRadius: '999px',
 					textTransform: 'uppercase',
 					letterSpacing: '0.1em',
@@ -549,7 +611,7 @@ const CircularFoodSystems = () => {
 					<Typography
 						component='h1'
 						sx={{
-							fontFamily: FONT_DISPLAY,
+							fontFamily: FONT_HEADER,
 							fontSize: { xs: '2.3rem', sm: '3.1rem', md: '56px' },
 							fontWeight: 400,
 							letterSpacing: '-0.02em',
@@ -633,7 +695,7 @@ const CircularFoodSystems = () => {
 								className='lux-link lux-link--internal'>
 								Live reporting data
 							</Box>{' '}
-							is pulled from BioGreen360&apos;s reporting system.
+							is pulled from <BioGreenLink />&apos;s reporting system.
 						</Box>
 						<Box component='li'>
 							Food scraps captured on-site are managed through local processing pathways based on property
@@ -728,7 +790,7 @@ const CircularFoodSystems = () => {
 								{card.title}
 							</Typography>
 							<Typography sx={{ fontSize: '14px', color: BODY_GRAY, lineHeight: 1.65 }}>
-								{card.body}
+								{renderWithBioGreenLink(card.body)}
 							</Typography>
 						</Box>
 					))}
@@ -764,7 +826,7 @@ const CircularFoodSystems = () => {
 					<Typography className='micro-label'>{`Last Updated: ${lastUpdatedLabel}`}</Typography>
 				</Box>
 				<Typography sx={{ fontSize: '15px', lineHeight: 1.7, color: MUTED_GRAY, mb: 2 }}>
-					Property-level sustainability reporting based on data captured through BioGreen360&apos;s reporting
+					Property-level sustainability reporting based on data captured through <BioGreenLink />&apos;s reporting
 					system.
 				</Typography>
 				<Box
@@ -833,9 +895,22 @@ const CircularFoodSystems = () => {
 
 				<Box sx={{ textAlign: 'center', mt: 2.25 }}>
 					<Typography className='micro-label' sx={{ mb: 0.5 }}>
-						Reporting powered by BioGreen360
+						Reporting powered by <BioGreenLink />
 					</Typography>
-					<Box component='img' src={poweredByBioGreen} alt='BioGreen360' sx={{ height: 26 }} />
+					<Box
+						component='a'
+						href={BIOGREEN360_URL}
+						target='_blank'
+						rel='noopener noreferrer'
+						aria-label='BioGreen360 — visit website'
+						sx={{
+							display: 'inline-flex',
+							lineHeight: 0,
+							borderRadius: '4px',
+							'&:focus-visible': { outline: `2px solid ${MAVEN_TAN}`, outlineOffset: '3px' },
+						}}>
+						<Box component='img' src={poweredByBioGreen} alt='BioGreen360' sx={{ height: 26 }} />
+					</Box>
 				</Box>
 
 				<Box sx={{ textAlign: 'center', mt: 1.5 }}>
@@ -889,7 +964,7 @@ const CircularFoodSystems = () => {
 								lineHeight: 1.25,
 								mb: 1.5,
 							}}>
-							A Cornerstone Partnership with BioGreen360
+							A Cornerstone Partnership with <BioGreenLink />
 						</Typography>
 						<Typography sx={{ fontSize: '16px', color: MUTED_GRAY, maxWidth: 740, mb: 1.5 }}>
 							A practical collaboration that helps The Maven capture food scraps on-site, track property-level
@@ -926,7 +1001,7 @@ const CircularFoodSystems = () => {
 										position: 'relative',
 										borderRight:
 											index < 2 ? { xs: 'none', md: `1px solid ${LINE_MUTED}` } : 'none',
-										fontFamily: FONT_UI,
+										fontFamily: FONT_HEADER,
 										textTransform: 'uppercase',
 										letterSpacing: '0.055em',
 										lineHeight: 1.35,
@@ -1008,7 +1083,7 @@ const CircularFoodSystems = () => {
 										minHeight: { md: '3.05em' },
 										whiteSpace: { md: 'nowrap' },
 									}}>
-									BioGreen360
+									<BioGreenLink />
 								</Typography>
 								<Box
 									component='ul'
@@ -1119,7 +1194,7 @@ const CircularFoodSystems = () => {
 									{step.icon}
 								</Box>
 								<Typography sx={{ fontSize: '15px', lineHeight: 1.65, color: BODY_GRAY, maxWidth: 210, mx: 'auto' }}>
-									{step.label}
+									{renderWithBioGreenLink(step.label)}
 								</Typography>
 							</Box>
 							{index < 3 && (
@@ -1138,7 +1213,7 @@ const CircularFoodSystems = () => {
 						</React.Fragment>
 					))}
 				</Box>
-				<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, textAlign: 'center', mt: 1.5, fontFamily: FONT_UI }}>
+				<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, textAlign: 'center', mt: 1.5, fontFamily: FONT_HEADER }}>
 					Processing pathways vary by property. See scope notes in{' '}
 					<Box component='a' href='#methodology' className='lux-link' sx={{ fontSize: 'inherit' }}>
 						Methodology
@@ -1190,7 +1265,7 @@ const CircularFoodSystems = () => {
 							partner availability, site logistics, and approved program operations.
 						</Typography>
 						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
-							BioGreen360 helps track materials through the process and supports reporting consistency,
+							<BioGreenLink /> helps track materials through the process and supports reporting consistency,
 							while downstream handling and end uses may vary by property and partner.
 						</Typography>
 						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 0 }}>
@@ -1229,7 +1304,7 @@ const CircularFoodSystems = () => {
 						mb: 1.5,
 					}}>
 					<Typography sx={{ fontSize: '14px', color: MUTED_GRAY }}>
-						Live reporting data is provided through BioGreen360&apos;s reporting system.
+						Live reporting data is provided through <BioGreenLink />&apos;s reporting system.
 					</Typography>
 					<Box
 						component='a'
@@ -1397,7 +1472,7 @@ const CircularFoodSystems = () => {
 							scheduling, and operational availability.
 						</Typography>
 						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8 }}>
-							Food scraps captured from participating events are tracked through BioGreen360&apos;s
+							Food scraps captured from participating events are tracked through <BioGreenLink />&apos;s
 							reporting system and diverted through a local composting partner based on property
 							operations and partner availability. After the event, your team may receive a concise summary
 							with diversion totals, scope notes, and illustrative equivalencies for context.
@@ -1492,7 +1567,7 @@ const CircularFoodSystems = () => {
 												textAlign: 'center',
 												maxWidth: 310,
 											}}>
-											{step.description}
+											{renderWithBioGreenLink(step.description)}
 										</Typography>
 									</Box>
 									{idx < 2 && (
@@ -1558,7 +1633,7 @@ const CircularFoodSystems = () => {
 						sx={{
 							px: { xs: 3.25, md: 4.5 },
 							py: { xs: 1.45, md: 1.6 },
-							fontFamily: FONT_UI,
+							fontFamily: FONT_HEADER,
 							fontSize: { xs: '0.82rem', md: '0.9rem' },
 							fontWeight: 600,
 							letterSpacing: '0.1em',
@@ -1623,7 +1698,7 @@ const CircularFoodSystems = () => {
 							sx={{
 								px: { xs: 2.75, md: 3.25 },
 								py: 1.1,
-								fontFamily: FONT_UI,
+								fontFamily: FONT_HEADER,
 								fontSize: '0.78rem',
 								fontWeight: 600,
 								letterSpacing: '0.1em',
@@ -1734,7 +1809,7 @@ const CircularFoodSystems = () => {
 						sx={{
 							px: { xs: 1.75, sm: 2.2 },
 							py: 0.7,
-							fontFamily: FONT_UI,
+							fontFamily: FONT_HEADER,
 							fontSize: '0.7rem',
 							fontWeight: 600,
 							letterSpacing: '0.1em',
@@ -1808,8 +1883,23 @@ const CircularFoodSystems = () => {
 					</Box>
 
 					<Box sx={{ mb: 2.5 }}>
-						<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mb: 0.5 }}>Sustainability reporting powered by BioGreen360</Typography>
-						<Box component='img' src={poweredByBioGreen} alt='BioGreen360' sx={{ height: 28 }} />
+						<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mb: 0.5 }}>
+							Sustainability reporting powered by <BioGreenLink />
+						</Typography>
+						<Box
+							component='a'
+							href={BIOGREEN360_URL}
+							target='_blank'
+							rel='noopener noreferrer'
+							aria-label='BioGreen360 — visit website'
+							sx={{
+								display: 'inline-flex',
+								lineHeight: 0,
+								borderRadius: '4px',
+								'&:focus-visible': { outline: `2px solid ${MAVEN_TAN}`, outlineOffset: '3px' },
+							}}>
+							<Box component='img' src={poweredByBioGreen} alt='BioGreen360' sx={{ height: 28 }} />
+						</Box>
 					</Box>
 
 					<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mb: 2.5 }}>
@@ -1828,7 +1918,7 @@ const CircularFoodSystems = () => {
 							sx={{
 								px: { xs: 1.75, sm: 2.2 },
 								py: 0.7,
-								fontFamily: FONT_UI,
+								fontFamily: FONT_HEADER,
 								fontSize: '0.7rem',
 								fontWeight: 600,
 								letterSpacing: '0.1em',
@@ -1859,7 +1949,7 @@ const CircularFoodSystems = () => {
 							sx={{
 								px: { xs: 1.75, sm: 2.2 },
 								py: 0.7,
-								fontFamily: FONT_UI,
+								fontFamily: FONT_HEADER,
 								fontSize: '0.7rem',
 								fontWeight: 600,
 								letterSpacing: '0.1em',

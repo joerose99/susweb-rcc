@@ -12,7 +12,7 @@ const MAVEN_BLUE = '#394F71';
 const MAVEN_TAN = '#AF986E';
 const MAVEN_DARK = '#2B2320';
 const HEADER_BG = '#FFFCF9';
-const FONT_CONDENSED = '"Roboto Condensed", "Helvetica Neue", Arial, sans-serif';
+const FONT_HEADER = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 
 const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven Hotel' }) => {
 	const handleAnchorClick = (event, href) => {
@@ -123,7 +123,7 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 							href={item.href}
 							onClick={(event) => handleAnchorClick(event, item.href)}
 							sx={{
-								fontFamily: FONT_CONDENSED,
+								fontFamily: FONT_HEADER,
 								fontSize: '11.5px',
 								letterSpacing: '0.14em',
 								textTransform: 'uppercase',
@@ -170,7 +170,7 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 						sx={{
 							px: { xs: 1.75, sm: 2.2 },
 							py: 0.7,
-							fontFamily: FONT_CONDENSED,
+							fontFamily: FONT_HEADER,
 							fontSize: '0.7rem',
 							fontWeight: 600,
 							letterSpacing: '0.1em',
@@ -201,7 +201,7 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 						sx={{
 							px: { xs: 1.75, sm: 2.2 },
 							py: 0.7,
-							fontFamily: FONT_CONDENSED,
+							fontFamily: FONT_HEADER,
 							fontSize: '0.7rem',
 							fontWeight: 600,
 							letterSpacing: '0.1em',

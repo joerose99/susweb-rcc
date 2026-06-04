@@ -16,3 +16,5 @@ export const MAVEN_SALES_MAILTO = 'mailto:sales@themavenhotel.com';
 export const MAVEN_FRONT_DESK_MAILTO = 'mailto:FrontDesk@themavenhotel.com';
 
 export const MAVEN_GENERAL_PHONE_TEL = 'tel:7204602727';
+
+export const BIOGREEN360_URL = 'https://biogreen360.com/';
