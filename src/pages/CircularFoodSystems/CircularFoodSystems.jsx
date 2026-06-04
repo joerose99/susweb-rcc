@@ -1127,13 +1127,14 @@ const CircularFoodSystems = () => {
 										listStylePosition: 'outside',
 									}}>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
-										Manage collected material through local processing pathways based on partner availability.
+										Compost Colorado supports local collection logistics and composting.
 									</Box>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
-										Processing pathways vary by property equipment, logistics, and approved local options.
+										Their in-vessel process helps convert food scraps into usable soil product.
 									</Box>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7 }}>
-										End uses may vary by season, partner capacity, and program availability.
+										Together, BioGreen360, Compost Colorado, and The Maven help keep the finished soil
+										product in the local community where possible.
 									</Box>
 								</Box>
 							</Box>
