@@ -1268,17 +1268,21 @@ const CircularFoodSystems = () => {
 							</Box>
 						</Typography>
 						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
-							Food scraps captured at The Maven are managed in partnership with BioGreen360 through local
-							processing pathways with Compost Colorado, a local logistics provider and composter.
+							Food scraps captured at The Maven are managed in partnership with BioGreen360 through Compost
+							Colorado, a local logistics provider and composter serving the greater Denver area.
 						</Typography>
 						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
-							Compost Colorado uses in-vessel composting to help accelerate material breakdown and convert
-							food scraps into usable soil product.
+							Compost Colorado uses in-vessel composting technology to accelerate material breakdown, helping
+							reduce the time, land, and water intensity typically associated with conventional composting.
+						</Typography>
+						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
+							Their inputs are sourced locally, and the finished soil product is redistributed back into the
+							local area. A portion of that soil is donated to support community needs, while additional
+							material is purchased by nearby businesses and residents for local use.
 						</Typography>
 						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 0 }}>
-							BioGreen360 works with The Maven and Compost Colorado to help identify the highest and best
-							use for the finished soil product, with the goal of keeping the impact local, returning
-							carbon to Colorado soil, and supporting future food growth where possible.
+							Together, The Maven, BioGreen360, and Compost Colorado help keep nutrients in the local soil
+							system and demonstrate a more circular approach to hospitality and environmental stewardship.
 						</Typography>
 					</Box>
 				</Box>
