@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import PlaceIcon from '@mui/icons-material/Place';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import ForestIcon from '@mui/icons-material/Forest';
 import GrassIcon from '@mui/icons-material/Grass';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
@@ -158,41 +158,26 @@ const impactMetrics = [
 	},
 ];
 
-const reportingTiles = [
-	{
-		title: 'Weekly Food Scrap Diversion',
-		value: '1,000+ lbs per week',
-		equivalency: 'Comparable monthly weight: ~2 elephants',
-	},
-	{
-		title: 'Weekly Soil Amendment Generated',
-		value: '3+ cubic yards per week',
-		equivalency: 'Annual coverage: ~32 Red Rocks Amphitheaters (estimate)',
-	},
-	{
-		title: 'All-Time Climate Impact (CO₂e)',
-		value: '89,000 miles of driving',
-		equivalency: 'Comparable to Boston ↔ LA ~10x (estimate)',
-	},
-];
-
 const equivalencyCards = [
 	{
 		icon: BackHandOutlinedIcon,
-		label: 'Monthly Equivalent',
+		label: 'All-Time Food Scrap Diversion',
 		value: '~8 Maven Hands',
-		note: 'Each Maven Hand sculpture weighs approximately 500 lbs.',
+		note: 'The Maven Hand Sculpture hanging in the Dairy Block Lobby weighs approximately 500 lbs.',
 	},
 	{
 		icon: TheaterComedyIcon,
-		label: 'Annual Coverage',
+		label: 'All-Time Soil Coverage',
 		value: '~32 Red Rocks Amphitheaters',
 		note: 'Red Rocks Amphitheatre is approximately 90,000 sq ft.',
+		compactValue: true,
 	},
 	{
-		icon: PlaceIcon,
-		label: 'Comparable Distance',
-		value: 'Boston ↔ LA ~10×',
+		icon: DirectionsCarIcon,
+		label: 'All-Time Carbon Diversion',
+		valueLine1: 'Driving DEN ↔ The Maven',
+		valueLine2: '~# times',
+		splitValue: true,
 	},
 ];
 
@@ -946,7 +931,7 @@ const CircularFoodSystems = () => {
 						<Box
 							component='img'
 							src={cornerstonePartnershipImage}
-							alt='Overhead view of colorful restaurant dishes, tacos, and beverages on a warm wood table.'
+							alt='Overhead view of gourmet dishes and cocktails arranged on a peach terrazzo table.'
 							sx={{
 								width: '100%',
 								aspectRatio: '4 / 5',
@@ -1333,66 +1318,16 @@ const CircularFoodSystems = () => {
 					sx={{
 						display: 'grid',
 						gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' },
-						gap: 2,
+						gap: { xs: 2, md: 2.5 },
 					}}>
-					{reportingTiles.map((tile, idx) => (
-						<Box
-							key={tile.title}
-							sx={{
-								order: { xs: idx * 2, md: 0 },
-								backgroundColor: MAVEN_WHITE,
-								border: '1px solid',
-								borderColor: 'rgba(57, 79, 113, 0.18)',
-								borderRadius: RADIUS_CARD,
-								p: { xs: 2.5, md: 3 },
-								minHeight: 220,
-								display: 'flex',
-								flexDirection: 'column',
-								justifyContent: 'center',
-								textAlign: 'center',
-								boxShadow: SHADOW_CARD,
-							}}>
-							<Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 1.25 }}>
-								<Typography
-									className='micro-label lsir-card-title'
-									sx={{ mb: 0 }}>
-									{tile.title}
-								</Typography>
-								{tile.title === 'All-Time Climate Impact (CO₂e)' && (
-									<Typography
-										sx={{
-											fontSize: '11px',
-											letterSpacing: '0.09em',
-											textTransform: 'uppercase',
-											color: MUTED_GRAY,
-											mb: 0.85,
-										}}>
-										Illustrative equivalency
-									</Typography>
-								)}
-								<Typography
-									component='h3'
-									className='lsir-card-value'
-									sx={{
-										fontSize: { xs: '28px', md: '32px' },
-										fontWeight: 500,
-										letterSpacing: '-0.015em',
-										lineHeight: 1.25,
-										mb: 0,
-									}}>
-									{tile.value}
-								</Typography>
-							</Box>
-						</Box>
-					))}
-					{equivalencyCardsToRender.map((card, idx) => {
+					{equivalencyCardsToRender.map((card) => {
 						const Icon = card.icon;
-						const isAnnualCoverage = card.label === 'Annual Coverage';
+						const isSoilCoverage = card.label === 'All-Time Soil Coverage';
+						const isCarbonDiversion = card.splitValue;
 						return (
 							<Box
-								key={card.value}
+								key={card.label}
 								sx={{
-									order: { xs: idx * 2 + 1, md: 0 },
 									backgroundColor: MAVEN_WHITE,
 									border: '1px solid',
 									borderColor: 'rgba(57, 79, 113, 0.18)',
@@ -1414,7 +1349,7 @@ const CircularFoodSystems = () => {
 									component='h3'
 									className='lsir-card-value'
 									sx={{
-										fontSize: isAnnualCoverage
+										fontSize: card.compactValue
 											? { xs: '22px', md: '26px' }
 											: { xs: '28px', md: '32px' },
 										fontWeight: 500,
@@ -1422,7 +1357,18 @@ const CircularFoodSystems = () => {
 										lineHeight: 1.25,
 										mb: card.note ? 0.75 : 1.5,
 									}}>
-									{isAnnualCoverage ? (
+									{isCarbonDiversion ? (
+										<>
+											<Box
+												component='span'
+												sx={{ display: 'block', whiteSpace: { xs: 'normal', md: 'nowrap' } }}>
+												{card.valueLine1}
+											</Box>
+											<Box component='span' sx={{ display: 'block' }}>
+												{card.valueLine2}
+											</Box>
+										</>
+									) : isSoilCoverage ? (
 										<>
 											~32{' '}
 											<Box component='span' sx={{ whiteSpace: 'nowrap' }}>
@@ -1440,7 +1386,7 @@ const CircularFoodSystems = () => {
 											color: MUTED_GRAY,
 											lineHeight: 1.5,
 											mb: 1.5,
-											maxWidth: 240,
+											maxWidth: card.label === 'All-Time Food Scrap Diversion' ? 300 : 280,
 											mx: 'auto',
 										}}>
 										{card.note}
