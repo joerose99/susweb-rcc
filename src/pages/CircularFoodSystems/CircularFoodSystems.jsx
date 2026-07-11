@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -57,6 +57,8 @@ const SHADOW_IMAGE = '0 16px 40px rgba(57, 79, 113, 0.09)';
 const LINE_SUBTLE = 'rgba(57, 79, 113, 0.12)';
 const LINE_MUTED = 'rgba(57, 79, 113, 0.1)';
 const CONTENT_MAX = 1320;
+const ORG_STATS_API_URL =
+	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=68ade9d21f5a91dafbb3f64e';
 
 const BIOGREEN_LINK_SX = {
 	color: 'inherit',
@@ -69,7 +71,11 @@ const BIOGREEN_LINK_SX = {
 		textDecorationColor: 'rgba(57, 79, 113, 0.5)',
 		textUnderlineOffset: '2px',
 	},
-	'&:focus-visible': { outline: `2px solid ${MAVEN_TAN}`, outlineOffset: '2px', borderRadius: '2px' },
+	'&:focus-visible': {
+		outline: `2px solid ${MAVEN_TAN}`,
+		outlineOffset: '2px',
+		borderRadius: '2px',
+	},
 };
 
 const BioGreenLink = () => (
@@ -140,43 +146,111 @@ const sectionBandAltSx = {
 	},
 };
 
-const impactMetrics = [
+const MISSING_METRIC_VALUE = '-';
+
+// BioGreen360 compost & carbon methodology (Compost and Carbon Calculations.docx)
+const LBS_PER_SHORT_TON = 2000;
+const FINISHED_COMPOST_FACTOR = 0.6;
+const COMPOST_LBS_PER_CUBIC_YARD = 1200;
+const COMPOST_COVERAGE_SQ_FT_PER_CY_AT_1IN = 324;
+const RED_ROCKS_SQ_FT = 90000;
+const AVOIDED_MTCO2E_PER_SHORT_TON = 0.65;
+const EPA_MTCO2E_PER_PASSENGER_VEHICLE_MILE = 0.000393;
+const EPA_MTCO2E_PER_TREE_SEEDLING_10YR = 0.06;
+const MAVEN_HAND_LBS = 500;
+const DEN_TO_MAVEN_ONE_WAY_MILES = 22.4;
+
+const parsePoundsFed = (value) => {
+	if (value == null || value === '') {
+		return null;
+	}
+
+	const parsed = Number(value);
+	return Number.isFinite(parsed) ? parsed : null;
+};
+
+const getShortTons = (poundsFed) => poundsFed / LBS_PER_SHORT_TON;
+const getFinishedCompostLbs = (poundsFed) => poundsFed * FINISHED_COMPOST_FACTOR;
+const getAvoidedMtco2e = (poundsFed) => getShortTons(poundsFed) * AVOIDED_MTCO2E_PER_SHORT_TON;
+const getCompostCoverageSqFt = (poundsFed) => {
+	const cubicYards = getFinishedCompostLbs(poundsFed) / COMPOST_LBS_PER_CUBIC_YARD;
+	return cubicYards * COMPOST_COVERAGE_SQ_FT_PER_CY_AT_1IN;
+};
+const getRedRocksEquivalency = (poundsFed) => getCompostCoverageSqFt(poundsFed) / RED_ROCKS_SQ_FT;
+const getDenMavenRoundTrips = (poundsFed) => {
+	const vehicleMiles = getAvoidedMtco2e(poundsFed) / EPA_MTCO2E_PER_PASSENGER_VEHICLE_MILE;
+	return vehicleMiles / (DEN_TO_MAVEN_ONE_WAY_MILES * 2);
+};
+const getTreeSeedlingEquivalency = (poundsFed) =>
+	getAvoidedMtco2e(poundsFed) / EPA_MTCO2E_PER_TREE_SEEDLING_10YR;
+
+const formatApproxCount = (value) => {
+	if (value >= 10) {
+		return `~${Math.round(value)}`;
+	}
+
+	if (value >= 1) {
+		return `~${value.toFixed(1)}`;
+	}
+
+	return `~${value.toFixed(2)}`;
+};
+
+const buildImpactMetrics = (poundsFed) => [
 	{
 		eyebrow: 'Food scraps diverted',
-		value: '500 tons',
+		value:
+			poundsFed != null
+				? `${getShortTons(poundsFed).toFixed(1)} tons`
+				: MISSING_METRIC_VALUE,
 		note: 'measured from captured on-site inputs',
 	},
 	{
 		eyebrow: 'Soil amendment generated (estimate)',
-		value: '3200+',
+		value:
+			poundsFed != null
+				? `${(getFinishedCompostLbs(poundsFed) / LBS_PER_SHORT_TON).toFixed(1)} tons`
+				: MISSING_METRIC_VALUE,
 		note: 'estimated using standard conversion factors',
 	},
 	{
 		eyebrow: 'Climate equivalency',
-		value: '250 trees',
+		value:
+			poundsFed != null
+				? `${formatApproxCount(getTreeSeedlingEquivalency(poundsFed))} trees`
+				: MISSING_METRIC_VALUE,
 		note: 'illustrative context only',
 	},
 ];
 
-const equivalencyCards = [
+const buildEquivalencyCards = (poundsFed) => [
 	{
 		icon: BackHandOutlinedIcon,
 		label: 'All-Time Food Scrap Diversion',
-		value: '~8 Maven Hands',
+		value:
+			poundsFed != null
+				? formatApproxCount(poundsFed / MAVEN_HAND_LBS) + ' Maven Hands'
+				: MISSING_METRIC_VALUE,
 		note: 'The Maven Hand Sculpture hanging in the Dairy Block Lobby weighs approximately 500 lbs.',
 	},
 	{
 		icon: TheaterComedyIcon,
 		label: 'All-Time Soil Coverage',
-		value: '~32 Red Rocks Amphitheaters',
-		note: 'Red Rocks Amphitheatre is approximately 90,000 sq ft.',
+		value:
+			poundsFed != null
+				? `${formatApproxCount(getRedRocksEquivalency(poundsFed))} Red Rocks Amphitheaters`
+				: MISSING_METRIC_VALUE,
+		note: 'Red Rocks Amphitheatre is approximately 90,000 sq ft. Coverage is estimated at a 1-inch application depth.',
 		compactValue: true,
 	},
 	{
 		icon: DirectionsCarIcon,
 		label: 'All-Time Carbon Diversion',
 		valueLine1: 'Driving DEN ↔ The Maven',
-		valueLine2: '~# times',
+		valueLine2:
+			poundsFed != null
+				? `${formatApproxCount(getDenMavenRoundTrips(poundsFed))} times`
+				: MISSING_METRIC_VALUE,
 		splitValue: true,
 	},
 ];
@@ -212,7 +286,8 @@ const initiatives = [
 	},
 	{
 		title: 'More Initiatives Coming Soon',
-		description: 'We\u2019re continually expanding our sustainability efforts. Check back soon to see what we\u2019re up to next.',
+		description:
+			'We\u2019re continually expanding our sustainability efforts. Check back soon to see what we\u2019re up to next.',
 		icon: HourglassEmptyIcon,
 	},
 ];
@@ -242,6 +317,42 @@ const formatLastSync = (lastSyncValue) => {
 };
 
 const CircularFoodSystems = () => {
+	const [poundsFed, setPoundsFed] = useState(null);
+	const [statLastUpdate, setStatLastUpdate] = useState(null);
+
+	// This useEffect is where we call the API Endpointto get the data
+	useEffect(() => {
+		let cancelled = false;
+
+		const loadOrgStats = async () => {
+			try {
+				const response = await fetch(ORG_STATS_API_URL);
+				if (!response.ok) {
+					return;
+				}
+
+				const data = await response.json();
+				if (!cancelled) {
+					const parsedPoundsFed = parsePoundsFed(data?.poundsFed);
+					if (parsedPoundsFed != null) {
+						setPoundsFed(parsedPoundsFed);
+					}
+				}
+				if (!cancelled && data?.statLastUpdate != null) {
+					setStatLastUpdate(data.statLastUpdate);
+				}
+			} catch {
+				// Metrics display '-' until data is available.
+			}
+		};
+
+		loadOrgStats();
+
+		return () => {
+			cancelled = true;
+		};
+	}, []);
+
 	const scrollToSection = (sectionId) => {
 		const target = document.getElementById(sectionId);
 		if (target) {
@@ -249,11 +360,7 @@ const CircularFoodSystems = () => {
 		}
 	};
 
-	const {
-		eventsEnabled,
-		processingPathwayMode,
-		showEquivalencies,
-	} = siteConfig;
+	const { eventsEnabled, processingPathwayMode, showEquivalencies } = siteConfig;
 
 	const processingCopyByMode = {
 		onsite: {
@@ -288,8 +395,7 @@ const CircularFoodSystems = () => {
 		},
 	};
 
-	const processingCopy =
-		processingCopyByMode[processingPathwayMode] ?? processingCopyByMode.mixed;
+	const processingCopy = processingCopyByMode[processingPathwayMode] ?? processingCopyByMode.mixed;
 
 	const cornerstoneOverviewLinks = [
 		{ label: processingCopy.overviewLabel, target: 'how-it-works' },
@@ -419,10 +525,15 @@ const CircularFoodSystems = () => {
 		'Post-event documentation suitable for internal sharing',
 	];
 
+	const impactMetrics = buildImpactMetrics(poundsFed);
+	const equivalencyCards = buildEquivalencyCards(poundsFed);
 	const equivalencyCardsToRender = showEquivalencies ? equivalencyCards : [];
-	const equivalencyDisclaimer = 'Equivalencies are provided for context and are not audited carbon claims.';
+	const equivalencyDisclaimer =
+		'Equivalencies are provided for context and are not audited carbon claims.';
 	const formattedLastSync = formatLastSync(siteConfig.lastSync);
 	const lastUpdatedLabel = formattedLastSync ?? 'Last sync: unavailable';
+	const formattedStatLastUpdate = formatLastSync(statLastUpdate);
+	const lastUpdatedDisplay = formattedStatLastUpdate ?? lastUpdatedLabel;
 	const quickAnswersCards = [
 		{
 			title: 'What happens to food scraps?',
@@ -553,7 +664,8 @@ const CircularFoodSystems = () => {
 					letterSpacing: '0.1em',
 					fontWeight: 600,
 					boxShadow: 'none',
-					transition: 'transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease, border-color 200ms ease',
+					transition:
+						'transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease, border-color 200ms ease',
 					'&.MuiButton-contained': {
 						backgroundColor: MAVEN_BLUE,
 						color: MAVEN_WHITE,
@@ -615,12 +727,19 @@ const CircularFoodSystems = () => {
 							color: BODY_GRAY,
 							mb: 0,
 						}}>
-						At The Maven, we believe great stays should leave a lasting impression—on you, not the
-						planet—through thoughtful, local choices rooted in community and character. From partnering
-						with neighborhood makers to reducing waste behind the scenes, we&apos;re committed to doing
-						better together. Stay Bold. Stay Curious. Stay Thoughtful.
+						At The Maven, we believe great stays should leave a lasting impression—on you, not
+						the planet—through thoughtful, local choices rooted in community and character.
+						From partnering with neighborhood makers to reducing waste behind the scenes,
+						we&apos;re committed to doing better together. Stay Bold. Stay Curious. Stay
+						Thoughtful.
 					</Typography>
-					<Box sx={{ textAlign: 'center', maxWidth: 860, mx: 'auto', mt: { xs: 2.25, md: 2.5 } }}>
+					<Box
+						sx={{
+							textAlign: 'center',
+							maxWidth: 860,
+							mx: 'auto',
+							mt: { xs: 2.25, md: 2.5 },
+						}}>
 						<Typography className='micro-label' sx={{ mb: 0, lineHeight: 1.65 }}>
 							PROPERTY-LEVEL DATA • METHODOLOGY AVAILABLE • EVENT REPORTING BY REQUEST
 						</Typography>
@@ -683,15 +802,16 @@ const CircularFoodSystems = () => {
 								className='lux-link lux-link--internal'>
 								Live reporting data
 							</Box>{' '}
-							is pulled from <BioGreenLink />&apos;s reporting system.
+							is pulled from <BioGreenLink />
+							&apos;s reporting system.
 						</Box>
 						<Box component='li'>
-							Food scraps captured on-site are managed through local processing pathways based on property
-							operations and partner availability.
+							Food scraps captured on-site are managed through local processing pathways
+							based on property operations and partner availability.
 						</Box>
 						<Box component='li'>
-							Qualifying events may request impact reporting, subject to availability and operational
-							capacity.{' '}
+							Qualifying events may request impact reporting, subject to availability and
+							operational capacity.{' '}
 							<Box
 								component='a'
 								href={MAVEN_EVENTS_INQUIRY_URL}
@@ -746,7 +866,8 @@ const CircularFoodSystems = () => {
 								justifyContent: 'space-between',
 								minHeight: { xs: 140, md: 152 },
 								cursor: 'pointer',
-								transition: 'transform 200ms ease, border-color 200ms ease, outline-color 200ms ease',
+								transition:
+									'transform 200ms ease, border-color 200ms ease, outline-color 200ms ease',
 								outline: '2px solid transparent',
 								outlineOffset: '0px',
 								'&:hover': {
@@ -811,11 +932,12 @@ const CircularFoodSystems = () => {
 						}}>
 						Our Impact:
 					</Typography>
-					<Typography className='micro-label'>{`Last Updated: ${lastUpdatedLabel}`}</Typography>
+					<Typography className='micro-label'>{`Last Updated: ${lastUpdatedDisplay}`}</Typography>
 				</Box>
 				<Typography sx={{ fontSize: '15px', lineHeight: 1.7, color: MUTED_GRAY, mb: 2 }}>
-					Property-level sustainability reporting based on data captured through <BioGreenLink />&apos;s reporting
-					system.
+					Property-level sustainability reporting based on data captured through{' '}
+					<BioGreenLink />
+					&apos;s reporting system.
 				</Typography>
 				<Box
 					sx={{
@@ -846,7 +968,8 @@ const CircularFoodSystems = () => {
 								px: { xs: 0, sm: 3 },
 								py: 1.5,
 								textAlign: 'center',
-								borderRight: idx < 2 ? { xs: 'none', md: `1px solid ${LINE_SUBTLE}` } : 'none',
+								borderRight:
+									idx < 2 ? { xs: 'none', md: `1px solid ${LINE_SUBTLE}` } : 'none',
 							}}>
 							<Typography className='micro-label' sx={{ mb: 0.75, display: 'block' }}>
 								{metric.eyebrow}
@@ -863,8 +986,12 @@ const CircularFoodSystems = () => {
 								{idx === 0 && (
 									<DinnerDiningIcon sx={{ fontSize: 40, color: '#394F71' }} aria-hidden />
 								)}
-								{idx === 1 && <GrassIcon sx={{ fontSize: 40, color: '#394F71' }} aria-hidden />}
-								{idx === 2 && <ForestIcon sx={{ fontSize: 40, color: '#394F71' }} aria-hidden />}
+								{idx === 1 && (
+									<GrassIcon sx={{ fontSize: 40, color: '#394F71' }} aria-hidden />
+								)}
+								{idx === 2 && (
+									<ForestIcon sx={{ fontSize: 40, color: '#394F71' }} aria-hidden />
+								)}
 							</Box>
 							<Typography
 								sx={{
@@ -876,7 +1003,9 @@ const CircularFoodSystems = () => {
 								}}>
 								{metric.value}
 							</Typography>
-							<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 1 }}>{metric.note}</Typography>
+							<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 1 }}>
+								{metric.note}
+							</Typography>
 						</Box>
 					))}
 				</Box>
@@ -897,7 +1026,12 @@ const CircularFoodSystems = () => {
 							borderRadius: '4px',
 							'&:focus-visible': { outline: `2px solid ${MAVEN_TAN}`, outlineOffset: '3px' },
 						}}>
-						<Box component='img' src={poweredByBioGreen} alt='BioGreen360' sx={{ height: 26 }} />
+						<Box
+							component='img'
+							src={poweredByBioGreen}
+							alt='BioGreen360'
+							sx={{ height: 26 }}
+						/>
 					</Box>
 				</Box>
 
@@ -955,8 +1089,9 @@ const CircularFoodSystems = () => {
 							A Cornerstone Partnership with <BioGreenLink />
 						</Typography>
 						<Typography sx={{ fontSize: '16px', color: MUTED_GRAY, maxWidth: 740, mb: 1.5 }}>
-							A practical collaboration that helps The Maven capture food scraps on-site, track property-level
-							reporting, and share clear sustainability information with guests and planners.
+							A practical collaboration that helps The Maven capture food scraps on-site,
+							track property-level reporting, and share clear sustainability information with
+							guests and planners.
 						</Typography>
 						<Typography className='micro-label' sx={{ mb: 1.25 }}>
 							At a Glance
@@ -1052,10 +1187,12 @@ const CircularFoodSystems = () => {
 										Captures food scraps on-site as part of daily operations.
 									</Box>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
-										Supports collection practices that fit guest, kitchen, and staff workflows.
+										Supports collection practices that fit guest, kitchen, and staff
+										workflows.
 									</Box>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7 }}>
-										Coordinates program participation based on property logistics and event activity.
+										Coordinates program participation based on property logistics and
+										event activity.
 									</Box>
 								</Box>
 							</Box>
@@ -1088,7 +1225,8 @@ const CircularFoodSystems = () => {
 										Supports program setup, tracking, and reporting consistency.
 									</Box>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7 }}>
-										Helps organize definitions and scope notes so reporting is easier to understand.
+										Helps organize definitions and scope notes so reporting is easier to
+										understand.
 									</Box>
 								</Box>
 							</Box>
@@ -1118,11 +1256,12 @@ const CircularFoodSystems = () => {
 										Compost Colorado supports local collection logistics and composting.
 									</Box>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
-										Their in-vessel process helps convert food scraps into usable soil product.
+										Their in-vessel process helps convert food scraps into usable soil
+										product.
 									</Box>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7 }}>
-										Together, BioGreen360, Compost Colorado, and The Maven help keep the finished soil
-										product in the local community where possible.
+										Together, BioGreen360, Compost Colorado, and The Maven help keep the
+										finished soil product in the local community where possible.
 									</Box>
 								</Box>
 							</Box>
@@ -1136,7 +1275,11 @@ const CircularFoodSystems = () => {
 			<Box
 				id='how-it-works'
 				className='section section--alt'
-				sx={{ ...sectionContainerSx, ...sectionBandAltSx, scrollMarginTop: { xs: '80px', md: '96px' } }}>
+				sx={{
+					...sectionContainerSx,
+					...sectionBandAltSx,
+					scrollMarginTop: { xs: '80px', md: '96px' },
+				}}>
 				<Typography
 					component='h2'
 					sx={{
@@ -1182,7 +1325,14 @@ const CircularFoodSystems = () => {
 									}}>
 									{step.icon}
 								</Box>
-								<Typography sx={{ fontSize: '15px', lineHeight: 1.65, color: BODY_GRAY, maxWidth: 210, mx: 'auto' }}>
+								<Typography
+									sx={{
+										fontSize: '15px',
+										lineHeight: 1.65,
+										color: BODY_GRAY,
+										maxWidth: 210,
+										mx: 'auto',
+									}}>
 									{renderWithBioGreenLink(step.label)}
 								</Typography>
 							</Box>
@@ -1202,9 +1352,20 @@ const CircularFoodSystems = () => {
 						</React.Fragment>
 					))}
 				</Box>
-				<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, textAlign: 'center', mt: 1.5, fontFamily: FONT_HEADER }}>
+				<Typography
+					sx={{
+						fontSize: '12px',
+						color: MUTED_GRAY,
+						textAlign: 'center',
+						mt: 1.5,
+						fontFamily: FONT_HEADER,
+					}}>
 					Processing pathways vary by property. See scope notes in{' '}
-					<Box component='a' href='#methodology' className='lux-link' sx={{ fontSize: 'inherit' }}>
+					<Box
+						component='a'
+						href='#methodology'
+						className='lux-link'
+						sx={{ fontSize: 'inherit' }}>
 						Methodology
 					</Box>
 					.
@@ -1252,22 +1413,29 @@ const CircularFoodSystems = () => {
 								Local Soil Product
 							</Box>
 						</Typography>
-						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
-							Food scraps captured at The Maven are managed in partnership with BioGreen360 through Compost
-							Colorado, a local logistics provider and composter serving the greater Denver area.
+						<Typography
+							sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
+							Food scraps captured at The Maven are managed in partnership with BioGreen360
+							through Compost Colorado, a local logistics provider and composter serving the
+							greater Denver area.
 						</Typography>
-						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
-							Compost Colorado uses in-vessel composting technology to accelerate material breakdown, helping
-							reduce the time, land, and water intensity typically associated with conventional composting.
+						<Typography
+							sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
+							Compost Colorado uses in-vessel composting technology to accelerate material
+							breakdown, helping reduce the time, land, and water intensity typically
+							associated with conventional composting.
 						</Typography>
-						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
-							Their inputs are sourced locally, and the finished soil product is redistributed back into the
-							local area. A portion of that soil is donated to support community needs, while additional
-							material is purchased by nearby businesses and residents for local use.
+						<Typography
+							sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
+							Their inputs are sourced locally, and the finished soil product is
+							redistributed back into the local area. A portion of that soil is donated to
+							support community needs, while additional material is purchased by nearby
+							businesses and residents for local use.
 						</Typography>
 						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 0 }}>
-							Together, The Maven, BioGreen360, and Compost Colorado help keep nutrients in the local soil
-							system and demonstrate a more circular approach to hospitality and environmental stewardship.
+							Together, The Maven, BioGreen360, and Compost Colorado help keep nutrients in
+							the local soil system and demonstrate a more circular approach to hospitality
+							and environmental stewardship.
 						</Typography>
 					</Box>
 				</Box>
@@ -1302,7 +1470,8 @@ const CircularFoodSystems = () => {
 						mb: 1.5,
 					}}>
 					<Typography sx={{ fontSize: '14px', color: MUTED_GRAY }}>
-						Live reporting data is provided through <BioGreenLink />&apos;s reporting system.
+						Live reporting data is provided through <BioGreenLink />
+						&apos;s reporting system.
 					</Typography>
 					<Box
 						component='a'
@@ -1322,7 +1491,6 @@ const CircularFoodSystems = () => {
 					}}>
 					{equivalencyCardsToRender.map((card) => {
 						const Icon = card.icon;
-						const isSoilCoverage = card.label === 'All-Time Soil Coverage';
 						const isCarbonDiversion = card.splitValue;
 						return (
 							<Box
@@ -1342,7 +1510,14 @@ const CircularFoodSystems = () => {
 								<Typography className='micro-label lsir-card-title' sx={{ mb: 1.25 }}>
 									{card.label}
 								</Typography>
-								<Typography sx={{ fontSize: '11px', letterSpacing: '0.09em', textTransform: 'uppercase', color: MUTED_GRAY, mb: 0.85 }}>
+								<Typography
+									sx={{
+										fontSize: '11px',
+										letterSpacing: '0.09em',
+										textTransform: 'uppercase',
+										color: MUTED_GRAY,
+										mb: 0.85,
+									}}>
 									Illustrative equivalency
 								</Typography>
 								<Typography
@@ -1366,13 +1541,6 @@ const CircularFoodSystems = () => {
 											</Box>
 											<Box component='span' sx={{ display: 'block' }}>
 												{card.valueLine2}
-											</Box>
-										</>
-									) : isSoilCoverage ? (
-										<>
-											~32{' '}
-											<Box component='span' sx={{ whiteSpace: 'nowrap' }}>
-												Red Rocks Amphitheaters
 											</Box>
 										</>
 									) : (
@@ -1414,7 +1582,11 @@ const CircularFoodSystems = () => {
 			<Box
 				id='events'
 				className='section section--alt'
-				sx={{ ...sectionContainerSx, ...sectionBandAltSx, scrollMarginTop: { xs: '80px', md: '96px' } }}>
+				sx={{
+					...sectionContainerSx,
+					...sectionBandAltSx,
+					scrollMarginTop: { xs: '80px', md: '96px' },
+				}}>
 				<Box
 					sx={{
 						display: 'grid',
@@ -1433,19 +1605,33 @@ const CircularFoodSystems = () => {
 							}}>
 							Event Impact Reporting
 						</Typography>
-						<Box sx={{ width: 84, height: '2px', backgroundColor: HEADING_ACCENT, mb: 1.5 }} />
-						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8, mb: 1 }}>
-							Qualifying meetings, weddings, and gatherings at The Maven may request food-waste tracking and a
-							post-event impact recap as part of an experience designed with creativity, connection, and conscious
-							hospitality in mind. Rooted in community and inspired by thoughtful gathering, this optional initiative
-							allows events to leave a meaningful impact beyond the final toast. Participation is based on event scope,
-							scheduling, and operational availability.
+						<Box
+							sx={{ width: 84, height: '2px', backgroundColor: HEADING_ACCENT, mb: 1.5 }}
+						/>
+						<Typography
+							sx={{
+								fontSize: '16px',
+								fontWeight: 400,
+								color: BODY_GRAY,
+								lineHeight: 1.8,
+								mb: 1,
+							}}>
+							Qualifying meetings, weddings, and gatherings at The Maven may request
+							food-waste tracking and a post-event impact recap as part of an experience
+							designed with creativity, connection, and conscious hospitality in mind. Rooted
+							in community and inspired by thoughtful gathering, this optional initiative
+							allows events to leave a meaningful impact beyond the final toast.
+							Participation is based on event scope, scheduling, and operational
+							availability.
 						</Typography>
-						<Typography sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8 }}>
-							Food scraps captured from participating events are tracked through <BioGreenLink />&apos;s
-							reporting system and diverted through a local composting partner based on property
-							operations and partner availability. After the event, your team may receive a concise summary
-							with diversion totals, scope notes, and illustrative equivalencies for context.
+						<Typography
+							sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8 }}>
+							Food scraps captured from participating events are tracked through{' '}
+							<BioGreenLink />
+							&apos;s reporting system and diverted through a local composting partner based
+							on property operations and partner availability. After the event, your team may
+							receive a concise summary with diversion totals, scope notes, and illustrative
+							equivalencies for context.
 						</Typography>
 					</Box>
 
@@ -1504,15 +1690,15 @@ const CircularFoodSystems = () => {
 										}}>
 										<Box
 											sx={{
-											width: { xs: 116, md: 128 },
-											height: { xs: 116, md: 128 },
+												width: { xs: 116, md: 128 },
+												height: { xs: 116, md: 128 },
 												borderRadius: '50%',
-											border: `1px solid rgba(57, 79, 113, 0.2)`,
-											backgroundColor: 'transparent',
+												border: `1px solid rgba(57, 79, 113, 0.2)`,
+												backgroundColor: 'transparent',
 												display: 'flex',
 												alignItems: 'center',
 												justifyContent: 'center',
-											mb: 2.5,
+												mb: 2.5,
 											}}>
 											{step.icon}
 										</Box>
@@ -1579,7 +1765,10 @@ const CircularFoodSystems = () => {
 						</Typography>
 						<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_GRAY }}>
 							{eventPlannerDeliverables.map((item) => (
-								<Box component='li' key={item} sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.45 }}>
+								<Box
+									component='li'
+									key={item}
+									sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.45 }}>
 									{item}
 								</Box>
 							))}
@@ -1653,10 +1842,17 @@ const CircularFoodSystems = () => {
 							}}>
 							Community Impact and Local Partnerships
 						</Typography>
-						<Typography sx={{ fontSize: '16px', color: MUTED_GRAY, mb: 2.5, maxWidth: 620, lineHeight: 1.8 }}>
-							Community impact at The Maven reflects thoughtful local partnerships and team engagement rooted in
-							hospitality, connection, and place. Additional community stories may be shared here as programs are
-							confirmed for publication.
+						<Typography
+							sx={{
+								fontSize: '16px',
+								color: MUTED_GRAY,
+								mb: 2.5,
+								maxWidth: 620,
+								lineHeight: 1.8,
+							}}>
+							Community impact at The Maven reflects thoughtful local partnerships and team
+							engagement rooted in hospitality, connection, and place. Additional community
+							stories may be shared here as programs are confirmed for publication.
 						</Typography>
 						<Button
 							component='a'
@@ -1729,7 +1925,11 @@ const CircularFoodSystems = () => {
 				<Box
 					sx={{
 						display: 'grid',
-						gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', lg: 'repeat(3, minmax(0, 1fr))' },
+						gridTemplateColumns: {
+							xs: '1fr',
+							sm: 'repeat(2, minmax(0, 1fr))',
+							lg: 'repeat(3, minmax(0, 1fr))',
+						},
 						gap: 2,
 					}}>
 					{initiatives.map((initiative, idx) => {
@@ -1743,7 +1943,7 @@ const CircularFoodSystems = () => {
 								sx={{
 									backgroundColor: isBaseTile ? 'var(--bg-base)' : 'var(--bg-alt)',
 									borderRadius: RADIUS_CARD,
-								border: `1px solid ${LINE_MUTED}`,
+									border: `1px solid ${LINE_MUTED}`,
 									p: 2.25,
 									minHeight: 206,
 									display: 'flex',
@@ -1754,7 +1954,9 @@ const CircularFoodSystems = () => {
 									gap: 0.7,
 								}}>
 								<Icon sx={{ color: GREEN_BORDER, fontSize: 38 }} />
-								<Typography component='h3' sx={{ fontSize: '17px', fontWeight: 600, mb: 0 }}>
+								<Typography
+									component='h3'
+									sx={{ fontSize: '17px', fontWeight: 600, mb: 0 }}>
 									{initiative.title}
 								</Typography>
 								<Typography
@@ -1824,25 +2026,49 @@ const CircularFoodSystems = () => {
 						}}>
 						Methodology and Reporting
 					</Typography>
-					<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.8, maxWidth: 1040, mb: 1.25 }}>
-						These metrics combine measured on-site inputs with standard conversion factors. Definitions and
-						scope notes are provided for clarity.
+					<Typography
+						sx={{
+							fontSize: '15px',
+							color: BODY_GRAY,
+							lineHeight: 1.8,
+							maxWidth: 1040,
+							mb: 1.25,
+						}}>
+						These metrics combine measured on-site inputs with standard conversion factors.
+						Definitions and scope notes are provided for clarity.
 					</Typography>
-					<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.8, maxWidth: 1040, mb: 1.25 }}>
-						Metrics combine measured on-site inputs with standard conversion factors to estimate diversion,
-						soil output, and climate equivalencies.
+					<Typography
+						sx={{
+							fontSize: '15px',
+							color: BODY_GRAY,
+							lineHeight: 1.8,
+							maxWidth: 1040,
+							mb: 1.25,
+						}}>
+						Metrics combine measured on-site inputs with standard conversion factors to
+						estimate diversion, soil output, and climate equivalencies.
 					</Typography>
-					<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.8, maxWidth: 1040, mb: 2 }}>
-						Where possible, values reflect property-level activity. Equivalencies are directional and provided
-						for context-not audited carbon claims.
+					<Typography
+						sx={{
+							fontSize: '15px',
+							color: BODY_GRAY,
+							lineHeight: 1.8,
+							maxWidth: 1040,
+							mb: 2,
+						}}>
+						Where possible, values reflect property-level activity. Equivalencies are
+						directional and provided for context-not audited carbon claims.
 					</Typography>
 
-					<Typography component='h3' sx={{ fontSize: '24px', fontWeight: 500, letterSpacing: '-0.012em', mb: 1 }}>
+					<Typography
+						component='h3'
+						sx={{ fontSize: '24px', fontWeight: 500, letterSpacing: '-0.012em', mb: 1 }}>
 						How to Read These Metrics
 					</Typography>
 					<Box component='ul' sx={{ m: 0, pl: 2.25, color: BODY_GRAY, mb: 2 }}>
 						<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.8 }}>
-							Food scrap diversion is based on measured on-site capture and processing volumes.
+							Food scrap diversion is based on measured on-site capture and processing
+							volumes.
 						</Box>
 						<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.8 }}>
 							Soil amendment output is estimated using operating conversion assumptions.
@@ -1866,15 +2092,23 @@ const CircularFoodSystems = () => {
 								display: 'inline-flex',
 								lineHeight: 0,
 								borderRadius: '4px',
-								'&:focus-visible': { outline: `2px solid ${MAVEN_TAN}`, outlineOffset: '3px' },
+								'&:focus-visible': {
+									outline: `2px solid ${MAVEN_TAN}`,
+									outlineOffset: '3px',
+								},
 							}}>
-							<Box component='img' src={poweredByBioGreen} alt='BioGreen360' sx={{ height: 28 }} />
+							<Box
+								component='img'
+								src={poweredByBioGreen}
+								alt='BioGreen360'
+								sx={{ height: 28 }}
+							/>
 						</Box>
 					</Box>
 
 					<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mb: 2.5 }}>
-						Reported sustainability metrics are estimates based on measured inputs and standardized conversion
-						factors; actual impacts may vary.
+						Reported sustainability metrics are estimates based on measured inputs and
+						standardized conversion factors; actual impacts may vary.
 					</Typography>
 
 					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5, alignItems: 'center' }}>
