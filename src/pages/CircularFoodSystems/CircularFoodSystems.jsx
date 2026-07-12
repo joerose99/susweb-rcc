@@ -58,7 +58,7 @@ const LINE_SUBTLE = 'rgba(57, 79, 113, 0.12)';
 const LINE_MUTED = 'rgba(57, 79, 113, 0.1)';
 const CONTENT_MAX = 1320;
 const ORG_STATS_API_URL =
-	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=68ade9d21f5a91dafbb3f64e';
+	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f786a8c64cf4f5945895';
 
 const BIOGREEN_LINK_SX = {
 	color: 'inherit',
@@ -200,9 +200,7 @@ const buildImpactMetrics = (poundsFed) => [
 	{
 		eyebrow: 'Food scraps diverted',
 		value:
-			poundsFed != null
-				? `${getShortTons(poundsFed).toFixed(1)} tons`
-				: MISSING_METRIC_VALUE,
+			poundsFed != null ? `${getShortTons(poundsFed).toFixed(1)} tons` : MISSING_METRIC_VALUE,
 		note: 'measured from captured on-site inputs',
 	},
 	{
@@ -1536,7 +1534,10 @@ const CircularFoodSystems = () => {
 										<>
 											<Box
 												component='span'
-												sx={{ display: 'block', whiteSpace: { xs: 'normal', md: 'nowrap' } }}>
+												sx={{
+													display: 'block',
+													whiteSpace: { xs: 'normal', md: 'nowrap' },
+												}}>
 												{card.valueLine1}
 											</Box>
 											<Box component='span' sx={{ display: 'block' }}>
@@ -1554,7 +1555,8 @@ const CircularFoodSystems = () => {
 											color: MUTED_GRAY,
 											lineHeight: 1.5,
 											mb: 1.5,
-											maxWidth: card.label === 'All-Time Food Scrap Diversion' ? 300 : 280,
+											maxWidth:
+												card.label === 'All-Time Food Scrap Diversion' ? 300 : 280,
 											mx: 'auto',
 										}}>
 										{card.note}
