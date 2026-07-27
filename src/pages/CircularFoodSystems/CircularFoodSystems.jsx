@@ -22,7 +22,6 @@ import howItWorksFoodIcon from '../../assets/how-it-works-food.png';
 import howItWorksSproutIcon from '../../assets/how-it-works-sprout.png';
 import howItWorksReportIcon from '../../assets/how-it-works-report.png';
 import eventsMavenMeetingSpaceImage from '../../assets/events-maven-meeting-space.png';
-import foodScrapsProcessingPathwaysImage from '../../assets/food-scraps-processing-pathways.png';
 import heroServe360Image from '../../assets/hero-serve360.png';
 import biogreen360PartnershipImage from '../../assets/biogreen360-partnership.png';
 import StickyHeader from '../../components/StickyHeader';
@@ -55,6 +54,7 @@ import {
 	TYPE,
 	WARM_WHITE,
 	cardEmphasizedSx,
+	mediaPlaceholderSx,
 	pageThemeSx,
 	sectionBandAltSx,
 	sectionBandBaseSx,
@@ -459,63 +459,93 @@ const CircularFoodSystems = () => {
 		},
 	];
 
+	// Process icons ship with a baked-in off-white square (#F4F2EF). Match circle fill exactly.
+	const PROCESS_CIRCLE_FILL = '#F4F2EF';
+
 	const primaryProcessingSteps = [
 		{
+			title: 'Food Scraps Are Captured',
+			description:
+				'Participating food scraps from hotel kitchens, banquets, and other food-service operations are collected for processing.',
 			icon: (
 				<Box
 					component='img'
 					src={howItWorksFoodIcon}
-					alt='Food scraps are captured on-site'
-					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+					alt=''
+					aria-hidden='true'
+					sx={{
+						height: 56,
+						width: 'auto',
+						maxWidth: 72,
+						objectFit: 'contain',
+						display: 'block',
+						backgroundColor: 'transparent',
+					}}
 				/>
 			),
-			label: 'Food scraps are captured on\u2011site',
 		},
 		{
-			icon: (
-				<Box
-					component='a'
-					href={BIOGREEN360_URL}
-					target='_blank'
-					rel='noopener noreferrer'
-					aria-label='BioGreen360 — visit website'
-					sx={{
-						display: 'inline-flex',
-						lineHeight: 0,
-						borderRadius: '4px',
-						'&:focus-visible': { outline: `2px solid ${BRAND_RED}`, outlineOffset: '3px' },
-					}}>
-					<Box
-						component='img'
-						src={biogreenHowItWorksLogo}
-						alt='Measured and tracked in the BioGreen360 system'
-						sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
-					/>
-				</Box>
-			),
-			label: 'Measured and tracked in the BioGreen360 system',
-		},
-		{
+			title: 'Processed On Property',
+			description:
+				'Captured material is processed through Bethesda North Marriott’s waterless, closed-loop BioGreen360 equipment.',
 			icon: (
 				<Box
 					component='img'
-					src={howItWorksSproutIcon}
-					alt='Managed through local processing pathways'
-					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+					src={biogreenHowItWorksLogo}
+					alt=''
+					aria-hidden='true'
+					sx={{
+						height: 56,
+						width: 'auto',
+						maxWidth: 72,
+						objectFit: 'contain',
+						display: 'block',
+						backgroundColor: 'transparent',
+					}}
 				/>
 			),
-			label: 'Managed through local processing pathways',
 		},
 		{
+			title: 'Measured and Reported',
+			description:
+				'Program data is recorded through BioGreen360’s reporting platform to support property-level visibility and impact reporting.',
 			icon: (
 				<Box
 					component='img'
 					src={howItWorksReportIcon}
-					alt='Transparent reporting shared with stakeholders'
-					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+					alt=''
+					aria-hidden='true'
+					sx={{
+						height: 56,
+						width: 'auto',
+						maxWidth: 72,
+						objectFit: 'contain',
+						display: 'block',
+						backgroundColor: 'transparent',
+					}}
 				/>
 			),
-			label: 'Reporting available for guests and planners',
+		},
+		{
+			title: 'Coordinated for Beneficial Use',
+			description:
+				'Processed material is managed through coordinated local beneficial-use or composting pathways based on operations and availability.',
+			icon: (
+				<Box
+					component='img'
+					src={howItWorksSproutIcon}
+					alt=''
+					aria-hidden='true'
+					sx={{
+						height: 56,
+						width: 'auto',
+						maxWidth: 72,
+						objectFit: 'contain',
+						display: 'block',
+						backgroundColor: 'transparent',
+					}}
+				/>
+			),
 		},
 	];
 
@@ -1337,41 +1367,64 @@ const CircularFoodSystems = () => {
 			{/* NOTE: Main How It Works section (below Partnership) */}
 			<Box
 				id='how-it-works'
+				component='section'
+				aria-labelledby='how-it-works-heading'
 				className='section section--alt'
 				sx={{
 					...sectionContainerSx,
 					...sectionBandAltSx,
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
+				<Typography className='micro-label' sx={{ textAlign: 'center', mb: 1.5 }}>
+					THE FOOD-WASTE PROGRAM
+				</Typography>
 				<Typography
+					id='how-it-works-heading'
 					component='h2'
 					sx={{
 						fontSize: { xs: '28px', md: '34px' },
 						fontWeight: 500,
 						textAlign: 'center',
-						mb: { xs: 4, md: 6 },
+						color: CHARCOAL,
+						mb: { xs: 1.75, md: 2.25 },
 					}}>
-					How it Works
+					How the Program Works
+				</Typography>
+				<Typography
+					sx={{
+						fontSize: { xs: '16px', md: '17px' },
+						color: BODY_TEXT,
+						lineHeight: 1.75,
+						textAlign: 'center',
+						maxWidth: 760,
+						mx: 'auto',
+						mb: { xs: 4, md: 5.5 },
+					}}>
+					Bethesda North Marriott uses an on-property BioGreen360 platform to process, measure, and
+					support the diversion of food not eaten at the hotel.
 				</Typography>
 
 				<Box
 					sx={{
 						display: 'flex',
-						flexWrap: { xs: 'wrap', md: 'nowrap' },
+						flexDirection: { xs: 'column', md: 'row' },
+						flexWrap: { xs: 'nowrap', md: 'nowrap' },
 						justifyContent: 'center',
-						alignItems: 'flex-start',
-						gap: { xs: 4, md: 0 },
+						alignItems: { xs: 'center', md: 'flex-start' },
+						gap: { xs: 3.5, md: 0 },
 					}}>
 					{primaryProcessingSteps.map((step, index) => (
-						<React.Fragment key={step.label}>
+						<React.Fragment key={step.title}>
 							<Box
 								sx={{
 									display: 'flex',
 									flexDirection: 'column',
 									alignItems: 'center',
-									flex: { xs: '1 1 100%', md: '1 1 0' },
+									flex: { xs: '0 0 auto', md: '1 1 0' },
+									width: { xs: '100%', md: 'auto' },
 									minWidth: { xs: 0, md: 0 },
 									px: { md: 1 },
+									textAlign: 'center',
 								}}>
 								<Box
 									sx={{
@@ -1379,28 +1432,43 @@ const CircularFoodSystems = () => {
 										height: { xs: 116, md: 128 },
 										flexShrink: 0,
 										borderRadius: '50%',
-										border: `1px solid rgba(216, 209, 200, 1)`,
-										backgroundColor: 'transparent',
+										border: `2px solid ${SUSTAINABILITY_GREEN}`,
+										backgroundColor: PROCESS_CIRCLE_FILL,
 										display: 'flex',
 										alignItems: 'center',
 										justifyContent: 'center',
-										mb: 2.5,
+										mb: { xs: 2, md: 2.5 },
+										overflow: 'hidden',
 									}}>
 									{step.icon}
 								</Box>
 								<Typography
+									component='h3'
 									sx={{
-										fontSize: '15px',
+										fontSize: { xs: '17px', md: '18px' },
+										fontWeight: 500,
+										letterSpacing: '-0.01em',
+										lineHeight: 1.35,
+										color: CHARCOAL,
+										mb: 1,
+										maxWidth: 220,
+									}}>
+									{step.title}
+								</Typography>
+								<Typography
+									sx={{
+										fontSize: '14px',
 										lineHeight: 1.65,
 										color: BODY_TEXT,
-										maxWidth: 210,
+										maxWidth: 230,
 										mx: 'auto',
 									}}>
-									{renderWithBioGreenLink(step.label)}
+									{step.description}
 								</Typography>
 							</Box>
 							{index < 3 && (
 								<Box
+									aria-hidden='true'
 									sx={{
 										display: { xs: 'none', md: 'flex' },
 										alignItems: 'center',
@@ -1409,7 +1477,10 @@ const CircularFoodSystems = () => {
 										px: 1.25,
 										height: { md: 128 },
 									}}>
-									<ArrowForwardIcon sx={{ color: SUSTAINABILITY_GREEN, fontSize: 34 }} />
+									<ArrowForwardIcon
+										sx={{ color: SUSTAINABILITY_GREEN, fontSize: 34 }}
+										aria-hidden='true'
+									/>
 								</Box>
 							)}
 						</React.Fragment>
@@ -1417,50 +1488,72 @@ const CircularFoodSystems = () => {
 				</Box>
 				<Typography
 					sx={{
-						fontSize: '12px',
+						fontSize: '13px',
 						color: MUTED_TEXT,
 						textAlign: 'center',
-						mt: 1.5,
-						fontFamily: FONT_HEADING,
+						mt: { xs: 3.5, md: 4.5 },
+						maxWidth: 820,
+						mx: 'auto',
+						lineHeight: 1.7,
 					}}>
-					Processing pathways vary by property. See scope notes in{' '}
+					The program combines on-property processing, property-level reporting, and coordinated
+					downstream pathways. See{' '}
 					<Box
 						component='a'
 						href='#methodology'
-						className='lux-link'
-						sx={{ fontSize: 'inherit' }}>
+						onClick={(event) => {
+							event.preventDefault();
+							scrollToSection('methodology');
+						}}
+						sx={{
+							...SENTENCE_LINK_SX,
+							fontSize: 'inherit',
+							color: MUTED_TEXT,
+							'&:hover': {
+								color: BRAND_RED,
+							},
+						}}>
 						Methodology
-					</Box>
-					.
+					</Box>{' '}
+					for definitions and reporting scope.
 				</Typography>
 				<Box
 					sx={{
-						mt: { xs: 5, md: 7 },
+						mt: { xs: 6, md: 8.5 },
 						display: 'grid',
 						gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 1fr) minmax(0, 1fr)' },
-						gap: { xs: 3, md: 4.5 },
-						alignItems: 'stretch',
+						gap: { xs: 3.5, md: 5.5 },
+						alignItems: 'start',
 					}}>
-					<Box>
-						<Box
-							component='img'
-							src={foodScrapsProcessingPathwaysImage}
-							alt='Restaurant table setting with fries, dipping sauces, and a cocktail on white marble.'
+					{/* TODO: Prefer approved Bethesda North Marriott BioGreen360 equipment or operational photography here. */}
+					<Box
+						role='status'
+						aria-label='Bethesda North Marriott BioGreen360 equipment or program imagery pending approval'
+						sx={{
+							...mediaPlaceholderSx,
+							width: '100%',
+							aspectRatio: { xs: '16 / 10', md: '4 / 3' },
+							minHeight: { xs: 220, md: 280 },
+							borderRadius: RADIUS_IMAGE,
+							boxShadow: SHADOW_IMAGE,
+							gap: 1.25,
+						}}>
+						<Typography className='micro-label' sx={{ mb: 0 }}>
+							PHOTO / MEDIA PLACEMENT
+						</Typography>
+						<Typography
 							sx={{
-								width: '100%',
-								aspectRatio: { xs: '16 / 10', md: '4 / 3' },
-								objectFit: 'cover',
-								objectPosition: 'center 55%',
-								borderRadius: RADIUS_CARD,
-								border: `1px solid ${BORDER_LIGHT}`,
-								boxShadow: SHADOW_IMAGE,
-								display: 'block',
-							}}
-						/>
+								fontSize: { xs: '15px', md: '16px' },
+								color: BODY_TEXT,
+								lineHeight: 1.5,
+								maxWidth: 360,
+							}}>
+							Bethesda North Marriott BioGreen360 equipment or program imagery pending approval
+						</Typography>
 					</Box>
 					<Box>
 						<Typography className='micro-label' sx={{ mb: 1 }}>
-							LOCAL PROCESSING PARTNER
+							ON-PROPERTY PROCESSING
 						</Typography>
 						<Typography
 							component='h3'
@@ -1469,37 +1562,43 @@ const CircularFoodSystems = () => {
 								fontWeight: 500,
 								letterSpacing: '-0.015em',
 								lineHeight: 1.3,
+								color: CHARCOAL,
 								mb: 1.5,
 							}}>
-							From Food Scraps to{' '}
-							<Box component='span' sx={{ whiteSpace: 'nowrap' }}>
-								Local Soil Product
-							</Box>
+							A Waterless, Closed-Loop Approach
 						</Typography>
 						<Typography
-							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.2 }}>
-							Food scraps captured at The Maven are managed in partnership with BioGreen360
-							through Compost Colorado, a local logistics provider and composter serving the
-							greater Denver area.
+							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.25 }}>
+							Bethesda North Marriott became the first Marriott-branded hotel to install the BioGreen360
+							platform, establishing an on-property system for processing food not eaten at the hotel.
 						</Typography>
 						<Typography
-							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.2 }}>
-							Compost Colorado uses in-vessel composting technology to accelerate material
-							breakdown, helping reduce the time, land, and water intensity typically
-							associated with conventional composting.
+							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.25 }}>
+							The waterless, closed-loop equipment supports the hotel’s goal of recycling or diverting
+							participating food scraps while creating clearer property-level data for hotel teams,
+							guests, and event planners.
 						</Typography>
 						<Typography
-							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.2 }}>
-							Their inputs are sourced locally, and the finished soil product is
-							redistributed back into the local area. A portion of that soil is donated to
-							support community needs, while additional material is purchased by nearby
-							businesses and residents for local use.
+							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 2 }}>
+							After material is processed on property, it is managed through coordinated local
+							beneficial-use or composting pathways. Specific downstream partners and destinations may
+							vary based on operational needs and availability.
 						</Typography>
-						<Typography sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 0 }}>
-							Together, The Maven, BioGreen360, and Compost Colorado help keep nutrients in
-							the local soil system and demonstrate a more circular approach to hospitality
-							and environmental stewardship.
-						</Typography>
+						<Box
+							component='a'
+							href='#methodology'
+							onClick={(event) => {
+								event.preventDefault();
+								scrollToSection('methodology');
+							}}
+							className='lux-link lux-link--internal'
+							sx={{
+								fontSize: '12px',
+								letterSpacing: '0.08em',
+								textTransform: 'uppercase',
+							}}>
+							View processing definitions and methodology
+						</Box>
 					</Box>
 				</Box>
 			</Box>
