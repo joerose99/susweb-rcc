@@ -651,9 +651,9 @@ const CircularFoodSystems = () => {
 					sx={{ fontSize: 48, color: SUSTAINABILITY_GREEN }}
 				/>
 			),
-			title: 'Plan in Advance',
+			title: 'Coordinate in Advance',
 			description:
-				'Discuss food-scrap tracking goals with the hotel’s events team while planning your meeting or gathering.',
+				'Confirm tracking availability with the hotel’s events team during the planning process.',
 		},
 		{
 			icon: (
@@ -672,9 +672,9 @@ const CircularFoodSystems = () => {
 					}}
 				/>
 			),
-			title: 'Track Participating Food Scraps',
+			title: 'Track the Event',
 			description:
-				'When tracking is enabled, food scraps from participating culinary and banquet operations are captured as part of the event program.',
+				'Participating culinary and banquet food scraps are recorded during the gathering.',
 		},
 		{
 			icon: (
@@ -693,17 +693,17 @@ const CircularFoodSystems = () => {
 					}}
 				/>
 			),
-			title: 'Review the Event Recap',
+			title: 'Receive the Recap',
 			description:
-				'Following the event, planners may receive a summary of measured diversion, estimated soil impact, illustrative comparisons, and reporting scope.',
+				'Review a post-event summary of measured results, estimates, and reporting scope.',
 		},
 	];
 
 	const eventPlannerDeliverables = [
-		'Event-specific food-scrap diversion summary',
-		'Estimated soil amendment and coverage results',
-		'Illustrative environmental comparisons',
-		'Clear reporting scope and methodology notes',
+		'Event-specific food-diversion results',
+		'Estimated soil amendment and coverage',
+		'Illustrative impact equivalencies',
+		'Methodology and reporting scope',
 	];
 
 	const impactMetrics = buildImpactMetrics(poundsFed);
@@ -1871,7 +1871,7 @@ const CircularFoodSystems = () => {
 								color: CHARCOAL,
 								mb: 1.75,
 							}}>
-							Make Your Gathering Measurable
+							Add Measurable Impact to Your Event
 						</Typography>
 						<Typography
 							sx={{
@@ -1882,9 +1882,8 @@ const CircularFoodSystems = () => {
 								mb: 1.25,
 								maxWidth: 560,
 							}}>
-							From focused board meetings to large conferences, weddings, and celebrations,
-							Bethesda North Marriott is built to bring people together. Qualifying events may
-							request dedicated food-scrap tracking and a concise post-event impact recap.
+							Qualifying meetings, conferences, weddings, and social events can incorporate dedicated
+							food-scrap tracking when coordinated in advance with the hotel team.
 						</Typography>
 						<Typography
 							sx={{
@@ -1895,8 +1894,8 @@ const CircularFoodSystems = () => {
 								mb: 2.5,
 								maxWidth: 560,
 							}}>
-							Participation is coordinated in advance with the hotel’s events team and depends on
-							the event format, food-service plan, scheduling, and operational availability.
+							After the event, planners may receive a concise impact recap summarizing measured
+							diversion, estimated soil outcomes, and illustrative equivalencies.
 						</Typography>
 						<Box
 							sx={{
@@ -2067,7 +2066,7 @@ const CircularFoodSystems = () => {
 							letterSpacing: '-0.012em',
 							color: CHARCOAL,
 						}}>
-						What Your Event Team May Receive
+						What the Recap May Include
 					</Typography>
 					<Box component='ul' sx={{ m: 0, p: 0, listStyle: 'none' }}>
 						{eventPlannerDeliverables.map((item) => (
@@ -2103,8 +2102,8 @@ const CircularFoodSystems = () => {
 							lineHeight: 1.65,
 							mt: 1.75,
 						}}>
-						The recap can support internal event reviews, sustainability communications, and
-						conversations with attendees or stakeholders.
+						The recap can support internal reviews, attendee communications, and sustainability
+						storytelling.
 					</Typography>
 				</Box>
 
@@ -2122,8 +2121,7 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 2,
 						}}>
-						Ask the Bethesda North Marriott events team whether food-scrap tracking can be
-						incorporated into your gathering.
+						Ask the events team whether tracking is available for your gathering.
 					</Typography>
 					<Button
 						component='a'
