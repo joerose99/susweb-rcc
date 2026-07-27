@@ -1,10 +1,11 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import { FONT_BODY, MUTED_TEXT } from '../theme/tokens';
 
 const baseSx = {
 	margin: 0,
-	color: 'rgba(57, 79, 113, 0.72)',
-	fontFamily: '"Inter", sans-serif',
+	color: MUTED_TEXT,
+	fontFamily: FONT_BODY,
 	lineHeight: 1.5,
 };
 

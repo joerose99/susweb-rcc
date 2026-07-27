@@ -7,12 +7,21 @@ import {
 	MAVEN_HOTEL_HOME_URL,
 	MAVEN_RESERVATIONS_URL,
 } from '../constants/mavenExternalLinks';
-
-const MAVEN_BLUE = '#394F71';
-const MAVEN_TAN = '#AF986E';
-const MAVEN_DARK = '#2B2320';
-const HEADER_BG = '#FFFCF9';
-const FONT_HEADER = '"Roboto", "Helvetica Neue", Arial, sans-serif';
+import {
+	BORDER_LIGHT,
+	BRAND_RED,
+	BRAND_RED_HOVER,
+	BRAND_RED_SOFT,
+	CHARCOAL,
+	CHARCOAL_HOVER,
+	FONT_HEADING,
+	SHADOW_FOCUS,
+	SHADOW_HOVER,
+	WARM_WHITE,
+	containerSx,
+	primaryButtonSx,
+	secondaryButtonSx,
+} from '../theme/tokens';
 
 const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven Hotel' }) => {
 	const handleAnchorClick = (event, href) => {
@@ -39,20 +48,19 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 				position: 'sticky',
 				top: 0,
 				zIndex: 1200,
-				backgroundColor: HEADER_BG,
-				borderBottom: `1px solid rgba(57, 79, 113, 0.09)`,
+				backgroundColor: WARM_WHITE,
+				borderBottom: `1px solid ${BORDER_LIGHT}`,
 				backdropFilter: 'blur(10px)',
 			}}>
 			<Box
 				sx={{
-					maxWidth: 1320,
-					mx: 'auto',
-					px: { xs: 2, sm: 4 },
+					...containerSx,
 					height: { xs: 72, md: 80 },
 					display: 'grid',
 					gridTemplateColumns: { xs: 'auto 1fr', md: 'auto 1fr auto' },
 					alignItems: 'center',
 					gap: { xs: 1.5, md: 2.5 },
+					py: 0,
 				}}>
 				<Box
 					sx={{
@@ -75,7 +83,7 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 							textDecoration: 'none',
 							color: 'inherit',
 							'&:focus-visible': {
-								outline: `2px solid ${MAVEN_TAN}`,
+								outline: `2px solid ${BRAND_RED}`,
 								outlineOffset: 4,
 								borderRadius: '2px',
 							},
@@ -122,12 +130,12 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 							href={item.href}
 							onClick={(event) => handleAnchorClick(event, item.href)}
 							sx={{
-								fontFamily: FONT_HEADER,
+								fontFamily: FONT_HEADING,
 								fontSize: '11.5px',
 								letterSpacing: '0.14em',
 								textTransform: 'uppercase',
 								fontWeight: 500,
-								color: MAVEN_DARK,
+								color: CHARCOAL,
 								textDecoration: 'none',
 								whiteSpace: 'nowrap',
 								paddingY: '6px',
@@ -135,12 +143,12 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 								borderBottom: '2px solid transparent',
 								transition: 'color 180ms ease, border-color 180ms ease',
 								'&:hover': {
-									color: MAVEN_BLUE,
-									borderBottomColor: 'rgba(175, 152, 110, 0.45)',
+									color: BRAND_RED,
+									borderBottomColor: 'rgba(166, 25, 46, 0.35)',
 								},
 								'&:focus-visible': {
-									color: MAVEN_BLUE,
-									outline: `2px solid ${MAVEN_TAN}`,
+									color: BRAND_RED,
+									outline: `2px solid ${BRAND_RED}`,
 									outlineOffset: 4,
 									borderRadius: '2px',
 									borderBottomColor: 'transparent',
@@ -167,25 +175,15 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 						variant='contained'
 						disableElevation
 						sx={{
-							px: { xs: 1.75, sm: 2.2 },
-							py: 0.7,
-							fontFamily: FONT_HEADER,
-							fontSize: '0.7rem',
-							fontWeight: 600,
-							letterSpacing: '0.1em',
-							textTransform: 'uppercase',
-							color: '#FFFFFF',
-							backgroundColor: MAVEN_BLUE,
-							borderRadius: '999px',
-							boxShadow: 'none',
-							border: `1px solid ${MAVEN_BLUE}`,
+							...primaryButtonSx,
 							'&:hover': {
-								backgroundColor: '#2f425d',
-								borderColor: '#2f425d',
-								boxShadow: '0 6px 16px rgba(57, 79, 113, 0.22)',
+								...primaryButtonSx['&:hover'],
+								backgroundColor: CHARCOAL_HOVER,
+								borderColor: CHARCOAL_HOVER,
+								boxShadow: SHADOW_HOVER,
 							},
 							'&:focus-visible': {
-								boxShadow: `0 0 0 2px ${HEADER_BG}, 0 0 0 4px ${MAVEN_TAN}`,
+								boxShadow: SHADOW_FOCUS,
 							},
 						}}>
 						Book a Room
@@ -198,27 +196,16 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 						variant='outlined'
 						disableElevation
 						sx={{
-							px: { xs: 1.75, sm: 2.2 },
-							py: 0.7,
-							fontFamily: FONT_HEADER,
-							fontSize: '0.7rem',
-							fontWeight: 600,
-							letterSpacing: '0.1em',
-							textTransform: 'uppercase',
-							color: MAVEN_DARK,
-							backgroundColor: 'rgba(255, 255, 255, 0.35)',
-							borderRadius: '999px',
-							borderColor: MAVEN_TAN,
-							borderWidth: '1px',
-							boxShadow: 'none',
+							...secondaryButtonSx,
+							backgroundColor: 'rgba(255, 255, 255, 0.55)',
 							'&:hover': {
-								backgroundColor: 'rgba(226, 205, 169, 0.22)',
-								borderColor: '#9c865c',
-								color: MAVEN_BLUE,
+								backgroundColor: BRAND_RED_SOFT,
+								borderColor: BRAND_RED_HOVER,
+								color: BRAND_RED,
 								boxShadow: 'none',
 							},
 							'&:focus-visible': {
-								boxShadow: `0 0 0 2px ${HEADER_BG}, 0 0 0 4px ${MAVEN_TAN}`,
+								boxShadow: SHADOW_FOCUS,
 							},
 						}}>
 						Plan an Event

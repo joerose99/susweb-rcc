@@ -2,6 +2,15 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import {
+	BORDER_LIGHT,
+	BRAND_RED,
+	BRAND_RED_SOFT,
+	CHARCOAL,
+	FONT_BODY,
+	RADIUS_BADGE,
+	SURFACE_WHITE,
+} from '../theme/tokens';
 
 const legendItems = [
 	{
@@ -49,23 +58,24 @@ const MetricLegend = () => (
 						aria-label={`${item.label}: ${item.description}`}
 						sx={{
 							appearance: 'none',
-							border: '1px solid rgba(57, 79, 113, 0.28)',
-							backgroundColor: '#FFFFFF',
-							borderRadius: '9999px',
+							border: `1px solid ${BORDER_LIGHT}`,
+							backgroundColor: SURFACE_WHITE,
+							borderRadius: RADIUS_BADGE,
 							px: 1.25,
 							py: 0.5,
 							fontSize: '12px',
 							lineHeight: 1.4,
 							fontWeight: 500,
-							color: '#2B2320',
+							color: CHARCOAL,
 							cursor: 'help',
-							fontFamily: '"Inter", sans-serif',
+							fontFamily: FONT_BODY,
 							'&:hover': {
-								borderColor: 'rgba(175, 152, 110, 0.55)',
-								color: '#394F71',
+								borderColor: BRAND_RED,
+								backgroundColor: BRAND_RED_SOFT,
+								color: BRAND_RED,
 							},
 							'&:focus-visible': {
-								outline: '2px solid rgba(175, 152, 110, 0.95)',
+								outline: `2px solid ${BRAND_RED}`,
 								outlineOffset: '2px',
 							},
 						}}>

@@ -30,31 +30,33 @@ import {
 	MAVEN_RESERVATIONS_URL,
 	MAVEN_SALES_MAILTO,
 } from '../../constants/mavenExternalLinks';
+import {
+	BODY_TEXT,
+	BORDER_LIGHT,
+	BRAND_RED,
+	BRAND_RED_HOVER,
+	BRAND_RED_SOFT,
+	BRAND_RED_SOFT_STRONG,
+	CHARCOAL,
+	CHARCOAL_HOVER,
+	FONT_HEADING,
+	MUTED_TEXT,
+	RADIUS_BUTTON,
+	RADIUS_CARD,
+	SHADOW_CARD,
+	SHADOW_IMAGE,
+	SOFT_GRAY,
+	SURFACE_WHITE,
+	SUSTAINABILITY_GREEN,
+	TYPE,
+	WARM_WHITE,
+	cardEmphasizedSx,
+	pageThemeSx,
+	sectionBandAltSx,
+	sectionBandBaseSx,
+	sectionContainerSx,
+} from '../../theme/tokens';
 
-const MAVEN_BLUE = '#394F71';
-const MAVEN_TAN = '#AF986E';
-const MAVEN_TEXT = '#2B2320';
-const MAVEN_WHITE = '#FFFFFF';
-const FONT_HEADER = '"Roboto", "Helvetica Neue", Arial, sans-serif';
-const FONT_BODY = '"Inter", sans-serif';
-
-const GREEN_PRIMARY = MAVEN_BLUE;
-const GREEN_SOFT = 'rgba(226, 205, 169, 0.24)';
-const GREEN_BORDER = MAVEN_BLUE;
-const BG_WARM = '#FFFCF9';
-const BG_BAND = '#F7F3EC';
-const TEXT_DARK = MAVEN_TEXT;
-const BODY_GRAY = 'rgba(43, 35, 32, 0.88)';
-const MUTED_GRAY = 'rgba(57, 79, 113, 0.65)';
-const HEADING_COLOR = MAVEN_BLUE;
-const HEADING_ACCENT = MAVEN_TAN;
-const SECTION_PY = { xs: '64px', md: '88px' };
-const RADIUS_CARD = '12px';
-const SHADOW_CARD = '0 12px 32px rgba(57, 79, 113, 0.07)';
-const SHADOW_IMAGE = '0 16px 40px rgba(57, 79, 113, 0.09)';
-const LINE_SUBTLE = 'rgba(57, 79, 113, 0.12)';
-const LINE_MUTED = 'rgba(57, 79, 113, 0.1)';
-const CONTENT_MAX = 1320;
 const ORG_STATS_API_URL =
 	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f786a8c64cf4f5945895';
 
@@ -64,13 +66,13 @@ const BIOGREEN_LINK_SX = {
 	cursor: 'pointer',
 	transition: 'color 160ms ease, text-decoration-color 160ms ease',
 	'&:hover': {
-		color: MAVEN_BLUE,
+		color: SUSTAINABILITY_GREEN,
 		textDecoration: 'underline',
-		textDecorationColor: 'rgba(57, 79, 113, 0.5)',
+		textDecorationColor: 'rgba(122, 146, 59, 0.55)',
 		textUnderlineOffset: '2px',
 	},
 	'&:focus-visible': {
-		outline: `2px solid ${MAVEN_TAN}`,
+		outline: `2px solid ${BRAND_RED}`,
 		outlineOffset: '2px',
 		borderRadius: '2px',
 	},
@@ -106,42 +108,6 @@ const siteConfig = {
 	showEquivalencies: true,
 	lastSync: '2026-03-04T15:30:00-07:00',
 	// impactReportUrl: 'https://example.com/impact-report.pdf',
-};
-
-const sectionContainerSx = {
-	maxWidth: CONTENT_MAX,
-	mx: 'auto',
-	px: { xs: 2, sm: 4 },
-	py: SECTION_PY,
-};
-
-const sectionBandBaseSx = {
-	position: 'relative',
-	isolation: 'isolate',
-	'&::before': {
-		content: '""',
-		position: 'absolute',
-		top: 0,
-		bottom: 0,
-		left: '50%',
-		width: '100vw',
-		transform: 'translateX(-50%)',
-		backgroundColor: 'var(--bg-base)',
-		borderTop: '1px solid var(--band-divider)',
-		zIndex: 0,
-	},
-	'& > *': {
-		position: 'relative',
-		zIndex: 1,
-	},
-};
-
-const sectionBandAltSx = {
-	...sectionBandBaseSx,
-	'&::before': {
-		...sectionBandBaseSx['&::before'],
-		backgroundColor: 'var(--bg-alt)',
-	},
 };
 
 const MISSING_METRIC_VALUE = '-';
@@ -423,7 +389,7 @@ const CircularFoodSystems = () => {
 						display: 'inline-flex',
 						lineHeight: 0,
 						borderRadius: '4px',
-						'&:focus-visible': { outline: `2px solid ${MAVEN_TAN}`, outlineOffset: '3px' },
+						'&:focus-visible': { outline: `2px solid ${BRAND_RED}`, outlineOffset: '3px' },
 					}}>
 					<Box
 						component='img'
@@ -485,7 +451,7 @@ const CircularFoodSystems = () => {
 						display: 'inline-flex',
 						lineHeight: 0,
 						borderRadius: '4px',
-						'&:focus-visible': { outline: `2px solid ${MAVEN_TAN}`, outlineOffset: '3px' },
+						'&:focus-visible': { outline: `2px solid ${BRAND_RED}`, outlineOffset: '3px' },
 					}}>
 					<Box
 						component='img'
@@ -561,132 +527,7 @@ const CircularFoodSystems = () => {
 	return (
 		<Box
 			data-page='circular-food-systems'
-			sx={{
-				minHeight: '100vh',
-				backgroundColor: BG_WARM,
-				'--bg-base': MAVEN_WHITE,
-				'--bg-alt': BG_BAND,
-				'--band-divider': LINE_MUTED,
-				color: TEXT_DARK,
-				fontFamily: FONT_BODY,
-				lineHeight: 1.72,
-				'& h1': {
-					fontFamily: FONT_HEADER,
-					letterSpacing: '-0.02em',
-					fontWeight: 400,
-					color: HEADING_COLOR,
-				},
-				'& h2': {
-					fontFamily: FONT_HEADER,
-					letterSpacing: '-0.015em',
-					fontWeight: 400,
-					color: HEADING_COLOR,
-				},
-				'& h3': {
-					fontFamily: FONT_HEADER,
-					letterSpacing: '-0.012em',
-					fontWeight: 500,
-					color: HEADING_COLOR,
-				},
-				'& .micro-label': {
-					fontFamily: FONT_HEADER,
-					fontSize: '11px',
-					letterSpacing: '0.14em',
-					textTransform: 'uppercase',
-					fontWeight: 600,
-					color: HEADING_ACCENT,
-				},
-				'& .lux-link': {
-					display: 'inline-flex',
-					alignItems: 'center',
-					gap: '0.3em',
-					fontFamily: FONT_HEADER,
-					fontWeight: 500,
-					color: MAVEN_BLUE,
-					textDecoration: 'none',
-					textDecorationThickness: '1px',
-					textUnderlineOffset: '3px',
-					borderBottom: '1px solid transparent',
-					transition:
-						'color 180ms ease, border-color 180ms ease, text-decoration-color 180ms ease, text-decoration-thickness 180ms ease',
-					'&:hover': {
-						color: MAVEN_TAN,
-						textDecoration: 'underline',
-						textDecorationColor: 'rgba(175, 152, 110, 0.55)',
-						textDecorationThickness: '1px',
-						borderBottomColor: 'transparent',
-					},
-					'&:focus-visible': {
-						outline: `2px solid ${MAVEN_TAN}`,
-						outlineOffset: '3px',
-						borderRadius: '2px',
-					},
-				},
-				'& .lux-link--internal::after': {
-					content: '"→"',
-					fontSize: '0.9em',
-					opacity: 0.85,
-				},
-				'& .lux-link--external::after': {
-					content: '"↗"',
-					fontSize: '0.86em',
-					opacity: 0.85,
-				},
-				'& .lux-clickable': {
-					position: 'relative',
-					cursor: 'pointer',
-					transition:
-						'transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, color 220ms ease, font-weight 220ms ease',
-					'&:hover': {
-						transform: 'translateY(-1px)',
-						boxShadow: '0 12px 28px rgba(57, 79, 113, 0.1)',
-					},
-					'&:focus-visible': {
-						outline: `2px solid ${MAVEN_TAN}`,
-						outlineOffset: '2px',
-					},
-					'& .lux-click-indicator': {
-						opacity: 0,
-						transition: 'opacity 220ms ease',
-					},
-					'&:hover .lux-click-indicator': {
-						opacity: 0.8,
-					},
-				},
-				'& .MuiButton-root': {
-					fontFamily: FONT_HEADER,
-					borderRadius: '999px',
-					textTransform: 'uppercase',
-					letterSpacing: '0.1em',
-					fontWeight: 600,
-					boxShadow: 'none',
-					transition:
-						'transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease, border-color 200ms ease',
-					'&.MuiButton-contained': {
-						backgroundColor: MAVEN_BLUE,
-						color: MAVEN_WHITE,
-						'&:hover': {
-							backgroundColor: '#2f425c',
-							boxShadow: '0 10px 24px rgba(57, 79, 113, 0.22)',
-						},
-					},
-					'&.MuiButton-outlined': {
-						color: TEXT_DARK,
-						borderWidth: '1px',
-						borderColor: MAVEN_TAN,
-						backgroundColor: 'rgba(255, 252, 249, 0.5)',
-						'&:hover': {
-							borderColor: '#9c865c',
-							backgroundColor: GREEN_SOFT,
-							color: MAVEN_BLUE,
-							boxShadow: 'none',
-						},
-					},
-					'&:hover': {
-						transform: 'translateY(-1px)',
-					},
-				},
-			}}>
+			sx={pageThemeSx}>
 			<StickyHeader />
 
 			{/* Hero */}
@@ -707,8 +548,8 @@ const CircularFoodSystems = () => {
 					<Typography
 						component='h1'
 						sx={{
-							fontFamily: FONT_HEADER,
-							fontSize: { xs: '2.3rem', sm: '3.1rem', md: '56px' },
+							fontFamily: FONT_HEADING,
+							fontSize: TYPE.h1,
 							fontWeight: 400,
 							letterSpacing: '-0.02em',
 							lineHeight: 1.12,
@@ -718,9 +559,9 @@ const CircularFoodSystems = () => {
 					</Typography>
 					<Typography
 						sx={{
-							fontSize: '20px',
+							fontSize: { xs: '17px', md: '19px' },
 							fontWeight: 400,
-							color: BODY_GRAY,
+							color: BODY_TEXT,
 							mb: 0,
 						}}>
 						At The Maven, we believe great stays should leave a lasting impression—on you, not
@@ -760,6 +601,7 @@ const CircularFoodSystems = () => {
 							height: 'auto',
 							aspectRatio: '1024 / 727',
 							borderRadius: RADIUS_CARD,
+							border: `1px solid ${BORDER_LIGHT}`,
 							display: 'block',
 							boxShadow: SHADOW_IMAGE,
 						}}
@@ -783,7 +625,7 @@ const CircularFoodSystems = () => {
 							pl: 3,
 							fontSize: '18px',
 							lineHeight: 1.75,
-							color: BODY_GRAY,
+							color: BODY_TEXT,
 							textAlign: 'left',
 							listStylePosition: 'outside',
 						}}>
@@ -853,8 +695,8 @@ const CircularFoodSystems = () => {
 							sx={{
 								textDecoration: 'none',
 								color: 'inherit',
-								backgroundColor: MAVEN_WHITE,
-								border: `1px solid ${LINE_SUBTLE}`,
+								backgroundColor: SURFACE_WHITE,
+								border: `1px solid ${BORDER_LIGHT}`,
 								borderRadius: RADIUS_CARD,
 								p: { xs: 2, md: 2.25 },
 								display: 'flex',
@@ -868,13 +710,13 @@ const CircularFoodSystems = () => {
 								outlineOffset: '0px',
 								'&:hover': {
 									transform: 'scale(1.02)',
-									borderColor: 'rgba(175, 152, 110, 0.45)',
-									outlineColor: 'rgba(175, 152, 110, 0.5)',
+									borderColor: 'rgba(166, 25, 46, 0.45)',
+									outlineColor: 'rgba(166, 25, 46, 0.5)',
 								},
 								'&:focus-visible': {
 									transform: 'scale(1.02)',
-									borderColor: 'rgba(175, 152, 110, 0.45)',
-									outlineColor: 'rgba(175, 152, 110, 0.5)',
+									borderColor: 'rgba(166, 25, 46, 0.45)',
+									outlineColor: 'rgba(166, 25, 46, 0.5)',
 								},
 								'@media (prefers-reduced-motion: reduce)': {
 									transition: 'border-color 200ms ease, outline-color 200ms ease',
@@ -894,7 +736,7 @@ const CircularFoodSystems = () => {
 								}}>
 								{card.title}
 							</Typography>
-							<Typography sx={{ fontSize: '14px', color: BODY_GRAY, lineHeight: 1.65 }}>
+							<Typography sx={{ fontSize: '14px', color: BODY_TEXT, lineHeight: 1.65 }}>
 								{renderWithBioGreenLink(card.body)}
 							</Typography>
 						</Box>
@@ -930,7 +772,7 @@ const CircularFoodSystems = () => {
 					</Typography>
 					<Typography className='micro-label'>{`Last Updated: ${lastUpdatedDisplay}`}</Typography>
 				</Box>
-				<Typography sx={{ fontSize: '15px', lineHeight: 1.7, color: MUTED_GRAY, mb: 2 }}>
+				<Typography sx={{ fontSize: '15px', lineHeight: 1.7, color: MUTED_TEXT, mb: 2 }}>
 					Property-level sustainability reporting based on data captured through{' '}
 					<BioGreenLink />
 					&apos;s reporting system.
@@ -940,7 +782,7 @@ const CircularFoodSystems = () => {
 						width: '100%',
 						maxWidth: 360,
 						height: '1px',
-						backgroundColor: 'rgba(175, 152, 110, 0.35)',
+						backgroundColor: BRAND_RED_SOFT_STRONG,
 						mb: 2.5,
 					}}
 				/>
@@ -951,8 +793,8 @@ const CircularFoodSystems = () => {
 						flexWrap: 'wrap',
 						alignItems: 'stretch',
 						justifyContent: 'space-between',
-						borderTop: `1px solid ${LINE_SUBTLE}`,
-						borderBottom: `1px solid ${LINE_SUBTLE}`,
+						borderTop: `1px solid ${BORDER_LIGHT}`,
+						borderBottom: `1px solid ${BORDER_LIGHT}`,
 						py: 2.5,
 					}}>
 					{impactMetrics.map((metric, idx) => (
@@ -965,7 +807,7 @@ const CircularFoodSystems = () => {
 								py: 1.5,
 								textAlign: 'center',
 								borderRight:
-									idx < 2 ? { xs: 'none', md: `1px solid ${LINE_SUBTLE}` } : 'none',
+									idx < 2 ? { xs: 'none', md: `1px solid ${BORDER_LIGHT}` } : 'none',
 							}}>
 							<Typography className='micro-label' sx={{ mb: 0.75, display: 'block' }}>
 								{metric.eyebrow}
@@ -980,13 +822,13 @@ const CircularFoodSystems = () => {
 									mb: 1,
 								}}>
 								{idx === 0 && (
-									<DinnerDiningIcon sx={{ fontSize: 40, color: '#394F71' }} aria-hidden />
+									<DinnerDiningIcon sx={{ fontSize: 40, color: '#231F20' }} aria-hidden />
 								)}
 								{idx === 1 && (
-									<GrassIcon sx={{ fontSize: 40, color: '#394F71' }} aria-hidden />
+									<GrassIcon sx={{ fontSize: 40, color: '#231F20' }} aria-hidden />
 								)}
 								{idx === 2 && (
-									<ForestIcon sx={{ fontSize: 40, color: '#394F71' }} aria-hidden />
+									<ForestIcon sx={{ fontSize: 40, color: '#231F20' }} aria-hidden />
 								)}
 							</Box>
 							<Typography
@@ -995,11 +837,11 @@ const CircularFoodSystems = () => {
 									fontWeight: 500,
 									letterSpacing: '-0.02em',
 									lineHeight: 1.15,
-									color: HEADING_COLOR,
+									color: CHARCOAL,
 								}}>
 								{metric.value}
 							</Typography>
-							<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 1 }}>
+							<Typography sx={{ fontSize: '12px', color: MUTED_TEXT, mt: 1 }}>
 								{metric.note}
 							</Typography>
 						</Box>
@@ -1020,7 +862,7 @@ const CircularFoodSystems = () => {
 							display: 'inline-flex',
 							lineHeight: 0,
 							borderRadius: '4px',
-							'&:focus-visible': { outline: `2px solid ${MAVEN_TAN}`, outlineOffset: '3px' },
+							'&:focus-visible': { outline: `2px solid ${BRAND_RED}`, outlineOffset: '3px' },
 						}}>
 						<Box
 							component='img'
@@ -1068,7 +910,7 @@ const CircularFoodSystems = () => {
 								objectFit: 'cover',
 								objectPosition: 'center 42%',
 								borderRadius: RADIUS_CARD,
-								border: `1px solid ${LINE_MUTED}`,
+								border: `1px solid ${BORDER_LIGHT}`,
 								boxShadow: SHADOW_IMAGE,
 							}}
 						/>
@@ -1084,7 +926,7 @@ const CircularFoodSystems = () => {
 							}}>
 							A Cornerstone Partnership with <BioGreenLink />
 						</Typography>
-						<Typography sx={{ fontSize: '16px', color: MUTED_GRAY, maxWidth: 740, mb: 1.5 }}>
+						<Typography sx={{ fontSize: '16px', color: MUTED_TEXT, maxWidth: 740, mb: 1.5 }}>
 							A practical collaboration that helps The Maven capture food scraps on-site,
 							track property-level reporting, and share clear sustainability information with
 							guests and planners.
@@ -1096,8 +938,8 @@ const CircularFoodSystems = () => {
 							sx={{
 								display: 'grid',
 								gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' },
-								borderTop: `1px solid ${LINE_MUTED}`,
-								borderBottom: `1px solid ${LINE_MUTED}`,
+								borderTop: `1px solid ${BORDER_LIGHT}`,
+								borderBottom: `1px solid ${BORDER_LIGHT}`,
 								mb: 2,
 							}}>
 							{cornerstoneOverviewLinks.map((item, index) => (
@@ -1115,18 +957,18 @@ const CircularFoodSystems = () => {
 										textAlign: 'center',
 										cursor: 'pointer',
 										fontSize: { xs: '10px', md: '10.5px' },
-										color: BODY_GRAY,
+										color: BODY_TEXT,
 										fontWeight: 500,
 										position: 'relative',
 										borderRight:
-											index < 2 ? { xs: 'none', md: `1px solid ${LINE_MUTED}` } : 'none',
-										fontFamily: FONT_HEADER,
+											index < 2 ? { xs: 'none', md: `1px solid ${BORDER_LIGHT}` } : 'none',
+										fontFamily: FONT_HEADING,
 										textTransform: 'uppercase',
 										letterSpacing: '0.055em',
 										lineHeight: 1.35,
 										whiteSpace: { xs: 'normal', md: 'nowrap' },
 										'&:hover': {
-											color: MAVEN_BLUE,
+											color: CHARCOAL,
 											fontWeight: 600,
 										},
 									}}>
@@ -1139,7 +981,7 @@ const CircularFoodSystems = () => {
 											top: '6px',
 											right: '8px',
 											fontSize: '11px',
-											color: GREEN_PRIMARY,
+											color: SUSTAINABILITY_GREEN,
 											lineHeight: 1,
 										}}>
 										→
@@ -1176,7 +1018,7 @@ const CircularFoodSystems = () => {
 									sx={{
 										m: 0,
 										pl: 2.1,
-										color: BODY_GRAY,
+										color: BODY_TEXT,
 										listStylePosition: 'outside',
 									}}>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
@@ -1211,7 +1053,7 @@ const CircularFoodSystems = () => {
 									sx={{
 										m: 0,
 										pl: 2.1,
-										color: BODY_GRAY,
+										color: BODY_TEXT,
 										listStylePosition: 'outside',
 									}}>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
@@ -1245,7 +1087,7 @@ const CircularFoodSystems = () => {
 									sx={{
 										m: 0,
 										pl: 2.1,
-										color: BODY_GRAY,
+										color: BODY_TEXT,
 										listStylePosition: 'outside',
 									}}>
 									<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.35 }}>
@@ -1312,7 +1154,7 @@ const CircularFoodSystems = () => {
 										height: { xs: 116, md: 128 },
 										flexShrink: 0,
 										borderRadius: '50%',
-										border: `1px solid rgba(57, 79, 113, 0.2)`,
+										border: `1px solid rgba(216, 209, 200, 1)`,
 										backgroundColor: 'transparent',
 										display: 'flex',
 										alignItems: 'center',
@@ -1325,7 +1167,7 @@ const CircularFoodSystems = () => {
 									sx={{
 										fontSize: '15px',
 										lineHeight: 1.65,
-										color: BODY_GRAY,
+										color: BODY_TEXT,
 										maxWidth: 210,
 										mx: 'auto',
 									}}>
@@ -1342,7 +1184,7 @@ const CircularFoodSystems = () => {
 										px: 1.25,
 										height: { md: 128 },
 									}}>
-									<ArrowForwardIcon sx={{ color: GREEN_PRIMARY, fontSize: 34 }} />
+									<ArrowForwardIcon sx={{ color: SUSTAINABILITY_GREEN, fontSize: 34 }} />
 								</Box>
 							)}
 						</React.Fragment>
@@ -1351,10 +1193,10 @@ const CircularFoodSystems = () => {
 				<Typography
 					sx={{
 						fontSize: '12px',
-						color: MUTED_GRAY,
+						color: MUTED_TEXT,
 						textAlign: 'center',
 						mt: 1.5,
-						fontFamily: FONT_HEADER,
+						fontFamily: FONT_HEADING,
 					}}>
 					Processing pathways vary by property. See scope notes in{' '}
 					<Box
@@ -1385,7 +1227,7 @@ const CircularFoodSystems = () => {
 								objectFit: 'cover',
 								objectPosition: 'center 55%',
 								borderRadius: RADIUS_CARD,
-								border: `1px solid ${LINE_SUBTLE}`,
+								border: `1px solid ${BORDER_LIGHT}`,
 								boxShadow: SHADOW_IMAGE,
 								display: 'block',
 							}}
@@ -1410,25 +1252,25 @@ const CircularFoodSystems = () => {
 							</Box>
 						</Typography>
 						<Typography
-							sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
+							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.2 }}>
 							Food scraps captured at The Maven are managed in partnership with BioGreen360
 							through Compost Colorado, a local logistics provider and composter serving the
 							greater Denver area.
 						</Typography>
 						<Typography
-							sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
+							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.2 }}>
 							Compost Colorado uses in-vessel composting technology to accelerate material
 							breakdown, helping reduce the time, land, and water intensity typically
 							associated with conventional composting.
 						</Typography>
 						<Typography
-							sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 1.2 }}>
+							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.2 }}>
 							Their inputs are sourced locally, and the finished soil product is
 							redistributed back into the local area. A portion of that soil is donated to
 							support community needs, while additional material is purchased by nearby
 							businesses and residents for local use.
 						</Typography>
-						<Typography sx={{ fontSize: '15px', color: BODY_GRAY, lineHeight: 1.75, mb: 0 }}>
+						<Typography sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 0 }}>
 							Together, The Maven, BioGreen360, and Compost Colorado help keep nutrients in
 							the local soil system and demonstrate a more circular approach to hospitality
 							and environmental stewardship.
@@ -1445,7 +1287,7 @@ const CircularFoodSystems = () => {
 					...sectionContainerSx,
 					...sectionBandBaseSx,
 					scrollMarginTop: { xs: '80px', md: '96px' },
-					'& .lsir-card-value': { color: HEADING_COLOR },
+					'& .lsir-card-value': { color: CHARCOAL },
 				}}>
 				<Typography
 					component='h2'
@@ -1465,7 +1307,7 @@ const CircularFoodSystems = () => {
 						gap: 1.25,
 						mb: 1.5,
 					}}>
-					<Typography sx={{ fontSize: '14px', color: MUTED_GRAY }}>
+					<Typography sx={{ fontSize: '14px', color: MUTED_TEXT }}>
 						Live reporting data is provided through <BioGreenLink />
 						&apos;s reporting system.
 					</Typography>
@@ -1492,9 +1334,9 @@ const CircularFoodSystems = () => {
 							<Box
 								key={card.label}
 								sx={{
-									backgroundColor: MAVEN_WHITE,
+									backgroundColor: SURFACE_WHITE,
 									border: '1px solid',
-									borderColor: 'rgba(57, 79, 113, 0.18)',
+									borderColor: BORDER_LIGHT,
 									borderRadius: RADIUS_CARD,
 									p: { xs: 2.5, md: 3 },
 									minHeight: 220,
@@ -1511,7 +1353,7 @@ const CircularFoodSystems = () => {
 										fontSize: '11px',
 										letterSpacing: '0.09em',
 										textTransform: 'uppercase',
-										color: MUTED_GRAY,
+										color: MUTED_TEXT,
 										mb: 0.85,
 									}}>
 									Illustrative equivalency
@@ -1550,7 +1392,7 @@ const CircularFoodSystems = () => {
 									<Typography
 										sx={{
 											fontSize: '12px',
-											color: MUTED_GRAY,
+											color: MUTED_TEXT,
 											lineHeight: 1.5,
 											mb: 1.5,
 											maxWidth:
@@ -1563,7 +1405,7 @@ const CircularFoodSystems = () => {
 								<Icon
 									sx={{
 										fontSize: { xs: 56, md: 64 },
-										color: 'rgba(57, 79, 113, 0.55)',
+										color: 'rgba(93, 98, 104, 0.75)',
 										mt: 'auto',
 										pt: 1.75,
 										alignSelf: 'center',
@@ -1573,7 +1415,7 @@ const CircularFoodSystems = () => {
 						);
 					})}
 				</Box>
-				<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mt: 2.25 }}>
+				<Typography sx={{ fontSize: '12px', color: MUTED_TEXT, mt: 2.25 }}>
 					{equivalencyDisclaimer}
 				</Typography>
 			</Box>
@@ -1606,13 +1448,13 @@ const CircularFoodSystems = () => {
 							Event Impact Reporting
 						</Typography>
 						<Box
-							sx={{ width: 84, height: '2px', backgroundColor: HEADING_ACCENT, mb: 1.5 }}
+							sx={{ width: 84, height: '2px', backgroundColor: BRAND_RED, mb: 1.5 }}
 						/>
 						<Typography
 							sx={{
 								fontSize: '16px',
 								fontWeight: 400,
-								color: BODY_GRAY,
+								color: BODY_TEXT,
 								lineHeight: 1.8,
 								mb: 1,
 							}}>
@@ -1625,7 +1467,7 @@ const CircularFoodSystems = () => {
 							availability.
 						</Typography>
 						<Typography
-							sx={{ fontSize: '16px', fontWeight: 400, color: BODY_GRAY, lineHeight: 1.8 }}>
+							sx={{ fontSize: '16px', fontWeight: 400, color: BODY_TEXT, lineHeight: 1.8 }}>
 							Food scraps captured from participating events are tracked through{' '}
 							<BioGreenLink />
 							&apos;s reporting system and diverted through a local composting partner based
@@ -1644,7 +1486,7 @@ const CircularFoodSystems = () => {
 							aspectRatio: '16 / 8',
 							objectFit: 'cover',
 							borderRadius: RADIUS_CARD,
-							border: `1px solid ${LINE_MUTED}`,
+							border: `1px solid ${BORDER_LIGHT}`,
 							boxShadow: SHADOW_IMAGE,
 						}}
 					/>
@@ -1693,7 +1535,7 @@ const CircularFoodSystems = () => {
 												width: { xs: 116, md: 128 },
 												height: { xs: 116, md: 128 },
 												borderRadius: '50%',
-												border: `1px solid rgba(57, 79, 113, 0.2)`,
+												border: `1px solid rgba(216, 209, 200, 1)`,
 												backgroundColor: 'transparent',
 												display: 'flex',
 												alignItems: 'center',
@@ -1718,7 +1560,7 @@ const CircularFoodSystems = () => {
 										<Typography
 											sx={{
 												fontSize: '15px',
-												color: BODY_GRAY,
+												color: BODY_TEXT,
 												lineHeight: 1.65,
 												textAlign: 'center',
 												maxWidth: 310,
@@ -1736,7 +1578,7 @@ const CircularFoodSystems = () => {
 												alignSelf: 'flex-start',
 												mt: 4.5,
 											}}>
-											<ArrowForwardIcon sx={{ color: GREEN_PRIMARY, fontSize: 34 }} />
+											<ArrowForwardIcon sx={{ color: SUSTAINABILITY_GREEN, fontSize: 34 }} />
 										</Box>
 									)}
 								</React.Fragment>
@@ -1746,12 +1588,10 @@ const CircularFoodSystems = () => {
 
 					<Box
 						sx={{
-							backgroundColor: 'var(--bg-alt)',
-							border: `1px solid ${LINE_SUBTLE}`,
-							borderRadius: '26px',
+							...cardEmphasizedSx,
+							backgroundColor: SOFT_GRAY,
 							p: { xs: 2, md: 2.5 },
 							alignSelf: { xs: 'stretch', md: 'center' },
-							boxShadow: SHADOW_CARD,
 						}}>
 						<Typography
 							component='h3'
@@ -1763,7 +1603,7 @@ const CircularFoodSystems = () => {
 							}}>
 							What Event Planners Receive:
 						</Typography>
-						<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_GRAY }}>
+						<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_TEXT }}>
 							{eventPlannerDeliverables.map((item) => (
 								<Box
 									component='li'
@@ -1792,23 +1632,23 @@ const CircularFoodSystems = () => {
 						sx={{
 							px: { xs: 3.25, md: 4.5 },
 							py: { xs: 1.45, md: 1.6 },
-							fontFamily: FONT_HEADER,
+							fontFamily: FONT_HEADING,
 							fontSize: { xs: '0.82rem', md: '0.9rem' },
 							fontWeight: 600,
 							letterSpacing: '0.1em',
 							textTransform: 'uppercase',
-							color: MAVEN_WHITE,
-							backgroundColor: MAVEN_BLUE,
-							border: `1px solid ${MAVEN_BLUE}`,
-							borderRadius: '999px',
-							boxShadow: '0 10px 28px rgba(57, 79, 113, 0.26)',
+							color: SURFACE_WHITE,
+							backgroundColor: CHARCOAL,
+							border: `1px solid ${CHARCOAL}`,
+							borderRadius: RADIUS_BUTTON,
+							boxShadow: '0 10px 28px rgba(35, 31, 32, 0.18)',
 							'&:hover': {
-								backgroundColor: '#2f425c',
-								borderColor: '#2f425c',
-								boxShadow: '0 12px 32px rgba(57, 79, 113, 0.32)',
+								backgroundColor: CHARCOAL_HOVER,
+								borderColor: CHARCOAL_HOVER,
+								boxShadow: '0 12px 32px rgba(35, 31, 32, 0.2)',
 							},
 							'&:focus-visible': {
-								boxShadow: `0 0 0 2px ${BG_BAND}, 0 0 0 4px ${MAVEN_TAN}`,
+								boxShadow: `0 0 0 2px ${SOFT_GRAY}, 0 0 0 4px ${BRAND_RED}`,
 							},
 						}}>
 						Plan an Event
@@ -1856,7 +1696,7 @@ const CircularFoodSystems = () => {
 								sx={{
 									backgroundColor: isBaseTile ? 'var(--bg-base)' : 'var(--bg-alt)',
 									borderRadius: RADIUS_CARD,
-									border: `1px solid ${LINE_MUTED}`,
+									border: `1px solid ${BORDER_LIGHT}`,
 									p: 2.25,
 									minHeight: 206,
 									display: 'flex',
@@ -1866,7 +1706,7 @@ const CircularFoodSystems = () => {
 									textAlign: 'center',
 									gap: 0.7,
 								}}>
-								<Icon sx={{ color: GREEN_BORDER, fontSize: 38 }} />
+								<Icon sx={{ color: SUSTAINABILITY_GREEN, fontSize: 38 }} />
 								<Typography
 									component='h3'
 									sx={{ fontSize: '17px', fontWeight: 600, mb: 0 }}>
@@ -1875,7 +1715,7 @@ const CircularFoodSystems = () => {
 								<Typography
 									sx={{
 										fontSize: '13px',
-										color: BODY_GRAY,
+										color: BODY_TEXT,
 										lineHeight: 1.6,
 									}}>
 									{initiative.description}
@@ -1894,25 +1734,25 @@ const CircularFoodSystems = () => {
 						sx={{
 							px: { xs: 1.75, sm: 2.2 },
 							py: 0.7,
-							fontFamily: FONT_HEADER,
+							fontFamily: FONT_HEADING,
 							fontSize: '0.7rem',
 							fontWeight: 600,
 							letterSpacing: '0.1em',
 							textTransform: 'uppercase',
-							color: TEXT_DARK,
+							color: CHARCOAL,
 							backgroundColor: 'rgba(255, 255, 255, 0.35)',
-							borderRadius: '999px',
-							borderColor: MAVEN_TAN,
+							borderRadius: RADIUS_BUTTON,
+							borderColor: BRAND_RED,
 							borderWidth: '1px',
 							boxShadow: 'none',
 							'&:hover': {
-								backgroundColor: 'rgba(226, 205, 169, 0.22)',
-								borderColor: '#9c865c',
-								color: MAVEN_BLUE,
+								backgroundColor: BRAND_RED_SOFT,
+								borderColor: BRAND_RED_HOVER,
+								color: CHARCOAL,
 								boxShadow: 'none',
 							},
 							'&:focus-visible': {
-								boxShadow: `0 0 0 2px ${BG_WARM}, 0 0 0 4px ${MAVEN_TAN}`,
+								boxShadow: `0 0 0 2px ${WARM_WHITE}, 0 0 0 4px ${BRAND_RED}`,
 							},
 						}}>
 						Contact Sales Team
@@ -1924,9 +1764,9 @@ const CircularFoodSystems = () => {
 			<Box
 				id='methodology'
 				sx={{
-					backgroundColor: BG_WARM,
-					borderTop: '1px solid rgba(57, 79, 113, 0.09)',
-					borderBottom: '1px solid rgba(57, 79, 113, 0.09)',
+					backgroundColor: WARM_WHITE,
+					borderTop: '1px solid rgba(216, 209, 200, 0.95)',
+					borderBottom: '1px solid rgba(216, 209, 200, 0.95)',
 					scrollMarginTop: { xs: '80px', md: '96px' },
 				}}>
 				<Box sx={sectionContainerSx}>
@@ -1942,7 +1782,7 @@ const CircularFoodSystems = () => {
 					<Typography
 						sx={{
 							fontSize: '15px',
-							color: BODY_GRAY,
+							color: BODY_TEXT,
 							lineHeight: 1.8,
 							maxWidth: 1040,
 							mb: 1.25,
@@ -1953,7 +1793,7 @@ const CircularFoodSystems = () => {
 					<Typography
 						sx={{
 							fontSize: '15px',
-							color: BODY_GRAY,
+							color: BODY_TEXT,
 							lineHeight: 1.8,
 							maxWidth: 1040,
 							mb: 1.25,
@@ -1964,7 +1804,7 @@ const CircularFoodSystems = () => {
 					<Typography
 						sx={{
 							fontSize: '15px',
-							color: BODY_GRAY,
+							color: BODY_TEXT,
 							lineHeight: 1.8,
 							maxWidth: 1040,
 							mb: 2,
@@ -1978,7 +1818,7 @@ const CircularFoodSystems = () => {
 						sx={{ fontSize: '24px', fontWeight: 500, letterSpacing: '-0.012em', mb: 1 }}>
 						How to Read These Metrics
 					</Typography>
-					<Box component='ul' sx={{ m: 0, pl: 2.25, color: BODY_GRAY, mb: 2 }}>
+					<Box component='ul' sx={{ m: 0, pl: 2.25, color: BODY_TEXT, mb: 2 }}>
 						<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.8 }}>
 							Food scrap diversion is based on measured on-site capture and processing
 							volumes.
@@ -1992,7 +1832,7 @@ const CircularFoodSystems = () => {
 					</Box>
 
 					<Box sx={{ mb: 2.5 }}>
-						<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mb: 0.5 }}>
+						<Typography sx={{ fontSize: '12px', color: MUTED_TEXT, mb: 0.5 }}>
 							Sustainability reporting powered by <BioGreenLink />
 						</Typography>
 						<Box
@@ -2006,7 +1846,7 @@ const CircularFoodSystems = () => {
 								lineHeight: 0,
 								borderRadius: '4px',
 								'&:focus-visible': {
-									outline: `2px solid ${MAVEN_TAN}`,
+									outline: `2px solid ${BRAND_RED}`,
 									outlineOffset: '3px',
 								},
 							}}>
@@ -2019,7 +1859,7 @@ const CircularFoodSystems = () => {
 						</Box>
 					</Box>
 
-					<Typography sx={{ fontSize: '12px', color: MUTED_GRAY, mb: 2.5 }}>
+					<Typography sx={{ fontSize: '12px', color: MUTED_TEXT, mb: 2.5 }}>
 						Reported sustainability metrics are estimates based on measured inputs and
 						standardized conversion factors; actual impacts may vary.
 					</Typography>
@@ -2035,23 +1875,23 @@ const CircularFoodSystems = () => {
 							sx={{
 								px: { xs: 1.75, sm: 2.2 },
 								py: 0.7,
-								fontFamily: FONT_HEADER,
+								fontFamily: FONT_HEADING,
 								fontSize: '0.7rem',
 								fontWeight: 600,
 								letterSpacing: '0.1em',
 								textTransform: 'uppercase',
-								color: MAVEN_WHITE,
-								backgroundColor: MAVEN_BLUE,
-								borderRadius: '999px',
-								border: `1px solid ${MAVEN_BLUE}`,
+								color: SURFACE_WHITE,
+								backgroundColor: CHARCOAL,
+								borderRadius: RADIUS_BUTTON,
+								border: `1px solid ${CHARCOAL}`,
 								boxShadow: 'none',
 								'&:hover': {
-									backgroundColor: '#2f425c',
-									borderColor: '#2f425c',
-									boxShadow: '0 6px 16px rgba(57, 79, 113, 0.22)',
+									backgroundColor: CHARCOAL_HOVER,
+									borderColor: CHARCOAL_HOVER,
+									boxShadow: '0 6px 16px rgba(35, 31, 32, 0.16)',
 								},
 								'&:focus-visible': {
-									boxShadow: `0 0 0 2px ${BG_WARM}, 0 0 0 4px ${MAVEN_TAN}`,
+									boxShadow: `0 0 0 2px ${WARM_WHITE}, 0 0 0 4px ${BRAND_RED}`,
 								},
 							}}>
 							Book a Room
@@ -2066,25 +1906,25 @@ const CircularFoodSystems = () => {
 							sx={{
 								px: { xs: 1.75, sm: 2.2 },
 								py: 0.7,
-								fontFamily: FONT_HEADER,
+								fontFamily: FONT_HEADING,
 								fontSize: '0.7rem',
 								fontWeight: 600,
 								letterSpacing: '0.1em',
 								textTransform: 'uppercase',
-								color: TEXT_DARK,
+								color: CHARCOAL,
 								backgroundColor: 'rgba(255, 255, 255, 0.35)',
-								borderRadius: '999px',
-								borderColor: MAVEN_TAN,
+								borderRadius: RADIUS_BUTTON,
+								borderColor: BRAND_RED,
 								borderWidth: '1px',
 								boxShadow: 'none',
 								'&:hover': {
-									backgroundColor: 'rgba(226, 205, 169, 0.22)',
-									borderColor: '#9c865c',
-									color: MAVEN_BLUE,
+									backgroundColor: BRAND_RED_SOFT,
+									borderColor: BRAND_RED_HOVER,
+									color: CHARCOAL,
 									boxShadow: 'none',
 								},
 								'&:focus-visible': {
-									boxShadow: `0 0 0 2px ${BG_WARM}, 0 0 0 4px ${MAVEN_TAN}`,
+									boxShadow: `0 0 0 2px ${WARM_WHITE}, 0 0 0 4px ${BRAND_RED}`,
 								},
 							}}>
 							Plan an Event
