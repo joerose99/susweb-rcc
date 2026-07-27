@@ -704,18 +704,17 @@ const CircularFoodSystems = () => {
 	const lastUpdatedDisplay = formattedStatLastUpdate ?? lastUpdatedLabel;
 	const programAtAGlanceCards = [
 		{
-			title: 'What happens to food not eaten on property?',
-			body: 'Participating food scraps are captured and processed through the hotel’s on-property BioGreen360 equipment.',
+			title: 'What materials are included?',
+			body: 'Participating food scraps from hotel kitchens, banquets, and other food-service operations.',
 		},
 		{
-			title: 'How does the system work?',
-			body: 'BioGreen360 provides a waterless, closed-loop platform that processes food scraps while supporting property-level measurement and reporting.',
+			title: 'Where are food scraps processed?',
+			body: 'Through BioGreen360 equipment installed directly at Bethesda North Marriott.',
 		},
 		{
-			title: 'How often does reporting update?',
+			title: 'How is impact reported?',
 			body: (
 				<>
-					Reporting updates automatically as new program data is processed through BioGreen360’s{' '}
 					<Box
 						component='a'
 						href='#live-reporting'
@@ -724,17 +723,17 @@ const CircularFoodSystems = () => {
 							scrollToSection('live-reporting');
 						}}
 						sx={SENTENCE_LINK_SX}>
-						reporting platform
-					</Box>
-					.
+						Property data
+					</Box>{' '}
+					updates automatically as new program activity is recorded.
 				</>
 			),
 		},
 		{
-			title: 'Can my event receive an impact recap?',
+			title: 'Can events participate?',
 			body: (
 				<>
-					Qualifying meetings and events may request dedicated food-scrap tracking and a post-event{' '}
+					Yes, when{' '}
 					<Box
 						component='a'
 						href='#events'
@@ -743,9 +742,9 @@ const CircularFoodSystems = () => {
 							scrollToSection('events');
 						}}
 						sx={SENTENCE_LINK_SX}>
-						impact recap
-					</Box>
-					, subject to advance planning and operational availability.
+						tracking
+					</Box>{' '}
+					is coordinated in advance and operationally available.
 				</>
 			),
 			requiresEvents: true,
@@ -800,10 +799,10 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 0,
 						}}>
-						At Bethesda North Marriott Hotel &amp; Conference Center, sustainability is part of how we
-						operate, welcome guests, and host memorable gatherings. Through our on-property BioGreen360
-						system, food not eaten on property is processed, measured, and diverted while clear reporting
-						helps guests, planners, and hotel teams understand the program&apos;s impact.
+						At Bethesda North Marriott Hotel &amp; Conference Center, sustainability supports both daily
+						hotel operations and the gatherings we host. This site shares food-waste diversion results,
+						explains the BioGreen360 program, and shows how qualifying events can request dedicated
+						impact reporting.
 					</Typography>
 					<Box
 						sx={{
@@ -823,11 +822,11 @@ const CircularFoodSystems = () => {
 								columnGap: 1,
 								rowGap: 0.75,
 							}}>
-							<Box component='span'>ON-PROPERTY PROCESSING</Box>
+							<Box component='span'>PROPERTY-LEVEL DATA</Box>
 							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
 								•
 							</Box>
-							<Box component='span'>LIVE IMPACT REPORTING</Box>
+							<Box component='span'>ON-PROPERTY PROCESSING</Box>
 							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
 								•
 							</Box>
@@ -884,7 +883,7 @@ const CircularFoodSystems = () => {
 							listStylePosition: 'outside',
 						}}>
 						<Box component='li' sx={{ mb: 1 }}>
-							Food not eaten on property is processed through the hotel’s on-property{' '}
+							Participating food scraps are processed directly at the hotel through{' '}
 							<Box
 								component='a'
 								href='#biogreen360'
@@ -893,12 +892,11 @@ const CircularFoodSystems = () => {
 									scrollToSection('biogreen360');
 								}}
 								sx={SENTENCE_LINK_SX}>
-								BioGreen360 system
+								BioGreen360
 							</Box>
 							.
 						</Box>
 						<Box component='li' sx={{ mb: 1 }}>
-							Property-level data is measured and presented through BioGreen360’s{' '}
 							<Box
 								component='a'
 								href='#live-reporting'
@@ -907,9 +905,9 @@ const CircularFoodSystems = () => {
 									scrollToSection('live-reporting');
 								}}
 								sx={SENTENCE_LINK_SX}>
-								reporting platform
-							</Box>
-							.
+								Live reporting
+							</Box>{' '}
+							shows cumulative diversion and estimated soil outcomes.
 						</Box>
 						<Box component='li'>
 							Qualifying meetings and events may request dedicated tracking and a{' '}
@@ -921,7 +919,7 @@ const CircularFoodSystems = () => {
 									scrollToSection('events');
 								}}
 								sx={SENTENCE_LINK_SX}>
-								post-event impact recap
+								post-event recap
 							</Box>
 							.
 						</Box>
@@ -948,9 +946,7 @@ const CircularFoodSystems = () => {
 							maxWidth: 840,
 							mb: { xs: 3, md: 3.5 },
 						}}>
-						Bethesda North Marriott became the first Marriott-branded hotel to install the BioGreen360
-						platform, creating an on-property system for processing, measuring, and diverting food not
-						eaten at the hotel.
+						Here is what guests, planners, and hotel teams should know about the program.
 					</Typography>
 				</Box>
 				<Box
