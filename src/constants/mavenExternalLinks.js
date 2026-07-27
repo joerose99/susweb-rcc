@@ -7,8 +7,6 @@ export const MAVEN_RESERVATIONS_URL =
 
 export const MAVEN_EVENTS_INQUIRY_URL = 'https://www.themavenhotel.com/meetings-events/rfp';
 
-export const MAVEN_SUSTAINABILITY_PAGE_URL = 'https://www.themavenhotel.com/about/mavens-of-sustainability';
-
 export const MAVEN_CAREERS_URL = 'https://www.themavenhotel.com/careers';
 
 export const MAVEN_SALES_MAILTO = 'mailto:sales@themavenhotel.com';

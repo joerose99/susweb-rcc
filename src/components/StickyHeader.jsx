@@ -113,7 +113,6 @@ const StickyHeader = ({ logoSrc = theMavenWordmarkHeader, logoAlt = 'The Maven H
 						{ label: 'Impact', href: '#impact' },
 						{ label: 'Reporting', href: '#live-reporting' },
 						{ label: 'Events', href: '#events' },
-						{ label: 'Community', href: '#community' },
 						{ label: 'Initiatives', href: '#initiatives' },
 						{ label: 'Methodology', href: '#methodology' },
 					].map((item) => (

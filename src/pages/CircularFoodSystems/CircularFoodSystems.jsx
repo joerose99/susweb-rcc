@@ -23,14 +23,12 @@ import eventsMavenMeetingSpaceImage from '../../assets/events-maven-meeting-spac
 import cornerstonePartnershipImage from '../../assets/cornerstone-partnership.png';
 import heroMavenLobbyImage from '../../assets/hero-maven-lobby.png';
 import foodScrapsProcessingPathwaysImage from '../../assets/food-scraps-processing-pathways.png';
-import communityMavenMuralImage from '../../assets/community-maven-mural.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
 	BIOGREEN360_URL,
 	MAVEN_EVENTS_INQUIRY_URL,
 	MAVEN_RESERVATIONS_URL,
 	MAVEN_SALES_MAILTO,
-	MAVEN_SUSTAINABILITY_PAGE_URL,
 } from '../../constants/mavenExternalLinks';
 
 const MAVEN_BLUE = '#394F71';
@@ -1815,93 +1813,6 @@ const CircularFoodSystems = () => {
 						}}>
 						Plan an Event
 					</Button>
-				</Box>
-			</Box>
-
-			{/* Community Impact */}
-			<Box
-				id='community'
-				className='section section--base'
-				sx={{
-					...sectionContainerSx,
-					...sectionBandBaseSx,
-					scrollMarginTop: { xs: '90px', md: '104px' },
-				}}>
-				<Box
-					sx={{
-						display: 'grid',
-						gridTemplateColumns: { xs: '1fr', md: '3fr 2fr' },
-						gap: { xs: 3, md: 5 },
-						alignItems: 'center',
-					}}>
-					<Box>
-						<Typography
-							component='h2'
-							sx={{
-								fontSize: { xs: '28px', md: '34px' },
-								fontWeight: 500,
-								mb: 1.25,
-							}}>
-							Community Impact and Local Partnerships
-						</Typography>
-						<Typography
-							sx={{
-								fontSize: '16px',
-								color: MUTED_GRAY,
-								mb: 2.5,
-								maxWidth: 620,
-								lineHeight: 1.8,
-							}}>
-							Community impact at The Maven reflects thoughtful local partnerships and team
-							engagement rooted in hospitality, connection, and place. Additional community
-							stories may be shared here as programs are confirmed for publication.
-						</Typography>
-						<Button
-							component='a'
-							href={MAVEN_SUSTAINABILITY_PAGE_URL}
-							target='_blank'
-							rel='noopener noreferrer'
-							variant='contained'
-							disableElevation
-							sx={{
-								px: { xs: 2.75, md: 3.25 },
-								py: 1.1,
-								fontFamily: FONT_HEADER,
-								fontSize: '0.78rem',
-								fontWeight: 600,
-								letterSpacing: '0.1em',
-								textTransform: 'uppercase',
-								color: MAVEN_WHITE,
-								backgroundColor: MAVEN_BLUE,
-								border: `1px solid ${MAVEN_BLUE}`,
-								borderRadius: '999px',
-								boxShadow: 'none',
-								'&:hover': {
-									backgroundColor: '#2f425c',
-									borderColor: '#2f425c',
-									boxShadow: '0 6px 16px rgba(57, 79, 113, 0.22)',
-								},
-								'&:focus-visible': {
-									boxShadow: `0 0 0 2px ${BG_WARM}, 0 0 0 4px ${MAVEN_TAN}`,
-								},
-							}}>
-							Learn More
-						</Button>
-					</Box>
-					<Box
-						component='img'
-						src={communityMavenMuralImage}
-						alt="The Maven's exterior mural depicting hands, tools, and botanical motifs in gold and slate tones."
-						sx={{
-							width: '100%',
-							aspectRatio: '814 / 1024',
-							objectFit: 'cover',
-							borderRadius: RADIUS_CARD,
-							border: `1px solid ${LINE_MUTED}`,
-							boxShadow: SHADOW_IMAGE,
-							display: 'block',
-						}}
-					/>
 				</Box>
 			</Box>
 
