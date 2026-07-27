@@ -32,12 +32,12 @@ import eventsBethesdaNorthBoardroomImage from '../../assets/events-bethesda-nort
 import StickyHeader from '../../components/StickyHeader';
 import {
 	MAVEN_EVENTS_INQUIRY_URL,
-	MAVEN_RESERVATIONS_URL,
 } from '../../constants/mavenExternalLinks';
 import {
 	BIOGREEN360_URL,
 	HEADER_SCROLL_MARGIN,
 	PROPERTY_EVENTS_INQUIRY_URL,
+	PROPERTY_RESERVATIONS_URL,
 } from '../../constants/propertyExternalLinks';
 import {
 	BODY_TEXT,
@@ -141,7 +141,7 @@ const BioGreenLink = () => (
 const siteConfig = {
 	eventsEnabled: true,
 	restaurantEnabled: true,
-	bookingUrl: MAVEN_RESERVATIONS_URL,
+	bookingUrl: PROPERTY_RESERVATIONS_URL,
 	processingPathwayMode: 'mixed',
 	eventTrackingMode: 'by_request',
 	showEquivalencies: true,

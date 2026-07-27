@@ -2,12 +2,11 @@
  * Bethesda North Marriott Hotel & Conference Center — external destinations.
  *
  * Header CTAs must not point at Maven URLs behind Bethesda-branded labels.
- * Approved property destinations are pending; leave placeholders until confirmed.
  */
 
-/** @type {string | null} */
-// TODO: Replace with approved Bethesda North Marriott reservations / booking URL.
-export const PROPERTY_RESERVATIONS_URL = null;
+/** Official Bethesda North Marriott property overview / booking destination. */
+export const PROPERTY_RESERVATIONS_URL =
+	'https://www.marriott.com/en-us/hotels/wasbn-bethesda-north-marriott-hotel-and-conference-center/overview/';
 
 /** Official Bethesda North Marriott meetings & events destination. */
 export const PROPERTY_EVENTS_INQUIRY_URL =
