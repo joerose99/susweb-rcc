@@ -12,6 +12,7 @@ import ElectricCarIcon from '@mui/icons-material/ElectricCar';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined';
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
 import poweredByBioGreen from '../../assets/PoweredByBioGreen.svg';
@@ -21,7 +22,6 @@ import howItWorksSproutIcon from '../../assets/how-it-works-sprout.png';
 import howItWorksReportIcon from '../../assets/how-it-works-report.png';
 import eventsMavenMeetingSpaceImage from '../../assets/events-maven-meeting-space.png';
 import cornerstonePartnershipImage from '../../assets/cornerstone-partnership.png';
-import heroMavenLobbyImage from '../../assets/hero-maven-lobby.png';
 import foodScrapsProcessingPathwaysImage from '../../assets/food-scraps-processing-pathways.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
@@ -44,6 +44,7 @@ import {
 	MUTED_TEXT,
 	RADIUS_BUTTON,
 	RADIUS_CARD,
+	RADIUS_IMAGE,
 	SHADOW_CARD,
 	SHADOW_IMAGE,
 	SOFT_GRAY,
@@ -52,14 +53,41 @@ import {
 	TYPE,
 	WARM_WHITE,
 	cardEmphasizedSx,
+	mediaPlaceholderSx,
 	pageThemeSx,
 	sectionBandAltSx,
 	sectionBandBaseSx,
 	sectionContainerSx,
 } from '../../theme/tokens';
 
+const SENTENCE_LINK_SX = {
+	color: CHARCOAL,
+	textDecoration: 'underline',
+	textDecorationColor: 'rgba(166, 25, 46, 0.35)',
+	textUnderlineOffset: '3px',
+	textDecorationThickness: '1px',
+	cursor: 'pointer',
+	transition: 'color 180ms ease, text-decoration-color 180ms ease',
+	'&:hover': {
+		color: BRAND_RED,
+		textDecorationColor: 'rgba(166, 25, 46, 0.55)',
+	},
+	'&:focus-visible': {
+		outline: `2px solid ${BRAND_RED}`,
+		outlineOffset: '2px',
+		borderRadius: '2px',
+	},
+};
+
+// TODO: Replace temporary Maven org ID with the Bethesda North Marriott organization ID before publication.
 const ORG_STATS_API_URL =
 	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f786a8c64cf4f5945895';
+
+const PROPERTY_CONFIG = {
+	/** BioGreen360 program launch date at Bethesda North Marriott (calendar date). */
+	programLaunchDate: '2023-02-27',
+	timeZone: 'America/New_York',
+};
 
 const BIOGREEN_LINK_SX = {
 	color: 'inherit',
@@ -118,10 +146,10 @@ const LBS_PER_SHORT_TON = 2000;
 const FINISHED_COMPOST_FACTOR = 0.6;
 const COMPOST_LBS_PER_CUBIC_YARD = 1200;
 const COMPOST_COVERAGE_SQ_FT_PER_CY_AT_1IN = 324;
+const SQ_FT_PER_ACRE = 43560;
 const RED_ROCKS_SQ_FT = 90000;
 const AVOIDED_MTCO2E_PER_SHORT_TON = 0.65;
 const EPA_MTCO2E_PER_PASSENGER_VEHICLE_MILE = 0.000393;
-const EPA_MTCO2E_PER_TREE_SEEDLING_10YR = 0.06;
 const MAVEN_HAND_LBS = 500;
 const DEN_TO_MAVEN_ONE_WAY_MILES = 22.4;
 
@@ -141,13 +169,86 @@ const getCompostCoverageSqFt = (poundsFed) => {
 	const cubicYards = getFinishedCompostLbs(poundsFed) / COMPOST_LBS_PER_CUBIC_YARD;
 	return cubicYards * COMPOST_COVERAGE_SQ_FT_PER_CY_AT_1IN;
 };
+const getEstimatedAcresFertilized = (poundsFed) => getCompostCoverageSqFt(poundsFed) / SQ_FT_PER_ACRE;
 const getRedRocksEquivalency = (poundsFed) => getCompostCoverageSqFt(poundsFed) / RED_ROCKS_SQ_FT;
 const getDenMavenRoundTrips = (poundsFed) => {
 	const vehicleMiles = getAvoidedMtco2e(poundsFed) / EPA_MTCO2E_PER_PASSENGER_VEHICLE_MILE;
 	return vehicleMiles / (DEN_TO_MAVEN_ONE_WAY_MILES * 2);
 };
-const getTreeSeedlingEquivalency = (poundsFed) =>
-	getAvoidedMtco2e(poundsFed) / EPA_MTCO2E_PER_TREE_SEEDLING_10YR;
+
+const getZonedCalendarDate = (date, timeZone) => {
+	const parts = new Intl.DateTimeFormat('en-US', {
+		timeZone,
+		year: 'numeric',
+		month: '2-digit',
+		day: '2-digit',
+	}).formatToParts(date);
+	const valueFor = (type) => parts.find((part) => part.type === type)?.value;
+	const year = valueFor('year');
+	const month = valueFor('month');
+	const day = valueFor('day');
+	if (!year || !month || !day) {
+		return null;
+	}
+	return `${year}-${month}-${day}`;
+};
+
+const getElapsedWholeDays = (launchDateYmd, timeZone, now = new Date()) => {
+	if (!/^\d{4}-\d{2}-\d{2}$/.test(String(launchDateYmd || ''))) {
+		return null;
+	}
+
+	const todayYmd = getZonedCalendarDate(now, timeZone);
+	if (!todayYmd) {
+		return null;
+	}
+
+	const [startYear, startMonth, startDay] = launchDateYmd.split('-').map(Number);
+	const [endYear, endMonth, endDay] = todayYmd.split('-').map(Number);
+	if ([startYear, startMonth, startDay, endYear, endMonth, endDay].some((n) => !Number.isFinite(n))) {
+		return null;
+	}
+
+	const startUtc = Date.UTC(startYear, startMonth - 1, startDay);
+	const endUtc = Date.UTC(endYear, endMonth - 1, endDay);
+	if (!Number.isFinite(startUtc) || !Number.isFinite(endUtc) || endUtc < startUtc) {
+		return null;
+	}
+
+	return Math.floor((endUtc - startUtc) / 86400000);
+};
+
+const formatCountWithSeparators = (value) =>
+	Math.round(value).toLocaleString('en-US', { maximumFractionDigits: 0 });
+
+const formatShortTonsDisplay = (poundsFed) => {
+	const tons = getShortTons(poundsFed);
+	if (!Number.isFinite(tons)) {
+		return MISSING_METRIC_VALUE;
+	}
+	const rounded = Math.round(tons * 10) / 10;
+	const display = Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(1);
+	return `${display} tons`;
+};
+
+const formatEstimatedAcresDisplay = (poundsFed) => {
+	const acres = getEstimatedAcresFertilized(poundsFed);
+	if (!Number.isFinite(acres)) {
+		return MISSING_METRIC_VALUE;
+	}
+
+	let display;
+	if (acres < 1) {
+		display = acres.toFixed(2);
+	} else if (acres < 10) {
+		display = (Math.round(acres * 10) / 10).toFixed(1);
+	} else {
+		const oneDecimal = Math.round(acres * 10) / 10;
+		display = Number.isInteger(oneDecimal) ? String(Math.round(oneDecimal)) : oneDecimal.toFixed(1);
+	}
+
+	return `${display} acres`;
+};
 
 const formatApproxCount = (value) => {
 	if (value >= 10) {
@@ -161,30 +262,36 @@ const formatApproxCount = (value) => {
 	return `~${value.toFixed(2)}`;
 };
 
-const buildImpactMetrics = (poundsFed) => [
-	{
-		eyebrow: 'Food scraps diverted',
-		value:
-			poundsFed != null ? `${getShortTons(poundsFed).toFixed(1)} tons` : MISSING_METRIC_VALUE,
-		note: 'measured from captured on-site inputs',
-	},
-	{
-		eyebrow: 'Soil amendment generated (estimate)',
-		value:
-			poundsFed != null
-				? `${(getFinishedCompostLbs(poundsFed) / LBS_PER_SHORT_TON).toFixed(1)} tons`
-				: MISSING_METRIC_VALUE,
-		note: 'estimated using standard conversion factors',
-	},
-	{
-		eyebrow: 'Climate equivalency',
-		value:
-			poundsFed != null
-				? `${formatApproxCount(getTreeSeedlingEquivalency(poundsFed))} trees`
-				: MISSING_METRIC_VALUE,
-		note: 'illustrative context only',
-	},
-];
+const buildImpactMetrics = (poundsFed) => {
+	const daysOperating = getElapsedWholeDays(
+		PROPERTY_CONFIG.programLaunchDate,
+		PROPERTY_CONFIG.timeZone
+	);
+
+	return [
+		{
+			eyebrow: 'BioGreen360 Program',
+			value:
+				daysOperating != null
+					? `${formatCountWithSeparators(daysOperating)} days`
+					: MISSING_METRIC_VALUE,
+			note: 'operating on property since February 27, 2023',
+			Icon: CalendarTodayIcon,
+		},
+		{
+			eyebrow: 'Food Diverted',
+			value: poundsFed != null ? formatShortTonsDisplay(poundsFed) : MISSING_METRIC_VALUE,
+			note: 'measured from captured on-property inputs',
+			Icon: DinnerDiningIcon,
+		},
+		{
+			eyebrow: 'Estimated Soil Coverage',
+			value: poundsFed != null ? formatEstimatedAcresDisplay(poundsFed) : MISSING_METRIC_VALUE,
+			note: 'estimated at a one-inch application depth',
+			Icon: GrassIcon,
+		},
+	];
+};
 
 const buildEquivalencyCards = (poundsFed) => [
 	{
@@ -291,6 +398,9 @@ const CircularFoodSystems = () => {
 			try {
 				const response = await fetch(ORG_STATS_API_URL);
 				if (!response.ok) {
+					if (process.env.NODE_ENV !== 'production') {
+						console.error('Org stats request failed', response.status);
+					}
 					return;
 				}
 
@@ -304,7 +414,10 @@ const CircularFoodSystems = () => {
 				if (!cancelled && data?.statLastUpdate != null) {
 					setStatLastUpdate(data.statLastUpdate);
 				}
-			} catch {
+			} catch (error) {
+				if (process.env.NODE_ENV !== 'production') {
+					console.error('Org stats request error', error);
+				}
 				// Metrics display '-' until data is available.
 			}
 		};
@@ -497,31 +610,53 @@ const CircularFoodSystems = () => {
 	const lastUpdatedLabel = formattedLastSync ?? 'Last sync: unavailable';
 	const formattedStatLastUpdate = formatLastSync(statLastUpdate);
 	const lastUpdatedDisplay = formattedStatLastUpdate ?? lastUpdatedLabel;
-	const quickAnswersCards = [
+	const programAtAGlanceCards = [
 		{
-			title: 'What happens to food scraps?',
-			body: 'Captured on-site and managed through local processing pathways.',
-			href: '#how-it-works',
-			scrollTarget: 'how-it-works',
+			title: 'What happens to food not eaten on property?',
+			body: 'Participating food scraps are captured and processed through the hotel’s on-property BioGreen360 equipment.',
 		},
 		{
-			title: 'How often does this update?',
-			body: "Reporting updates automatically through BioGreen360's reporting system.",
-			href: '#live-reporting',
-			scrollTarget: 'live-reporting',
+			title: 'How does the system work?',
+			body: 'BioGreen360 provides a waterless, closed-loop platform that processes food scraps while supporting property-level measurement and reporting.',
 		},
 		{
-			title: 'Can my event receive a recap?',
-			body: 'Qualifying events may request impact reporting, subject to availability and operational capacity.',
-			href: '#events',
-			scrollTarget: 'events',
+			title: 'How often does reporting update?',
+			body: (
+				<>
+					Reporting updates automatically as new program data is processed through BioGreen360’s{' '}
+					<Box
+						component='a'
+						href='#live-reporting'
+						onClick={(event) => {
+							event.preventDefault();
+							scrollToSection('live-reporting');
+						}}
+						sx={SENTENCE_LINK_SX}>
+						reporting platform
+					</Box>
+					.
+				</>
+			),
+		},
+		{
+			title: 'Can my event receive an impact recap?',
+			body: (
+				<>
+					Qualifying meetings and events may request dedicated food-scrap tracking and a post-event{' '}
+					<Box
+						component='a'
+						href='#events'
+						onClick={(event) => {
+							event.preventDefault();
+							scrollToSection('events');
+						}}
+						sx={SENTENCE_LINK_SX}>
+						impact recap
+					</Box>
+					, subject to advance planning and operational availability.
+				</>
+			),
 			requiresEvents: true,
-		},
-		{
-			title: 'How is this calculated?',
-			body: 'See definitions, scope notes, and methodology details for how metrics and equivalencies are presented.',
-			href: '#methodology',
-			scrollTarget: 'methodology',
 		},
 	].filter((card) => (card.requiresEvents ? eventsEnabled : true));
 
@@ -537,14 +672,15 @@ const CircularFoodSystems = () => {
 				sx={{
 					...sectionContainerSx,
 					...sectionBandBaseSx,
+					pt: { xs: '72px', md: '108px' },
 					'&::before': {
 						...sectionBandBaseSx['&::before'],
 						borderTop: '1px solid transparent',
 					},
 				}}>
 				<Box sx={{ textAlign: 'center' }}>
-					<Typography className='micro-label' sx={{ mb: 2.25 }}>
-						LIVE REPORTING. CLEAR DEFINITIONS.
+					<Typography className='micro-label' sx={{ mb: { xs: 2, md: 2.5 } }}>
+						LIVE REPORTING. MEASURABLE PROGRESS.
 					</Typography>
 					<Typography
 						component='h1'
@@ -554,67 +690,102 @@ const CircularFoodSystems = () => {
 							fontWeight: 400,
 							letterSpacing: '-0.02em',
 							lineHeight: 1.12,
-							mb: 2.5,
+							color: CHARCOAL,
+							maxWidth: 920,
+							mx: 'auto',
+							mb: { xs: 2.25, md: 3 },
+							textWrap: 'balance',
 						}}>
-						Sustainability, The Maven Way.
+						Sustainability, Built Into Every Stay and Gathering.
 					</Typography>
 					<Typography
 						sx={{
-							fontSize: { xs: '17px', md: '19px' },
+							fontSize: { xs: '17px', md: '18px' },
 							fontWeight: 400,
 							color: BODY_TEXT,
+							lineHeight: 1.75,
+							maxWidth: 880,
+							mx: 'auto',
 							mb: 0,
 						}}>
-						At The Maven, we believe great stays should leave a lasting impression—on you, not
-						the planet—through thoughtful, local choices rooted in community and character.
-						From partnering with neighborhood makers to reducing waste behind the scenes,
-						we&apos;re committed to doing better together. Stay Bold. Stay Curious. Stay
-						Thoughtful.
+						At Bethesda North Marriott Hotel &amp; Conference Center, sustainability is part of how we
+						operate, welcome guests, and host memorable gatherings. Through our on-property BioGreen360
+						system, food not eaten on property is processed, measured, and diverted while clear reporting
+						helps guests, planners, and hotel teams understand the program&apos;s impact.
 					</Typography>
 					<Box
 						sx={{
 							textAlign: 'center',
 							maxWidth: 860,
 							mx: 'auto',
-							mt: { xs: 2.25, md: 2.5 },
+							mt: { xs: 2.5, md: 3 },
 						}}>
-						<Typography className='micro-label' sx={{ mb: 0, lineHeight: 1.65 }}>
-							PROPERTY-LEVEL DATA • METHODOLOGY AVAILABLE • EVENT REPORTING BY REQUEST
+						<Typography
+							className='micro-label'
+							sx={{
+								mb: 0,
+								lineHeight: 1.7,
+								display: 'flex',
+								flexWrap: 'wrap',
+								justifyContent: 'center',
+								columnGap: 1,
+								rowGap: 0.75,
+							}}>
+							<Box component='span'>ON-PROPERTY PROCESSING</Box>
+							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
+								•
+							</Box>
+							<Box component='span'>LIVE IMPACT REPORTING</Box>
+							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
+								•
+							</Box>
+							<Box component='span'>EVENT REPORTING BY REQUEST</Box>
+						</Typography>
+					</Box>
+				</Box>
+
+				{/* TODO: Replace hero media placeholder with approved Bethesda North Marriott property photography (exterior, conference/ballroom, lobby, or dining). */}
+				<Box
+					sx={{
+						width: '100%',
+						maxWidth: 1120,
+						mx: 'auto',
+						mt: { xs: 4, md: 5.5 },
+						mb: 0,
+					}}>
+					<Box
+						role='status'
+						aria-label='Bethesda North Marriott hero imagery pending approval'
+						sx={{
+							...mediaPlaceholderSx,
+							width: '100%',
+							aspectRatio: { xs: '16 / 10', md: '16 / 9' },
+							minHeight: { xs: 220, md: 360 },
+							borderRadius: RADIUS_IMAGE,
+							boxShadow: SHADOW_IMAGE,
+							gap: 1.25,
+						}}>
+						<Typography className='micro-label' sx={{ mb: 0 }}>
+							PHOTO / MEDIA PLACEMENT
+						</Typography>
+						<Typography
+							sx={{
+								fontSize: { xs: '15px', md: '17px' },
+								color: BODY_TEXT,
+								lineHeight: 1.5,
+								maxWidth: 420,
+							}}>
+							Bethesda North Marriott hero imagery pending approval
 						</Typography>
 					</Box>
 				</Box>
 
 				<Box
 					sx={{
-						width: '100%',
-						maxWidth: 1024,
-						mx: 'auto',
-						mt: { xs: 4, md: 5.5 },
-						mb: 0,
-						lineHeight: 0,
-					}}>
-					<Box
-						component='img'
-						alt='The Maven Hotel lobby with the Maven Hand sculpture suspended from a wood-slat ceiling above leather seating and a geometric rug.'
-						src={heroMavenLobbyImage}
-						sx={{
-							width: '100%',
-							height: 'auto',
-							aspectRatio: '1024 / 727',
-							borderRadius: RADIUS_CARD,
-							border: `1px solid ${BORDER_LIGHT}`,
-							display: 'block',
-							boxShadow: SHADOW_IMAGE,
-						}}
-					/>
-				</Box>
-
-				<Box
-					sx={{
 						maxWidth: 900,
 						mx: 'auto',
-						mt: { xs: 3, md: 3.5 },
-						mb: { xs: 5, md: 6 },
+						mt: { xs: 3, md: 4 },
+						mb: { xs: 5, md: 7 },
 					}}>
 					<Box
 						component='ul'
@@ -624,13 +795,28 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 0,
 							pl: 3,
-							fontSize: '18px',
+							fontSize: { xs: '16px', md: '18px' },
 							lineHeight: 1.75,
 							color: BODY_TEXT,
 							textAlign: 'left',
 							listStylePosition: 'outside',
 						}}>
-						<Box component='li'>
+						<Box component='li' sx={{ mb: 1 }}>
+							Food not eaten on property is processed through the hotel’s on-property{' '}
+							<Box
+								component='a'
+								href='#biogreen360'
+								onClick={(event) => {
+									event.preventDefault();
+									scrollToSection('biogreen360');
+								}}
+								sx={SENTENCE_LINK_SX}>
+								BioGreen360 system
+							</Box>
+							.
+						</Box>
+						<Box component='li' sx={{ mb: 1 }}>
+							Property-level data is measured and presented through BioGreen360’s{' '}
 							<Box
 								component='a'
 								href='#live-reporting'
@@ -638,40 +824,51 @@ const CircularFoodSystems = () => {
 									event.preventDefault();
 									scrollToSection('live-reporting');
 								}}
-								className='lux-link lux-link--internal'>
-								Live reporting data
-							</Box>{' '}
-							is pulled from <BioGreenLink />
-							&apos;s reporting system.
+								sx={SENTENCE_LINK_SX}>
+								reporting platform
+							</Box>
+							.
 						</Box>
 						<Box component='li'>
-							Food scraps captured on-site are managed through local processing pathways
-							based on property operations and partner availability.
-						</Box>
-						<Box component='li'>
-							Qualifying events may request impact reporting, subject to availability and
-							operational capacity.{' '}
+							Qualifying meetings and events may request dedicated tracking and a{' '}
 							<Box
 								component='a'
-								href={MAVEN_EVENTS_INQUIRY_URL}
-								target='_blank'
-								rel='noopener noreferrer'
-								className='lux-link lux-link--external'>
-								Learn more
+								href='#events'
+								onClick={(event) => {
+									event.preventDefault();
+									scrollToSection('events');
+								}}
+								sx={SENTENCE_LINK_SX}>
+								post-event impact recap
 							</Box>
+							.
 						</Box>
 					</Box>
 				</Box>
 
-				<Box sx={{ mt: { xs: 1, md: 2 } }}>
+				<Box sx={{ mt: { xs: 1, md: 1.5 } }}>
 					<Typography
 						component='h2'
 						sx={{
 							fontSize: { xs: '28px', md: '34px' },
 							fontWeight: 500,
-							mb: 2.25,
+							color: CHARCOAL,
+							mb: { xs: 1.5, md: 2 },
+							textAlign: 'left',
 						}}>
-						Quick Answers
+						The Program at a Glance
+					</Typography>
+					<Typography
+						sx={{
+							fontSize: { xs: '16px', md: '17px' },
+							color: BODY_TEXT,
+							lineHeight: 1.75,
+							maxWidth: 840,
+							mb: { xs: 3, md: 3.5 },
+						}}>
+						Bethesda North Marriott became the first Marriott-branded hotel to install the BioGreen360
+						platform, creating an on-property system for processing, measuring, and diverting food not
+						eaten at the hotel.
 					</Typography>
 				</Box>
 				<Box
@@ -680,74 +877,68 @@ const CircularFoodSystems = () => {
 						gridTemplateColumns: {
 							xs: '1fr',
 							sm: 'repeat(2, minmax(0, 1fr))',
-							xl: 'repeat(4, minmax(0, 1fr))',
+							lg: 'repeat(4, minmax(0, 1fr))',
 						},
 						gap: { xs: 1.75, sm: 2 },
+						alignItems: 'stretch',
 					}}>
-					{quickAnswersCards.map((card) => (
+					{programAtAGlanceCards.map((card) => (
 						<Box
 							key={card.title}
-							component='a'
-							href={card.href}
-							onClick={(event) => {
-								event.preventDefault();
-								scrollToSection(card.scrollTarget);
-							}}
 							sx={{
-								textDecoration: 'none',
-								color: 'inherit',
 								backgroundColor: SURFACE_WHITE,
 								border: `1px solid ${BORDER_LIGHT}`,
 								borderRadius: RADIUS_CARD,
+								boxShadow: SHADOW_CARD,
 								p: { xs: 2, md: 2.25 },
 								display: 'flex',
 								flexDirection: 'column',
-								justifyContent: 'space-between',
-								minHeight: { xs: 140, md: 152 },
-								cursor: 'pointer',
-								transition:
-									'transform 200ms ease, border-color 200ms ease, outline-color 200ms ease',
-								outline: '2px solid transparent',
-								outlineOffset: '0px',
-								'&:hover': {
-									transform: 'scale(1.02)',
-									borderColor: 'rgba(166, 25, 46, 0.45)',
-									outlineColor: 'rgba(166, 25, 46, 0.5)',
-								},
-								'&:focus-visible': {
-									transform: 'scale(1.02)',
-									borderColor: 'rgba(166, 25, 46, 0.45)',
-									outlineColor: 'rgba(166, 25, 46, 0.5)',
-								},
-								'@media (prefers-reduced-motion: reduce)': {
-									transition: 'border-color 200ms ease, outline-color 200ms ease',
-									'&:hover, &:focus-visible': {
-										transform: 'none',
-									},
-								},
+								minHeight: { xs: 'auto', md: 168 },
+								height: '100%',
 							}}>
 							<Typography
 								component='h3'
 								sx={{
-									fontSize: '20px',
+									fontSize: { xs: '18px', md: '19px' },
 									fontWeight: 500,
 									letterSpacing: '-0.012em',
 									lineHeight: 1.3,
-									mb: 1,
+									color: CHARCOAL,
+									mb: 1.25,
+									minHeight: { md: '2.6em' },
 								}}>
 								{card.title}
 							</Typography>
 							<Typography sx={{ fontSize: '14px', color: BODY_TEXT, lineHeight: 1.65 }}>
-								{renderWithBioGreenLink(card.body)}
+								{card.body}
 							</Typography>
 						</Box>
 					))}
+				</Box>
+				<Box sx={{ mt: { xs: 2.5, md: 3 } }}>
+					<Box
+						component='a'
+						href='#methodology'
+						onClick={(event) => {
+							event.preventDefault();
+							scrollToSection('methodology');
+						}}
+						className='lux-link lux-link--internal'
+						sx={{
+							fontSize: '13px',
+							letterSpacing: '0.06em',
+							textTransform: 'uppercase',
+						}}>
+						View methodology
+					</Box>
 				</Box>
 			</Box>
 
 			{/* Our Impact */}
 			<Box
 				id='impact'
+				component='section'
+				aria-labelledby='impact-heading'
 				className='section section--alt'
 				sx={{
 					...sectionContainerSx,
@@ -757,26 +948,35 @@ const CircularFoodSystems = () => {
 				<Box
 					sx={{
 						display: 'flex',
+						flexDirection: { xs: 'column', sm: 'row' },
 						flexWrap: 'wrap',
 						justifyContent: 'space-between',
-						alignItems: 'baseline',
+						alignItems: { xs: 'flex-start', sm: 'baseline' },
 						gap: 1.5,
 						mb: 1,
 					}}>
 					<Typography
+						id='impact-heading'
 						component='h2'
 						sx={{
 							fontSize: { xs: '28px', md: '34px' },
 							fontWeight: 500,
+							color: CHARCOAL,
 						}}>
-						Our Impact:
+						Our Impact
 					</Typography>
 					<Typography className='micro-label'>{`Last Updated: ${lastUpdatedDisplay}`}</Typography>
 				</Box>
-				<Typography sx={{ fontSize: '15px', lineHeight: 1.7, color: MUTED_TEXT, mb: 2 }}>
-					Property-level sustainability reporting based on data captured through{' '}
-					<BioGreenLink />
-					&apos;s reporting system.
+				<Typography
+					sx={{
+						fontSize: '15px',
+						lineHeight: 1.7,
+						color: BODY_TEXT,
+						mb: 2,
+						maxWidth: 880,
+					}}>
+					Property-level reporting based on food captured and processed through Bethesda North
+					Marriott’s on-property BioGreen360 system.
 				</Typography>
 				<Box
 					sx={{
@@ -791,79 +991,89 @@ const CircularFoodSystems = () => {
 				<Box
 					sx={{
 						display: 'flex',
-						flexWrap: 'wrap',
+						flexDirection: { xs: 'column', md: 'row' },
 						alignItems: 'stretch',
 						justifyContent: 'space-between',
 						borderTop: `1px solid ${BORDER_LIGHT}`,
 						borderBottom: `1px solid ${BORDER_LIGHT}`,
-						py: 2.5,
+						py: { xs: 0.5, md: 2.5 },
 					}}>
-					{impactMetrics.map((metric, idx) => (
-						<Box
-							key={metric.eyebrow}
-							sx={{
-								flex: '1 1 0',
-								minWidth: 220,
-								px: { xs: 0, sm: 3 },
-								py: 1.5,
-								textAlign: 'center',
-								borderRight:
-									idx < 2 ? { xs: 'none', md: `1px solid ${BORDER_LIGHT}` } : 'none',
-							}}>
-							<Typography className='micro-label' sx={{ mb: 0.75, display: 'block' }}>
-								{metric.eyebrow}
-							</Typography>
+					{impactMetrics.map((metric, idx) => {
+						const Icon = metric.Icon;
+						return (
 							<Box
+								key={metric.eyebrow}
 								sx={{
-									display: 'flex',
-									justifyContent: 'center',
-									alignItems: 'center',
-									width: '100%',
-									minHeight: 48,
-									mb: 1,
+									flex: { md: '1 1 0' },
+									width: { xs: '100%', md: 'auto' },
+									minWidth: { md: 0 },
+									px: { xs: 0, md: 3 },
+									py: { xs: 2.25, md: 1.5 },
+									textAlign: 'center',
+									borderRight:
+										idx < 2
+											? { xs: 'none', md: `1px solid ${BORDER_LIGHT}` }
+											: 'none',
+									borderBottom:
+										idx < 2
+											? { xs: `1px solid ${BORDER_LIGHT}`, md: 'none' }
+											: 'none',
 								}}>
-								{idx === 0 && (
-									<DinnerDiningIcon sx={{ fontSize: 40, color: '#231F20' }} aria-hidden />
-								)}
-								{idx === 1 && (
-									<GrassIcon sx={{ fontSize: 40, color: '#231F20' }} aria-hidden />
-								)}
-								{idx === 2 && (
-									<ForestIcon sx={{ fontSize: 40, color: '#231F20' }} aria-hidden />
-								)}
+								<Typography className='micro-label' sx={{ mb: 0.75, display: 'block' }}>
+									{metric.eyebrow}
+								</Typography>
+								<Box
+									sx={{
+										display: 'flex',
+										justifyContent: 'center',
+										alignItems: 'center',
+										width: '100%',
+										minHeight: 48,
+										mb: 1,
+									}}>
+									<Icon
+										sx={{ fontSize: 40, color: SUSTAINABILITY_GREEN }}
+										aria-hidden='true'
+									/>
+								</Box>
+								<Typography
+									sx={{
+										fontSize: { xs: '34px', sm: '44px', md: '48px' },
+										fontWeight: 500,
+										letterSpacing: '-0.02em',
+										lineHeight: 1.15,
+										color: CHARCOAL,
+									}}>
+									{metric.value}
+								</Typography>
+								<Typography sx={{ fontSize: '12px', color: MUTED_TEXT, mt: 1 }}>
+									{metric.note}
+								</Typography>
 							</Box>
-							<Typography
-								sx={{
-									fontSize: { xs: '36px', sm: '48px' },
-									fontWeight: 500,
-									letterSpacing: '-0.02em',
-									lineHeight: 1.15,
-									color: CHARCOAL,
-								}}>
-								{metric.value}
-							</Typography>
-							<Typography sx={{ fontSize: '12px', color: MUTED_TEXT, mt: 1 }}>
-								{metric.note}
-							</Typography>
-						</Box>
-					))}
+						);
+					})}
 				</Box>
 
 				<Box sx={{ textAlign: 'center', mt: 2.25 }}>
 					<Typography className='micro-label' sx={{ mb: 0.5 }}>
-						Reporting powered by <BioGreenLink />
+						Reporting powered by BioGreen360
 					</Typography>
 					<Box
 						component='a'
-						href={BIOGREEN360_URL}
-						target='_blank'
-						rel='noopener noreferrer'
-						aria-label='BioGreen360 — visit website'
+						href='#biogreen360'
+						onClick={(event) => {
+							event.preventDefault();
+							scrollToSection('biogreen360');
+						}}
+						aria-label='BioGreen360'
 						sx={{
 							display: 'inline-flex',
 							lineHeight: 0,
 							borderRadius: '4px',
-							'&:focus-visible': { outline: `2px solid ${BRAND_RED}`, outlineOffset: '3px' },
+							'&:focus-visible': {
+								outline: `2px solid ${BRAND_RED}`,
+								outlineOffset: '3px',
+							},
 						}}>
 						<Box
 							component='img'
@@ -878,6 +1088,10 @@ const CircularFoodSystems = () => {
 					<Box
 						component='a'
 						href='#methodology'
+						onClick={(event) => {
+							event.preventDefault();
+							scrollToSection('methodology');
+						}}
 						className='lux-link lux-link--internal'
 						sx={{
 							fontSize: '11px',
