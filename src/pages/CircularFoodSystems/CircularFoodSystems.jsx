@@ -2,36 +2,44 @@ import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import ForestIcon from '@mui/icons-material/Forest';
 import GrassIcon from '@mui/icons-material/Grass';
-import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import GroupsIcon from '@mui/icons-material/Groups';
 import RecyclingIcon from '@mui/icons-material/Recycling';
-import ElectricCarIcon from '@mui/icons-material/ElectricCar';
-import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined';
-import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined';
-import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import ParkOutlinedIcon from '@mui/icons-material/ParkOutlined';
+import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
+import AirOutlinedIcon from '@mui/icons-material/AirOutlined';
+import WaterDropOutlinedIcon from '@mui/icons-material/WaterDropOutlined';
+import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
+import DeviceThermostatOutlinedIcon from '@mui/icons-material/DeviceThermostatOutlined';
+import LocalDrinkOutlinedIcon from '@mui/icons-material/LocalDrinkOutlined';
+import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
+import EvStationOutlinedIcon from '@mui/icons-material/EvStationOutlined';
+import DirectionsTransitOutlinedIcon from '@mui/icons-material/DirectionsTransitOutlined';
 import poweredByBioGreen from '../../assets/PoweredByBioGreen.svg';
 import biogreenHowItWorksLogo from '../../assets/biogreen-how-it-works.png';
 import howItWorksFoodIcon from '../../assets/how-it-works-food.png';
 import howItWorksSproutIcon from '../../assets/how-it-works-sprout.png';
 import howItWorksReportIcon from '../../assets/how-it-works-report.png';
-import eventsMavenMeetingSpaceImage from '../../assets/events-maven-meeting-space.png';
-import heroServe360Image from '../../assets/hero-serve360.png';
+import elephantEquivalencyIcon from '../../assets/elephant-equivalency.png';
+import footballFieldEquivalencyIcon from '../../assets/football-field-equivalency.png';
+import heroBethesdaNorthLobbyImage from '../../assets/hero-bethesda-north-lobby.png';
 import biogreen360PartnershipImage from '../../assets/biogreen360-partnership.png';
+import eventsBethesdaNorthBoardroomImage from '../../assets/events-bethesda-north-boardroom.jpg';
 import StickyHeader from '../../components/StickyHeader';
 import {
-	BIOGREEN360_URL,
 	MAVEN_EVENTS_INQUIRY_URL,
 	MAVEN_RESERVATIONS_URL,
-	MAVEN_SALES_MAILTO,
 } from '../../constants/mavenExternalLinks';
-import { HEADER_SCROLL_MARGIN } from '../../constants/propertyExternalLinks';
+import {
+	BIOGREEN360_URL,
+	HEADER_SCROLL_MARGIN,
+	PROPERTY_EVENTS_INQUIRY_URL,
+} from '../../constants/propertyExternalLinks';
 import {
 	BODY_TEXT,
 	BORDER_LIGHT,
@@ -48,14 +56,15 @@ import {
 	RADIUS_IMAGE,
 	SHADOW_CARD,
 	SHADOW_IMAGE,
-	SOFT_GRAY,
 	SURFACE_WHITE,
 	SUSTAINABILITY_GREEN,
 	TYPE,
 	WARM_WHITE,
 	cardEmphasizedSx,
+	cardSx,
 	mediaPlaceholderSx,
 	pageThemeSx,
+	primaryButtonSx,
 	sectionBandAltSx,
 	sectionBandBaseSx,
 	sectionContainerSx,
@@ -90,6 +99,17 @@ const PROPERTY_CONFIG = {
 	timeZone: 'America/New_York',
 };
 
+/**
+ * Event-space figures for the Events section proof-point row.
+ * TODO: Periodically verify these figures against the official Marriott property page.
+ */
+const EVENT_PROPERTY_FACTS = [
+	{ value: '26', label: 'Event Rooms' },
+	{ value: '61,923', label: 'Sq. Ft. of Event Space' },
+	{ value: 'Up to 2,500', label: 'Capacity' },
+	{ value: '15', label: 'Breakout Rooms' },
+];
+
 const BIOGREEN_LINK_SX = {
 	color: 'inherit',
 	textDecoration: 'none',
@@ -119,16 +139,6 @@ const BioGreenLink = () => (
 	</Box>
 );
 
-const renderWithBioGreenLink = (text) => {
-	const parts = String(text).split('BioGreen360');
-	return parts.map((part, index) => (
-		<React.Fragment key={index}>
-			{part}
-			{index < parts.length - 1 && <BioGreenLink />}
-		</React.Fragment>
-	));
-};
-
 const siteConfig = {
 	eventsEnabled: true,
 	restaurantEnabled: true,
@@ -142,18 +152,21 @@ const siteConfig = {
 
 const MISSING_METRIC_VALUE = '-';
 
-// BioGreen360 compost & carbon methodology (Compost and Carbon Calculations.docx)
+// BioGreen360 compost & carbon methodology (shared assumptions for impact + equivalencies)
 const LBS_PER_SHORT_TON = 2000;
-const FINISHED_COMPOST_FACTOR = 1.6;
-const COMPOST_LBS_PER_CUBIC_YARD = 1200;
-const COMPOST_COVERAGE_SQ_FT_PER_CY_AT_1IN = 324;
-const RED_ROCKS_SQ_FT = 90000;
-/** Bethesda North Marriott site-specific soil-coverage conversion. */
+/** Bethesda North Marriott site-specific soil-coverage conversion (Our Impact acres). */
 const ACRES_FERTILIZED_PER_SHORT_TON_DIVERTED = 6.028;
+/** Avoided-emissions assumption used for illustrative climate equivalencies. */
 const AVOIDED_MTCO2E_PER_SHORT_TON = 0.65;
-const EPA_MTCO2E_PER_PASSENGER_VEHICLE_MILE = 0.000393;
-const MAVEN_HAND_LBS = 500;
-const DEN_TO_MAVEN_ONE_WAY_MILES = 22.4;
+/** EPA urban tree seedling grown for 10 years (metric tons CO2e). */
+const EPA_MTCO2E_PER_URBAN_TREE_SEEDLING_10YR = 0.06;
+/**
+ * Illustrative representative adult African elephant weight (~6 short tons).
+ * Guest-facing copy should not imply every African elephant weighs exactly this amount.
+ */
+const ADULT_AFRICAN_ELEPHANT_LBS = 12000;
+/** Acres per full NFL football field (including both end zones). */
+const NFL_FOOTBALL_FIELD_ACRES = 1.32;
 
 const parsePoundsFed = (value) => {
 	if (value == null || value === '') {
@@ -165,19 +178,16 @@ const parsePoundsFed = (value) => {
 };
 
 const getShortTons = (poundsFed) => poundsFed / LBS_PER_SHORT_TON;
-const getFinishedCompostLbs = (poundsFed) => poundsFed * FINISHED_COMPOST_FACTOR;
 const getAvoidedMtco2e = (poundsFed) => getShortTons(poundsFed) * AVOIDED_MTCO2E_PER_SHORT_TON;
-const getCompostCoverageSqFt = (poundsFed) => {
-	const cubicYards = getFinishedCompostLbs(poundsFed) / COMPOST_LBS_PER_CUBIC_YARD;
-	return cubicYards * COMPOST_COVERAGE_SQ_FT_PER_CY_AT_1IN;
-};
 const getEstimatedAcresFertilized = (poundsFed) =>
 	getShortTons(poundsFed) * ACRES_FERTILIZED_PER_SHORT_TON_DIVERTED;
-const getRedRocksEquivalency = (poundsFed) => getCompostCoverageSqFt(poundsFed) / RED_ROCKS_SQ_FT;
-const getDenMavenRoundTrips = (poundsFed) => {
-	const vehicleMiles = getAvoidedMtco2e(poundsFed) / EPA_MTCO2E_PER_PASSENGER_VEHICLE_MILE;
-	return vehicleMiles / (DEN_TO_MAVEN_ONE_WAY_MILES * 2);
-};
+const getTreeSeedlingEquivalency = (poundsFed) =>
+	getAvoidedMtco2e(poundsFed) / EPA_MTCO2E_PER_URBAN_TREE_SEEDLING_10YR;
+const getAdultAfricanElephantEquivalency = (poundsFed) =>
+	poundsFed / ADULT_AFRICAN_ELEPHANT_LBS;
+/** NFL fields = Our Impact estimated acres fertilized ÷ acres per field. */
+const getNflFootballFieldEquivalency = (poundsFed) =>
+	getEstimatedAcresFertilized(poundsFed) / NFL_FOOTBALL_FIELD_ACRES;
 
 const getZonedCalendarDate = (date, timeZone) => {
 	const parts = new Intl.DateTimeFormat('en-US', {
@@ -253,16 +263,30 @@ const formatEstimatedAcresDisplay = (poundsFed) => {
 	return `${display} acres`;
 };
 
-const formatApproxCount = (value) => {
+const formatIllustrativeCount = (value, { allowTwoDecimalsBelowOne = false } = {}) => {
+	if (value == null || !Number.isFinite(value)) {
+		return MISSING_METRIC_VALUE;
+	}
+
+	let rounded;
+	let maximumFractionDigits;
 	if (value >= 10) {
-		return `~${Math.round(value)}`;
+		rounded = Math.round(value);
+		maximumFractionDigits = 0;
+	} else if (value < 1 && allowTwoDecimalsBelowOne) {
+		rounded = Math.round(value * 100) / 100;
+		maximumFractionDigits = 2;
+	} else {
+		rounded = Math.round(value * 10) / 10;
+		maximumFractionDigits = 1;
 	}
 
-	if (value >= 1) {
-		return `~${value.toFixed(1)}`;
-	}
+	const display = rounded.toLocaleString('en-US', {
+		maximumFractionDigits,
+		minimumFractionDigits: 0,
+	});
 
-	return `~${value.toFixed(2)}`;
+	return `~${display}`;
 };
 
 const buildImpactMetrics = (poundsFed) => {
@@ -295,72 +319,129 @@ const buildImpactMetrics = (poundsFed) => {
 	];
 };
 
-const buildEquivalencyCards = (poundsFed) => [
-	{
-		icon: BackHandOutlinedIcon,
-		label: 'All-Time Food Scrap Diversion',
-		value:
-			poundsFed != null
-				? formatApproxCount(poundsFed / MAVEN_HAND_LBS) + ' Maven Hands'
-				: MISSING_METRIC_VALUE,
-		note: 'The Maven Hand Sculpture hanging in the Dairy Block Lobby weighs approximately 500 lbs.',
-	},
-	{
-		icon: TheaterComedyIcon,
-		label: 'All-Time Soil Coverage',
-		value:
-			poundsFed != null
-				? `${formatApproxCount(getRedRocksEquivalency(poundsFed))} Red Rocks Amphitheaters`
-				: MISSING_METRIC_VALUE,
-		note: 'Red Rocks Amphitheatre is approximately 90,000 sq ft. Coverage is estimated at a 1-inch application depth.',
-		compactValue: true,
-	},
-	{
-		icon: DirectionsCarIcon,
-		label: 'All-Time Carbon Diversion',
-		valueLine1: 'Driving DEN ↔ The Maven',
-		valueLine2:
-			poundsFed != null
-				? `${formatApproxCount(getDenMavenRoundTrips(poundsFed))} times`
-				: MISSING_METRIC_VALUE,
-		splitValue: true,
-	},
-];
+const REPORTING_ICON_COLOR = 'rgba(93, 98, 104, 0.75)';
 
-const initiatives = [
+const buildEquivalencyCards = (poundsFed) => {
+	const hasPounds = poundsFed != null;
+
+	return [
+		{
+			icon: ParkOutlinedIcon,
+			iconColor: SUSTAINABILITY_GREEN,
+			label: 'All-Time Environmental Equivalency',
+			value: hasPounds
+				? `${formatIllustrativeCount(getTreeSeedlingEquivalency(poundsFed))} tree seedlings`
+				: MISSING_METRIC_VALUE,
+			note: 'Equivalent to urban tree seedlings grown for 10 years, based on documented EPA conversion factors.',
+		},
+		{
+			iconImage: elephantEquivalencyIcon,
+			iconColor: SUSTAINABILITY_GREEN,
+			iconSize: { xs: 87.5, md: 100 },
+			label: 'All-Time Weight Equivalency',
+			value: hasPounds
+				? `${formatIllustrativeCount(getAdultAfricanElephantEquivalency(poundsFed))} adult African elephants`
+				: MISSING_METRIC_VALUE,
+			note: 'Based on a representative adult African elephant weight of approximately 6 tons.',
+		},
+		{
+			iconImage: footballFieldEquivalencyIcon,
+			iconColor: SUSTAINABILITY_GREEN,
+			label: 'All-Time Soil Coverage',
+			value: hasPounds
+				? `${formatIllustrativeCount(getNflFootballFieldEquivalency(poundsFed), {
+						allowTwoDecimalsBelowOne: true,
+				  })} NFL football fields`
+				: MISSING_METRIC_VALUE,
+			note: 'Based on estimated soil coverage converted at 1.32 acres per NFL football field.',
+		},
+	];
+};
+
+const initiativeCategories = [
 	{
-		title: 'Hotel for Trees',
-		description:
-			'Plant a tree while you stay. One tree is planted for each member room night booked at The Maven, and for each in-room bottled water purchase.',
-		icon: ForestIcon,
+		label: 'Building & Resource Efficiency',
+		layout: 'three-plus-two',
+		items: [
+			{
+				title: 'LEED Gold Certified',
+				description:
+					'Bethesda North Marriott has been LEED Gold certified since May 2023, recognizing sustainability achievement in the hotel’s building operations.',
+				icon: WorkspacePremiumOutlinedIcon,
+			},
+			{
+				title: 'Air Purification',
+				description:
+					'Air purifiers are used throughout the hotel’s public and meeting spaces, removing 99.4% of harmful bacteria every 30 minutes.',
+				icon: AirOutlinedIcon,
+			},
+			{
+				title: 'Touchless Faucets',
+				description:
+					'Battery-operated infrared faucets have been installed in all public restrooms to help prevent unnecessary water use.',
+				icon: WaterDropOutlinedIcon,
+			},
+			{
+				title: 'Energy-Efficient Lighting',
+				description:
+					'Lighting throughout the property has been surveyed and upgraded with LED fixtures and bulbs to improve energy efficiency.',
+				icon: LightbulbOutlinedIcon,
+			},
+			{
+				title: 'Smart Thermostats',
+				description:
+					'Telkonet smart thermostats have been installed in all guest rooms to help reduce unnecessary energy use.',
+				icon: DeviceThermostatOutlinedIcon,
+			},
+		],
 	},
 	{
-		title: 'Procure Impact',
-		description:
-			"We're honored to carry items from Procure Impact, a B2B marketplace focused on increasing access to the dignity of work for individuals with underestimated potential.",
-		icon: VolunteerActivismIcon,
+		label: 'Waste Reduction & Guest Experience',
+		layout: 'three',
+		items: [
+			{
+				title: 'Comprehensive Recycling',
+				description:
+					'A property-wide recycling program separates paper and plastic in guest rooms, public spaces, and associate areas throughout the hotel.',
+				icon: RecyclingIcon,
+			},
+			{
+				title: 'Water Refill Stations',
+				description:
+					'Multiple water refill stations are available throughout the hotel, reducing reliance on single-use plastic water bottles in guest rooms and event spaces.',
+				icon: LocalDrinkOutlinedIcon,
+			},
+			{
+				title: 'Virtual and Recyclable Room Keys',
+				description:
+					'The hotel’s room-key recycling program and virtual room-key application help reduce single-use plastic waste. Bethesda North Marriott was the first Marriott hotel to implement a method for sharing virtual room keys.',
+				icon: VpnKeyOutlinedIcon,
+			},
+		],
 	},
 	{
-		title: 'Community Connections',
-		description: 'The Maven team contributes 120 hours of community service each year.',
-		icon: GroupsIcon,
-	},
-	{
-		title: 'Clean the World',
-		description:
-			'Our partnership with Clean the World helps keep plastic from soaps, conditioners, and body washes out of the waste stream.',
-		icon: RecyclingIcon,
-	},
-	{
-		title: 'Ride in Style',
-		description: "Guests can get around town in The Maven's electric courtesy car.",
-		icon: ElectricCarIcon,
-	},
-	{
-		title: 'More Initiatives Coming Soon',
-		description:
-			'We\u2019re continually expanding our sustainability efforts. Check back soon to see what we\u2019re up to next.',
-		icon: HourglassEmptyIcon,
+		label: 'Transportation & Access',
+		layout: 'two',
+		items: [
+			{
+				title: 'EV Charging Stations',
+				description: 'Ten electric-vehicle charging stations are available across the property.',
+				icon: EvStationOutlinedIcon,
+				details: [
+					'4 stations in the hotel parking lot',
+					'6 stations in the Conference Center Garage',
+					'J-1772 plug type',
+					'ChargeLab platform',
+					'Tesla adapters available to borrow from the Front Desk',
+				],
+			},
+			{
+				title: 'Sustainable Mobility',
+				description:
+					'The garage and parking lot include preferred ride-share parking, bicycle racks, and electric-vehicle charging. The hotel is approximately 100 feet from the Metro, making car-free arrival a practical option for many guests and attendees.',
+				icon: DirectionsTransitOutlinedIcon,
+			},
+		],
 	},
 ];
 
@@ -552,70 +633,71 @@ const CircularFoodSystems = () => {
 	const eventFlowSteps = [
 		{
 			icon: (
-				<Box
-					component='img'
-					src={howItWorksFoodIcon}
-					alt='During Your Event'
-					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+				<CalendarTodayIcon
+					aria-hidden='true'
+					sx={{ fontSize: 48, color: SUSTAINABILITY_GREEN }}
 				/>
 			),
-			title: 'During Your Event',
+			title: 'Plan in Advance',
 			description:
-				'Food scraps generated from kitchens and service areas may be collected during qualifying events.',
+				'Discuss food-scrap tracking goals with the hotel’s events team while planning your meeting or gathering.',
 		},
 		{
 			icon: (
 				<Box
-					component='a'
-					href={BIOGREEN360_URL}
-					target='_blank'
-					rel='noopener noreferrer'
-					aria-label='BioGreen360 — visit website'
+					component='img'
+					src={howItWorksFoodIcon}
+					alt=''
+					aria-hidden='true'
 					sx={{
-						display: 'inline-flex',
-						lineHeight: 0,
-						borderRadius: '4px',
-						'&:focus-visible': { outline: `2px solid ${BRAND_RED}`, outlineOffset: '3px' },
-					}}>
-					<Box
-						component='img'
-						src={biogreenHowItWorksLogo}
-						alt='Tracking & Reporting'
-						sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
-					/>
-				</Box>
+						height: 56,
+						width: 'auto',
+						maxWidth: 72,
+						objectFit: 'contain',
+						display: 'block',
+						backgroundColor: 'transparent',
+					}}
+				/>
 			),
-			title: 'Tracking & Reporting',
+			title: 'Track Participating Food Scraps',
 			description:
-				"Food scraps are tracked through BioGreen360's reporting system during service when event tracking is enabled.",
+				'When tracking is enabled, food scraps from participating culinary and banquet operations are captured as part of the event program.',
 		},
 		{
 			icon: (
 				<Box
 					component='img'
 					src={howItWorksReportIcon}
-					alt='Post-Event Impact Reporting'
-					sx={{ height: 56, width: 'auto', objectFit: 'contain' }}
+					alt=''
+					aria-hidden='true'
+					sx={{
+						height: 56,
+						width: 'auto',
+						maxWidth: 72,
+						objectFit: 'contain',
+						display: 'block',
+						backgroundColor: 'transparent',
+					}}
 				/>
 			),
-			title: 'Post-Event Impact Reporting',
+			title: 'Review the Event Recap',
 			description:
-				'Clients may receive an event-specific recap outlining measured diversion totals, scope notes, and illustrative equivalencies tied to diversion through a local composting partner.',
+				'Following the event, planners may receive a summary of measured diversion, estimated soil impact, illustrative comparisons, and reporting scope.',
 		},
 	];
 
 	const eventPlannerDeliverables = [
-		'Event-specific diversion summary when tracking is enabled',
-		'Clear scope notes and definitions for reporting',
-		'Optional equivalencies for context',
-		'Post-event documentation suitable for internal sharing',
+		'Event-specific food-scrap diversion summary',
+		'Estimated soil amendment and coverage results',
+		'Illustrative environmental comparisons',
+		'Clear reporting scope and methodology notes',
 	];
 
 	const impactMetrics = buildImpactMetrics(poundsFed);
 	const equivalencyCards = buildEquivalencyCards(poundsFed);
 	const equivalencyCardsToRender = showEquivalencies ? equivalencyCards : [];
 	const equivalencyDisclaimer =
-		'Equivalencies are provided for context and are not audited carbon claims.';
+		'Equivalencies are provided for illustrative context using documented assumptions and are not audited environmental claims.';
 	const formattedLastSync = formatLastSync(siteConfig.lastSync);
 	const lastUpdatedLabel = formattedLastSync ?? 'Last sync: unavailable';
 	const formattedStatLastUpdate = formatLastSync(statLastUpdate);
@@ -763,34 +845,21 @@ const CircularFoodSystems = () => {
 						mb: 0,
 					}}>
 					<Box
+						component='img'
+						src={heroBethesdaNorthLobbyImage}
+						alt='Bethesda North Marriott Hotel & Conference Center front desk with the Marriott Bethesda North logo displayed behind the reception counter.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 9' },
 							minHeight: { xs: 220, md: 360 },
+							objectFit: 'cover',
+							objectPosition: 'center',
 							borderRadius: RADIUS_IMAGE,
 							border: `1px solid ${BORDER_LIGHT}`,
 							boxShadow: SHADOW_IMAGE,
-							backgroundColor: SURFACE_WHITE,
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-							px: { xs: 3, md: 5 },
-							py: { xs: 3, md: 4 },
-						}}>
-						<Box
-							component='img'
-							src={heroServe360Image}
-							alt='Marriott Serve360: Doing Good in Every Direction'
-							sx={{
-								width: 'auto',
-								height: 'auto',
-								maxWidth: { xs: 220, sm: 280, md: 340 },
-								maxHeight: { xs: 200, sm: 260, md: 300 },
-								objectFit: 'contain',
-								display: 'block',
-							}}
-						/>
-					</Box>
+							display: 'block',
+						}}
+					/>
 				</Box>
 
 				<Box
@@ -1606,6 +1675,8 @@ const CircularFoodSystems = () => {
 			{/* Live Sustainability Impact Reporting */}
 			<Box
 				id='live-reporting'
+				component='section'
+				aria-labelledby='live-reporting-heading'
 				className='section section--base live-reporting-section lsir-section'
 				sx={{
 					...sectionContainerSx,
@@ -1613,14 +1684,19 @@ const CircularFoodSystems = () => {
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 					'& .lsir-card-value': { color: CHARCOAL },
 				}}>
+				<Typography className='micro-label' sx={{ mb: 1.5 }}>
+					LIVE REPORTING
+				</Typography>
 				<Typography
+					id='live-reporting-heading'
 					component='h2'
 					sx={{
 						fontSize: { xs: '28px', md: '34px' },
 						fontWeight: 500,
+						color: CHARCOAL,
 						mb: 1.5,
 					}}>
-					Live Sustainability Impact Reporting
+					Impact in Familiar Terms
 				</Typography>
 				<Box
 					sx={{
@@ -1629,15 +1705,18 @@ const CircularFoodSystems = () => {
 						justifyContent: 'space-between',
 						alignItems: 'center',
 						gap: 1.25,
-						mb: 1.5,
+						mb: 2.5,
 					}}>
-					<Typography sx={{ fontSize: '14px', color: MUTED_TEXT }}>
-						Live reporting data is provided through <BioGreenLink />
-						&apos;s reporting system.
+					<Typography sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.7, maxWidth: 720 }}>
+						All-time BioGreen360 reporting translated into familiar, illustrative comparisons.
 					</Typography>
 					<Box
 						component='a'
 						href='#methodology'
+						onClick={(event) => {
+							event.preventDefault();
+							scrollToSection('methodology');
+						}}
 						className='lux-link lux-link--internal'
 						sx={{
 							fontSize: '12px',
@@ -1648,12 +1727,16 @@ const CircularFoodSystems = () => {
 				<Box
 					sx={{
 						display: 'grid',
-						gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' },
+						gridTemplateColumns: {
+							xs: '1fr',
+							sm: 'repeat(2, minmax(0, 1fr))',
+							md: 'repeat(3, minmax(0, 1fr))',
+						},
 						gap: { xs: 2, md: 2.5 },
+						alignItems: 'stretch',
 					}}>
 					{equivalencyCardsToRender.map((card) => {
 						const Icon = card.icon;
-						const isCarbonDiversion = card.splitValue;
 						return (
 							<Box
 								key={card.label}
@@ -1663,7 +1746,7 @@ const CircularFoodSystems = () => {
 									borderColor: BORDER_LIGHT,
 									borderRadius: RADIUS_CARD,
 									p: { xs: 2.5, md: 3 },
-									minHeight: 220,
+									minHeight: 240,
 									display: 'flex',
 									flexDirection: 'column',
 									textAlign: 'center',
@@ -1683,58 +1766,68 @@ const CircularFoodSystems = () => {
 									Illustrative equivalency
 								</Typography>
 								<Typography
-									component='h3'
+									component='p'
 									className='lsir-card-value'
 									sx={{
-										fontSize: card.compactValue
-											? { xs: '22px', md: '26px' }
-											: { xs: '28px', md: '32px' },
+										fontSize: { xs: '24px', md: '28px' },
 										fontWeight: 500,
 										letterSpacing: '-0.015em',
 										lineHeight: 1.25,
-										mb: card.note ? 0.75 : 1.5,
+										mb: 0.75,
+										px: 0.5,
+										overflowWrap: 'break-word',
+										hyphens: 'auto',
 									}}>
-									{isCarbonDiversion ? (
-										<>
-											<Box
-												component='span'
-												sx={{
-													display: 'block',
-													whiteSpace: { xs: 'normal', md: 'nowrap' },
-												}}>
-												{card.valueLine1}
-											</Box>
-											<Box component='span' sx={{ display: 'block' }}>
-												{card.valueLine2}
-											</Box>
-										</>
-									) : (
-										card.value
-									)}
+									{card.value}
 								</Typography>
-								{card.note && (
-									<Typography
-										sx={{
-											fontSize: '12px',
-											color: MUTED_TEXT,
-											lineHeight: 1.5,
-											mb: 1.5,
-											maxWidth:
-												card.label === 'All-Time Food Scrap Diversion' ? 300 : 280,
-											mx: 'auto',
-										}}>
-										{card.note}
-									</Typography>
-								)}
-								<Icon
+								<Typography
 									sx={{
-										fontSize: { xs: 56, md: 64 },
-										color: 'rgba(93, 98, 104, 0.75)',
-										mt: 'auto',
-										pt: 1.75,
-										alignSelf: 'center',
-									}}
-								/>
+										fontSize: '12px',
+										color: MUTED_TEXT,
+										lineHeight: 1.5,
+										mb: 1.5,
+										maxWidth: 280,
+										mx: 'auto',
+									}}>
+									{card.note}
+								</Typography>
+								{card.iconImage ? (
+									<Box
+										sx={{
+											mt: 'auto',
+											pt: 1.75,
+											alignSelf: 'center',
+											lineHeight: 0,
+										}}>
+										<Box
+											aria-hidden='true'
+											sx={{
+												width: card.iconSize || { xs: 70, md: 80 },
+												height: card.iconSize || { xs: 70, md: 80 },
+												backgroundColor: card.iconColor || SUSTAINABILITY_GREEN,
+												maskImage: `url(${card.iconImage})`,
+												maskSize: 'contain',
+												maskRepeat: 'no-repeat',
+												maskPosition: 'center',
+												WebkitMaskImage: `url(${card.iconImage})`,
+												WebkitMaskSize: 'contain',
+												WebkitMaskRepeat: 'no-repeat',
+												WebkitMaskPosition: 'center',
+											}}
+										/>
+									</Box>
+								) : (
+									<Icon
+										aria-hidden='true'
+										sx={{
+											fontSize: { xs: 70, md: 80 },
+											color: card.iconColor || REPORTING_ICON_COLOR,
+											mt: 'auto',
+											pt: 1.75,
+											alignSelf: 'center',
+										}}
+									/>
+								)}
 							</Box>
 						);
 					})}
@@ -1747,6 +1840,8 @@ const CircularFoodSystems = () => {
 			{/* Events — impact reporting */}
 			<Box
 				id='events'
+				component='section'
+				aria-labelledby='events-heading'
 				className='section section--alt'
 				sx={{
 					...sectionContainerSx,
@@ -1756,226 +1851,298 @@ const CircularFoodSystems = () => {
 				<Box
 					sx={{
 						display: 'grid',
-						gridTemplateColumns: { xs: '1fr', md: '2fr 3fr' },
-						gap: { xs: 2.5, md: 3 },
+						gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 1.1fr) minmax(0, 0.95fr)' },
+						gap: { xs: 3, md: 5 },
 						alignItems: 'start',
-						mb: 4,
+						mb: { xs: 6, md: 8.5 },
 					}}>
 					<Box>
+						<Typography className='micro-label' sx={{ mb: 1.5 }}>
+							SUSTAINABLE MEETINGS & EVENTS
+						</Typography>
 						<Typography
+							id='events-heading'
 							component='h2'
 							sx={{
 								fontSize: { xs: '28px', md: '34px' },
 								fontWeight: 500,
-								mb: 1,
+								color: CHARCOAL,
+								mb: 1.75,
 							}}>
-							Event Impact Reporting
+							Make Your Gathering Measurable
 						</Typography>
-						<Box
-							sx={{ width: 84, height: '2px', backgroundColor: BRAND_RED, mb: 1.5 }}
-						/>
 						<Typography
 							sx={{
 								fontSize: '16px',
 								fontWeight: 400,
 								color: BODY_TEXT,
 								lineHeight: 1.8,
-								mb: 1,
+								mb: 1.25,
+								maxWidth: 560,
 							}}>
-							Qualifying meetings, weddings, and gatherings at The Maven may request
-							food-waste tracking and a post-event impact recap as part of an experience
-							designed with creativity, connection, and conscious hospitality in mind. Rooted
-							in community and inspired by thoughtful gathering, this optional initiative
-							allows events to leave a meaningful impact beyond the final toast.
-							Participation is based on event scope, scheduling, and operational
-							availability.
+							From focused board meetings to large conferences, weddings, and celebrations,
+							Bethesda North Marriott is built to bring people together. Qualifying events may
+							request dedicated food-scrap tracking and a concise post-event impact recap.
 						</Typography>
-						<Typography
-							sx={{ fontSize: '16px', fontWeight: 400, color: BODY_TEXT, lineHeight: 1.8 }}>
-							Food scraps captured from participating events are tracked through{' '}
-							<BioGreenLink />
-							&apos;s reporting system and diverted through a local composting partner based
-							on property operations and partner availability. After the event, your team may
-							receive a concise summary with diversion totals, scope notes, and illustrative
-							equivalencies for context.
-						</Typography>
-					</Box>
-
-					<Box
-						component='img'
-						src={eventsMavenMeetingSpaceImage}
-						alt='The Maven meeting room with classroom seating, exposed brick, wood beams, and a projection screen showing The Maven wordmark.'
-						sx={{
-							width: '100%',
-							aspectRatio: '16 / 8',
-							objectFit: 'cover',
-							borderRadius: RADIUS_CARD,
-							border: `1px solid ${BORDER_LIGHT}`,
-							boxShadow: SHADOW_IMAGE,
-						}}
-					/>
-				</Box>
-
-				<Box
-					sx={{
-						display: 'grid',
-						gridTemplateColumns: { xs: '1fr', md: '7fr 3fr' },
-						gap: 2.5,
-						alignItems: 'center',
-						mb: 3.5,
-					}}>
-					<Box>
 						<Typography
 							sx={{
-								fontSize: { xs: '26px', md: '30px' },
-								fontWeight: 500,
-								textAlign: 'center',
+								fontSize: '16px',
+								fontWeight: 400,
+								color: BODY_TEXT,
+								lineHeight: 1.8,
 								mb: 2.5,
+								maxWidth: 560,
 							}}>
-							How it Works
+							Participation is coordinated in advance with the hotel’s events team and depends on
+							the event format, food-service plan, scheduling, and operational availability.
 						</Typography>
-
 						<Box
 							sx={{
-								display: 'flex',
-								flexWrap: { xs: 'wrap', md: 'nowrap' },
-								justifyContent: 'center',
-								alignItems: 'flex-start',
-								gap: { xs: 3.5, md: 0 },
+								display: 'grid',
+								gridTemplateColumns: { xs: '1fr 1fr', sm: 'repeat(4, minmax(0, 1fr))' },
+								gap: { xs: 1.5, sm: 2 },
+								maxWidth: 560,
 							}}>
-							{eventFlowSteps.map((step, idx) => (
-								<React.Fragment key={step.title}>
-									<Box
+							{EVENT_PROPERTY_FACTS.map((fact) => (
+								<Box key={fact.label} sx={{ minWidth: 0 }}>
+									<Typography
 										sx={{
-											display: 'flex',
-											flexDirection: 'column',
-											alignItems: 'center',
-											flex: { xs: '1 1 100%', md: '1 1 0' },
-											minWidth: { xs: 0, md: 0 },
-											px: { md: 1 },
+											fontFamily: FONT_HEADING,
+											fontSize: { xs: '18px', md: '20px' },
+											fontWeight: 600,
+											color: CHARCOAL,
+											lineHeight: 1.2,
+											letterSpacing: '-0.01em',
 										}}>
-										<Box
-											sx={{
-												width: { xs: 116, md: 128 },
-												height: { xs: 116, md: 128 },
-												borderRadius: '50%',
-												border: `1px solid rgba(216, 209, 200, 1)`,
-												backgroundColor: 'transparent',
-												display: 'flex',
-												alignItems: 'center',
-												justifyContent: 'center',
-												mb: 2.5,
-											}}>
-											{step.icon}
-										</Box>
-										<Typography
-											component='h3'
-											sx={{
-												fontSize: '22px',
-												fontWeight: 500,
-												letterSpacing: '-0.015em',
-												textAlign: 'center',
-												lineHeight: 1.35,
-												mb: 0.75,
-												maxWidth: 280,
-											}}>
-											{step.title}
-										</Typography>
-										<Typography
-											sx={{
-												fontSize: '15px',
-												color: BODY_TEXT,
-												lineHeight: 1.65,
-												textAlign: 'center',
-												maxWidth: 310,
-											}}>
-											{renderWithBioGreenLink(step.description)}
-										</Typography>
-									</Box>
-									{idx < 2 && (
-										<Box
-											sx={{
-												display: { xs: 'none', md: 'flex' },
-												alignItems: 'center',
-												flexShrink: 0,
-												px: 1.25,
-												alignSelf: 'flex-start',
-												mt: 4.5,
-											}}>
-											<ArrowForwardIcon sx={{ color: SUSTAINABILITY_GREEN, fontSize: 34 }} />
-										</Box>
-									)}
-								</React.Fragment>
-							))}
-						</Box>
-					</Box>
-
-					<Box
-						sx={{
-							...cardEmphasizedSx,
-							backgroundColor: SOFT_GRAY,
-							p: { xs: 2, md: 2.5 },
-							alignSelf: { xs: 'stretch', md: 'center' },
-						}}>
-						<Typography
-							component='h3'
-							sx={{
-								fontSize: '22px',
-								fontWeight: 500,
-								mb: 1.1,
-								letterSpacing: '-0.012em',
-							}}>
-							What Event Planners Receive:
-						</Typography>
-						<Box component='ul' sx={{ m: 0, pl: 2.1, color: BODY_TEXT }}>
-							{eventPlannerDeliverables.map((item) => (
-								<Box
-									component='li'
-									key={item}
-									sx={{ fontSize: '14px', lineHeight: 1.7, mb: 0.45 }}>
-									{item}
+										{fact.value}
+									</Typography>
+									<Typography
+										sx={{
+											fontSize: '11px',
+											color: MUTED_TEXT,
+											lineHeight: 1.35,
+											mt: 0.35,
+										}}>
+										{fact.label}
+									</Typography>
 								</Box>
 							))}
 						</Box>
 					</Box>
+
+					<Box
+						component='img'
+						src={eventsBethesdaNorthBoardroomImage}
+						alt='Bethesda North Marriott boardroom with a long conference table set for a meeting and a projection screen displaying the Marriott Bethesda North logo.'
+						sx={{
+							width: '100%',
+							aspectRatio: { xs: '16 / 10', md: '16 / 11' },
+							objectFit: 'cover',
+							objectPosition: 'center',
+							borderRadius: RADIUS_IMAGE,
+							border: `1px solid ${BORDER_LIGHT}`,
+							boxShadow: SHADOW_IMAGE,
+							display: 'block',
+						}}
+					/>
+				</Box>
+
+				<Typography
+					component='h3'
+					sx={{
+						fontSize: { xs: '26px', md: '30px' },
+						fontWeight: 500,
+						letterSpacing: '-0.015em',
+						color: CHARCOAL,
+						textAlign: 'center',
+						mb: { xs: 4, md: 5.5 },
+					}}>
+					How Event Reporting Works
+				</Typography>
+
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: { xs: 'column', md: 'row' },
+						flexWrap: { xs: 'nowrap', md: 'nowrap' },
+						justifyContent: 'center',
+						alignItems: { xs: 'center', md: 'flex-start' },
+						gap: { xs: 3.5, md: 0 },
+						mb: { xs: 4.5, md: 5.5 },
+					}}>
+					{eventFlowSteps.map((step, idx) => (
+						<React.Fragment key={step.title}>
+							<Box
+								sx={{
+									display: 'flex',
+									flexDirection: 'column',
+									alignItems: 'center',
+									flex: { xs: '0 0 auto', md: '1 1 0' },
+									width: { xs: '100%', md: 'auto' },
+									minWidth: { xs: 0, md: 0 },
+									px: { md: 1 },
+									textAlign: 'center',
+								}}>
+								<Box
+									sx={{
+										width: { xs: 116, md: 128 },
+										height: { xs: 116, md: 128 },
+										flexShrink: 0,
+										borderRadius: '50%',
+										border: `2px solid ${SUSTAINABILITY_GREEN}`,
+										backgroundColor: PROCESS_CIRCLE_FILL,
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'center',
+										mb: { xs: 2, md: 2.5 },
+										overflow: 'hidden',
+									}}>
+									{step.icon}
+								</Box>
+								<Typography
+									component='h4'
+									sx={{
+										fontSize: { xs: '17px', md: '18px' },
+										fontWeight: 500,
+										letterSpacing: '-0.01em',
+										lineHeight: 1.35,
+										color: CHARCOAL,
+										mb: 1,
+										maxWidth: 240,
+									}}>
+									{step.title}
+								</Typography>
+								<Typography
+									sx={{
+										fontSize: '14px',
+										lineHeight: 1.65,
+										color: BODY_TEXT,
+										maxWidth: 250,
+										mx: 'auto',
+									}}>
+									{step.description}
+								</Typography>
+							</Box>
+							{idx < 2 && (
+								<Box
+									aria-hidden='true'
+									sx={{
+										display: { xs: 'none', md: 'flex' },
+										alignItems: 'center',
+										justifyContent: 'center',
+										flexShrink: 0,
+										px: 1.25,
+										height: { md: 128 },
+									}}>
+									<ArrowForwardIcon
+										sx={{ color: SUSTAINABILITY_GREEN, fontSize: 34 }}
+										aria-hidden='true'
+									/>
+								</Box>
+							)}
+						</React.Fragment>
+					))}
+				</Box>
+
+				<Box
+					sx={{
+						...cardEmphasizedSx,
+						backgroundColor: SURFACE_WHITE,
+						p: { xs: 2.5, md: 3 },
+						maxWidth: 720,
+						mx: 'auto',
+						mb: { xs: 3, md: 4 },
+					}}>
+					<Typography className='micro-label' sx={{ mb: 1 }}>
+						EVENT REPORTING
+					</Typography>
+					<Typography
+						component='h3'
+						sx={{
+							fontSize: { xs: '22px', md: '24px' },
+							fontWeight: 500,
+							mb: 1.5,
+							letterSpacing: '-0.012em',
+							color: CHARCOAL,
+						}}>
+						What Your Event Team May Receive
+					</Typography>
+					<Box component='ul' sx={{ m: 0, p: 0, listStyle: 'none' }}>
+						{eventPlannerDeliverables.map((item) => (
+							<Box
+								component='li'
+								key={item}
+								sx={{
+									display: 'flex',
+									alignItems: 'flex-start',
+									gap: 1.1,
+									fontSize: '14px',
+									lineHeight: 1.7,
+									color: BODY_TEXT,
+									mb: 0.85,
+								}}>
+								<CheckCircleOutlineIcon
+									aria-hidden='true'
+									sx={{
+										color: SUSTAINABILITY_GREEN,
+										fontSize: 20,
+										mt: '2px',
+										flexShrink: 0,
+									}}
+								/>
+								<span>{item}</span>
+							</Box>
+						))}
+					</Box>
+					<Typography
+						sx={{
+							fontSize: '13px',
+							color: MUTED_TEXT,
+							lineHeight: 1.65,
+							mt: 1.75,
+						}}>
+						The recap can support internal event reviews, sustainability communications, and
+						conversations with attendees or stakeholders.
+					</Typography>
 				</Box>
 
 				<Box
 					sx={{
 						textAlign: 'center',
-						pt: { xs: 2, md: 2.5 },
-						pb: { xs: 1, md: 1.5 },
+						pt: { xs: 0.5, md: 1 },
 					}}>
+					<Typography
+						sx={{
+							fontSize: '14px',
+							color: MUTED_TEXT,
+							lineHeight: 1.65,
+							maxWidth: 520,
+							mx: 'auto',
+							mb: 2,
+						}}>
+						Ask the Bethesda North Marriott events team whether food-scrap tracking can be
+						incorporated into your gathering.
+					</Typography>
 					<Button
 						component='a'
-						href={MAVEN_EVENTS_INQUIRY_URL}
+						href={PROPERTY_EVENTS_INQUIRY_URL}
 						target='_blank'
 						rel='noopener noreferrer'
 						variant='contained'
 						disableElevation
+						aria-label='Start planning an event at Bethesda North Marriott'
 						sx={{
+							...primaryButtonSx,
 							px: { xs: 3.25, md: 4.5 },
 							py: { xs: 1.45, md: 1.6 },
-							fontFamily: FONT_HEADING,
 							fontSize: { xs: '0.82rem', md: '0.9rem' },
-							fontWeight: 600,
-							letterSpacing: '0.1em',
-							textTransform: 'uppercase',
-							color: SURFACE_WHITE,
-							backgroundColor: CHARCOAL,
-							border: `1px solid ${CHARCOAL}`,
-							borderRadius: RADIUS_BUTTON,
 							boxShadow: '0 10px 28px rgba(35, 31, 32, 0.18)',
 							'&:hover': {
-								backgroundColor: CHARCOAL_HOVER,
-								borderColor: CHARCOAL_HOVER,
+								...primaryButtonSx['&:hover'],
 								boxShadow: '0 12px 32px rgba(35, 31, 32, 0.2)',
 							},
-							'&:focus-visible': {
-								boxShadow: `0 0 0 2px ${SOFT_GRAY}, 0 0 0 4px ${BRAND_RED}`,
-							},
 						}}>
-						Plan an Event
+						Start Planning
 					</Button>
 				</Box>
 			</Box>
@@ -1983,105 +2150,183 @@ const CircularFoodSystems = () => {
 			{/* Additional Sustainability Initiatives */}
 			<Box
 				id='initiatives'
+				component='section'
+				aria-labelledby='initiatives-heading'
 				className='section section--alt'
 				sx={{
 					...sectionContainerSx,
 					...sectionBandAltSx,
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
+				<Typography className='micro-label' sx={{ mb: 1.5 }}>
+					BEYOND FOOD WASTE
+				</Typography>
 				<Typography
+					id='initiatives-heading'
 					component='h2'
 					sx={{
 						fontSize: { xs: '28px', md: '34px' },
 						fontWeight: 500,
-						mb: 2.5,
+						color: CHARCOAL,
+						mb: 1.75,
 					}}>
-					Additional Sustainability Initiatives
+					Sustainability Across the Property
+				</Typography>
+				<Typography
+					sx={{
+						fontSize: '16px',
+						color: BODY_TEXT,
+						lineHeight: 1.75,
+						maxWidth: 820,
+						mb: { xs: 4, md: 5.5 },
+					}}>
+					Bethesda North Marriott has implemented a range of property-wide initiatives designed to
+					support energy efficiency, water conservation, waste reduction, indoor air quality, and
+					lower-impact transportation.
 				</Typography>
 
-				<Box
-					sx={{
-						display: 'grid',
-						gridTemplateColumns: {
-							xs: '1fr',
-							sm: 'repeat(2, minmax(0, 1fr))',
-							lg: 'repeat(3, minmax(0, 1fr))',
-						},
-						gap: 2,
-					}}>
-					{initiatives.map((initiative, idx) => {
-						const Icon = initiative.icon;
-						const row = Math.floor(idx / 3);
-						const col = idx % 3;
-						const isBaseTile = (row + col) % 2 === 0;
+				{initiativeCategories.map((category, categoryIndex) => {
+					const renderCard = (item) => {
+						const Icon = item.icon;
 						return (
 							<Box
-								key={initiative.title}
+								key={item.title}
 								sx={{
-									backgroundColor: isBaseTile ? 'var(--bg-base)' : 'var(--bg-alt)',
-									borderRadius: RADIUS_CARD,
-									border: `1px solid ${BORDER_LIGHT}`,
-									p: 2.25,
-									minHeight: 206,
+									...cardSx,
+									p: { xs: 2.25, md: 2.5 },
 									display: 'flex',
 									flexDirection: 'column',
-									justifyContent: 'center',
-									alignItems: 'center',
-									textAlign: 'center',
-									gap: 0.7,
+									alignItems: 'flex-start',
+									textAlign: 'left',
+									height: '100%',
 								}}>
-								<Icon sx={{ color: SUSTAINABILITY_GREEN, fontSize: 38 }} />
+								<Icon
+									aria-hidden='true'
+									sx={{ color: SUSTAINABILITY_GREEN, fontSize: 32, mb: 1.25 }}
+								/>
 								<Typography
 									component='h3'
-									sx={{ fontSize: '17px', fontWeight: 600, mb: 0 }}>
-									{initiative.title}
+									sx={{
+										fontSize: '17px',
+										fontWeight: 600,
+										color: CHARCOAL,
+										mb: 0.85,
+										letterSpacing: '-0.01em',
+										lineHeight: 1.3,
+									}}>
+									{item.title}
 								</Typography>
 								<Typography
 									sx={{
-										fontSize: '13px',
+										fontSize: '14px',
 										color: BODY_TEXT,
-										lineHeight: 1.6,
+										lineHeight: 1.65,
 									}}>
-									{initiative.description}
+									{item.description}
 								</Typography>
+								{item.details && (
+									<Box
+										component='ul'
+										sx={{
+											m: 0,
+											mt: 1.25,
+											pl: 0,
+											listStyle: 'none',
+											width: '100%',
+										}}>
+										{item.details.map((detail) => (
+											<Box
+												component='li'
+												key={detail}
+												sx={{
+													display: 'flex',
+													alignItems: 'flex-start',
+													gap: 0.85,
+													fontSize: '13px',
+													lineHeight: 1.55,
+													color: BODY_TEXT,
+													mb: 0.55,
+												}}>
+												<CheckCircleOutlineIcon
+													aria-hidden='true'
+													sx={{
+														color: SUSTAINABILITY_GREEN,
+														fontSize: 16,
+														mt: '2px',
+														flexShrink: 0,
+													}}
+												/>
+												<span>{detail}</span>
+											</Box>
+										))}
+									</Box>
+								)}
 							</Box>
 						);
-					})}
-				</Box>
+					};
 
-				<Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
-					<Button
-						component='a'
-						href={MAVEN_SALES_MAILTO}
-						variant='outlined'
-						disableElevation
-						sx={{
-							px: { xs: 1.75, sm: 2.2 },
-							py: 0.7,
-							fontFamily: FONT_HEADING,
-							fontSize: '0.7rem',
-							fontWeight: 600,
-							letterSpacing: '0.1em',
-							textTransform: 'uppercase',
-							color: CHARCOAL,
-							backgroundColor: 'rgba(255, 255, 255, 0.35)',
-							borderRadius: RADIUS_BUTTON,
-							borderColor: BRAND_RED,
-							borderWidth: '1px',
-							boxShadow: 'none',
-							'&:hover': {
-								backgroundColor: BRAND_RED_SOFT,
-								borderColor: BRAND_RED_HOVER,
-								color: CHARCOAL,
-								boxShadow: 'none',
-							},
-							'&:focus-visible': {
-								boxShadow: `0 0 0 2px ${WARM_WHITE}, 0 0 0 4px ${BRAND_RED}`,
-							},
-						}}>
-						Contact Sales Team
-					</Button>
-				</Box>
+					return (
+						<Box
+							key={category.label}
+							sx={{
+								mb:
+									categoryIndex < initiativeCategories.length - 1
+										? { xs: 5, md: 7 }
+										: 0,
+							}}>
+							<Typography className='micro-label' sx={{ mb: { xs: 2, md: 2.5 } }}>
+								{category.label}
+							</Typography>
+
+							{category.layout === 'three-plus-two' ? (
+								<>
+									<Box
+										sx={{
+											display: 'grid',
+											gridTemplateColumns: {
+												xs: '1fr',
+												sm: 'repeat(2, minmax(0, 1fr))',
+												md: 'repeat(3, minmax(0, 1fr))',
+											},
+											gap: { xs: 2, md: 2.25 },
+											mb: { xs: 2, md: 2.25 },
+										}}>
+										{category.items.slice(0, 3).map(renderCard)}
+									</Box>
+									<Box
+										sx={{
+											display: 'grid',
+											gridTemplateColumns: {
+												xs: '1fr',
+												sm: 'repeat(2, minmax(0, 1fr))',
+											},
+											gap: { xs: 2, md: 2.25 },
+											maxWidth: { md: '66.666%' },
+											mx: { md: 'auto' },
+										}}>
+										{category.items.slice(3).map(renderCard)}
+									</Box>
+								</>
+							) : (
+								<Box
+									sx={{
+										display: 'grid',
+										gridTemplateColumns: {
+											xs: '1fr',
+											sm: 'repeat(2, minmax(0, 1fr))',
+											md:
+												category.layout === 'two'
+													? 'repeat(2, minmax(0, 1fr))'
+													: 'repeat(3, minmax(0, 1fr))',
+										},
+										gap: { xs: 2, md: 2.25 },
+									}}>
+									{category.items.map(renderCard)}
+								</Box>
+							)}
+						</Box>
+					);
+				})}
 			</Box>
 
 			{/* Methodology / Transparency */}

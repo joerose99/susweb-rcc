@@ -9,9 +9,9 @@
 // TODO: Replace with approved Bethesda North Marriott reservations / booking URL.
 export const PROPERTY_RESERVATIONS_URL = null;
 
-/** @type {string | null} */
-// TODO: Replace with approved Bethesda North Marriott meetings / events inquiry URL.
-export const PROPERTY_EVENTS_INQUIRY_URL = null;
+/** Official Bethesda North Marriott meetings & events destination. */
+export const PROPERTY_EVENTS_INQUIRY_URL =
+	'https://www.marriott.com/en-us/hotels/wasbn-bethesda-north-marriott-hotel-and-conference-center/events/';
 
 export const BIOGREEN360_URL = 'https://biogreen360.com/';
 
