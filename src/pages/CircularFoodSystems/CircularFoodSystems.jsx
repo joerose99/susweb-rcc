@@ -30,6 +30,7 @@ import {
 	MAVEN_RESERVATIONS_URL,
 	MAVEN_SALES_MAILTO,
 } from '../../constants/mavenExternalLinks';
+import { HEADER_SCROLL_MARGIN } from '../../constants/propertyExternalLinks';
 import {
 	BODY_TEXT,
 	BORDER_LIGHT,
@@ -632,7 +633,7 @@ const CircularFoodSystems = () => {
 						<Box component='li'>
 							<Box
 								component='a'
-								href='#live-impact-reporting'
+								href='#live-reporting'
 								onClick={(event) => {
 									event.preventDefault();
 									scrollToSection('live-reporting');
@@ -751,7 +752,7 @@ const CircularFoodSystems = () => {
 				sx={{
 					...sectionContainerSx,
 					...sectionBandAltSx,
-					scrollMarginTop: { xs: '90px', md: '104px' },
+					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Box
 					sx={{
@@ -890,8 +891,13 @@ const CircularFoodSystems = () => {
 
 			{/* Cornerstone Partnership */}
 			<Box
+				id='biogreen360'
 				className='section section--base'
-				sx={{ ...sectionContainerSx, ...sectionBandBaseSx }}>
+				sx={{
+					...sectionContainerSx,
+					...sectionBandBaseSx,
+					scrollMarginTop: HEADER_SCROLL_MARGIN,
+				}}>
 				<Box
 					sx={{
 						display: 'grid',
@@ -1116,7 +1122,7 @@ const CircularFoodSystems = () => {
 				sx={{
 					...sectionContainerSx,
 					...sectionBandAltSx,
-					scrollMarginTop: { xs: '80px', md: '96px' },
+					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Typography
 					component='h2'
@@ -1286,7 +1292,7 @@ const CircularFoodSystems = () => {
 				sx={{
 					...sectionContainerSx,
 					...sectionBandBaseSx,
-					scrollMarginTop: { xs: '80px', md: '96px' },
+					scrollMarginTop: HEADER_SCROLL_MARGIN,
 					'& .lsir-card-value': { color: CHARCOAL },
 				}}>
 				<Typography
@@ -1427,7 +1433,7 @@ const CircularFoodSystems = () => {
 				sx={{
 					...sectionContainerSx,
 					...sectionBandAltSx,
-					scrollMarginTop: { xs: '80px', md: '96px' },
+					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Box
 					sx={{
@@ -1663,7 +1669,7 @@ const CircularFoodSystems = () => {
 				sx={{
 					...sectionContainerSx,
 					...sectionBandAltSx,
-					scrollMarginTop: { xs: '90px', md: '104px' },
+					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Typography
 					component='h2'
@@ -1767,7 +1773,7 @@ const CircularFoodSystems = () => {
 					backgroundColor: WARM_WHITE,
 					borderTop: '1px solid rgba(216, 209, 200, 0.95)',
 					borderBottom: '1px solid rgba(216, 209, 200, 0.95)',
-					scrollMarginTop: { xs: '80px', md: '96px' },
+					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Box sx={sectionContainerSx}>
 					<Typography
