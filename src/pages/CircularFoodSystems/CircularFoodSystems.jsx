@@ -373,32 +373,31 @@ const initiativeCategories = [
 		items: [
 			{
 				title: 'LEED Gold Certified',
-				description:
-					'Bethesda North Marriott has been LEED Gold certified since May 2023, recognizing sustainability achievement in the hotel’s building operations.',
+				description: 'LEED Gold certified since May 2023.',
 				icon: WorkspacePremiumOutlinedIcon,
 			},
 			{
 				title: 'Air Purification',
 				description:
-					'Air purifiers are used throughout the hotel’s public and meeting spaces, removing 99.4% of harmful bacteria every 30 minutes.',
+					'Air purifiers in public and meeting spaces remove 99.4% of harmful bacteria every 30 minutes.',
 				icon: AirOutlinedIcon,
 			},
 			{
 				title: 'Touchless Faucets',
 				description:
-					'Battery-operated infrared faucets have been installed in all public restrooms to help prevent unnecessary water use.',
+					'Infrared faucets in all public restrooms help reduce unnecessary water use.',
 				icon: WaterDropOutlinedIcon,
 			},
 			{
 				title: 'Energy-Efficient Lighting',
 				description:
-					'Lighting throughout the property has been surveyed and upgraded with LED fixtures and bulbs to improve energy efficiency.',
+					'LED fixtures and bulbs improve energy efficiency throughout the property.',
 				icon: LightbulbOutlinedIcon,
 			},
 			{
 				title: 'Smart Thermostats',
 				description:
-					'Telkonet smart thermostats have been installed in all guest rooms to help reduce unnecessary energy use.',
+					'Telkonet smart thermostats in all guest rooms help reduce unnecessary energy use.',
 				icon: DeviceThermostatOutlinedIcon,
 			},
 		],
@@ -410,19 +409,19 @@ const initiativeCategories = [
 			{
 				title: 'Comprehensive Recycling',
 				description:
-					'A property-wide recycling program separates paper and plastic in guest rooms, public spaces, and associate areas throughout the hotel.',
+					'Paper and plastic are separated in guest rooms, public spaces, and associate areas.',
 				icon: RecyclingIcon,
 			},
 			{
 				title: 'Water Refill Stations',
 				description:
-					'Multiple water refill stations are available throughout the hotel, reducing reliance on single-use plastic water bottles in guest rooms and event spaces.',
+					'Refill stations throughout the hotel help reduce reliance on single-use plastic bottles.',
 				icon: LocalDrinkOutlinedIcon,
 			},
 			{
 				title: 'Virtual and Recyclable Room Keys',
 				description:
-					'The hotel’s room-key recycling program and virtual room-key application help reduce single-use plastic waste. Bethesda North Marriott was the first Marriott hotel to implement a method for sharing virtual room keys.',
+					'Room-key recycling and virtual keys help reduce single-use plastic. Bethesda North Marriott was the first Marriott hotel to implement a method for sharing virtual room keys.',
 				icon: VpnKeyOutlinedIcon,
 			},
 		],
@@ -433,11 +432,10 @@ const initiativeCategories = [
 		items: [
 			{
 				title: 'EV Charging Stations',
-				description: 'Ten electric-vehicle charging stations are available across the property.',
+				description:
+					'Ten charging stations are available across the property: four in the hotel parking lot and six in the Conference Center Garage.',
 				icon: EvStationOutlinedIcon,
 				details: [
-					'4 stations in the hotel parking lot',
-					'6 stations in the Conference Center Garage',
 					'J-1772 plug type',
 					'ChargeLab platform',
 					'Tesla adapters available to borrow from the Front Desk',
@@ -446,7 +444,7 @@ const initiativeCategories = [
 			{
 				title: 'Sustainable Mobility',
 				description:
-					'The garage and parking lot include preferred ride-share parking, bicycle racks, and electric-vehicle charging. The hotel is approximately 100 feet from the Metro, making car-free arrival a practical option for many guests and attendees.',
+					'Preferred ride-share parking, bicycle racks, EV charging, and Metro access approximately 100 feet from the hotel provide lower-impact arrival options.',
 				icon: DirectionsTransitOutlinedIcon,
 			},
 		],
@@ -2180,9 +2178,8 @@ const CircularFoodSystems = () => {
 						maxWidth: 820,
 						mb: { xs: 4, md: 5.5 },
 					}}>
-					Bethesda North Marriott has implemented a range of property-wide initiatives designed to
-					support energy efficiency, water conservation, waste reduction, indoor air quality, and
-					lower-impact transportation.
+					Additional initiatives support efficient building operations, resource conservation, guest
+					convenience, and lower-impact transportation.
 				</Typography>
 
 				{initiativeCategories.map((category, categoryIndex) => {
