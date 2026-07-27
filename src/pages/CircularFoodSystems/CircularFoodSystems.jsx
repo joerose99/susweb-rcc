@@ -28,7 +28,6 @@ import howItWorksReportIcon from '../../assets/how-it-works-report.png';
 import elephantEquivalencyIcon from '../../assets/elephant-equivalency.png';
 import footballFieldEquivalencyIcon from '../../assets/football-field-equivalency.png';
 import heroBethesdaNorthLobbyImage from '../../assets/hero-bethesda-north-lobby.png';
-import biogreen360PartnershipImage from '../../assets/biogreen360-partnership.png';
 import eventsBethesdaNorthBoardroomImage from '../../assets/events-bethesda-north-boardroom.jpg';
 import StickyHeader from '../../components/StickyHeader';
 import {
@@ -337,32 +336,32 @@ const buildEquivalencyCards = (poundsFed) => {
 		{
 			icon: ParkOutlinedIcon,
 			iconColor: SUSTAINABILITY_GREEN,
-			label: 'All-Time Environmental Equivalency',
+			label: 'Carbon Diversion Equivalency',
 			value: hasPounds
-				? `${formatIllustrativeCount(getTreeSeedlingEquivalency(poundsFed))} tree seedlings`
+				? `${formatIllustrativeCount(getTreeSeedlingEquivalency(poundsFed))} trees planted`
 				: MISSING_METRIC_VALUE,
-			note: 'Equivalent to urban tree seedlings grown for 10 years, based on documented EPA conversion factors.',
+			note: 'Equivalent to urban tree seedlings grown for 10 years using documented EPA conversion factors.',
 		},
 		{
 			iconImage: elephantEquivalencyIcon,
 			iconColor: SUSTAINABILITY_GREEN,
 			iconSize: { xs: 87.5, md: 100 },
-			label: 'All-Time Weight Equivalency',
+			label: 'Weight Equivalency',
 			value: hasPounds
 				? `${formatIllustrativeCount(getAdultAfricanElephantEquivalency(poundsFed))} adult African elephants`
 				: MISSING_METRIC_VALUE,
-			note: 'Based on a representative adult African elephant weight of approximately 6 tons.',
+			note: 'Compared with a representative adult African elephant weight of approximately 6 tons.',
 		},
 		{
 			iconImage: footballFieldEquivalencyIcon,
 			iconColor: SUSTAINABILITY_GREEN,
-			label: 'All-Time Soil Coverage',
+			label: 'Soil-Coverage Equivalency',
 			value: hasPounds
 				? `${formatIllustrativeCount(getNflFootballFieldEquivalency(poundsFed), {
 						allowTwoDecimalsBelowOne: true,
 				  })} NFL football fields`
 				: MISSING_METRIC_VALUE,
-			note: 'Based on estimated soil coverage converted at 1.32 acres per NFL football field.',
+			note: 'Estimated finished-compost coverage compared with a full NFL football field at a one-inch application depth.',
 		},
 	];
 };
@@ -543,16 +542,16 @@ const CircularFoodSystems = () => {
 			Icon: DinnerDiningIcon,
 		},
 		{
-			label: 'Waterless, closed-loop operation',
-			Icon: RecyclingIcon,
-		},
-		{
 			label: 'Property-level measurement and reporting',
 			Icon: AssessmentOutlinedIcon,
 		},
 		{
-			label: 'Program support and downstream coordination',
+			label: 'Program setup and operational support',
 			Icon: GroupsIcon,
+		},
+		{
+			label: 'Downstream pathway coordination',
+			Icon: RecyclingIcon,
 		},
 	];
 
@@ -561,9 +560,9 @@ const CircularFoodSystems = () => {
 
 	const primaryProcessingSteps = [
 		{
-			title: 'Food Scraps Are Captured',
+			title: 'Capture',
 			description:
-				'Participating food scraps from hotel kitchens, banquets, and other food-service operations are collected for processing.',
+				'Participating food scraps are separated during kitchen, banquet, and food-service operations.',
 			icon: (
 				<Box
 					component='img'
@@ -582,9 +581,8 @@ const CircularFoodSystems = () => {
 			),
 		},
 		{
-			title: 'Processed On Property',
-			description:
-				'Captured material is processed through Bethesda North Marriott’s waterless, closed-loop BioGreen360 equipment.',
+			title: 'Process',
+			description: 'Collected material is processed through the hotel’s BioGreen360 equipment.',
 			icon: (
 				<Box
 					component='img'
@@ -603,9 +601,8 @@ const CircularFoodSystems = () => {
 			),
 		},
 		{
-			title: 'Measured and Reported',
-			description:
-				'Program data is recorded through BioGreen360’s reporting platform to support property-level visibility and impact reporting.',
+			title: 'Measure',
+			description: 'Program activity is recorded and translated into property-level reporting.',
 			icon: (
 				<Box
 					component='img'
@@ -624,9 +621,9 @@ const CircularFoodSystems = () => {
 			),
 		},
 		{
-			title: 'Coordinated for Beneficial Use',
+			title: 'Coordinate',
 			description:
-				'Processed material is managed through coordinated local beneficial-use or composting pathways based on operations and availability.',
+				'Processed material is directed through available beneficial-use or composting pathways.',
 			icon: (
 				<Box
 					component='img'
@@ -713,7 +710,7 @@ const CircularFoodSystems = () => {
 	const equivalencyCards = buildEquivalencyCards(poundsFed);
 	const equivalencyCardsToRender = showEquivalencies ? equivalencyCards : [];
 	const equivalencyDisclaimer =
-		'Equivalencies are provided for illustrative context using documented assumptions and are not audited environmental claims.';
+		'Equivalencies are illustrative estimates based on documented assumptions.';
 	const formattedLastSync = formatLastSync(siteConfig.lastSync);
 	const lastUpdatedLabel = formattedLastSync ?? 'Last sync: unavailable';
 	const formattedStatLastUpdate = formatLastSync(statLastUpdate);
@@ -1217,7 +1214,7 @@ const CircularFoodSystems = () => {
 					{/* Left column: copy and capabilities (first in mobile reading order) */}
 					<Box>
 						<Typography className='micro-label' sx={{ mb: 1.5 }}>
-							ON-PROPERTY FOOD WASTE PROCESSING
+							PROGRAM TECHNOLOGY & SUPPORT
 						</Typography>
 						<Box
 							sx={{
@@ -1275,9 +1272,8 @@ const CircularFoodSystems = () => {
 								maxWidth: 680,
 								mb: { xs: 3, md: 3.5 },
 							}}>
-							Bethesda North Marriott Hotel &amp; Conference Center became the first Marriott-branded
-							hotel to install the BioGreen360 platform, creating a waterless, closed-loop system for
-							processing, measuring, and diverting food not eaten on property.
+							BioGreen360 provides the on-property processing technology, reporting platform, and
+							program support behind Bethesda North Marriott’s food-waste diversion initiative.
 						</Typography>
 
 						<Typography
@@ -1289,7 +1285,7 @@ const CircularFoodSystems = () => {
 								letterSpacing: '-0.012em',
 								mb: 1.25,
 							}}>
-							Built Into Daily Hotel Operations
+							Supporting Daily Hotel Operations
 						</Typography>
 						<Typography
 							sx={{
@@ -1299,9 +1295,9 @@ const CircularFoodSystems = () => {
 								maxWidth: 680,
 								mb: { xs: 2.5, md: 3 },
 							}}>
-							The BioGreen360 system allows participating food scraps to be processed directly at the
-							hotel while property-level data supports reporting, operational visibility, and continued
-							program improvement.
+							The program gives participating culinary and banquet teams a practical way to manage
+							food scraps while providing property leaders with clearer visibility into program
+							activity.
 						</Typography>
 
 						<Box
@@ -1368,10 +1364,8 @@ const CircularFoodSystems = () => {
 								maxWidth: 680,
 								mb: 2,
 							}}>
-							After food scraps are processed through the hotel’s BioGreen360 system, the resulting
-							material is managed through coordinated local beneficial-use or composting pathways.
-							Specific downstream partners and destinations may vary based on operations and
-							availability.
+							After processing, material is coordinated through local beneficial-use or composting
+							pathways selected according to operational needs and availability.
 						</Typography>
 						<Box
 							component='a'
@@ -1397,22 +1391,32 @@ const CircularFoodSystems = () => {
 							flexDirection: 'column',
 							gap: 2.5,
 						}}>
+						{/* TODO: Prefer approved Bethesda North Marriott BioGreen360 equipment or operational photography. */}
 						<Box
-							component='img'
-							src={biogreen360PartnershipImage}
-							alt='Illustration of hands holding the Earth, representing stewardship and sustainability'
+							role='status'
+							aria-label='Bethesda North Marriott BioGreen360 program imagery pending approval'
 							sx={{
+								...mediaPlaceholderSx,
 								width: '100%',
 								aspectRatio: '1 / 1',
-								objectFit: 'cover',
-								objectPosition: 'center',
+								minHeight: { xs: 220, md: 280 },
 								borderRadius: RADIUS_IMAGE,
-								border: `1px solid ${BORDER_LIGHT}`,
 								boxShadow: SHADOW_IMAGE,
-								display: 'block',
-								backgroundColor: SURFACE_WHITE,
-							}}
-						/>
+								gap: 1.25,
+							}}>
+							<Typography className='micro-label' sx={{ mb: 0 }}>
+								PHOTO / MEDIA PLACEMENT
+							</Typography>
+							<Typography
+								sx={{
+									fontSize: { xs: '15px', md: '16px' },
+									color: BODY_TEXT,
+									lineHeight: 1.5,
+									maxWidth: 320,
+								}}>
+								Bethesda North Marriott BioGreen360 program imagery pending approval
+							</Typography>
+						</Box>
 
 						<Box
 							sx={{
@@ -1435,8 +1439,8 @@ const CircularFoodSystems = () => {
 								First Marriott-Branded Hotel to Install BioGreen360
 							</Typography>
 							<Typography sx={{ fontSize: '14px', color: BODY_TEXT, lineHeight: 1.7 }}>
-								Bethesda North Marriott introduced the platform in 2023, establishing an on-property
-								approach to processing and tracking food not eaten at the hotel.
+								Bethesda North Marriott launched the program in February 2023, establishing the first
+								BioGreen360 installation within the Marriott brand.
 							</Typography>
 						</Box>
 					</Box>
@@ -1480,8 +1484,8 @@ const CircularFoodSystems = () => {
 						mx: 'auto',
 						mb: { xs: 4, md: 5.5 },
 					}}>
-					Bethesda North Marriott uses an on-property BioGreen360 platform to process, measure, and
-					support the diversion of food not eaten at the hotel.
+					Food scraps move through a four-step workflow designed for clear handling, measurement, and
+					reporting.
 				</Typography>
 
 				<Box
@@ -1576,8 +1580,7 @@ const CircularFoodSystems = () => {
 						mx: 'auto',
 						lineHeight: 1.7,
 					}}>
-					The program combines on-property processing, property-level reporting, and coordinated
-					downstream pathways. See{' '}
+					Definitions, estimates, and reporting boundaries are explained in{' '}
 					<Box
 						component='a'
 						href='#methodology'
@@ -1594,8 +1597,8 @@ const CircularFoodSystems = () => {
 							},
 						}}>
 						Methodology
-					</Box>{' '}
-					for definitions and reporting scope.
+					</Box>
+					.
 				</Typography>
 				<Box
 					sx={{
@@ -1645,24 +1648,22 @@ const CircularFoodSystems = () => {
 								color: CHARCOAL,
 								mb: 1.5,
 							}}>
-							A Waterless, Closed-Loop Approach
+							Designed for Hotel Operations
 						</Typography>
 						<Typography
 							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.25 }}>
-							Bethesda North Marriott became the first Marriott-branded hotel to install the BioGreen360
-							platform, establishing an on-property system for processing food not eaten at the hotel.
+							Bethesda North Marriott’s BioGreen360 equipment supports a practical workflow for managing
+							participating food scraps directly at the property.
 						</Typography>
 						<Typography
 							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.25 }}>
-							The waterless, closed-loop equipment supports the hotel’s goal of recycling or diverting
-							participating food scraps while creating clearer property-level data for hotel teams,
-							guests, and event planners.
+							Automated measurement gives hotel teams clearer visibility into diversion activity without
+							adding separate manual reporting steps.
 						</Typography>
 						<Typography
 							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 2 }}>
-							After material is processed on property, it is managed through coordinated local
-							beneficial-use or composting pathways. Specific downstream partners and destinations may
-							vary based on operational needs and availability.
+							Downstream handling is coordinated according to operational requirements, partner
+							availability, and approved processing pathways.
 						</Typography>
 						<Box
 							component='a'
@@ -1696,7 +1697,7 @@ const CircularFoodSystems = () => {
 					'& .lsir-card-value': { color: CHARCOAL },
 				}}>
 				<Typography className='micro-label' sx={{ mb: 1.5 }}>
-					LIVE REPORTING
+					IMPACT EQUIVALENCIES
 				</Typography>
 				<Typography
 					id='live-reporting-heading'
@@ -1707,7 +1708,7 @@ const CircularFoodSystems = () => {
 						color: CHARCOAL,
 						mb: 1.5,
 					}}>
-					Impact in Familiar Terms
+					Putting the Numbers in Perspective
 				</Typography>
 				<Box
 					sx={{
@@ -1719,7 +1720,7 @@ const CircularFoodSystems = () => {
 						mb: 2.5,
 					}}>
 					<Typography sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.7, maxWidth: 720 }}>
-						All-time BioGreen360 reporting translated into familiar, illustrative comparisons.
+						These comparisons translate cumulative program results into familiar reference points.
 					</Typography>
 					<Box
 						component='a'
@@ -1765,16 +1766,6 @@ const CircularFoodSystems = () => {
 								}}>
 								<Typography className='micro-label lsir-card-title' sx={{ mb: 1.25 }}>
 									{card.label}
-								</Typography>
-								<Typography
-									sx={{
-										fontSize: '11px',
-										letterSpacing: '0.09em',
-										textTransform: 'uppercase',
-										color: MUTED_TEXT,
-										mb: 0.85,
-									}}>
-									Illustrative equivalency
 								</Typography>
 								<Typography
 									component='p'
