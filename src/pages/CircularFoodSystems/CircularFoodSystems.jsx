@@ -154,7 +154,7 @@ const MISSING_METRIC_VALUE = '-';
 
 // BioGreen360 compost & carbon methodology (shared assumptions for impact + equivalencies)
 const LBS_PER_SHORT_TON = 2000;
-/** Bethesda North Marriott site-specific soil-coverage conversion (Our Impact acres). */
+/** Soil coverage: 1 short ton diverted food waste ≈ 6.028 acres fertilized. */
 const ACRES_FERTILIZED_PER_SHORT_TON_DIVERTED = 6.028;
 /** Avoided-emissions assumption used for illustrative climate equivalencies. */
 const AVOIDED_MTCO2E_PER_SHORT_TON = 0.65;
@@ -250,15 +250,23 @@ const formatEstimatedAcresDisplay = (poundsFed) => {
 		return MISSING_METRIC_VALUE;
 	}
 
-	let display;
+	let rounded;
+	let maximumFractionDigits;
 	if (acres < 1) {
-		display = acres.toFixed(2);
+		rounded = Math.round(acres * 100) / 100;
+		maximumFractionDigits = 2;
 	} else if (acres < 10) {
-		display = (Math.round(acres * 10) / 10).toFixed(1);
+		rounded = Math.round(acres * 10) / 10;
+		maximumFractionDigits = 1;
 	} else {
-		const oneDecimal = Math.round(acres * 10) / 10;
-		display = Number.isInteger(oneDecimal) ? String(Math.round(oneDecimal)) : oneDecimal.toFixed(1);
+		rounded = Math.round(acres * 10) / 10;
+		maximumFractionDigits = Number.isInteger(rounded) ? 0 : 1;
 	}
+
+	const display = rounded.toLocaleString('en-US', {
+		maximumFractionDigits,
+		minimumFractionDigits: 0,
+	});
 
 	return `${display} acres`;
 };
@@ -297,23 +305,24 @@ const buildImpactMetrics = (poundsFed) => {
 
 	return [
 		{
-			eyebrow: 'BioGreen360 Program',
+			eyebrow: 'Program Days Operating',
 			value:
 				daysOperating != null
 					? `${formatCountWithSeparators(daysOperating)} days`
 					: MISSING_METRIC_VALUE,
-			note: 'operating on property since February 27, 2023',
+			note: 'since February 27, 2023',
 			Icon: CalendarTodayIcon,
 		},
 		{
 			eyebrow: 'Food Diverted',
 			value: poundsFed != null ? formatShortTonsDisplay(poundsFed) : MISSING_METRIC_VALUE,
-			note: 'measured from captured on-property inputs',
+			note: 'measured from captured food-scrap inputs',
 			Icon: DinnerDiningIcon,
 		},
 		{
 			eyebrow: 'Estimated Soil Coverage',
 			value: poundsFed != null ? formatEstimatedAcresDisplay(poundsFed) : MISSING_METRIC_VALUE,
+			note: 'estimated at a one-inch application depth',
 			Icon: GrassIcon,
 		},
 	];
@@ -456,6 +465,7 @@ const formatLastSync = (lastSyncValue) => {
 	}
 
 	const parts = new Intl.DateTimeFormat('en-US', {
+		timeZone: PROPERTY_CONFIG.timeZone,
 		month: 'short',
 		day: 'numeric',
 		year: 'numeric',
@@ -466,7 +476,13 @@ const formatLastSync = (lastSyncValue) => {
 	}).formatToParts(parsedDate);
 
 	const partValue = (type) => parts.find((part) => part.type === type)?.value ?? '';
-	return `${partValue('month')} ${partValue('day')}, ${partValue('year')} ${partValue('hour')}:${partValue('minute')} ${partValue('dayPeriod')} ${partValue('timeZoneName')}`;
+	let timeZoneName = partValue('timeZoneName');
+	// Keep Eastern Time labels only (Bethesda, MD). Never show Mountain Time abbreviations.
+	if (!/^(EST|EDT|ET)$/i.test(timeZoneName)) {
+		timeZoneName = 'ET';
+	}
+
+	return `${partValue('month')} ${partValue('day')}, ${partValue('year')} ${partValue('hour')}:${partValue('minute')} ${partValue('dayPeriod')} ${timeZoneName}`;
 };
 
 const CircularFoodSystems = () => {
@@ -1053,8 +1069,7 @@ const CircularFoodSystems = () => {
 						mb: 2,
 						maxWidth: 880,
 					}}>
-					Property-level reporting based on food captured and processed through Bethesda North
-					Marriott’s on-property BioGreen360 system.
+					A current view of program tenure, measured food diversion, and estimated soil coverage.
 				</Typography>
 				<Box
 					sx={{
