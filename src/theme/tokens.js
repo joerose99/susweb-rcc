@@ -1,5 +1,5 @@
 /**
- * Bethesda North Marriott Hotel & Conference Center
+ * Denver Marriott Tech Center
  * Global visual system tokens for the sustainability microsite.
  *
  * Brand red: Marriott-inspired burgundy (no approved logo asset in repo yet).

@@ -1,16 +1,16 @@
 /**
- * Bethesda North Marriott Hotel & Conference Center — external destinations.
+ * Denver Marriott Tech Center — external destinations.
  *
- * Header CTAs must not point at Maven URLs behind Bethesda-branded labels.
+ * Header CTAs must not point at unrelated property URLs behind Denver-branded labels.
  */
 
-/** Official Bethesda North Marriott property overview / booking destination. */
+/** Official Denver Marriott Tech Center property overview / booking destination. */
 export const PROPERTY_RESERVATIONS_URL =
-	'https://www.marriott.com/en-us/hotels/wasbn-bethesda-north-marriott-hotel-and-conference-center/overview/';
+	'https://www.marriott.com/en-us/hotels/dentc-denver-marriott-tech-center/overview/';
 
-/** Official Bethesda North Marriott meetings & events destination. */
+/** Official Denver Marriott Tech Center meetings & events destination. */
 export const PROPERTY_EVENTS_INQUIRY_URL =
-	'https://www.marriott.com/en-us/hotels/wasbn-bethesda-north-marriott-hotel-and-conference-center/events/';
+	'https://www.marriott.com/en-us/hotels/dentc-denver-marriott-tech-center/events/';
 
 export const BIOGREEN360_URL = 'https://biogreen360.com/';
 

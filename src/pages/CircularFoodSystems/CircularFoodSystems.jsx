@@ -33,9 +33,6 @@ import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-fo
 import howItWorksBethesdaBarImage from '../../assets/how-it-works-bethesda-bar.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
-	MAVEN_EVENTS_INQUIRY_URL,
-} from '../../constants/mavenExternalLinks';
-import {
 	BIOGREEN360_URL,
 	HEADER_SCROLL_MARGIN,
 	PROPERTY_EVENTS_INQUIRY_URL,
@@ -89,14 +86,14 @@ const SENTENCE_LINK_SX = {
 	},
 };
 
-// TODO: Replace temporary Maven org ID with the Bethesda North Marriott organization ID before publication.
+// TODO: Replace temporary BioGreen360 organization ID with the Denver Marriott Tech Center organization ID before publication.
 const ORG_STATS_API_URL =
-	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f5c7a8c64cf4f5945857';
+	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f786a8c64cf4f594585f';
 
 const PROPERTY_CONFIG = {
-	/** BioGreen360 program launch date at Bethesda North Marriott (calendar date). */
-	programLaunchDate: '2023-02-27',
-	timeZone: 'America/New_York',
+	/** BioGreen360 program launch date at Denver Marriott Tech Center (calendar date). */
+	programLaunchDate: '2023-05-22',
+	timeZone: 'America/Denver',
 };
 
 /**
@@ -104,10 +101,10 @@ const PROPERTY_CONFIG = {
  * TODO: Periodically verify these figures against the official Marriott property page.
  */
 const EVENT_PROPERTY_FACTS = [
-	{ value: '26', label: 'Event Rooms' },
-	{ value: '61,923', label: 'Sq. Ft. of Event Space' },
-	{ value: 'Up to 2,500', label: 'Capacity' },
-	{ value: '15', label: 'Breakout Rooms' },
+	{ value: '28', label: 'Event Rooms' },
+	{ value: '51,794', label: 'Sq. Ft. of Event Space' },
+	{ value: 'Up to 1,500', label: 'Capacity' },
+	{ value: '17', label: 'Breakout Rooms' },
 ];
 
 const BIOGREEN_LINK_SX = {
@@ -367,6 +364,7 @@ const buildEquivalencyCards = (poundsFed) => {
 	];
 };
 
+// TODO: Replace these placeholder initiative cards with Denver Marriott Tech Center–verified content before publication.
 const initiativeCategories = [
 	{
 		label: 'Building & Resource Efficiency',
@@ -422,7 +420,7 @@ const initiativeCategories = [
 			{
 				title: 'Virtual and Recyclable Room Keys',
 				description:
-					'Room-key recycling and virtual keys help reduce single-use plastic. Bethesda North Marriott was the first Marriott hotel to implement a method for sharing virtual room keys.',
+					'Room-key recycling and virtual keys help reduce single-use plastic.',
 				icon: VpnKeyOutlinedIcon,
 			},
 		],
@@ -475,9 +473,9 @@ const formatLastSync = (lastSyncValue) => {
 
 	const partValue = (type) => parts.find((part) => part.type === type)?.value ?? '';
 	let timeZoneName = partValue('timeZoneName');
-	// Keep Eastern Time labels only (Bethesda, MD). Never show Mountain Time abbreviations.
-	if (!/^(EST|EDT|ET)$/i.test(timeZoneName)) {
-		timeZoneName = 'ET';
+	// Keep Mountain Time labels only (Denver, CO). Never show Eastern Time abbreviations.
+	if (!/^(MST|MDT|MT)$/i.test(timeZoneName)) {
+		timeZoneName = 'MT';
 	}
 
 	return `${partValue('month')} ${partValue('day')}, ${partValue('year')} ${partValue('hour')}:${partValue('minute')} ${partValue('dayPeriod')} ${timeZoneName}`;
@@ -721,7 +719,7 @@ const CircularFoodSystems = () => {
 		},
 		{
 			title: 'Where are food scraps processed?',
-			body: 'Through BioGreen360 equipment installed directly at Bethesda North Marriott.',
+			body: 'Through BioGreen360 equipment installed directly at Denver Marriott Tech Center.',
 		},
 		{
 			title: 'How is impact reported?',
@@ -811,10 +809,10 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 0,
 						}}>
-						At Bethesda North Marriott Hotel &amp; Conference Center, sustainability supports both daily
-						hotel operations and the gatherings we host. This site shares food-waste diversion results,
-						explains the BioGreen360 program, and shows how qualifying events can request dedicated
-						impact reporting.
+						At Denver Marriott Tech Center in Denver, Colorado, sustainability supports both daily hotel
+						operations and the gatherings we host. This site shares food-waste diversion results, explains
+						the BioGreen360 program, and shows how qualifying events can request dedicated impact
+						reporting.
 					</Typography>
 					<Box
 						sx={{
@@ -858,7 +856,7 @@ const CircularFoodSystems = () => {
 					<Box
 						component='img'
 						src={heroBethesdaNorthLobbyImage}
-						alt='Bethesda North Marriott Hotel & Conference Center front desk with the Marriott Bethesda North logo displayed behind the reception counter.'
+						alt='Denver Marriott Tech Center front desk with the hotel logo displayed behind the reception counter.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 9' },
@@ -1272,7 +1270,7 @@ const CircularFoodSystems = () => {
 								mb: { xs: 3, md: 3.5 },
 							}}>
 							BioGreen360 provides the on-property processing technology, reporting platform, and
-							program support behind Bethesda North Marriott’s food-waste diversion initiative.
+							program support behind Denver Marriott Tech Center’s food-waste diversion initiative.
 						</Typography>
 
 						<Typography
@@ -1425,11 +1423,11 @@ const CircularFoodSystems = () => {
 									lineHeight: 1.35,
 									mb: 1,
 								}}>
-								First Marriott-Branded Hotel to Install BioGreen360
+								First Marriott-Branded Hotel in Colorado to Adopt BioGreen360
 							</Typography>
 							<Typography sx={{ fontSize: '14px', color: BODY_TEXT, lineHeight: 1.7 }}>
-								Bethesda North Marriott launched the program in February 2023, establishing the first
-								BioGreen360 installation within the Marriott brand.
+								Denver Marriott Tech Center was the first Marriott-branded hotel in Colorado to adopt
+								the BioGreen360 platform.
 							</Typography>
 						</Box>
 					</Box>
@@ -1600,7 +1598,7 @@ const CircularFoodSystems = () => {
 					<Box
 						component='img'
 						src={howItWorksBethesdaBarImage}
-						alt='Bethesda North Marriott bar with geometric bronze front, illuminated bottle displays, and a row of barstools.'
+						alt='Denver Marriott Tech Center bar with geometric bronze front, illuminated bottle displays, and a row of barstools.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '4 / 3' },
@@ -1630,8 +1628,8 @@ const CircularFoodSystems = () => {
 						</Typography>
 						<Typography
 							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.25 }}>
-							Bethesda North Marriott’s BioGreen360 equipment supports a practical workflow for managing
-							participating food scraps directly at the property.
+							Denver Marriott Tech Center’s BioGreen360 equipment supports a practical workflow for
+							managing participating food scraps directly at the property.
 						</Typography>
 						<Typography
 							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.25 }}>
@@ -1912,7 +1910,7 @@ const CircularFoodSystems = () => {
 					<Box
 						component='img'
 						src={eventsBethesdaNorthBoardroomImage}
-						alt='Bethesda North Marriott boardroom with a long conference table set for a meeting and a projection screen displaying the Marriott Bethesda North logo.'
+						alt='Denver Marriott Tech Center boardroom with a long conference table set for a meeting and a projection screen displaying the hotel logo.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 11' },
@@ -2108,7 +2106,7 @@ const CircularFoodSystems = () => {
 						rel='noopener noreferrer'
 						variant='contained'
 						disableElevation
-						aria-label='Start planning an event at Bethesda North Marriott'
+						aria-label='Start planning an event at Denver Marriott Tech Center'
 						sx={{
 							...primaryButtonSx,
 							px: { xs: 3.25, md: 4.5 },
@@ -2156,11 +2154,35 @@ const CircularFoodSystems = () => {
 						color: BODY_TEXT,
 						lineHeight: 1.75,
 						maxWidth: 820,
-						mb: { xs: 4, md: 5.5 },
+						mb: { xs: 3, md: 3.5 },
 					}}>
 					Additional initiatives support efficient building operations, resource conservation, guest
 					convenience, and lower-impact transportation.
 				</Typography>
+
+				{/* TODO: Replace placeholder Bethesda initiative cards with Denver Marriott Tech Center–verified initiatives before publication. */}
+				<Box
+					role='note'
+					sx={{
+						...cardSx,
+						p: { xs: 2, md: 2.25 },
+						mb: { xs: 3.5, md: 4.5 },
+						maxWidth: 820,
+						borderLeft: `4px solid ${BRAND_RED}`,
+						backgroundColor: BRAND_RED_SOFT,
+					}}>
+					<Typography
+						sx={{
+							fontSize: '14px',
+							fontWeight: 600,
+							color: CHARCOAL,
+							lineHeight: 1.65,
+							letterSpacing: '0.01em',
+						}}>
+						PLACEHOLDER CONTENT: Property-specific sustainability initiatives are pending review with
+						the Denver Marriott Tech Center team.
+					</Typography>
+				</Box>
 
 				{initiativeCategories.map((category, categoryIndex) => {
 					const renderCard = (item) => {
@@ -2444,7 +2466,7 @@ const CircularFoodSystems = () => {
 						</Button>
 						<Button
 							component='a'
-							href={MAVEN_EVENTS_INQUIRY_URL}
+							href={PROPERTY_EVENTS_INQUIRY_URL}
 							target='_blank'
 							rel='noopener noreferrer'
 							variant='outlined'

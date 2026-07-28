@@ -4,7 +4,8 @@ import bethesdaNorthMarriottLogo from '../assets/bethesda-north-marriott-logo.pn
 import { BRAND_RED } from '../theme/tokens';
 
 /**
- * Approved Bethesda North Marriott header lockup.
+ * Approved Denver Marriott Tech Center header lockup.
+ * Logo asset is temporarily carried over from the prior property draft.
  */
 const PropertyLockup = ({ onNavigateHome }) => {
 	const handleClick = (event) => {
@@ -21,7 +22,7 @@ const PropertyLockup = ({ onNavigateHome }) => {
 			component='a'
 			href='#'
 			onClick={handleClick}
-			aria-label='Bethesda North Marriott sustainability home'
+			aria-label='Denver Marriott Tech Center sustainability home'
 			sx={{
 				display: 'inline-flex',
 				alignItems: 'center',
@@ -39,7 +40,7 @@ const PropertyLockup = ({ onNavigateHome }) => {
 			<Box
 				component='img'
 				src={bethesdaNorthMarriottLogo}
-				alt='Marriott Bethesda North'
+				alt='Denver Marriott Tech Center'
 				sx={{
 					height: { xs: 40, md: 48 },
 					width: 'auto',
