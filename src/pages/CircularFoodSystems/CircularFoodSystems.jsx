@@ -29,6 +29,8 @@ import elephantEquivalencyIcon from '../../assets/elephant-equivalency.png';
 import footballFieldEquivalencyIcon from '../../assets/football-field-equivalency.png';
 import heroBethesdaNorthLobbyImage from '../../assets/hero-bethesda-north-lobby.png';
 import eventsBethesdaNorthBoardroomImage from '../../assets/events-bethesda-north-boardroom.jpg';
+import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-food.png';
+import howItWorksBethesdaBarImage from '../../assets/how-it-works-bethesda-bar.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
 	MAVEN_EVENTS_INQUIRY_URL,
@@ -61,7 +63,6 @@ import {
 	WARM_WHITE,
 	cardEmphasizedSx,
 	cardSx,
-	mediaPlaceholderSx,
 	pageThemeSx,
 	primaryButtonSx,
 	sectionBandAltSx,
@@ -1389,32 +1390,22 @@ const CircularFoodSystems = () => {
 							flexDirection: 'column',
 							gap: 2.5,
 						}}>
-						{/* TODO: Prefer approved Bethesda North Marriott BioGreen360 equipment or operational photography. */}
 						<Box
-							role='status'
-							aria-label='Bethesda North Marriott BioGreen360 program imagery pending approval'
+							component='img'
+							src={biogreen360PartnershipImage}
+							alt='Plated hotel dishes including french fries, roasted Brussels sprouts, and seared fish with a fresh vegetable salad.'
 							sx={{
-								...mediaPlaceholderSx,
 								width: '100%',
 								aspectRatio: '1 / 1',
-								minHeight: { xs: 220, md: 280 },
+								objectFit: 'cover',
+								objectPosition: 'center',
 								borderRadius: RADIUS_IMAGE,
+								border: `1px solid ${BORDER_LIGHT}`,
 								boxShadow: SHADOW_IMAGE,
-								gap: 1.25,
-							}}>
-							<Typography className='micro-label' sx={{ mb: 0 }}>
-								PHOTO / MEDIA PLACEMENT
-							</Typography>
-							<Typography
-								sx={{
-									fontSize: { xs: '15px', md: '16px' },
-									color: BODY_TEXT,
-									lineHeight: 1.5,
-									maxWidth: 320,
-								}}>
-								Bethesda North Marriott BioGreen360 program imagery pending approval
-							</Typography>
-						</Box>
+								display: 'block',
+								backgroundColor: SURFACE_WHITE,
+							}}
+						/>
 
 						<Box
 							sx={{
@@ -1606,32 +1597,21 @@ const CircularFoodSystems = () => {
 						gap: { xs: 3.5, md: 5.5 },
 						alignItems: 'start',
 					}}>
-					{/* TODO: Prefer approved Bethesda North Marriott BioGreen360 equipment or operational photography here. */}
 					<Box
-						role='status'
-						aria-label='Bethesda North Marriott BioGreen360 equipment or program imagery pending approval'
+						component='img'
+						src={howItWorksBethesdaBarImage}
+						alt='Bethesda North Marriott bar with geometric bronze front, illuminated bottle displays, and a row of barstools.'
 						sx={{
-							...mediaPlaceholderSx,
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '4 / 3' },
-							minHeight: { xs: 220, md: 280 },
+							objectFit: 'cover',
+							objectPosition: 'center',
 							borderRadius: RADIUS_IMAGE,
+							border: `1px solid ${BORDER_LIGHT}`,
 							boxShadow: SHADOW_IMAGE,
-							gap: 1.25,
-						}}>
-						<Typography className='micro-label' sx={{ mb: 0 }}>
-							PHOTO / MEDIA PLACEMENT
-						</Typography>
-						<Typography
-							sx={{
-								fontSize: { xs: '15px', md: '16px' },
-								color: BODY_TEXT,
-								lineHeight: 1.5,
-								maxWidth: 360,
-							}}>
-							Bethesda North Marriott BioGreen360 equipment or program imagery pending approval
-						</Typography>
-					</Box>
+							display: 'block',
+						}}
+					/>
 					<Box>
 						<Typography className='micro-label' sx={{ mb: 1 }}>
 							ON-PROPERTY PROCESSING
