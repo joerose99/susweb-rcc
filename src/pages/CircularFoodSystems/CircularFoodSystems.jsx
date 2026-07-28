@@ -27,10 +27,10 @@ import howItWorksSproutIcon from '../../assets/how-it-works-sprout.png';
 import howItWorksReportIcon from '../../assets/how-it-works-report.png';
 import elephantEquivalencyIcon from '../../assets/elephant-equivalency.png';
 import footballFieldEquivalencyIcon from '../../assets/football-field-equivalency.png';
-import heroBethesdaNorthLobbyImage from '../../assets/hero-bethesda-north-lobby.png';
-import eventsBethesdaNorthBoardroomImage from '../../assets/events-bethesda-north-boardroom.jpg';
-import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-food.png';
-import howItWorksBethesdaBarImage from '../../assets/how-it-works-bethesda-bar.png';
+import heroDenverMarriottTechCenterImage from '../../assets/hero-denver-marriott-tech-center.png';
+import eventsDenverBallroomImage from '../../assets/events-denver-ballroom.png';
+import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-denver-restaurant.png';
+import howItWorksDenverAtriumImage from '../../assets/how-it-works-denver-atrium.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
 	BIOGREEN360_URL,
@@ -855,8 +855,8 @@ const CircularFoodSystems = () => {
 					}}>
 					<Box
 						component='img'
-						src={heroBethesdaNorthLobbyImage}
-						alt='Denver Marriott Tech Center front desk with the hotel logo displayed behind the reception counter.'
+						src={heroDenverMarriottTechCenterImage}
+						alt='Denver Marriott Tech Center entrance at dusk with illuminated porte-cochère, glowing amber glass pillars, landscaping, and a bronze elk statue.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 9' },
@@ -1391,7 +1391,7 @@ const CircularFoodSystems = () => {
 						<Box
 							component='img'
 							src={biogreen360PartnershipImage}
-							alt='Plated hotel dishes including french fries, roasted Brussels sprouts, and seared fish with a fresh vegetable salad.'
+							alt='Denver Marriott Tech Center restaurant and bar with sage dining chairs, an orange corrugated metal bar, hanging Edison bulbs, and atrium daylight overhead.'
 							sx={{
 								width: '100%',
 								aspectRatio: '1 / 1',
@@ -1597,8 +1597,8 @@ const CircularFoodSystems = () => {
 					}}>
 					<Box
 						component='img'
-						src={howItWorksBethesdaBarImage}
-						alt='Denver Marriott Tech Center bar with geometric bronze front, illuminated bottle displays, and a row of barstools.'
+						src={howItWorksDenverAtriumImage}
+						alt='High-angle view of the Denver Marriott Tech Center atrium with industrial black metal framing, dining and bar areas, and contemporary lounge seating.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '4 / 3' },
@@ -1909,8 +1909,8 @@ const CircularFoodSystems = () => {
 
 					<Box
 						component='img'
-						src={eventsBethesdaNorthBoardroomImage}
-						alt='Denver Marriott Tech Center boardroom with a long conference table set for a meeting and a projection screen displaying the hotel logo.'
+						src={eventsDenverBallroomImage}
+						alt='Denver Marriott Tech Center ballroom set for a banquet with round tables, a central podium, and flanking projection screens.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 11' },

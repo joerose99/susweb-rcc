@@ -1,11 +1,10 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import bethesdaNorthMarriottLogo from '../assets/bethesda-north-marriott-logo.png';
+import denverMarriottTechCenterLogo from '../assets/denver-marriott-tech-center-logo.png';
 import { BRAND_RED } from '../theme/tokens';
 
 /**
  * Approved Denver Marriott Tech Center header lockup.
- * Logo asset is temporarily carried over from the prior property draft.
  */
 const PropertyLockup = ({ onNavigateHome }) => {
 	const handleClick = (event) => {
@@ -39,12 +38,12 @@ const PropertyLockup = ({ onNavigateHome }) => {
 			}}>
 			<Box
 				component='img'
-				src={bethesdaNorthMarriottLogo}
+				src={denverMarriottTechCenterLogo}
 				alt='Denver Marriott Tech Center'
 				sx={{
-					height: { xs: 40, md: 48 },
+					height: { xs: 66, md: 78 },
 					width: 'auto',
-					maxWidth: { xs: 180, sm: 210, md: 240 },
+					maxWidth: { xs: 300, sm: 345, md: 390 },
 					display: 'block',
 					objectFit: 'contain',
 					objectPosition: 'left center',
