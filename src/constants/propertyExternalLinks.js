@@ -9,11 +9,9 @@ export const PROPERTY_OVERVIEW_URL = 'https://www.perrylanehotel.com/';
 
 /**
  * Booking / reservations destination.
- * TODO: Replace with the final approved Perry Lane Hotel booking URL when available.
- * Preserves existing booking behavior until that URL is added.
  */
 export const PROPERTY_RESERVATIONS_URL =
-	'https://www.marriott.com/en-us/hotels/dentc-denver-marriott-tech-center/overview/';
+	'https://www.marriott.com/reservation/availability.mi?cid=PAI_GLB00065K8_GLE000EJCY_GLF000YGCX&propertyCode=SAVLC';
 
 /** Official Perry Lane Hotel meetings & events inquiry destination. */
 export const PROPERTY_EVENTS_INQUIRY_URL =

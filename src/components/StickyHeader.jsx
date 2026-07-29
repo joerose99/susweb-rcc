@@ -158,17 +158,71 @@ const StickyHeader = () => {
 	const bookButtonSx = {
 		...secondaryButtonSx,
 		whiteSpace: 'nowrap',
-		color: SURFACE_WHITE,
-		borderColor: SURFACE_WHITE,
-		backgroundColor: 'transparent',
-		'&:hover': {
-			backgroundColor: 'rgba(255, 255, 255, 0.1)',
+		minHeight: primaryButtonSx.minHeight,
+		px: primaryButtonSx.px,
+		py: primaryButtonSx.py,
+		transform: 'scale(1)',
+		transition: 'transform 200ms ease, box-shadow 200ms ease',
+		color: `${DARK_SLATE} !important`,
+		borderColor: `${SURFACE_WHITE} !important`,
+		backgroundColor: `${SURFACE_WHITE} !important`,
+		'&.MuiButton-outlined': {
+			color: DARK_SLATE,
 			borderColor: SURFACE_WHITE,
-			color: SURFACE_WHITE,
-			boxShadow: 'none',
+			backgroundColor: SURFACE_WHITE,
+		},
+		'&:hover': {
+			color: `${DARK_SLATE} !important`,
+			borderColor: `${SURFACE_WHITE} !important`,
+			backgroundColor: `${SURFACE_WHITE} !important`,
+			boxShadow: '0 6px 16px rgba(70, 81, 91, 0.22)',
+			transform: 'scale(1.04)',
+		},
+		'&.MuiButton-outlined:hover': {
+			color: DARK_SLATE,
+			borderColor: SURFACE_WHITE,
+			backgroundColor: SURFACE_WHITE,
+			boxShadow: '0 6px 16px rgba(70, 81, 91, 0.22)',
+			transform: 'scale(1.04)',
 		},
 		'&:focus-visible': {
 			boxShadow: `0 0 0 2px ${DARK_SLATE}, 0 0 0 4px ${SAGE_ACCENT}`,
+		},
+		'@media (prefers-reduced-motion: reduce)': {
+			transition: 'none',
+			'&:hover': {
+				transform: 'none',
+			},
+			'&.MuiButton-outlined:hover': {
+				transform: 'none',
+			},
+		},
+	};
+
+	const bookButtonMobileSx = {
+		...bookButtonSx,
+		borderColor: `${DARK_SLATE} !important`,
+		'&.MuiButton-outlined': {
+			color: DARK_SLATE,
+			borderColor: DARK_SLATE,
+			backgroundColor: SURFACE_WHITE,
+		},
+		'&:hover': {
+			color: `${DARK_SLATE} !important`,
+			borderColor: `${DARK_SLATE} !important`,
+			backgroundColor: `${SURFACE_WHITE} !important`,
+			boxShadow: '0 6px 16px rgba(70, 81, 91, 0.18)',
+			transform: 'scale(1.04)',
+		},
+		'&.MuiButton-outlined:hover': {
+			color: DARK_SLATE,
+			borderColor: DARK_SLATE,
+			backgroundColor: SURFACE_WHITE,
+			boxShadow: '0 6px 16px rgba(70, 81, 91, 0.18)',
+			transform: 'scale(1.04)',
+		},
+		'&:focus-visible': {
+			boxShadow: SHADOW_FOCUS,
 		},
 	};
 
@@ -190,27 +244,11 @@ const StickyHeader = () => {
 		const pending = isBook ? bookPending : eventPending;
 		const href = isBook ? bookHref : eventHref;
 		const label = isBook ? 'Book a Room' : 'Plan an Event';
-		const sx =
-			size === 'mobile' && isBook
-				? {
-						...secondaryButtonSx,
-						whiteSpace: 'nowrap',
-						color: DARK_SLATE,
-						borderColor: DARK_SLATE,
-						backgroundColor: 'transparent',
-						'&:hover': {
-							backgroundColor: SAGE_SOFT,
-							borderColor: DARK_SLATE,
-							color: DARK_SLATE,
-							boxShadow: 'none',
-						},
-						'&:focus-visible': {
-							boxShadow: SHADOW_FOCUS,
-						},
-				  }
-				: isBook
-					? bookButtonSx
-					: eventButtonSx;
+		const sx = isBook
+			? size === 'mobile'
+				? bookButtonMobileSx
+				: bookButtonSx
+			: eventButtonSx;
 		const pendingLabel = `${label} (destination pending approval)`;
 
 		if (pending) {

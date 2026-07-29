@@ -319,7 +319,7 @@ const buildImpactMetrics = (poundsFed) => {
 		{
 			eyebrow: 'Estimated Soil Coverage',
 			value: poundsFed != null ? formatEstimatedAcresDisplay(poundsFed) : MISSING_METRIC_VALUE,
-			note: 'estimated at a one-inch application depth',
+			note: 'estimated at a quarter-inch application depth',
 			Icon: GrassIcon,
 		},
 	];
@@ -535,19 +535,19 @@ const CircularFoodSystems = () => {
 
 	const partnershipCapabilities = [
 		{
-			label: 'On-property food-scrap processing',
+			label: '100% of food waste diverted',
 			Icon: DinnerDiningIcon,
 		},
 		{
-			label: 'Property-level measurement and reporting',
+			label: 'On-site processing and live measurement',
 			Icon: AssessmentOutlinedIcon,
 		},
 		{
-			label: 'Program setup and operational support',
+			label: 'Soil returned to Perry Lane’s gardens',
 			Icon: GroupsIcon,
 		},
 		{
-			label: 'Downstream pathway coordination',
+			label: 'Event-specific impact reporting',
 			Icon: RecyclingIcon,
 		},
 	];
@@ -1198,7 +1198,7 @@ const CircularFoodSystems = () => {
 					{/* Left column: copy and capabilities (first in mobile reading order) */}
 					<Box>
 						<Typography className='micro-label' sx={{ mb: 1.5 }}>
-							PROGRAM TECHNOLOGY & SUPPORT
+							OUR CORNERSTONE INITIATIVE
 						</Typography>
 						<Box
 							sx={{
@@ -1219,7 +1219,7 @@ const CircularFoodSystems = () => {
 									color: DARK_SLATE,
 									m: 0,
 								}}>
-								A Cornerstone Partnership with
+								A Fully Circular Partnership with
 							</Typography>
 							<Box
 								component='a'
@@ -1257,8 +1257,9 @@ const CircularFoodSystems = () => {
 								maxWidth: 680,
 								mb: { xs: 3, md: 3.5 },
 							}}>
-							BioGreen360 provides the on-property processing technology, reporting platform, and
-							program support behind Perry Lane Hotel’s food-waste diversion initiative.
+							Perry Lane’s collaboration with BioGreen360 connects on-site food-waste processing, live
+							measurement, and local soil creation in one circular program. The result supports daily hotel
+							operations while extending the impact back into the property’s gardens and guest experience.
 						</Typography>
 
 						<Typography
@@ -1271,7 +1272,7 @@ const CircularFoodSystems = () => {
 								letterSpacing: '-0.012em',
 								mb: 1.25,
 							}}>
-							Supporting Daily Hotel Operations
+							Built Into the Rhythm of the Hotel
 						</Typography>
 						<Typography
 							sx={{
@@ -1281,9 +1282,8 @@ const CircularFoodSystems = () => {
 								maxWidth: 680,
 								mb: { xs: 2.5, md: 3 },
 							}}>
-							The program gives participating culinary and banquet teams a practical way to manage
-							food scraps while providing property leaders with clearer visibility into program
-							activity.
+							The program works alongside Perry Lane’s culinary and banquet teams, helping divert food
+							waste while giving hotel leaders, guests, and event planners a clearer view of the impact.
 						</Typography>
 
 						<Box
@@ -1341,7 +1341,7 @@ const CircularFoodSystems = () => {
 								letterSpacing: '-0.012em',
 								mb: 1.25,
 							}}>
-							From Processing to Beneficial Use
+							From Perry Lane, Back to Perry Lane
 						</Typography>
 						<Typography
 							sx={{
@@ -1351,8 +1351,8 @@ const CircularFoodSystems = () => {
 								maxWidth: 680,
 								mb: 2,
 							}}>
-							After processing, material is coordinated through local beneficial-use or composting
-							pathways selected according to operational needs and availability.
+							A portion of the soil created with local partners returns to the property, nourishing Perry
+							Lane’s herb garden and landscaping and extending the story from kitchen to garden.
 						</Typography>
 						<Box
 							component='a'
@@ -1402,7 +1402,7 @@ const CircularFoodSystems = () => {
 								p: { xs: 2, md: 2.25 },
 							}}>
 							<Typography className='micro-label' sx={{ mb: 1 }}>
-								PROGRAM MILESTONE
+								AN IMPORTANT MILESTONE
 							</Typography>
 							<Typography
 								component='h3'
@@ -1415,11 +1415,11 @@ const CircularFoodSystems = () => {
 									lineHeight: 1.35,
 									mb: 1,
 								}}>
-								BioGreen360’s First Boutique-Hotel Launch
+								First in Georgia. First in Boutique Hospitality.
 							</Typography>
 							<Typography sx={{ fontSize: '14px', color: BODY_TEXT, lineHeight: 1.7 }}>
-								Perry Lane Hotel was BioGreen360’s first boutique-hotel launch and its first hotel
-								launch in Georgia.
+								When the program launched in May 2023, Perry Lane became BioGreen360’s first hotel
+								partner in Georgia and its first boutique-hotel launch.
 							</Typography>
 						</Box>
 					</Box>
