@@ -302,7 +302,7 @@ const buildImpactMetrics = (poundsFed) => {
 
 	return [
 		{
-			eyebrow: 'Program Days Operating',
+			eyebrow: 'Program in Operation',
 			value:
 				daysOperating != null
 					? `${formatCountWithSeparators(daysOperating)} days`
@@ -311,9 +311,9 @@ const buildImpactMetrics = (poundsFed) => {
 			Icon: CalendarTodayIcon,
 		},
 		{
-			eyebrow: 'Food Diverted',
+			eyebrow: 'Food Waste Diverted',
 			value: poundsFed != null ? formatShortTonsDisplay(poundsFed) : MISSING_METRIC_VALUE,
-			note: 'measured from captured food-scrap inputs',
+			note: 'measured from material processed through the on-site system',
 			Icon: DinnerDiningIcon,
 		},
 		{
@@ -1036,7 +1036,7 @@ const CircularFoodSystems = () => {
 							fontWeight: 500,
 							color: DARK_SLATE,
 						}}>
-						Our Impact
+						Impact, Made Visible
 					</Typography>
 					<Typography className='micro-label'>{`Last Updated: ${lastUpdatedDisplay}`}</Typography>
 				</Box>
@@ -1048,7 +1048,8 @@ const CircularFoodSystems = () => {
 						mb: 2,
 						maxWidth: 880,
 					}}>
-					A current view of program tenure, measured food diversion, and estimated soil coverage.
+					Live reporting turns Perry Lane’s daily food-waste diversion into a clear, cumulative record of
+					progress.
 				</Typography>
 				<Box
 					sx={{
@@ -1131,7 +1132,7 @@ const CircularFoodSystems = () => {
 
 				<Box sx={{ textAlign: 'center', mt: 2.25 }}>
 					<Typography className='micro-label' sx={{ mb: 0.5 }}>
-						Reporting powered by BioGreen360
+						LIVE REPORTING POWERED BY
 					</Typography>
 					<Box
 						component='a'
@@ -1152,7 +1153,7 @@ const CircularFoodSystems = () => {
 							component='img'
 							src={poweredByBioGreen}
 							alt='BioGreen360'
-							sx={{ height: 26 }}
+							sx={{ height: 52 }}
 						/>
 					</Box>
 				</Box>
@@ -2346,17 +2347,6 @@ const CircularFoodSystems = () => {
 							color: DARK_SLATE,
 						}}>
 						Methodology and Reporting
-					</Typography>
-					<Typography
-						sx={{
-							fontSize: '15px',
-							color: BODY_TEXT,
-							lineHeight: 1.8,
-							maxWidth: 1040,
-							mb: 1.25,
-						}}>
-						These metrics combine measured on-site inputs with standard conversion factors.
-						Definitions and scope notes are provided for clarity.
 					</Typography>
 					<Typography
 						sx={{
