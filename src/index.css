@@ -3,22 +3,22 @@
 }
 
 :root {
-	--brand-red: #a6192e;
-	--charcoal: #231f20;
-	--warm-white: #f8f6f2;
+	--brand-slate: #56626d;
+	--dark-slate: #46515b;
+	--sage-accent: #a7b58c;
+	--dark-sage: #7c8d65;
+	--coral-link: #d87568;
 	--surface-white: #ffffff;
-	--soft-gray: #eeeae5;
-	--body-text: #5d6268;
-	--border-light: #d8d1c8;
-	--sustainability-green: #7a923b;
-	--font-heading: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-	--font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+	--soft-neutral: #f6f6f3;
+	--pale-sage-bg: #f0f3eb;
+	--body-text: #56626d;
+	--border: #d8d9d4;
+	--font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', Times, serif;
+	--font-body: 'Libre Baskerville', Georgia, 'Times New Roman', Times, serif;
 	--content-max: 1360px;
-	--radius-button: 8px;
-	--radius-card: 12px;
-	--radius-image: 10px;
-	--shadow-card: 0 8px 24px rgba(35, 31, 32, 0.06);
-	--shadow-image: 0 10px 28px rgba(35, 31, 32, 0.08);
+	--radius-button: 2px;
+	--radius-card: 4px;
+	--radius-image: 4px;
 }
 
 html,
@@ -32,8 +32,8 @@ body,
 
 body {
 	font-family: var(--font-body);
-	background-color: var(--warm-white);
-	color: var(--charcoal);
+	background-color: var(--surface-white);
+	color: var(--dark-slate);
 }
 
 @media (prefers-reduced-motion: reduce) {

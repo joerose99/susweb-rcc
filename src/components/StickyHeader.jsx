@@ -13,16 +13,13 @@ import {
 } from '../constants/propertyExternalLinks';
 import {
 	BORDER_LIGHT,
-	BRAND_RED,
-	BRAND_RED_HOVER,
-	BRAND_RED_SOFT,
-	CHARCOAL,
-	CHARCOAL_HOVER,
-	FONT_HEADING,
+	DARK_SLATE,
+	FONT_BODY,
+	SAGE_ACCENT,
+	SAGE_ACCENT_HOVER,
+	SAGE_SOFT,
 	SHADOW_FOCUS,
-	SHADOW_HOVER,
 	SURFACE_WHITE,
-	WARM_WHITE,
 	containerSx,
 	primaryButtonSx,
 	secondaryButtonSx,
@@ -161,15 +158,17 @@ const StickyHeader = () => {
 	const bookButtonSx = {
 		...secondaryButtonSx,
 		whiteSpace: 'nowrap',
-		backgroundColor: 'rgba(255, 255, 255, 0.65)',
+		color: SURFACE_WHITE,
+		borderColor: SURFACE_WHITE,
+		backgroundColor: 'transparent',
 		'&:hover': {
-			backgroundColor: BRAND_RED_SOFT,
-			borderColor: BRAND_RED_HOVER,
-			color: BRAND_RED,
+			backgroundColor: 'rgba(255, 255, 255, 0.1)',
+			borderColor: SURFACE_WHITE,
+			color: SURFACE_WHITE,
 			boxShadow: 'none',
 		},
 		'&:focus-visible': {
-			boxShadow: SHADOW_FOCUS,
+			boxShadow: `0 0 0 2px ${DARK_SLATE}, 0 0 0 4px ${SAGE_ACCENT}`,
 		},
 	};
 
@@ -178,9 +177,8 @@ const StickyHeader = () => {
 		whiteSpace: 'nowrap',
 		'&:hover': {
 			...primaryButtonSx['&:hover'],
-			backgroundColor: CHARCOAL_HOVER,
-			borderColor: CHARCOAL_HOVER,
-			boxShadow: SHADOW_HOVER,
+			backgroundColor: SAGE_ACCENT_HOVER,
+			borderColor: SAGE_ACCENT_HOVER,
 		},
 		'&:focus-visible': {
 			boxShadow: SHADOW_FOCUS,
@@ -192,7 +190,27 @@ const StickyHeader = () => {
 		const pending = isBook ? bookPending : eventPending;
 		const href = isBook ? bookHref : eventHref;
 		const label = isBook ? 'Book a Room' : 'Plan an Event';
-		const sx = isBook ? bookButtonSx : eventButtonSx;
+		const sx =
+			size === 'mobile' && isBook
+				? {
+						...secondaryButtonSx,
+						whiteSpace: 'nowrap',
+						color: DARK_SLATE,
+						borderColor: DARK_SLATE,
+						backgroundColor: 'transparent',
+						'&:hover': {
+							backgroundColor: SAGE_SOFT,
+							borderColor: DARK_SLATE,
+							color: DARK_SLATE,
+							boxShadow: 'none',
+						},
+						'&:focus-visible': {
+							boxShadow: SHADOW_FOCUS,
+						},
+				  }
+				: isBook
+					? bookButtonSx
+					: eventButtonSx;
 		const pendingLabel = `${label} (destination pending approval)`;
 
 		if (pending) {
@@ -233,25 +251,25 @@ const StickyHeader = () => {
 	};
 
 	const navLinkSx = (isActive) => ({
-		fontFamily: FONT_HEADING,
+		fontFamily: FONT_BODY,
 		fontSize: '11.5px',
 		letterSpacing: '0.12em',
 		textTransform: 'uppercase',
-		fontWeight: isActive ? 600 : 500,
-		color: isActive ? BRAND_RED : CHARCOAL,
+		fontWeight: 400,
+		color: SURFACE_WHITE,
 		textDecoration: 'none',
 		whiteSpace: 'nowrap',
 		paddingY: '6px',
 		paddingX: '2px',
 		borderBottom: '2px solid',
-		borderBottomColor: isActive ? BRAND_RED : 'transparent',
+		borderBottomColor: isActive ? SAGE_ACCENT : 'transparent',
 		transition: 'color 180ms ease, border-color 180ms ease',
 		'&:hover': {
-			color: BRAND_RED,
-			borderBottomColor: isActive ? BRAND_RED : 'rgba(166, 25, 46, 0.35)',
+			color: SURFACE_WHITE,
+			borderBottomColor: isActive ? SAGE_ACCENT : 'rgba(167, 181, 140, 0.55)',
 		},
 		'&:focus-visible': {
-			outline: `2px solid ${BRAND_RED}`,
+			outline: `2px solid ${SAGE_ACCENT}`,
 			outlineOffset: 4,
 			borderRadius: '2px',
 			borderBottomColor: 'transparent',
@@ -265,9 +283,9 @@ const StickyHeader = () => {
 				position: 'sticky',
 				top: 0,
 				zIndex: 1200,
-				backgroundColor: WARM_WHITE,
-				borderBottom: `1px solid ${BORDER_LIGHT}`,
-				boxShadow: scrolled ? '0 4px 16px rgba(35, 31, 32, 0.06)' : 'none',
+				backgroundColor: DARK_SLATE,
+				borderBottom: `1px solid rgba(255, 255, 255, 0.12)`,
+				boxShadow: scrolled ? '0 4px 16px rgba(70, 81, 91, 0.28)' : 'none',
 				transition: 'box-shadow 180ms ease',
 			}}>
 			<Box
@@ -280,7 +298,7 @@ const StickyHeader = () => {
 					gap: { xs: 1.5, md: 2 },
 					py: 0,
 				}}>
-				{/* LEFT: temporary property text lockup */}
+				{/* LEFT: property lockup */}
 				<Box sx={{ flexShrink: 1, minWidth: 0, pr: 1 }}>
 					<PropertyLockup
 						onNavigateHome={() => {
@@ -351,20 +369,20 @@ const StickyHeader = () => {
 					sx={{
 						display: 'inline-flex',
 						[DESKTOP_MQ]: { display: 'none' },
-						color: CHARCOAL,
-						borderRadius: '8px',
+						color: DARK_SLATE,
+						borderRadius: '2px',
 						border: `1px solid ${BORDER_LIGHT}`,
 						backgroundColor: SURFACE_WHITE,
 						width: 44,
 						height: 44,
 						flexShrink: 0,
 						'&:hover': {
-							backgroundColor: BRAND_RED_SOFT,
-							borderColor: BRAND_RED,
-							color: BRAND_RED,
+							backgroundColor: SAGE_SOFT,
+							borderColor: SAGE_ACCENT,
+							color: DARK_SLATE,
 						},
 						'&:focus-visible': {
-							outline: `2px solid ${BRAND_RED}`,
+							outline: `2px solid ${SAGE_ACCENT}`,
 							outlineOffset: 2,
 						},
 					}}>
@@ -387,9 +405,9 @@ const StickyHeader = () => {
 					top: '100%',
 					left: 0,
 					right: 0,
-					backgroundColor: WARM_WHITE,
+					backgroundColor: SURFACE_WHITE,
 					borderBottom: `1px solid ${BORDER_LIGHT}`,
-					boxShadow: '0 12px 28px rgba(35, 31, 32, 0.1)',
+					boxShadow: 'none',
 					maxHeight: 'calc(100vh - 72px)',
 					overflowY: 'auto',
 				}}>
@@ -409,9 +427,9 @@ const StickyHeader = () => {
 						sx={{
 							alignSelf: 'flex-end',
 							mb: 1,
-							color: CHARCOAL,
+							color: DARK_SLATE,
 							'&:focus-visible': {
-								outline: `2px solid ${BRAND_RED}`,
+								outline: `2px solid ${SAGE_ACCENT}`,
 								outlineOffset: 2,
 							},
 						}}>
@@ -428,20 +446,20 @@ const StickyHeader = () => {
 								aria-current={isActive ? 'true' : undefined}
 								onClick={(event) => handleSectionNav(event, item.href, item.sectionId)}
 								sx={{
-									fontFamily: FONT_HEADING,
+									fontFamily: FONT_BODY,
 									fontSize: '13px',
 									letterSpacing: '0.12em',
 									textTransform: 'uppercase',
-									fontWeight: isActive ? 600 : 500,
-									color: isActive ? BRAND_RED : CHARCOAL,
+									fontWeight: 400,
+									color: DARK_SLATE,
 									textDecoration: 'none',
 									py: 1.4,
 									px: 0.5,
 									borderBottom: `1px solid ${BORDER_LIGHT}`,
-									borderLeft: isActive ? `3px solid ${BRAND_RED}` : '3px solid transparent',
+									borderLeft: isActive ? `3px solid ${SAGE_ACCENT}` : '3px solid transparent',
 									pl: 1.25,
 									'&:focus-visible': {
-										outline: `2px solid ${BRAND_RED}`,
+										outline: `2px solid ${SAGE_ACCENT}`,
 										outlineOffset: 2,
 									},
 								}}>

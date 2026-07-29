@@ -1,16 +1,23 @@
 /**
- * Denver Marriott Tech Center — external destinations.
+ * Perry Lane Hotel — external destinations.
  *
- * Header CTAs must not point at unrelated property URLs behind Denver-branded labels.
+ * Header CTAs must not point at unrelated property URLs behind Perry Lane–branded labels.
  */
 
-/** Official Denver Marriott Tech Center property overview / booking destination. */
+/** Official Perry Lane Hotel property overview. */
+export const PROPERTY_OVERVIEW_URL = 'https://www.perrylanehotel.com/';
+
+/**
+ * Booking / reservations destination.
+ * TODO: Replace with the final approved Perry Lane Hotel booking URL when available.
+ * Preserves existing booking behavior until that URL is added.
+ */
 export const PROPERTY_RESERVATIONS_URL =
 	'https://www.marriott.com/en-us/hotels/dentc-denver-marriott-tech-center/overview/';
 
-/** Official Denver Marriott Tech Center meetings & events destination. */
+/** Official Perry Lane Hotel meetings & events inquiry destination. */
 export const PROPERTY_EVENTS_INQUIRY_URL =
-	'https://www.marriott.com/en-us/hotels/dentc-denver-marriott-tech-center/events/';
+	'https://www.perrylanehotel.com/meetings/meeting-request';
 
 export const BIOGREEN360_URL = 'https://biogreen360.com/';
 

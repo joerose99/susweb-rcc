@@ -4,11 +4,11 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import {
 	BORDER_LIGHT,
-	BRAND_RED,
-	BRAND_RED_SOFT,
-	CHARCOAL,
+	DARK_SLATE,
 	FONT_BODY,
 	RADIUS_BADGE,
+	SAGE_ACCENT,
+	SAGE_SOFT,
 	SURFACE_WHITE,
 } from '../theme/tokens';
 
@@ -65,17 +65,17 @@ const MetricLegend = () => (
 							py: 0.5,
 							fontSize: '12px',
 							lineHeight: 1.4,
-							fontWeight: 500,
-							color: CHARCOAL,
+							fontWeight: 400,
+							color: DARK_SLATE,
 							cursor: 'help',
 							fontFamily: FONT_BODY,
 							'&:hover': {
-								borderColor: BRAND_RED,
-								backgroundColor: BRAND_RED_SOFT,
-								color: BRAND_RED,
+								borderColor: SAGE_ACCENT,
+								backgroundColor: SAGE_SOFT,
+								color: DARK_SLATE,
 							},
 							'&:focus-visible': {
-								outline: `2px solid ${BRAND_RED}`,
+								outline: `2px solid ${SAGE_ACCENT}`,
 								outlineOffset: '2px',
 							},
 						}}>

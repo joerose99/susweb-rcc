@@ -1,57 +1,61 @@
 /**
- * Denver Marriott Tech Center
- * Global visual system tokens for the sustainability microsite.
+ * Perry Lane Hotel — Savannah, Georgia
+ * Brand slate / sage visual system for the sustainability microsite.
  *
- * Brand red: Marriott-inspired burgundy (no approved logo asset in repo yet).
- * Sustainability green: derived from BioGreen360 logo asset (#7A923B).
+ * Brand Slate: primary brand and body text
+ * Sage Accent: primary buttons and soft fills
+ * Dark Sage: sustainability icons, rings, arrows, checkmarks
+ * Coral: text links and subtle hover accents only
  */
 
-export const BRAND_RED = '#A6192E';
-export const BRAND_RED_HOVER = '#8B1526';
-export const BRAND_RED_SOFT = 'rgba(166, 25, 46, 0.1)';
-export const BRAND_RED_SOFT_STRONG = 'rgba(166, 25, 46, 0.18)';
-
-export const CHARCOAL = '#231F20';
-export const CHARCOAL_HOVER = '#3A3435';
-
-export const WARM_WHITE = '#F8F6F2';
+export const BRAND_SLATE = '#56626D';
+export const DARK_SLATE = '#46515B';
+export const SAGE_ACCENT = '#A7B58C';
+export const SAGE_ACCENT_HOVER = '#97A67C';
+export const SAGE_SOFT = 'rgba(167, 181, 140, 0.16)';
+export const DARK_SAGE = '#7C8D65';
+export const DARK_SAGE_SOFT = 'rgba(124, 141, 101, 0.14)';
+export const CORAL_LINK = '#D87568';
+export const CORAL_LINK_SOFT = 'rgba(216, 117, 104, 0.12)';
 export const SURFACE_WHITE = '#FFFFFF';
-export const SOFT_GRAY = '#EEEAE5';
+export const SOFT_NEUTRAL = '#F6F6F3';
+export const PALE_SAGE_BG = '#F0F3EB';
+export const BODY_TEXT = '#56626D';
+export const MUTED_TEXT = 'rgba(86, 98, 109, 0.82)';
+export const BORDER = '#D8D9D4';
+export const BORDER_LIGHT = BORDER;
+export const BORDER_SUBTLE = 'rgba(216, 217, 212, 0.9)';
 
-export const BODY_TEXT = '#5D6268';
-export const MUTED_TEXT = 'rgba(93, 98, 104, 0.85)';
+/** Sustainability icons / rings / arrows / checkmarks */
+export const SUSTAINABILITY_GREEN = DARK_SAGE;
+export const SUSTAINABILITY_GREEN_SOFT = DARK_SAGE_SOFT;
 
-export const BORDER_LIGHT = '#D8D1C8';
-export const BORDER_SUBTLE = 'rgba(216, 209, 200, 0.9)';
-
-/** From approved BioGreen360 logo mark in PoweredByBioGreen.svg */
-export const SUSTAINABILITY_GREEN = '#7A923B';
-export const SUSTAINABILITY_GREEN_SOFT = 'rgba(122, 146, 59, 0.14)';
-
-export const FONT_HEADING = '"Roboto", "Helvetica Neue", Arial, sans-serif';
-export const FONT_BODY = '"Inter", "Helvetica Neue", Arial, sans-serif';
+export const FONT_HEADING =
+	'"Cormorant Garamond", Georgia, "Times New Roman", Times, serif';
+export const FONT_BODY =
+	'"Libre Baskerville", Georgia, "Times New Roman", Times, serif';
 
 export const CONTENT_MAX = 1360;
 
-export const SECTION_PY = { xs: '64px', md: '96px' };
-export const SECTION_PY_COMPACT = { xs: '56px', md: '72px' };
+export const SECTION_PY = { xs: '72px', md: '112px' };
+export const SECTION_PY_COMPACT = { xs: '64px', md: '88px' };
 
 export const SPACE = {
-	headingToIntro: { xs: 1.5, md: 2 },
-	introToContent: { xs: 3.5, md: 5 },
-	contentGroup: { xs: 4, md: 5 },
+	headingToIntro: { xs: 1.75, md: 2.25 },
+	introToContent: { xs: 4, md: 5.5 },
+	contentGroup: { xs: 4.5, md: 6 },
 };
 
-export const RADIUS_BUTTON = '8px';
-export const RADIUS_CARD = '12px';
-export const RADIUS_IMAGE = '10px';
-export const RADIUS_PANEL = '12px';
-export const RADIUS_BADGE = '6px';
+export const RADIUS_BUTTON = '2px';
+export const RADIUS_CARD = '4px';
+export const RADIUS_IMAGE = '4px';
+export const RADIUS_PANEL = '4px';
+export const RADIUS_BADGE = '2px';
 
-export const SHADOW_CARD = '0 8px 24px rgba(35, 31, 32, 0.06)';
-export const SHADOW_IMAGE = '0 10px 28px rgba(35, 31, 32, 0.08)';
-export const SHADOW_HOVER = '0 10px 24px rgba(35, 31, 32, 0.1)';
-export const SHADOW_FOCUS = `0 0 0 2px ${WARM_WHITE}, 0 0 0 4px ${BRAND_RED}`;
+export const SHADOW_CARD = 'none';
+export const SHADOW_IMAGE = 'none';
+export const SHADOW_HOVER = 'none';
+export const SHADOW_FOCUS = `0 0 0 2px ${SURFACE_WHITE}, 0 0 0 4px ${SAGE_ACCENT}`;
 
 export const TYPE = {
 	h1: { xs: '2.5rem', sm: '3.25rem', md: '64px' },
@@ -102,9 +106,19 @@ export const sectionBandAltSx = {
 	},
 };
 
+/** Full-bleed section band with an explicit background token. */
+export const sectionBandColorSx = (backgroundColor, dividerColor = BORDER) => ({
+	...sectionBandBaseSx,
+	'&::before': {
+		...sectionBandBaseSx['&::before'],
+		backgroundColor,
+		borderTop: `1px solid ${dividerColor}`,
+	},
+});
+
 export const cardSx = {
 	backgroundColor: SURFACE_WHITE,
-	border: `1px solid ${BORDER_LIGHT}`,
+	border: `1px solid ${BORDER}`,
 	borderRadius: RADIUS_CARD,
 	boxShadow: SHADOW_CARD,
 };
@@ -112,13 +126,13 @@ export const cardSx = {
 export const cardEmphasizedSx = {
 	...cardSx,
 	backgroundColor: SURFACE_WHITE,
-	borderLeft: `3px solid ${BRAND_RED}`,
+	borderLeft: `3px solid ${SAGE_ACCENT}`,
 	boxShadow: SHADOW_CARD,
 };
 
 export const mediaSx = {
 	borderRadius: RADIUS_IMAGE,
-	border: `1px solid ${BORDER_LIGHT}`,
+	border: `1px solid ${BORDER}`,
 	boxShadow: SHADOW_IMAGE,
 	display: 'block',
 	objectFit: 'cover',
@@ -126,9 +140,9 @@ export const mediaSx = {
 
 export const mediaPlaceholderSx = {
 	...mediaSx,
-	backgroundColor: SOFT_GRAY,
+	backgroundColor: SOFT_NEUTRAL,
 	backgroundImage:
-		'repeating-linear-gradient(135deg, transparent, transparent 10px, rgba(216, 209, 200, 0.35) 10px, rgba(216, 209, 200, 0.35) 11px)',
+		'repeating-linear-gradient(135deg, transparent, transparent 10px, rgba(216, 217, 212, 0.35) 10px, rgba(216, 217, 212, 0.35) 11px)',
 	minHeight: 220,
 	display: 'flex',
 	flexDirection: 'column',
@@ -139,49 +153,51 @@ export const mediaPlaceholderSx = {
 	textAlign: 'center',
 };
 
+/** Sage fill — primary CTA (e.g. Plan an Event) */
 export const primaryButtonSx = {
-	fontFamily: FONT_HEADING,
-	fontSize: '0.7rem',
-	fontWeight: 600,
+	fontFamily: FONT_BODY,
+	fontSize: '0.68rem',
+	fontWeight: 400,
 	letterSpacing: '0.1em',
 	textTransform: 'uppercase',
-	color: SURFACE_WHITE,
-	backgroundColor: CHARCOAL,
-	border: `1px solid ${CHARCOAL}`,
+	color: DARK_SLATE,
+	backgroundColor: SAGE_ACCENT,
+	border: `1px solid ${SAGE_ACCENT}`,
 	borderRadius: RADIUS_BUTTON,
 	boxShadow: 'none',
-	minHeight: 44,
-	px: { xs: 1.75, sm: 2.2 },
-	py: 0.7,
+	minHeight: 40,
+	px: { xs: 1.5, sm: 1.9 },
+	py: 0.55,
 	'&:hover': {
-		backgroundColor: CHARCOAL_HOVER,
-		borderColor: CHARCOAL_HOVER,
-		boxShadow: SHADOW_HOVER,
+		backgroundColor: SAGE_ACCENT_HOVER,
+		borderColor: SAGE_ACCENT_HOVER,
+		boxShadow: 'none',
 	},
 	'&:focus-visible': {
 		boxShadow: SHADOW_FOCUS,
 	},
 };
 
+/** Outlined slate — secondary CTA on light surfaces */
 export const secondaryButtonSx = {
-	fontFamily: FONT_HEADING,
-	fontSize: '0.7rem',
-	fontWeight: 600,
+	fontFamily: FONT_BODY,
+	fontSize: '0.68rem',
+	fontWeight: 400,
 	letterSpacing: '0.1em',
 	textTransform: 'uppercase',
-	color: CHARCOAL,
-	backgroundColor: 'rgba(255, 255, 255, 0.55)',
+	color: DARK_SLATE,
+	backgroundColor: 'transparent',
 	borderRadius: RADIUS_BUTTON,
-	borderColor: BRAND_RED,
+	borderColor: DARK_SLATE,
 	borderWidth: '1px',
 	boxShadow: 'none',
-	minHeight: 44,
-	px: { xs: 1.75, sm: 2.2 },
-	py: 0.7,
+	minHeight: 40,
+	px: { xs: 1.5, sm: 1.9 },
+	py: 0.55,
 	'&:hover': {
-		backgroundColor: BRAND_RED_SOFT,
-		borderColor: BRAND_RED_HOVER,
-		color: BRAND_RED,
+		backgroundColor: SAGE_SOFT,
+		borderColor: DARK_SLATE,
+		color: DARK_SLATE,
 		boxShadow: 'none',
 	},
 	'&:focus-visible': {
@@ -190,16 +206,16 @@ export const secondaryButtonSx = {
 };
 
 export const textLinkSx = {
-	color: CHARCOAL,
+	color: BODY_TEXT,
 	textDecoration: 'none',
 	borderBottom: `1px solid transparent`,
 	transition: 'color 180ms ease, border-color 180ms ease',
 	'&:hover': {
-		color: BRAND_RED,
-		borderBottomColor: 'rgba(166, 25, 46, 0.45)',
+		color: CORAL_LINK,
+		borderBottomColor: 'rgba(216, 117, 104, 0.45)',
 	},
 	'&:focus-visible': {
-		outline: `2px solid ${BRAND_RED}`,
+		outline: `2px solid ${CORAL_LINK}`,
 		outlineOffset: '3px',
 		borderRadius: '2px',
 	},
@@ -207,46 +223,46 @@ export const textLinkSx = {
 
 export const pageThemeSx = {
 	minHeight: '100vh',
-	backgroundColor: WARM_WHITE,
-	'--bg-base': WARM_WHITE,
-	'--bg-alt': SOFT_GRAY,
-	'--band-divider': BORDER_LIGHT,
-	color: CHARCOAL,
+	backgroundColor: SURFACE_WHITE,
+	'--bg-base': SURFACE_WHITE,
+	'--bg-alt': SOFT_NEUTRAL,
+	'--band-divider': BORDER,
+	color: DARK_SLATE,
 	fontFamily: FONT_BODY,
 	lineHeight: 1.72,
 	'& h1': {
 		fontFamily: FONT_HEADING,
 		letterSpacing: '-0.02em',
-		fontWeight: 400,
-		color: CHARCOAL,
+		fontWeight: 500,
+		color: DARK_SLATE,
 	},
 	'& h2': {
 		fontFamily: FONT_HEADING,
 		letterSpacing: '-0.015em',
-		fontWeight: 400,
-		color: CHARCOAL,
+		fontWeight: 500,
+		color: DARK_SLATE,
 	},
 	'& h3': {
 		fontFamily: FONT_HEADING,
 		letterSpacing: '-0.012em',
 		fontWeight: 500,
-		color: CHARCOAL,
+		color: DARK_SLATE,
 	},
 	'& .micro-label': {
-		fontFamily: FONT_HEADING,
+		fontFamily: FONT_BODY,
 		fontSize: TYPE.label,
 		letterSpacing: '0.14em',
 		textTransform: 'uppercase',
-		fontWeight: 600,
-		color: BRAND_RED,
+		fontWeight: 400,
+		color: BRAND_SLATE,
 	},
 	'& .lux-link': {
 		display: 'inline-flex',
 		alignItems: 'center',
 		gap: '0.3em',
-		fontFamily: FONT_HEADING,
-		fontWeight: 500,
-		color: CHARCOAL,
+		fontFamily: FONT_BODY,
+		fontWeight: 400,
+		color: DARK_SLATE,
 		textDecoration: 'none',
 		textDecorationThickness: '1px',
 		textUnderlineOffset: '3px',
@@ -254,14 +270,14 @@ export const pageThemeSx = {
 		transition:
 			'color 180ms ease, border-color 180ms ease, text-decoration-color 180ms ease, text-decoration-thickness 180ms ease',
 		'&:hover': {
-			color: BRAND_RED,
+			color: CORAL_LINK,
 			textDecoration: 'underline',
-			textDecorationColor: 'rgba(166, 25, 46, 0.45)',
+			textDecorationColor: 'rgba(216, 117, 104, 0.45)',
 			textDecorationThickness: '1px',
 			borderBottomColor: 'transparent',
 		},
 		'&:focus-visible': {
-			outline: `2px solid ${BRAND_RED}`,
+			outline: `2px solid ${CORAL_LINK}`,
 			outlineOffset: '3px',
 			borderRadius: '2px',
 		},
@@ -279,14 +295,12 @@ export const pageThemeSx = {
 	'& .lux-clickable': {
 		position: 'relative',
 		cursor: 'pointer',
-		transition:
-			'transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, color 220ms ease, font-weight 220ms ease',
+		transition: 'border-color 220ms ease, color 220ms ease',
 		'&:hover': {
-			transform: 'translateY(-1px)',
-			boxShadow: SHADOW_HOVER,
+			borderColor: SAGE_ACCENT,
 		},
 		'&:focus-visible': {
-			outline: `2px solid ${BRAND_RED}`,
+			outline: `2px solid ${SAGE_ACCENT}`,
 			outlineOffset: '2px',
 		},
 		'& .lux-click-indicator': {
@@ -298,49 +312,39 @@ export const pageThemeSx = {
 		},
 		'@media (prefers-reduced-motion: reduce)': {
 			transition: 'none',
-			'&:hover': {
-				transform: 'none',
-			},
 		},
 	},
 	'& .MuiButton-root': {
-		fontFamily: FONT_HEADING,
+		fontFamily: FONT_BODY,
 		borderRadius: RADIUS_BUTTON,
 		textTransform: 'uppercase',
 		letterSpacing: '0.1em',
-		fontWeight: 600,
+		fontWeight: 400,
 		boxShadow: 'none',
-		minHeight: 44,
-		transition:
-			'transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease, border-color 200ms ease',
+		minHeight: 40,
+		transition: 'background-color 200ms ease, border-color 200ms ease, color 200ms ease',
 		'&.MuiButton-contained': {
-			backgroundColor: CHARCOAL,
-			color: SURFACE_WHITE,
+			backgroundColor: SAGE_ACCENT,
+			color: DARK_SLATE,
 			'&:hover': {
-				backgroundColor: CHARCOAL_HOVER,
-				boxShadow: SHADOW_HOVER,
-			},
-		},
-		'&.MuiButton-outlined': {
-			color: CHARCOAL,
-			borderWidth: '1px',
-			borderColor: BRAND_RED,
-			backgroundColor: 'rgba(248, 246, 242, 0.55)',
-			'&:hover': {
-				borderColor: BRAND_RED_HOVER,
-				backgroundColor: BRAND_RED_SOFT,
-				color: BRAND_RED,
+				backgroundColor: SAGE_ACCENT_HOVER,
 				boxShadow: 'none',
 			},
 		},
-		'&:hover': {
-			transform: 'translateY(-1px)',
+		'&.MuiButton-outlined': {
+			color: DARK_SLATE,
+			borderWidth: '1px',
+			borderColor: DARK_SLATE,
+			backgroundColor: 'transparent',
+			'&:hover': {
+				borderColor: DARK_SLATE,
+				backgroundColor: SAGE_SOFT,
+				color: DARK_SLATE,
+				boxShadow: 'none',
+			},
 		},
 		'@media (prefers-reduced-motion: reduce)': {
 			transition: 'none',
-			'&:hover': {
-				transform: 'none',
-			},
 		},
 	},
 };

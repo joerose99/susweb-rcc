@@ -27,9 +27,10 @@ import howItWorksSproutIcon from '../../assets/how-it-works-sprout.png';
 import howItWorksReportIcon from '../../assets/how-it-works-report.png';
 import elephantEquivalencyIcon from '../../assets/elephant-equivalency.png';
 import footballFieldEquivalencyIcon from '../../assets/football-field-equivalency.png';
-import heroDenverMarriottTechCenterImage from '../../assets/hero-denver-marriott-tech-center.png';
+// TODO: Replace remaining temporary Denver assets with approved Perry Lane Hotel photography.
+import heroPerryLaneHotelImage from '../../assets/hero-perry-lane-hotel.png';
 import eventsDenverBallroomImage from '../../assets/events-denver-ballroom.png';
-import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-denver-restaurant.png';
+import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-perry-lane.png';
 import howItWorksDenverAtriumImage from '../../assets/how-it-works-denver-atrium.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
@@ -41,64 +42,63 @@ import {
 import {
 	BODY_TEXT,
 	BORDER_LIGHT,
-	BRAND_RED,
-	BRAND_RED_HOVER,
-	BRAND_RED_SOFT,
-	BRAND_RED_SOFT_STRONG,
-	CHARCOAL,
-	CHARCOAL_HOVER,
+	CORAL_LINK,
+	DARK_SLATE,
+	FONT_BODY,
 	FONT_HEADING,
 	MUTED_TEXT,
-	RADIUS_BUTTON,
+	PALE_SAGE_BG,
 	RADIUS_CARD,
 	RADIUS_IMAGE,
-	SHADOW_CARD,
+	SAGE_ACCENT,
+	SAGE_SOFT,
 	SHADOW_IMAGE,
+	SOFT_NEUTRAL,
 	SURFACE_WHITE,
 	SUSTAINABILITY_GREEN,
 	TYPE,
-	WARM_WHITE,
 	cardEmphasizedSx,
 	cardSx,
+	containerSx,
 	pageThemeSx,
 	primaryButtonSx,
-	sectionBandAltSx,
-	sectionBandBaseSx,
+	secondaryButtonSx,
+	sectionBandColorSx,
 	sectionContainerSx,
 } from '../../theme/tokens';
 
 const SENTENCE_LINK_SX = {
-	color: CHARCOAL,
+	color: BODY_TEXT,
 	textDecoration: 'underline',
-	textDecorationColor: 'rgba(166, 25, 46, 0.35)',
+	textDecorationColor: 'rgba(216, 117, 104, 0.4)',
 	textUnderlineOffset: '3px',
 	textDecorationThickness: '1px',
 	cursor: 'pointer',
 	transition: 'color 180ms ease, text-decoration-color 180ms ease',
 	'&:hover': {
-		color: BRAND_RED,
-		textDecorationColor: 'rgba(166, 25, 46, 0.55)',
+		color: CORAL_LINK,
+		textDecorationColor: 'rgba(216, 117, 104, 0.7)',
 	},
 	'&:focus-visible': {
-		outline: `2px solid ${BRAND_RED}`,
+		outline: `2px solid ${CORAL_LINK}`,
 		outlineOffset: '2px',
 		borderRadius: '2px',
 	},
 };
 
-// TODO: Replace temporary BioGreen360 organization ID with the Denver Marriott Tech Center organization ID before publication.
+// TODO: Replace temporary BioGreen360 organization ID with the Perry Lane Hotel organization ID before publication.
 const ORG_STATS_API_URL =
 	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f786a8c64cf4f594585f';
 
 const PROPERTY_CONFIG = {
-	/** BioGreen360 program launch date at Denver Marriott Tech Center (calendar date). */
-	programLaunchDate: '2023-05-22',
-	timeZone: 'America/Denver',
+	/** BioGreen360 program launch date at Perry Lane Hotel (calendar date). */
+	programLaunchDate: '2023-05-10',
+	timeZone: 'America/New_York',
 };
 
 /**
  * Event-space figures for the Events section proof-point row.
- * TODO: Periodically verify these figures against the official Marriott property page.
+ * TODO: Periodically verify these figures against the official Perry Lane Hotel property page.
  */
 const EVENT_PROPERTY_FACTS = [
 	{ value: '28', label: 'Event Rooms' },
@@ -113,13 +113,13 @@ const BIOGREEN_LINK_SX = {
 	cursor: 'pointer',
 	transition: 'color 160ms ease, text-decoration-color 160ms ease',
 	'&:hover': {
-		color: SUSTAINABILITY_GREEN,
+		color: CORAL_LINK,
 		textDecoration: 'underline',
-		textDecorationColor: 'rgba(122, 146, 59, 0.55)',
+		textDecorationColor: 'rgba(216, 117, 104, 0.55)',
 		textUnderlineOffset: '2px',
 	},
 	'&:focus-visible': {
-		outline: `2px solid ${BRAND_RED}`,
+		outline: `2px solid ${CORAL_LINK}`,
 		outlineOffset: '2px',
 		borderRadius: '2px',
 	},
@@ -143,7 +143,7 @@ const siteConfig = {
 	processingPathwayMode: 'mixed',
 	eventTrackingMode: 'by_request',
 	showEquivalencies: true,
-	lastSync: '2026-03-04T15:30:00-07:00',
+	lastSync: '2026-03-04T15:30:00-04:00',
 	// impactReportUrl: 'https://example.com/impact-report.pdf',
 };
 
@@ -307,7 +307,7 @@ const buildImpactMetrics = (poundsFed) => {
 				daysOperating != null
 					? `${formatCountWithSeparators(daysOperating)} days`
 					: MISSING_METRIC_VALUE,
-			note: 'since February 27, 2023',
+			note: 'since May 10, 2023',
 			Icon: CalendarTodayIcon,
 		},
 		{
@@ -325,7 +325,7 @@ const buildImpactMetrics = (poundsFed) => {
 	];
 };
 
-const REPORTING_ICON_COLOR = 'rgba(93, 98, 104, 0.75)';
+const REPORTING_ICON_COLOR = 'rgba(86, 98, 109, 0.75)';
 
 const buildEquivalencyCards = (poundsFed) => {
 	const hasPounds = poundsFed != null;
@@ -364,7 +364,7 @@ const buildEquivalencyCards = (poundsFed) => {
 	];
 };
 
-// TODO: Replace these placeholder initiative cards with Denver Marriott Tech Center–verified content before publication.
+// TODO: Replace these placeholder initiative cards with Perry Lane Hotel–verified content before publication.
 const initiativeCategories = [
 	{
 		label: 'Building & Resource Efficiency',
@@ -473,9 +473,9 @@ const formatLastSync = (lastSyncValue) => {
 
 	const partValue = (type) => parts.find((part) => part.type === type)?.value ?? '';
 	let timeZoneName = partValue('timeZoneName');
-	// Keep Mountain Time labels only (Denver, CO). Never show Eastern Time abbreviations.
-	if (!/^(MST|MDT|MT)$/i.test(timeZoneName)) {
-		timeZoneName = 'MT';
+	// Keep Eastern Time labels (Savannah, GA).
+	if (!/^(EST|EDT|ET)$/i.test(timeZoneName)) {
+		timeZoneName = 'ET';
 	}
 
 	return `${partValue('month')} ${partValue('day')}, ${partValue('year')} ${partValue('hour')}:${partValue('minute')} ${partValue('dayPeriod')} ${timeZoneName}`;
@@ -552,8 +552,7 @@ const CircularFoodSystems = () => {
 		},
 	];
 
-	// Process icons ship with a baked-in off-white square (#F4F2EF). Match circle fill exactly.
-	const PROCESS_CIRCLE_FILL = '#F4F2EF';
+	const PROCESS_CIRCLE_FILL = SOFT_NEUTRAL;
 
 	const primaryProcessingSteps = [
 		{
@@ -719,7 +718,7 @@ const CircularFoodSystems = () => {
 		},
 		{
 			title: 'Where are food scraps processed?',
-			body: 'Through BioGreen360 equipment installed directly at Denver Marriott Tech Center.',
+			body: 'Through BioGreen360 equipment installed directly at Perry Lane Hotel.',
 		},
 		{
 			title: 'How is impact reported?',
@@ -767,15 +766,16 @@ const CircularFoodSystems = () => {
 			sx={pageThemeSx}>
 			<StickyHeader />
 
-			{/* Hero */}
+			{/* Hero — White */}
 			<Box
 				className='section section--base'
 				sx={{
 					...sectionContainerSx,
-					...sectionBandBaseSx,
+					...sectionBandColorSx(SURFACE_WHITE, 'transparent'),
 					pt: { xs: '72px', md: '108px' },
+					pb: { xs: '48px', md: '64px' },
 					'&::before': {
-						...sectionBandBaseSx['&::before'],
+						...sectionBandColorSx(SURFACE_WHITE, 'transparent')['&::before'],
 						borderTop: '1px solid transparent',
 					},
 				}}>
@@ -788,10 +788,10 @@ const CircularFoodSystems = () => {
 						sx={{
 							fontFamily: FONT_HEADING,
 							fontSize: TYPE.h1,
-							fontWeight: 400,
+							fontWeight: 500,
 							letterSpacing: '-0.02em',
 							lineHeight: 1.12,
-							color: CHARCOAL,
+							color: DARK_SLATE,
 							maxWidth: 920,
 							mx: 'auto',
 							mb: { xs: 2.25, md: 3 },
@@ -809,7 +809,7 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 0,
 						}}>
-						At Denver Marriott Tech Center in Denver, Colorado, sustainability supports both daily hotel
+						At Perry Lane Hotel in Savannah, Georgia, sustainability supports both daily hotel
 						operations and the gatherings we host. This site shares food-waste diversion results, explains
 						the BioGreen360 program, and shows how qualifying events can request dedicated impact
 						reporting.
@@ -855,8 +855,8 @@ const CircularFoodSystems = () => {
 					}}>
 					<Box
 						component='img'
-						src={heroDenverMarriottTechCenterImage}
-						alt='Denver Marriott Tech Center entrance at dusk with illuminated porte-cochère, glowing amber glass pillars, landscaping, and a bronze elk statue.'
+						src={heroPerryLaneHotelImage}
+						alt='Looking up between the dark brick wings of Perry Lane Hotel toward a cloudy sky, with the gold Perry Lane Hotel canopy lettering visible at the entrance.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 9' },
@@ -876,7 +876,7 @@ const CircularFoodSystems = () => {
 						maxWidth: 900,
 						mx: 'auto',
 						mt: { xs: 3, md: 4 },
-						mb: { xs: 5, md: 7 },
+						mb: 0,
 					}}>
 					<Box
 						component='ul'
@@ -935,14 +935,24 @@ const CircularFoodSystems = () => {
 						</Box>
 					</Box>
 				</Box>
+			</Box>
 
-				<Box sx={{ mt: { xs: 1, md: 1.5 } }}>
+			{/* Program at a Glance — Soft Neutral */}
+			<Box
+				className='section section--alt'
+				sx={{
+					...sectionContainerSx,
+					...sectionBandColorSx(SOFT_NEUTRAL),
+					pt: { xs: '48px', md: '64px' },
+				}}>
+				<Box sx={{ mt: 0 }}>
 					<Typography
 						component='h2'
 						sx={{
+							fontFamily: FONT_HEADING,
 							fontSize: { xs: '28px', md: '34px' },
 							fontWeight: 500,
-							color: CHARCOAL,
+							color: DARK_SLATE,
 							mb: { xs: 1.5, md: 2 },
 							textAlign: 'left',
 						}}>
@@ -977,7 +987,7 @@ const CircularFoodSystems = () => {
 								backgroundColor: SURFACE_WHITE,
 								border: `1px solid ${BORDER_LIGHT}`,
 								borderRadius: RADIUS_CARD,
-								boxShadow: SHADOW_CARD,
+								boxShadow: 'none',
 								p: { xs: 2, md: 2.25 },
 								display: 'flex',
 								flexDirection: 'column',
@@ -987,11 +997,12 @@ const CircularFoodSystems = () => {
 							<Typography
 								component='h3'
 								sx={{
+									fontFamily: FONT_HEADING,
 									fontSize: { xs: '18px', md: '19px' },
 									fontWeight: 500,
 									letterSpacing: '-0.012em',
 									lineHeight: 1.3,
-									color: CHARCOAL,
+									color: DARK_SLATE,
 									mb: 1.25,
 									minHeight: { md: '2.6em' },
 								}}>
@@ -1022,7 +1033,7 @@ const CircularFoodSystems = () => {
 				</Box>
 			</Box>
 
-			{/* Our Impact */}
+			{/* Our Impact — Surface White */}
 			<Box
 				id='impact'
 				component='section'
@@ -1030,7 +1041,7 @@ const CircularFoodSystems = () => {
 				className='section section--alt'
 				sx={{
 					...sectionContainerSx,
-					...sectionBandAltSx,
+					...sectionBandColorSx(SURFACE_WHITE),
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Box
@@ -1047,9 +1058,10 @@ const CircularFoodSystems = () => {
 						id='impact-heading'
 						component='h2'
 						sx={{
+							fontFamily: FONT_HEADING,
 							fontSize: { xs: '28px', md: '34px' },
 							fontWeight: 500,
-							color: CHARCOAL,
+							color: DARK_SLATE,
 						}}>
 						Our Impact
 					</Typography>
@@ -1070,7 +1082,7 @@ const CircularFoodSystems = () => {
 						width: '100%',
 						maxWidth: 360,
 						height: '1px',
-						backgroundColor: BRAND_RED_SOFT_STRONG,
+						backgroundColor: SAGE_SOFT,
 						mb: 2.5,
 					}}
 				/>
@@ -1125,11 +1137,12 @@ const CircularFoodSystems = () => {
 								</Box>
 								<Typography
 									sx={{
+										fontFamily: FONT_HEADING,
 										fontSize: { xs: '34px', sm: '44px', md: '48px' },
 										fontWeight: 500,
 										letterSpacing: '-0.02em',
 										lineHeight: 1.15,
-										color: CHARCOAL,
+										color: DARK_SLATE,
 									}}>
 									{metric.value}
 								</Typography>
@@ -1158,7 +1171,7 @@ const CircularFoodSystems = () => {
 							lineHeight: 0,
 							borderRadius: '4px',
 							'&:focus-visible': {
-								outline: `2px solid ${BRAND_RED}`,
+								outline: `2px solid ${CORAL_LINK}`,
 								outlineOffset: '3px',
 							},
 						}}>
@@ -1190,7 +1203,7 @@ const CircularFoodSystems = () => {
 				</Box>
 			</Box>
 
-			{/* BioGreen360 Partnership */}
+			{/* BioGreen360 Partnership — Soft Neutral */}
 			<Box
 				id='biogreen360'
 				component='section'
@@ -1198,7 +1211,7 @@ const CircularFoodSystems = () => {
 				className='section section--base'
 				sx={{
 					...sectionContainerSx,
-					...sectionBandBaseSx,
+					...sectionBandColorSx(SOFT_NEUTRAL),
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Box
@@ -1225,10 +1238,11 @@ const CircularFoodSystems = () => {
 								id='biogreen360-heading'
 								component='h2'
 								sx={{
+									fontFamily: FONT_HEADING,
 									fontSize: { xs: '28px', md: '34px' },
 									fontWeight: 500,
 									lineHeight: 1.25,
-									color: CHARCOAL,
+									color: DARK_SLATE,
 									m: 0,
 								}}>
 								A Cornerstone Partnership with
@@ -1245,7 +1259,7 @@ const CircularFoodSystems = () => {
 									borderRadius: '4px',
 									flexShrink: 0,
 									'&:focus-visible': {
-										outline: `2px solid ${BRAND_RED}`,
+										outline: `2px solid ${CORAL_LINK}`,
 										outlineOffset: '3px',
 									},
 								}}>
@@ -1270,15 +1284,16 @@ const CircularFoodSystems = () => {
 								mb: { xs: 3, md: 3.5 },
 							}}>
 							BioGreen360 provides the on-property processing technology, reporting platform, and
-							program support behind Denver Marriott Tech Center’s food-waste diversion initiative.
+							program support behind Perry Lane Hotel’s food-waste diversion initiative.
 						</Typography>
 
 						<Typography
 							component='h3'
 							sx={{
+								fontFamily: FONT_HEADING,
 								fontSize: { xs: '22px', md: '24px' },
 								fontWeight: 500,
-								color: CHARCOAL,
+								color: DARK_SLATE,
 								letterSpacing: '-0.012em',
 								mb: 1.25,
 							}}>
@@ -1332,7 +1347,7 @@ const CircularFoodSystems = () => {
 											sx={{
 												fontSize: '14px',
 												lineHeight: 1.55,
-												color: CHARCOAL,
+												color: DARK_SLATE,
 												fontWeight: 500,
 											}}>
 											{item.label}
@@ -1345,9 +1360,10 @@ const CircularFoodSystems = () => {
 						<Typography
 							component='h3'
 							sx={{
+								fontFamily: FONT_HEADING,
 								fontSize: { xs: '22px', md: '24px' },
 								fontWeight: 500,
-								color: CHARCOAL,
+								color: DARK_SLATE,
 								letterSpacing: '-0.012em',
 								mb: 1.25,
 							}}>
@@ -1391,11 +1407,12 @@ const CircularFoodSystems = () => {
 						<Box
 							component='img'
 							src={biogreen360PartnershipImage}
-							alt='Denver Marriott Tech Center restaurant and bar with sage dining chairs, an orange corrugated metal bar, hanging Edison bulbs, and atrium daylight overhead.'
+							alt='Perry Lane Sustainability Commitment graphic with a sage globe and sustainability icons above the hotel name.'
 							sx={{
 								width: '100%',
-								aspectRatio: '1 / 1',
-								objectFit: 'cover',
+								height: 'auto',
+								aspectRatio: '713 / 302',
+								objectFit: 'contain',
 								objectPosition: 'center',
 								borderRadius: RADIUS_IMAGE,
 								border: `1px solid ${BORDER_LIGHT}`,
@@ -1416,25 +1433,26 @@ const CircularFoodSystems = () => {
 							<Typography
 								component='h3'
 								sx={{
+									fontFamily: FONT_HEADING,
 									fontSize: { xs: '18px', md: '20px' },
 									fontWeight: 500,
-									color: CHARCOAL,
+									color: DARK_SLATE,
 									letterSpacing: '-0.01em',
 									lineHeight: 1.35,
 									mb: 1,
 								}}>
-								First Marriott-Branded Hotel in Colorado to Adopt BioGreen360
+								BioGreen360’s First Boutique-Hotel Launch
 							</Typography>
 							<Typography sx={{ fontSize: '14px', color: BODY_TEXT, lineHeight: 1.7 }}>
-								Denver Marriott Tech Center was the first Marriott-branded hotel in Colorado to adopt
-								the BioGreen360 platform.
+								Perry Lane Hotel was BioGreen360’s first boutique-hotel launch and its first hotel
+								launch in Georgia.
 							</Typography>
 						</Box>
 					</Box>
 				</Box>
 			</Box>
 
-			{/* How it Works */}
+			{/* How it Works — White */}
 			{/* NOTE: Main How It Works section (below Partnership) */}
 			<Box
 				id='how-it-works'
@@ -1443,7 +1461,7 @@ const CircularFoodSystems = () => {
 				className='section section--alt'
 				sx={{
 					...sectionContainerSx,
-					...sectionBandAltSx,
+					...sectionBandColorSx(SURFACE_WHITE),
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Typography className='micro-label' sx={{ textAlign: 'center', mb: 1.5 }}>
@@ -1453,10 +1471,11 @@ const CircularFoodSystems = () => {
 					id='how-it-works-heading'
 					component='h2'
 					sx={{
+						fontFamily: FONT_HEADING,
 						fontSize: { xs: '28px', md: '34px' },
 						fontWeight: 500,
 						textAlign: 'center',
-						color: CHARCOAL,
+						color: DARK_SLATE,
 						mb: { xs: 1.75, md: 2.25 },
 					}}>
 					How the Program Works
@@ -1516,11 +1535,12 @@ const CircularFoodSystems = () => {
 								<Typography
 									component='h3'
 									sx={{
+										fontFamily: FONT_HEADING,
 										fontSize: { xs: '17px', md: '18px' },
 										fontWeight: 500,
 										letterSpacing: '-0.01em',
 										lineHeight: 1.35,
-										color: CHARCOAL,
+										color: DARK_SLATE,
 										mb: 1,
 										maxWidth: 220,
 									}}>
@@ -1580,7 +1600,7 @@ const CircularFoodSystems = () => {
 							fontSize: 'inherit',
 							color: MUTED_TEXT,
 							'&:hover': {
-								color: BRAND_RED,
+								color: CORAL_LINK,
 							},
 						}}>
 						Methodology
@@ -1598,7 +1618,7 @@ const CircularFoodSystems = () => {
 					<Box
 						component='img'
 						src={howItWorksDenverAtriumImage}
-						alt='High-angle view of the Denver Marriott Tech Center atrium with industrial black metal framing, dining and bar areas, and contemporary lounge seating.'
+						alt='Perry Lane Hotel interior — temporary Denver asset pending approved Perry Lane photography.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '4 / 3' },
@@ -1617,18 +1637,19 @@ const CircularFoodSystems = () => {
 						<Typography
 							component='h3'
 							sx={{
+								fontFamily: FONT_HEADING,
 								fontSize: { xs: '26px', md: '30px' },
 								fontWeight: 500,
 								letterSpacing: '-0.015em',
 								lineHeight: 1.3,
-								color: CHARCOAL,
+								color: DARK_SLATE,
 								mb: 1.5,
 							}}>
 							Designed for Hotel Operations
 						</Typography>
 						<Typography
 							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.25 }}>
-							Denver Marriott Tech Center’s BioGreen360 equipment supports a practical workflow for
+							Perry Lane Hotel’s BioGreen360 equipment supports a practical workflow for
 							managing participating food scraps directly at the property.
 						</Typography>
 						<Typography
@@ -1660,7 +1681,7 @@ const CircularFoodSystems = () => {
 				</Box>
 			</Box>
 
-			{/* Live Sustainability Impact Reporting */}
+			{/* Live Sustainability Impact Reporting — Pale Sage Background */}
 			<Box
 				id='live-reporting'
 				component='section'
@@ -1668,9 +1689,9 @@ const CircularFoodSystems = () => {
 				className='section section--base live-reporting-section lsir-section'
 				sx={{
 					...sectionContainerSx,
-					...sectionBandBaseSx,
+					...sectionBandColorSx(PALE_SAGE_BG),
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
-					'& .lsir-card-value': { color: CHARCOAL },
+					'& .lsir-card-value': { color: DARK_SLATE },
 				}}>
 				<Typography className='micro-label' sx={{ mb: 1.5 }}>
 					IMPACT EQUIVALENCIES
@@ -1679,9 +1700,10 @@ const CircularFoodSystems = () => {
 					id='live-reporting-heading'
 					component='h2'
 					sx={{
+						fontFamily: FONT_HEADING,
 						fontSize: { xs: '28px', md: '34px' },
 						fontWeight: 500,
-						color: CHARCOAL,
+						color: DARK_SLATE,
 						mb: 1.5,
 					}}>
 					Putting the Numbers in Perspective
@@ -1738,7 +1760,7 @@ const CircularFoodSystems = () => {
 									display: 'flex',
 									flexDirection: 'column',
 									textAlign: 'center',
-									boxShadow: SHADOW_CARD,
+									boxShadow: 'none',
 								}}>
 								<Typography className='micro-label lsir-card-title' sx={{ mb: 1.25 }}>
 									{card.label}
@@ -1747,6 +1769,7 @@ const CircularFoodSystems = () => {
 									component='p'
 									className='lsir-card-value'
 									sx={{
+										fontFamily: FONT_HEADING,
 										fontSize: { xs: '24px', md: '28px' },
 										fontWeight: 500,
 										letterSpacing: '-0.015em',
@@ -1815,7 +1838,7 @@ const CircularFoodSystems = () => {
 				</Typography>
 			</Box>
 
-			{/* Events — impact reporting */}
+			{/* Events — Surface White */}
 			<Box
 				id='events'
 				component='section'
@@ -1823,7 +1846,7 @@ const CircularFoodSystems = () => {
 				className='section section--alt'
 				sx={{
 					...sectionContainerSx,
-					...sectionBandAltSx,
+					...sectionBandColorSx(SURFACE_WHITE),
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Box
@@ -1842,9 +1865,10 @@ const CircularFoodSystems = () => {
 							id='events-heading'
 							component='h2'
 							sx={{
+								fontFamily: FONT_HEADING,
 								fontSize: { xs: '28px', md: '34px' },
 								fontWeight: 500,
-								color: CHARCOAL,
+								color: DARK_SLATE,
 								mb: 1.75,
 							}}>
 							Add Measurable Impact to Your Event
@@ -1886,8 +1910,8 @@ const CircularFoodSystems = () => {
 										sx={{
 											fontFamily: FONT_HEADING,
 											fontSize: { xs: '18px', md: '20px' },
-											fontWeight: 600,
-											color: CHARCOAL,
+											fontWeight: 500,
+											color: DARK_SLATE,
 											lineHeight: 1.2,
 											letterSpacing: '-0.01em',
 										}}>
@@ -1910,7 +1934,7 @@ const CircularFoodSystems = () => {
 					<Box
 						component='img'
 						src={eventsDenverBallroomImage}
-						alt='Denver Marriott Tech Center ballroom set for a banquet with round tables, a central podium, and flanking projection screens.'
+						alt='Perry Lane Hotel event space — temporary Denver asset pending approved Perry Lane photography.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 11' },
@@ -1927,10 +1951,11 @@ const CircularFoodSystems = () => {
 				<Typography
 					component='h3'
 					sx={{
+						fontFamily: FONT_HEADING,
 						fontSize: { xs: '26px', md: '30px' },
 						fontWeight: 500,
 						letterSpacing: '-0.015em',
-						color: CHARCOAL,
+						color: DARK_SLATE,
 						textAlign: 'center',
 						mb: { xs: 4, md: 5.5 },
 					}}>
@@ -1979,11 +2004,12 @@ const CircularFoodSystems = () => {
 								<Typography
 									component='h4'
 									sx={{
+										fontFamily: FONT_HEADING,
 										fontSize: { xs: '17px', md: '18px' },
 										fontWeight: 500,
 										letterSpacing: '-0.01em',
 										lineHeight: 1.35,
-										color: CHARCOAL,
+										color: DARK_SLATE,
 										mb: 1,
 										maxWidth: 240,
 									}}>
@@ -2036,11 +2062,12 @@ const CircularFoodSystems = () => {
 					<Typography
 						component='h3'
 						sx={{
+							fontFamily: FONT_HEADING,
 							fontSize: { xs: '22px', md: '24px' },
 							fontWeight: 500,
 							mb: 1.5,
 							letterSpacing: '-0.012em',
-							color: CHARCOAL,
+							color: DARK_SLATE,
 						}}>
 						What the Recap May Include
 					</Typography>
@@ -2106,24 +2133,19 @@ const CircularFoodSystems = () => {
 						rel='noopener noreferrer'
 						variant='contained'
 						disableElevation
-						aria-label='Start planning an event at Denver Marriott Tech Center'
+						aria-label='Start planning an event at Perry Lane Hotel'
 						sx={{
 							...primaryButtonSx,
-							px: { xs: 3.25, md: 4.5 },
-							py: { xs: 1.45, md: 1.6 },
-							fontSize: { xs: '0.82rem', md: '0.9rem' },
-							boxShadow: '0 10px 28px rgba(35, 31, 32, 0.18)',
-							'&:hover': {
-								...primaryButtonSx['&:hover'],
-								boxShadow: '0 12px 32px rgba(35, 31, 32, 0.2)',
-							},
+							px: { xs: 2.5, md: 3.25 },
+							py: { xs: 1, md: 1.1 },
+							fontSize: { xs: '0.72rem', md: '0.75rem' },
 						}}>
 						Start Planning
 					</Button>
 				</Box>
 			</Box>
 
-			{/* Additional Sustainability Initiatives */}
+			{/* Additional Sustainability Initiatives — Soft Neutral */}
 			<Box
 				id='initiatives'
 				component='section'
@@ -2131,7 +2153,7 @@ const CircularFoodSystems = () => {
 				className='section section--alt'
 				sx={{
 					...sectionContainerSx,
-					...sectionBandAltSx,
+					...sectionBandColorSx(SOFT_NEUTRAL),
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Typography className='micro-label' sx={{ mb: 1.5 }}>
@@ -2141,9 +2163,10 @@ const CircularFoodSystems = () => {
 					id='initiatives-heading'
 					component='h2'
 					sx={{
+						fontFamily: FONT_HEADING,
 						fontSize: { xs: '28px', md: '34px' },
 						fontWeight: 500,
-						color: CHARCOAL,
+						color: DARK_SLATE,
 						mb: 1.75,
 					}}>
 					Sustainability Across the Property
@@ -2160,7 +2183,7 @@ const CircularFoodSystems = () => {
 					convenience, and lower-impact transportation.
 				</Typography>
 
-				{/* TODO: Replace placeholder Bethesda initiative cards with Denver Marriott Tech Center–verified initiatives before publication. */}
+				{/* TODO: Replace placeholder initiative cards with Perry Lane Hotel–verified initiatives before publication. */}
 				<Box
 					role='note'
 					sx={{
@@ -2168,19 +2191,19 @@ const CircularFoodSystems = () => {
 						p: { xs: 2, md: 2.25 },
 						mb: { xs: 3.5, md: 4.5 },
 						maxWidth: 820,
-						borderLeft: `4px solid ${BRAND_RED}`,
-						backgroundColor: BRAND_RED_SOFT,
+						borderLeft: `4px solid ${SAGE_ACCENT}`,
+						backgroundColor: SAGE_SOFT,
 					}}>
 					<Typography
 						sx={{
 							fontSize: '14px',
-							fontWeight: 600,
-							color: CHARCOAL,
+							fontWeight: 500,
+							color: DARK_SLATE,
 							lineHeight: 1.65,
 							letterSpacing: '0.01em',
 						}}>
 						PLACEHOLDER CONTENT: Property-specific sustainability initiatives are pending review with
-						the Denver Marriott Tech Center team.
+						the Perry Lane Hotel team.
 					</Typography>
 				</Box>
 
@@ -2206,9 +2229,10 @@ const CircularFoodSystems = () => {
 								<Typography
 									component='h3'
 									sx={{
+										fontFamily: FONT_HEADING,
 										fontSize: '17px',
-										fontWeight: 600,
-										color: CHARCOAL,
+										fontWeight: 500,
+										color: DARK_SLATE,
 										mb: 0.85,
 										letterSpacing: '-0.01em',
 										lineHeight: 1.3,
@@ -2328,22 +2352,25 @@ const CircularFoodSystems = () => {
 				})}
 			</Box>
 
-			{/* Methodology / Transparency */}
+			{/* Methodology / Transparency — White */}
 			<Box
 				id='methodology'
+				component='section'
+				aria-labelledby='methodology-heading'
 				sx={{
-					backgroundColor: WARM_WHITE,
-					borderTop: '1px solid rgba(216, 209, 200, 0.95)',
-					borderBottom: '1px solid rgba(216, 209, 200, 0.95)',
+					...sectionBandColorSx(SURFACE_WHITE),
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Box sx={sectionContainerSx}>
 					<Typography
+						id='methodology-heading'
 						component='h2'
 						sx={{
+							fontFamily: FONT_HEADING,
 							fontSize: { xs: '28px', md: '34px' },
 							fontWeight: 500,
 							mb: 1.5,
+							color: DARK_SLATE,
 						}}>
 						Methodology and Reporting
 					</Typography>
@@ -2383,10 +2410,19 @@ const CircularFoodSystems = () => {
 
 					<Typography
 						component='h3'
-						sx={{ fontSize: '24px', fontWeight: 500, letterSpacing: '-0.012em', mb: 1 }}>
+						sx={{
+							fontFamily: FONT_HEADING,
+							fontSize: '24px',
+							fontWeight: 500,
+							letterSpacing: '-0.012em',
+							mb: 1,
+							color: DARK_SLATE,
+						}}>
 						How to Read These Metrics
 					</Typography>
-					<Box component='ul' sx={{ m: 0, pl: 2.25, color: BODY_TEXT, mb: 2 }}>
+					<Box
+						component='ul'
+						sx={{ m: 0, pl: 2.25, color: BODY_TEXT, mb: 2 }}>
 						<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.8 }}>
 							Food scrap diversion is based on measured on-site capture and processing
 							volumes.
@@ -2414,7 +2450,7 @@ const CircularFoodSystems = () => {
 								lineHeight: 0,
 								borderRadius: '4px',
 								'&:focus-visible': {
-									outline: `2px solid ${BRAND_RED}`,
+									outline: `2px solid ${CORAL_LINK}`,
 									outlineOffset: '3px',
 								},
 							}}>
@@ -2438,29 +2474,11 @@ const CircularFoodSystems = () => {
 							href={siteConfig.bookingUrl}
 							target='_blank'
 							rel='noopener noreferrer'
-							variant='contained'
+							variant='outlined'
 							disableElevation
+							aria-label='Book a room at Perry Lane Hotel'
 							sx={{
-								px: { xs: 1.75, sm: 2.2 },
-								py: 0.7,
-								fontFamily: FONT_HEADING,
-								fontSize: '0.7rem',
-								fontWeight: 600,
-								letterSpacing: '0.1em',
-								textTransform: 'uppercase',
-								color: SURFACE_WHITE,
-								backgroundColor: CHARCOAL,
-								borderRadius: RADIUS_BUTTON,
-								border: `1px solid ${CHARCOAL}`,
-								boxShadow: 'none',
-								'&:hover': {
-									backgroundColor: CHARCOAL_HOVER,
-									borderColor: CHARCOAL_HOVER,
-									boxShadow: '0 6px 16px rgba(35, 31, 32, 0.16)',
-								},
-								'&:focus-visible': {
-									boxShadow: `0 0 0 2px ${WARM_WHITE}, 0 0 0 4px ${BRAND_RED}`,
-								},
+								...secondaryButtonSx,
 							}}>
 							Book a Room
 						</Button>
@@ -2469,35 +2487,54 @@ const CircularFoodSystems = () => {
 							href={PROPERTY_EVENTS_INQUIRY_URL}
 							target='_blank'
 							rel='noopener noreferrer'
-							variant='outlined'
+							variant='contained'
 							disableElevation
+							aria-label='Plan an event at Perry Lane Hotel'
 							sx={{
-								px: { xs: 1.75, sm: 2.2 },
-								py: 0.7,
-								fontFamily: FONT_HEADING,
-								fontSize: '0.7rem',
-								fontWeight: 600,
-								letterSpacing: '0.1em',
-								textTransform: 'uppercase',
-								color: CHARCOAL,
-								backgroundColor: 'rgba(255, 255, 255, 0.35)',
-								borderRadius: RADIUS_BUTTON,
-								borderColor: BRAND_RED,
-								borderWidth: '1px',
-								boxShadow: 'none',
-								'&:hover': {
-									backgroundColor: BRAND_RED_SOFT,
-									borderColor: BRAND_RED_HOVER,
-									color: CHARCOAL,
-									boxShadow: 'none',
-								},
-								'&:focus-visible': {
-									boxShadow: `0 0 0 2px ${WARM_WHITE}, 0 0 0 4px ${BRAND_RED}`,
-								},
+								...primaryButtonSx,
 							}}>
 							Plan an Event
 						</Button>
 					</Box>
+				</Box>
+			</Box>
+
+			{/* Footer — Dark Slate */}
+			<Box
+				component='footer'
+				sx={{
+					...sectionBandColorSx(DARK_SLATE, 'rgba(255, 255, 255, 0.12)'),
+					color: SURFACE_WHITE,
+				}}>
+				<Box
+					sx={{
+						...containerSx,
+						py: { xs: 3, md: 3.5 },
+						display: 'flex',
+						flexDirection: { xs: 'column', sm: 'row' },
+						justifyContent: 'space-between',
+						alignItems: { xs: 'flex-start', sm: 'center' },
+						gap: 1.5,
+					}}>
+					<Typography
+						sx={{
+							fontFamily: FONT_HEADING,
+							fontSize: { xs: '18px', md: '20px' },
+							fontWeight: 500,
+							color: SURFACE_WHITE,
+							letterSpacing: '-0.01em',
+						}}>
+						Perry Lane Hotel
+					</Typography>
+					<Typography
+						sx={{
+							fontFamily: FONT_BODY,
+							fontSize: '13px',
+							color: 'rgba(255, 255, 255, 0.78)',
+							lineHeight: 1.6,
+						}}>
+						Savannah, Georgia · Sustainability reporting powered by BioGreen360
+					</Typography>
 				</Box>
 			</Box>
 		</Box>
