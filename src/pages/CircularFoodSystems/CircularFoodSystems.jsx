@@ -713,49 +713,20 @@ const CircularFoodSystems = () => {
 	const lastUpdatedDisplay = formattedStatLastUpdate ?? lastUpdatedLabel;
 	const programAtAGlanceCards = [
 		{
-			title: 'What materials are included?',
-			body: 'Participating food scraps from hotel kitchens, banquets, and other food-service operations.',
+			title: 'What happens to food waste?',
+			body: 'Food waste generated across the property is diverted through the on-site BioGreen360 system.',
 		},
 		{
-			title: 'Where are food scraps processed?',
-			body: 'Through BioGreen360 equipment installed directly at Perry Lane Hotel.',
+			title: 'Where does the soil go?',
+			body: 'Material is processed with local partners, and a portion of the resulting soil returns to Perry Lane’s herb garden and landscaping.',
 		},
 		{
-			title: 'How is impact reported?',
-			body: (
-				<>
-					<Box
-						component='a'
-						href='#live-reporting'
-						onClick={(event) => {
-							event.preventDefault();
-							scrollToSection('live-reporting');
-						}}
-						sx={SENTENCE_LINK_SX}>
-						Property data
-					</Box>{' '}
-					updates automatically as new program activity is recorded.
-				</>
-			),
+			title: 'Can guests take part?',
+			body: 'Branded soil bags are available for purchase at Bowerbird, offering guests a tangible piece of the program.',
 		},
 		{
 			title: 'Can events participate?',
-			body: (
-				<>
-					Yes, when{' '}
-					<Box
-						component='a'
-						href='#events'
-						onClick={(event) => {
-							event.preventDefault();
-							scrollToSection('events');
-						}}
-						sx={SENTENCE_LINK_SX}>
-						tracking
-					</Box>{' '}
-					is coordinated in advance and operationally available.
-				</>
-			),
+			body: 'Qualifying meetings and celebrations can request dedicated tracking and a post-event impact recap.',
 			requiresEvents: true,
 		},
 	].filter((card) => (card.requiresEvents ? eventsEnabled : true));
@@ -781,7 +752,7 @@ const CircularFoodSystems = () => {
 				}}>
 				<Box sx={{ textAlign: 'center' }}>
 					<Typography className='micro-label' sx={{ mb: { xs: 2, md: 2.5 } }}>
-						LIVE REPORTING. MEASURABLE PROGRESS.
+						CIRCULAR HOSPITALITY, ROOTED IN SAVANNAH
 					</Typography>
 					<Typography
 						component='h1'
@@ -797,7 +768,7 @@ const CircularFoodSystems = () => {
 							mb: { xs: 2.25, md: 3 },
 							textWrap: 'balance',
 						}}>
-						Sustainability, Built Into Every Stay and Gathering.
+						Where Thoughtful Hospitality Comes Full Circle.
 					</Typography>
 					<Typography
 						sx={{
@@ -809,10 +780,10 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 0,
 						}}>
-						At Perry Lane Hotel in Savannah, Georgia, sustainability supports both daily hotel
-						operations and the gatherings we host. This site shares food-waste diversion results, explains
-						the BioGreen360 program, and shows how qualifying events can request dedicated impact
-						reporting.
+						At Perry Lane Hotel, sustainability is woven into the guest experience. Food waste generated
+						across the property is processed on site through BioGreen360, measured through live reporting,
+						and transformed with local partners into soil that can return to our gardens and the broader
+						community.
 					</Typography>
 					<Box
 						sx={{
@@ -832,15 +803,15 @@ const CircularFoodSystems = () => {
 								columnGap: 1,
 								rowGap: 0.75,
 							}}>
-							<Box component='span'>PROPERTY-LEVEL DATA</Box>
+							<Box component='span'>100% FOOD-WASTE DIVERSION</Box>
 							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
 								•
 							</Box>
-							<Box component='span'>ON-PROPERTY PROCESSING</Box>
+							<Box component='span'>SOIL RETURNED TO PERRY LANE</Box>
 							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
 								•
 							</Box>
-							<Box component='span'>EVENT REPORTING BY REQUEST</Box>
+							<Box component='span'>EVENT IMPACT REPORTING</Box>
 						</Typography>
 					</Box>
 				</Box>
@@ -893,7 +864,7 @@ const CircularFoodSystems = () => {
 							listStylePosition: 'outside',
 						}}>
 						<Box component='li' sx={{ mb: 1 }}>
-							Participating food scraps are processed directly at the hotel through{' '}
+							Food waste from hotel operations is diverted through Perry Lane’s on-site{' '}
 							<Box
 								component='a'
 								href='#biogreen360'
@@ -903,24 +874,25 @@ const CircularFoodSystems = () => {
 								}}
 								sx={SENTENCE_LINK_SX}>
 								BioGreen360
-							</Box>
-							.
+							</Box>{' '}
+							system.
 						</Box>
 						<Box component='li' sx={{ mb: 1 }}>
+							A portion of the resulting{' '}
 							<Box
 								component='a'
-								href='#live-reporting'
+								href='#how-it-works'
 								onClick={(event) => {
 									event.preventDefault();
-									scrollToSection('live-reporting');
+									scrollToSection('how-it-works');
 								}}
 								sx={SENTENCE_LINK_SX}>
-								Live reporting
+								soil returns
 							</Box>{' '}
-							shows cumulative diversion and estimated soil outcomes.
+							to the property’s herb garden and landscaping.
 						</Box>
 						<Box component='li'>
-							Qualifying meetings and events may request dedicated tracking and a{' '}
+							Qualifying gatherings can receive dedicated tracking and a{' '}
 							<Box
 								component='a'
 								href='#events'
@@ -929,7 +901,7 @@ const CircularFoodSystems = () => {
 									scrollToSection('events');
 								}}
 								sx={SENTENCE_LINK_SX}>
-								post-event recap
+								post-event impact recap
 							</Box>
 							.
 						</Box>
@@ -956,7 +928,7 @@ const CircularFoodSystems = () => {
 							mb: { xs: 1.5, md: 2 },
 							textAlign: 'left',
 						}}>
-						The Program at a Glance
+						A More Thoughtful Stay, By Design
 					</Typography>
 					<Typography
 						sx={{
@@ -966,7 +938,8 @@ const CircularFoodSystems = () => {
 							maxWidth: 840,
 							mb: { xs: 3, md: 3.5 },
 						}}>
-						Here is what guests, planners, and hotel teams should know about the program.
+						From the kitchen to the garden, Perry Lane’s circular approach connects daily operations, guest
+						experiences, and memorable gatherings.
 					</Typography>
 				</Box>
 				<Box
