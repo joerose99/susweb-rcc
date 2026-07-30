@@ -30,7 +30,7 @@ import footballFieldEquivalencyIcon from '../../assets/football-field-equivalenc
 // TODO: Replace remaining temporary Denver assets with approved Perry Lane Hotel photography.
 import heroPerryLaneHotelImage from '../../assets/hero-perry-lane-hotel.png';
 import eventsDenverBallroomImage from '../../assets/events-denver-ballroom.png';
-import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-perry-lane.png';
+import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-perry-lane-rooftop.png';
 import howItWorksDenverAtriumImage from '../../assets/how-it-works-denver-atrium.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
@@ -1381,12 +1381,11 @@ const CircularFoodSystems = () => {
 						<Box
 							component='img'
 							src={biogreen360PartnershipImage}
-							alt='Perry Lane Sustainability Commitment graphic with a sage globe and sustainability icons above the hotel name.'
+							alt='Perry Lane Hotel rooftop bar with sage-tiled counter, hanging plants, checkered flooring, and open views of the Savannah skyline.'
 							sx={{
 								width: '100%',
-								height: 'auto',
-								aspectRatio: '713 / 302',
-								objectFit: 'contain',
+								aspectRatio: '513 / 401',
+								objectFit: 'cover',
 								objectPosition: 'center',
 								borderRadius: RADIUS_IMAGE,
 								border: `1px solid ${BORDER_LIGHT}`,
