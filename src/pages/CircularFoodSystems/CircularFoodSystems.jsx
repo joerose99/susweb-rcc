@@ -32,6 +32,7 @@ import heroPerryLaneHotelImage from '../../assets/hero-perry-lane-hotel.png';
 import eventsDenverBallroomImage from '../../assets/events-denver-ballroom.png';
 import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-perry-lane-rooftop.png';
 import howItWorksPerryLaneTerraceImage from '../../assets/how-it-works-perry-lane-terrace.png';
+import impactPerryLaneRooftopImage from '../../assets/impact-perry-lane-rooftop.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
 	BIOGREEN360_URL,
@@ -88,7 +89,7 @@ const SENTENCE_LINK_SX = {
 
 // TODO: Replace temporary BioGreen360 organization ID with the Perry Lane Hotel organization ID before publication.
 const ORG_STATS_API_URL =
-	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f786a8c64cf4f594585f';
+	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f786a8c64cf4f594585a';
 
 const PROPERTY_CONFIG = {
 	/** BioGreen360 program launch date at Perry Lane Hotel (calendar date). */
@@ -1654,7 +1655,7 @@ const CircularFoodSystems = () => {
 				</Box>
 			</Box>
 
-			{/* Live Sustainability Impact Reporting — Pale Sage Background */}
+			{/* Live Sustainability Impact Reporting — rooftop background with cards on top */}
 			<Box
 				id='live-reporting'
 				component='section'
@@ -1663,48 +1664,74 @@ const CircularFoodSystems = () => {
 				sx={{
 					...sectionContainerSx,
 					...sectionBandColorSx(PALE_SAGE_BG),
+					py: { xs: '54px', md: '86px' },
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'stretch',
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 					'& .lsir-card-value': { color: DARK_SLATE },
+					'&::before': {
+						...sectionBandColorSx(PALE_SAGE_BG)['&::before'],
+						backgroundColor: 'transparent',
+						backgroundImage: `url(${impactPerryLaneRooftopImage})`,
+						backgroundSize: 'cover',
+						backgroundPosition: 'center',
+						backgroundRepeat: 'no-repeat',
+					},
 				}}>
-				<Typography className='micro-label' sx={{ mb: 1.5 }}>
-					IMPACT EQUIVALENCIES
-				</Typography>
-				<Typography
-					id='live-reporting-heading'
-					component='h2'
-					sx={{
-						fontFamily: FONT_HEADING,
-						fontSize: { xs: '28px', md: '34px' },
-						fontWeight: 500,
-						color: DARK_SLATE,
-						mb: 1.5,
-					}}>
-					Putting the Numbers in Perspective
-				</Typography>
 				<Box
 					sx={{
-						display: 'flex',
-						flexWrap: 'wrap',
-						justifyContent: 'space-between',
-						alignItems: 'center',
-						gap: 1.25,
-						mb: 2.5,
+						...cardSx,
+						width: '100%',
+						maxWidth: 940,
+						alignSelf: 'flex-start',
+						backgroundColor: 'rgba(255, 255, 255, 0.86)',
+						backdropFilter: 'blur(6px)',
+						WebkitBackdropFilter: 'blur(6px)',
+						p: { xs: 2, md: 2.5 },
+						mb: { xs: 1.75, md: 2 },
 					}}>
-					<Typography sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.7, maxWidth: 720 }}>
-						These comparisons translate cumulative program results into familiar reference points.
+					<Typography className='micro-label' sx={{ mb: 1.25 }}>
+						IMPACT EQUIVALENCIES
+					</Typography>
+					<Typography
+						id='live-reporting-heading'
+						component='h2'
+						sx={{
+							fontFamily: FONT_HEADING,
+							fontSize: { xs: '28px', md: '34px' },
+							fontWeight: 500,
+							color: DARK_SLATE,
+							mb: 1.25,
+						}}>
+						Putting the Numbers in Perspective
 					</Typography>
 					<Box
-						component='a'
-						href='#methodology'
-						onClick={(event) => {
-							event.preventDefault();
-							scrollToSection('methodology');
-						}}
-						className='lux-link lux-link--internal'
 						sx={{
-							fontSize: '12px',
+							display: 'flex',
+							flexWrap: 'wrap',
+							justifyContent: 'space-between',
+							alignItems: { xs: 'flex-start', sm: 'center' },
+							gap: 1.25,
+							mb: 0,
 						}}>
-						Methodology
+						<Typography sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.7, maxWidth: 720, flex: '1 1 240px' }}>
+							These comparisons translate cumulative program results into familiar reference points.
+						</Typography>
+						<Box
+							component='a'
+							href='#methodology'
+							onClick={(event) => {
+								event.preventDefault();
+								scrollToSection('methodology');
+							}}
+							className='lux-link lux-link--internal'
+							sx={{
+								fontSize: '12px',
+								flexShrink: 0,
+							}}>
+							Methodology
+						</Box>
 					</Box>
 				</Box>
 				<Box
@@ -1724,12 +1751,15 @@ const CircularFoodSystems = () => {
 							<Box
 								key={card.label}
 								sx={{
-									backgroundColor: SURFACE_WHITE,
+									backgroundColor: 'rgba(255, 255, 255, 0.86)',
+									backdropFilter: 'blur(6px)',
+									WebkitBackdropFilter: 'blur(6px)',
 									border: '1px solid',
 									borderColor: BORDER_LIGHT,
 									borderRadius: RADIUS_CARD,
-									p: { xs: 2.5, md: 3 },
-									minHeight: 240,
+									p: { xs: 2, md: 2.25 },
+									minHeight: { xs: 220, md: 228 },
+									height: '100%',
 									display: 'flex',
 									flexDirection: 'column',
 									textAlign: 'center',
@@ -1759,7 +1789,7 @@ const CircularFoodSystems = () => {
 										fontSize: '12px',
 										color: MUTED_TEXT,
 										lineHeight: 1.5,
-										mb: 1.5,
+										mb: 1.25,
 										maxWidth: 280,
 										mx: 'auto',
 									}}>
@@ -1769,7 +1799,7 @@ const CircularFoodSystems = () => {
 									<Box
 										sx={{
 											mt: 'auto',
-											pt: 1.75,
+											pt: 1.25,
 											alignSelf: 'center',
 											lineHeight: 0,
 										}}>
@@ -1797,7 +1827,7 @@ const CircularFoodSystems = () => {
 											fontSize: { xs: 70, md: 80 },
 											color: card.iconColor || REPORTING_ICON_COLOR,
 											mt: 'auto',
-											pt: 1.75,
+											pt: 1.25,
 											alignSelf: 'center',
 										}}
 									/>
@@ -1806,9 +1836,23 @@ const CircularFoodSystems = () => {
 						);
 					})}
 				</Box>
-				<Typography sx={{ fontSize: '12px', color: MUTED_TEXT, mt: 2.25 }}>
-					{equivalencyDisclaimer}
-				</Typography>
+				<Box
+					sx={{
+						...cardSx,
+						width: 'fit-content',
+						maxWidth: { xs: '100%', sm: 660 },
+						alignSelf: 'flex-start',
+						backgroundColor: 'rgba(255, 255, 255, 0.86)',
+						backdropFilter: 'blur(6px)',
+						WebkitBackdropFilter: 'blur(6px)',
+						px: { xs: 1.75, md: 2 },
+						py: { xs: 1, md: 1.15 },
+						mt: { xs: 1.5, md: 1.75 },
+					}}>
+					<Typography sx={{ fontSize: '12px', color: MUTED_TEXT, m: 0 }}>
+						{equivalencyDisclaimer}
+					</Typography>
+				</Box>
 			</Box>
 
 			{/* Events — Surface White */}
