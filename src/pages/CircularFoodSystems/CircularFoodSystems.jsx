@@ -31,7 +31,7 @@ import footballFieldEquivalencyIcon from '../../assets/football-field-equivalenc
 import heroPerryLaneHotelImage from '../../assets/hero-perry-lane-hotel.png';
 import eventsDenverBallroomImage from '../../assets/events-denver-ballroom.png';
 import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-perry-lane-rooftop.png';
-import howItWorksDenverAtriumImage from '../../assets/how-it-works-denver-atrium.png';
+import howItWorksPerryLaneTerraceImage from '../../assets/how-it-works-perry-lane-terrace.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
 	BIOGREEN360_URL,
@@ -558,7 +558,7 @@ const CircularFoodSystems = () => {
 		{
 			title: 'Capture',
 			description:
-				'Participating food scraps are separated during kitchen, banquet, and food-service operations.',
+				'Food waste is separated across participating culinary, banquet, and hospitality operations.',
 			icon: (
 				<Box
 					component='img'
@@ -578,7 +578,7 @@ const CircularFoodSystems = () => {
 		},
 		{
 			title: 'Process',
-			description: 'Collected material is processed through the hotel’s BioGreen360 equipment.',
+			description: 'Collected material is processed on site through Perry Lane’s BioGreen360 system.',
 			icon: (
 				<Box
 					component='img'
@@ -598,7 +598,7 @@ const CircularFoodSystems = () => {
 		},
 		{
 			title: 'Measure',
-			description: 'Program activity is recorded and translated into property-level reporting.',
+			description: 'Each contribution is recorded, creating a clear and cumulative view of diversion.',
 			icon: (
 				<Box
 					component='img'
@@ -617,9 +617,9 @@ const CircularFoodSystems = () => {
 			),
 		},
 		{
-			title: 'Coordinate',
+			title: 'Return',
 			description:
-				'Processed material is directed through available beneficial-use or composting pathways.',
+				'Material is finished with local partners, and a portion of the resulting soil returns to Perry Lane’s gardens.',
 			icon: (
 				<Box
 					component='img'
@@ -1438,7 +1438,7 @@ const CircularFoodSystems = () => {
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Typography className='micro-label' sx={{ textAlign: 'center', mb: 1.5 }}>
-					THE FOOD-WASTE PROGRAM
+					FROM KITCHEN TO GARDEN
 				</Typography>
 				<Typography
 					id='how-it-works-heading'
@@ -1451,7 +1451,7 @@ const CircularFoodSystems = () => {
 						color: DARK_SLATE,
 						mb: { xs: 1.75, md: 2.25 },
 					}}>
-					How the Program Works
+					How Food Waste Comes Full Circle
 				</Typography>
 				<Typography
 					sx={{
@@ -1463,8 +1463,8 @@ const CircularFoodSystems = () => {
 						mx: 'auto',
 						mb: { xs: 4, md: 5.5 },
 					}}>
-					Food scraps move through a four-step workflow designed for clear handling, measurement, and
-					reporting.
+					Perry Lane’s program follows a measurable path from daily hotel operations to locally created soil,
+					with a portion returning to nourish the property.
 				</Typography>
 
 				<Box
@@ -1560,7 +1560,7 @@ const CircularFoodSystems = () => {
 						mx: 'auto',
 						lineHeight: 1.7,
 					}}>
-					Definitions, estimates, and reporting boundaries are explained in{' '}
+					See{' '}
 					<Box
 						component='a'
 						href='#methodology'
@@ -1577,8 +1577,8 @@ const CircularFoodSystems = () => {
 							},
 						}}>
 						Methodology
-					</Box>
-					.
+					</Box>{' '}
+					for reporting definitions, conversion assumptions, and program scope.
 				</Typography>
 				<Box
 					sx={{
@@ -1590,8 +1590,8 @@ const CircularFoodSystems = () => {
 					}}>
 					<Box
 						component='img'
-						src={howItWorksDenverAtriumImage}
-						alt='Perry Lane Hotel interior — temporary Denver asset pending approved Perry Lane photography.'
+						src={howItWorksPerryLaneTerraceImage}
+						alt='Perry Lane Hotel rooftop terrace with yellow-striped seating, planter gardens, and a Savannah church steeple under a clear blue sky.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '4 / 3' },
@@ -1605,7 +1605,7 @@ const CircularFoodSystems = () => {
 					/>
 					<Box>
 						<Typography className='micro-label' sx={{ mb: 1 }}>
-							ON-PROPERTY PROCESSING
+							CIRCULAR BY DESIGN
 						</Typography>
 						<Typography
 							component='h3'
@@ -1618,22 +1618,22 @@ const CircularFoodSystems = () => {
 								color: DARK_SLATE,
 								mb: 1.5,
 							}}>
-							Designed for Hotel Operations
+							A System Woven Into the Guest Experience
 						</Typography>
 						<Typography
 							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.25 }}>
-							Perry Lane Hotel’s BioGreen360 equipment supports a practical workflow for
-							managing participating food scraps directly at the property.
+							Behind the scenes, BioGreen360 gives Perry Lane’s teams a practical way to manage food waste
+							as part of daily operations.
 						</Typography>
 						<Typography
 							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.25 }}>
-							Automated measurement gives hotel teams clearer visibility into diversion activity without
-							adding separate manual reporting steps.
+							Live measurement brings visibility to the work, allowing progress to be shared with guests,
+							event planners, and hotel leaders.
 						</Typography>
 						<Typography
 							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 2 }}>
-							Downstream handling is coordinated according to operational requirements, partner
-							availability, and approved processing pathways.
+							The cycle continues beyond processing: a portion of the soil created with local partners comes
+							back to nourish the herb garden and landscaping that shape the Perry Lane experience.
 						</Typography>
 						<Box
 							component='a'
