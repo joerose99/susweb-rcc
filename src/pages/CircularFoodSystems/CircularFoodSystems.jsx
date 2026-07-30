@@ -29,7 +29,7 @@ import elephantEquivalencyIcon from '../../assets/elephant-equivalency.png';
 import footballFieldEquivalencyIcon from '../../assets/football-field-equivalency.png';
 // TODO: Replace remaining temporary Denver assets with approved Perry Lane Hotel photography.
 import heroPerryLaneHotelImage from '../../assets/hero-perry-lane-hotel.png';
-import eventsDenverBallroomImage from '../../assets/events-denver-ballroom.png';
+import eventsPerryLaneRooftopImage from '../../assets/events-perry-lane-rooftop.png';
 import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-perry-lane-rooftop.png';
 import howItWorksPerryLaneTerraceImage from '../../assets/how-it-works-perry-lane-terrace.png';
 import impactPerryLaneRooftopImage from '../../assets/impact-perry-lane-rooftop.png';
@@ -102,10 +102,9 @@ const PROPERTY_CONFIG = {
  * TODO: Periodically verify these figures against the official Perry Lane Hotel property page.
  */
 const EVENT_PROPERTY_FACTS = [
-	{ value: '28', label: 'Event Rooms' },
-	{ value: '51,794', label: 'Sq. Ft. of Event Space' },
-	{ value: 'Up to 1,500', label: 'Capacity' },
-	{ value: '17', label: 'Breakout Rooms' },
+	{ value: '9,125 Sq. Ft.', label: 'Indoor & Outdoor Event Space' },
+	{ value: '2,625 Sq. Ft.', label: 'Glass-Enclosed Ballroom' },
+	{ value: '1,066 Sq. Ft.', label: 'Ballroom Terrace' },
 ];
 
 const BIOGREEN_LINK_SX = {
@@ -648,9 +647,9 @@ const CircularFoodSystems = () => {
 					sx={{ fontSize: 48, color: SUSTAINABILITY_GREEN }}
 				/>
 			),
-			title: 'Coordinate in Advance',
+			title: 'Plan with Purpose',
 			description:
-				'Confirm tracking availability with the hotel’s events team during the planning process.',
+				'Discuss tracking goals and availability with Perry Lane’s events team as your gathering takes shape.',
 		},
 		{
 			icon: (
@@ -669,9 +668,9 @@ const CircularFoodSystems = () => {
 					}}
 				/>
 			),
-			title: 'Track the Event',
+			title: 'Track the Gathering',
 			description:
-				'Participating culinary and banquet food scraps are recorded during the gathering.',
+				'Participating culinary and banquet food waste is measured throughout the event.',
 		},
 		{
 			icon: (
@@ -690,17 +689,17 @@ const CircularFoodSystems = () => {
 					}}
 				/>
 			),
-			title: 'Receive the Recap',
+			title: 'See the Impact',
 			description:
-				'Review a post-event summary of measured results, estimates, and reporting scope.',
+				'Receive a concise recap of diversion results, estimated soil outcomes, and reporting context.',
 		},
 	];
 
 	const eventPlannerDeliverables = [
-		'Event-specific food-diversion results',
-		'Estimated soil amendment and coverage',
+		'Measured food-waste diversion',
+		'Estimated soil creation and coverage',
 		'Illustrative impact equivalencies',
-		'Methodology and reporting scope',
+		'Clear methodology and reporting scope',
 	];
 
 	const impactMetrics = buildImpactMetrics(poundsFed);
@@ -1872,11 +1871,11 @@ const CircularFoodSystems = () => {
 						gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 1.1fr) minmax(0, 0.95fr)' },
 						gap: { xs: 3, md: 5 },
 						alignItems: 'start',
-						mb: { xs: 6, md: 8.5 },
+						mb: { xs: 4.8, md: 6.8 },
 					}}>
 					<Box>
 						<Typography className='micro-label' sx={{ mb: 1.5 }}>
-							SUSTAINABLE MEETINGS & EVENTS
+							SUSTAINABLE GATHERINGS
 						</Typography>
 						<Typography
 							id='events-heading'
@@ -1888,7 +1887,7 @@ const CircularFoodSystems = () => {
 								color: DARK_SLATE,
 								mb: 1.75,
 							}}>
-							Add Measurable Impact to Your Event
+							Celebrate Beautifully. Measure What Matters.
 						</Typography>
 						<Typography
 							sx={{
@@ -1899,8 +1898,9 @@ const CircularFoodSystems = () => {
 								mb: 1.25,
 								maxWidth: 560,
 							}}>
-							Qualifying meetings, conferences, weddings, and social events can incorporate dedicated
-							food-scrap tracking when coordinated in advance with the hotel team.
+							From rooftop celebrations to inspired business gatherings, Perry Lane pairs gracious
+							Savannah hospitality with a more thoughtful approach to food waste. Qualifying events can
+							include dedicated tracking and a tailored post-event impact recap.
 						</Typography>
 						<Typography
 							sx={{
@@ -1911,13 +1911,16 @@ const CircularFoodSystems = () => {
 								mb: 2.5,
 								maxWidth: 560,
 							}}>
-							After the event, planners may receive a concise impact recap summarizing measured
-							diversion, estimated soil outcomes, and illustrative equivalencies.
+							Participation is coordinated in advance so menus, service plans, and reporting scope can be
+							aligned with the hotel’s events team.
 						</Typography>
 						<Box
 							sx={{
 								display: 'grid',
-								gridTemplateColumns: { xs: '1fr 1fr', sm: 'repeat(4, minmax(0, 1fr))' },
+								gridTemplateColumns: {
+									xs: '1fr',
+									sm: 'repeat(3, minmax(0, 1fr))',
+								},
 								gap: { xs: 1.5, sm: 2 },
 								maxWidth: 560,
 							}}>
@@ -1950,8 +1953,8 @@ const CircularFoodSystems = () => {
 
 					<Box
 						component='img'
-						src={eventsDenverBallroomImage}
-						alt='Perry Lane Hotel event space — temporary Denver asset pending approved Perry Lane photography.'
+						src={eventsPerryLaneRooftopImage}
+						alt='Perry Lane Hotel rooftop ceremony setup with wooden chairs, floral altar pillars, and the Savannah skyline beyond.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 11' },
@@ -1976,7 +1979,7 @@ const CircularFoodSystems = () => {
 						textAlign: 'center',
 						mb: { xs: 4, md: 5.5 },
 					}}>
-					How Event Reporting Works
+					Your Event, Thoughtfully Measured
 				</Typography>
 
 				<Box
@@ -2074,7 +2077,7 @@ const CircularFoodSystems = () => {
 						mb: { xs: 3, md: 4 },
 					}}>
 					<Typography className='micro-label' sx={{ mb: 1 }}>
-						EVENT REPORTING
+						YOUR EVENT IMPACT RECAP
 					</Typography>
 					<Typography
 						component='h3'
@@ -2086,7 +2089,7 @@ const CircularFoodSystems = () => {
 							letterSpacing: '-0.012em',
 							color: DARK_SLATE,
 						}}>
-						What the Recap May Include
+						A Story You Can Share
 					</Typography>
 					<Box component='ul' sx={{ m: 0, p: 0, listStyle: 'none' }}>
 						{eventPlannerDeliverables.map((item) => (
@@ -2122,7 +2125,7 @@ const CircularFoodSystems = () => {
 							lineHeight: 1.65,
 							mt: 1.75,
 						}}>
-						The recap can support internal reviews, attendee communications, and sustainability
+						Designed to support internal reviews, attendee communications, and meaningful post-event
 						storytelling.
 					</Typography>
 				</Box>
@@ -2141,7 +2144,7 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 2,
 						}}>
-						Ask the events team whether tracking is available for your gathering.
+						Ask Perry Lane’s events team about adding food-waste tracking to your gathering.
 					</Typography>
 					<Button
 						component='a'
