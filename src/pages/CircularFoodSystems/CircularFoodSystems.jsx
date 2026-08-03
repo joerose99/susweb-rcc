@@ -27,11 +27,16 @@ import howItWorksSproutIcon from '../../assets/how-it-works-sprout.png';
 import howItWorksReportIcon from '../../assets/how-it-works-report.png';
 import elephantEquivalencyIcon from '../../assets/elephant-equivalency.png';
 import footballFieldEquivalencyIcon from '../../assets/football-field-equivalency.png';
-// TODO: Replace remaining temporary Denver assets with approved Perry Lane Hotel photography.
+// TODO: Replace remaining temporary Perry Lane Hotel assets with approved The Ritz-Carlton, Pentagon City photography.
+// Pending RCPC replacement: heroPerryLaneHotelImage
 import heroPerryLaneHotelImage from '../../assets/hero-perry-lane-hotel.png';
+// Pending RCPC replacement: eventsPerryLaneRooftopImage
 import eventsPerryLaneRooftopImage from '../../assets/events-perry-lane-rooftop.png';
+// Pending RCPC replacement: biogreen360PartnershipImage
 import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-perry-lane-rooftop.png';
+// Pending RCPC replacement: howItWorksPerryLaneTerraceImage
 import howItWorksPerryLaneTerraceImage from '../../assets/how-it-works-perry-lane-terrace.png';
+// Pending RCPC replacement: impactPerryLaneRooftopImage
 import impactPerryLaneRooftopImage from '../../assets/impact-perry-lane-rooftop.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
@@ -87,24 +92,27 @@ const SENTENCE_LINK_SX = {
 	},
 };
 
-// TODO: Replace temporary BioGreen360 organization ID with the Perry Lane Hotel organization ID before publication.
+// TODO: Replace temporary BioGreen360 organization ID with The
+// Ritz-Carlton, Pentagon City organization ID before publication.
 const ORG_STATS_API_URL =
 	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f786a8c64cf4f594585a';
 
 const PROPERTY_CONFIG = {
-	/** BioGreen360 program launch date at Perry Lane Hotel (calendar date). */
-	programLaunchDate: '2023-05-10',
+	/** BioGreen360 program launch date at The Ritz-Carlton, Pentagon City (calendar date). */
+	programLaunchDate: '2021-05-31',
 	timeZone: 'America/New_York',
 };
 
 /**
  * Event-space figures for the Events section proof-point row.
- * TODO: Periodically verify these figures against the official Perry Lane Hotel property page.
+ * TODO: Periodically verify these figures against the official The Ritz-Carlton, Pentagon City property page.
  */
 const EVENT_PROPERTY_FACTS = [
-	{ value: '9,125 Sq. Ft.', label: 'Indoor & Outdoor Event Space' },
-	{ value: '2,625 Sq. Ft.', label: 'Glass-Enclosed Ballroom' },
-	{ value: '1,066 Sq. Ft.', label: 'Ballroom Terrace' },
+	{ value: '12', label: 'Event Rooms' },
+	{ value: '17,424 Sq. Ft.', label: 'Event Space' },
+	{ value: 'Up to 700', label: 'Capacity' },
+	{ value: '10', label: 'Breakout Rooms' },
+	{ value: '~7,200 Sq. Ft.', label: 'Grand Ballroom' },
 ];
 
 const BIOGREEN_LINK_SX = {
@@ -307,7 +315,7 @@ const buildImpactMetrics = (poundsFed) => {
 				daysOperating != null
 					? `${formatCountWithSeparators(daysOperating)} days`
 					: MISSING_METRIC_VALUE,
-			note: 'since May 10, 2023',
+			note: 'since May 31, 2021',
 			Icon: CalendarTodayIcon,
 		},
 		{
@@ -364,7 +372,8 @@ const buildEquivalencyCards = (poundsFed) => {
 	];
 };
 
-// TODO: Replace these placeholder initiative cards with Perry Lane Hotel–verified content before publication.
+// TODO: Replace these placeholder initiative cards with The Ritz-Carlton, Pentagon City–verified content before publication.
+// FLAG: initiativeCategories contents are still Perry Lane placeholders — do not treat as RCPC-verified.
 const initiativeCategories = [
 	{
 		label: 'Building & Resource Efficiency',
@@ -473,7 +482,7 @@ const formatLastSync = (lastSyncValue) => {
 
 	const partValue = (type) => parts.find((part) => part.type === type)?.value ?? '';
 	let timeZoneName = partValue('timeZoneName');
-	// Keep Eastern Time labels (Savannah, GA).
+	// Keep Eastern Time labels (Arlington, VA).
 	if (!/^(EST|EDT|ET)$/i.test(timeZoneName)) {
 		timeZoneName = 'ET';
 	}
@@ -543,7 +552,7 @@ const CircularFoodSystems = () => {
 			Icon: AssessmentOutlinedIcon,
 		},
 		{
-			label: 'Soil returned to Perry Lane’s gardens',
+			label: 'Soil returned to The Ritz-Carlton, Pentagon City’s gardens',
 			Icon: GroupsIcon,
 		},
 		{
@@ -578,7 +587,7 @@ const CircularFoodSystems = () => {
 		},
 		{
 			title: 'Process',
-			description: 'Collected material is processed on site through Perry Lane’s BioGreen360 system.',
+			description: 'Collected material is processed on site through The Ritz-Carlton, Pentagon City’s BioGreen360 system.',
 			icon: (
 				<Box
 					component='img'
@@ -619,7 +628,7 @@ const CircularFoodSystems = () => {
 		{
 			title: 'Return',
 			description:
-				'Material is finished with local partners, and a portion of the resulting soil returns to Perry Lane’s gardens.',
+				'Material is finished with local partners, and a portion of the resulting soil returns to The Ritz-Carlton, Pentagon City’s gardens.',
 			icon: (
 				<Box
 					component='img'
@@ -649,7 +658,7 @@ const CircularFoodSystems = () => {
 			),
 			title: 'Plan with Purpose',
 			description:
-				'Discuss tracking goals and availability with Perry Lane’s events team as your gathering takes shape.',
+				'Discuss tracking goals and availability with The Ritz-Carlton, Pentagon City’s events team as your gathering takes shape.',
 		},
 		{
 			icon: (
@@ -718,11 +727,12 @@ const CircularFoodSystems = () => {
 		},
 		{
 			title: 'Where does the soil go?',
-			body: 'Material is processed with local partners, and a portion of the resulting soil returns to Perry Lane’s herb garden and landscaping.',
+			body: 'Material is processed with local partners, and a portion of the resulting soil returns to The Ritz-Carlton, Pentagon City’s herb garden and landscaping.',
 		},
 		{
 			title: 'Can guests take part?',
-			body: 'Branded soil bags are available for purchase at Bowerbird, offering guests a tangible piece of the program.',
+			// TODO(FLAG): Guest soil-bag retail location (was Bowerbird at Perry Lane) pending RCPC confirmation — do not invent a retail outlet.
+			body: 'Guests can take home a tangible piece of the program — retail availability pending confirmation.',
 		},
 		{
 			title: 'Can events participate?',
@@ -780,7 +790,7 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 0,
 						}}>
-						At Perry Lane Hotel, sustainability is woven into the guest experience. Food waste generated
+						At The Ritz-Carlton, Pentagon City, sustainability is woven into the guest experience. Food waste generated
 						across the property is processed on site through BioGreen360, measured through live reporting,
 						and transformed with local partners into soil that can return to our gardens and the broader
 						community.
@@ -807,7 +817,8 @@ const CircularFoodSystems = () => {
 							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
 								•
 							</Box>
-							<Box component='span'>SOIL RETURNED TO PERRY LANE</Box>
+							{/* TODO(FLAG): Micro-label copy pending RCPC approval — former "SOIL RETURNED TO PERRY LANE". */}
+							<Box component='span'>SOIL RETURNED TO THE PROPERTY</Box>
 							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
 								•
 							</Box>
@@ -827,7 +838,7 @@ const CircularFoodSystems = () => {
 					<Box
 						component='img'
 						src={heroPerryLaneHotelImage}
-						alt='Looking up between the dark brick wings of Perry Lane Hotel toward a cloudy sky, with the gold Perry Lane Hotel canopy lettering visible at the entrance.'
+						alt='Temporary hero photography pending The Ritz-Carlton, Pentagon City asset replacement.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 9' },
@@ -864,7 +875,7 @@ const CircularFoodSystems = () => {
 							listStylePosition: 'outside',
 						}}>
 						<Box component='li' sx={{ mb: 1 }}>
-							Food waste from hotel operations is diverted through Perry Lane’s on-site{' '}
+							Food waste from hotel operations is diverted through The Ritz-Carlton, Pentagon City’s on-site{' '}
 							<Box
 								component='a'
 								href='#biogreen360'
@@ -938,7 +949,7 @@ const CircularFoodSystems = () => {
 							maxWidth: 840,
 							mb: { xs: 3, md: 3.5 },
 						}}>
-						From the kitchen to the garden, Perry Lane’s circular approach connects daily operations, guest
+						From the kitchen to the garden, The Ritz-Carlton, Pentagon City’s circular approach connects daily operations, guest
 						experiences, and memorable gatherings.
 					</Typography>
 				</Box>
@@ -1048,7 +1059,7 @@ const CircularFoodSystems = () => {
 						mb: 2,
 						maxWidth: 880,
 					}}>
-					Live reporting turns Perry Lane’s daily food-waste diversion into a clear, cumulative record of
+					Live reporting turns The Ritz-Carlton, Pentagon City’s daily food-waste diversion into a clear, cumulative record of
 					progress.
 				</Typography>
 				<Box
@@ -1257,7 +1268,7 @@ const CircularFoodSystems = () => {
 								maxWidth: 680,
 								mb: { xs: 3, md: 3.5 },
 							}}>
-							Perry Lane’s collaboration with BioGreen360 connects on-site food-waste processing, live
+							The Ritz-Carlton, Pentagon City’s collaboration with BioGreen360 connects on-site food-waste processing, live
 							measurement, and local soil creation in one circular program. The result supports daily hotel
 							operations while extending the impact back into the property’s gardens and guest experience.
 						</Typography>
@@ -1282,7 +1293,7 @@ const CircularFoodSystems = () => {
 								maxWidth: 680,
 								mb: { xs: 2.5, md: 3 },
 							}}>
-							The program works alongside Perry Lane’s culinary and banquet teams, helping divert food
+							The program works alongside The Ritz-Carlton, Pentagon City’s culinary and banquet teams, helping divert food
 							waste while giving hotel leaders, guests, and event planners a clearer view of the impact.
 						</Typography>
 
@@ -1341,7 +1352,7 @@ const CircularFoodSystems = () => {
 								letterSpacing: '-0.012em',
 								mb: 1.25,
 							}}>
-							From Perry Lane, Back to Perry Lane
+							From The Ritz-Carlton, Pentagon City, Back to The Ritz-Carlton, Pentagon City
 						</Typography>
 						<Typography
 							sx={{
@@ -1351,8 +1362,8 @@ const CircularFoodSystems = () => {
 								maxWidth: 680,
 								mb: 2,
 							}}>
-							A portion of the soil created with local partners returns to the property, nourishing Perry
-							Lane’s herb garden and landscaping and extending the story from kitchen to garden.
+							A portion of the soil created with local partners returns to the property, nourishing The
+							Ritz-Carlton, Pentagon City’s herb garden and landscaping and extending the story from kitchen to garden.
 						</Typography>
 						<Box
 							component='a'
@@ -1381,7 +1392,7 @@ const CircularFoodSystems = () => {
 						<Box
 							component='img'
 							src={biogreen360PartnershipImage}
-							alt='Perry Lane Hotel rooftop bar with sage-tiled counter, hanging plants, checkered flooring, and open views of the Savannah skyline.'
+							alt='Temporary partnership photography pending The Ritz-Carlton, Pentagon City asset replacement.'
 							sx={{
 								width: '100%',
 								aspectRatio: '513 / 401',
@@ -1403,6 +1414,7 @@ const CircularFoodSystems = () => {
 							<Typography className='micro-label' sx={{ mb: 1 }}>
 								AN IMPORTANT MILESTONE
 							</Typography>
+							{/* TODO(FLAG): RCPC BioGreen360 milestone messaging pending confirmation — former PL claim (first in Georgia / first boutique, May 2023) does not apply. */}
 							<Typography
 								component='h3'
 								sx={{
@@ -1414,11 +1426,11 @@ const CircularFoodSystems = () => {
 									lineHeight: 1.35,
 									mb: 1,
 								}}>
-								First in Georgia. First in Boutique Hospitality.
+								A Milestone Partnership
 							</Typography>
 							<Typography sx={{ fontSize: '14px', color: BODY_TEXT, lineHeight: 1.7 }}>
-								When the program launched in May 2023, Perry Lane became BioGreen360’s first hotel
-								partner in Georgia and its first boutique-hotel launch.
+								When the program launched in May 2021, The Ritz-Carlton, Pentagon City began its
+								BioGreen360 partnership.
 							</Typography>
 						</Box>
 					</Box>
@@ -1463,7 +1475,7 @@ const CircularFoodSystems = () => {
 						mx: 'auto',
 						mb: { xs: 4, md: 5.5 },
 					}}>
-					Perry Lane’s program follows a measurable path from daily hotel operations to locally created soil,
+					The Ritz-Carlton, Pentagon City’s program follows a measurable path from daily hotel operations to locally created soil,
 					with a portion returning to nourish the property.
 				</Typography>
 
@@ -1591,7 +1603,7 @@ const CircularFoodSystems = () => {
 					<Box
 						component='img'
 						src={howItWorksPerryLaneTerraceImage}
-						alt='Perry Lane Hotel rooftop terrace with yellow-striped seating, planter gardens, and a Savannah church steeple under a clear blue sky.'
+						alt='Temporary how-it-works photography pending The Ritz-Carlton, Pentagon City asset replacement.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '4 / 3' },
@@ -1622,7 +1634,7 @@ const CircularFoodSystems = () => {
 						</Typography>
 						<Typography
 							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.25 }}>
-							Behind the scenes, BioGreen360 gives Perry Lane’s teams a practical way to manage food waste
+							Behind the scenes, BioGreen360 gives The Ritz-Carlton, Pentagon City’s teams a practical way to manage food waste
 							as part of daily operations.
 						</Typography>
 						<Typography
@@ -1633,7 +1645,7 @@ const CircularFoodSystems = () => {
 						<Typography
 							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 2 }}>
 							The cycle continues beyond processing: a portion of the soil created with local partners comes
-							back to nourish the herb garden and landscaping that shape the Perry Lane experience.
+							back to nourish the herb garden and landscaping that shape The Ritz-Carlton, Pentagon City experience.
 						</Typography>
 						<Box
 							component='a'
@@ -1898,8 +1910,8 @@ const CircularFoodSystems = () => {
 								mb: 1.25,
 								maxWidth: 560,
 							}}>
-							From rooftop celebrations to inspired business gatherings, Perry Lane pairs gracious
-							Savannah hospitality with a more thoughtful approach to food waste. Qualifying events can
+							From rooftop celebrations to inspired business gatherings, The Ritz-Carlton, Pentagon City pairs gracious
+							Arlington, Virginia hospitality with a more thoughtful approach to food waste. Qualifying events can
 							include dedicated tracking and a tailored post-event impact recap.
 						</Typography>
 						<Typography
@@ -1954,7 +1966,7 @@ const CircularFoodSystems = () => {
 					<Box
 						component='img'
 						src={eventsPerryLaneRooftopImage}
-						alt='Perry Lane Hotel rooftop ceremony setup with wooden chairs, floral altar pillars, and the Savannah skyline beyond.'
+						alt='Temporary events photography pending The Ritz-Carlton, Pentagon City asset replacement.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 11' },
@@ -2144,7 +2156,7 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 2,
 						}}>
-						Ask Perry Lane’s events team about adding food-waste tracking to your gathering.
+						Ask The Ritz-Carlton, Pentagon City’s events team about adding food-waste tracking to your gathering.
 					</Typography>
 					<Button
 						component='a'
@@ -2153,7 +2165,7 @@ const CircularFoodSystems = () => {
 						rel='noopener noreferrer'
 						variant='contained'
 						disableElevation
-						aria-label='Start planning an event at Perry Lane Hotel'
+						aria-label='Start planning an event at The Ritz-Carlton, Pentagon City'
 						sx={{
 							...primaryButtonSx,
 							px: { xs: 2.5, md: 3.25 },
@@ -2203,7 +2215,7 @@ const CircularFoodSystems = () => {
 					convenience, and lower-impact transportation.
 				</Typography>
 
-				{/* TODO: Replace placeholder initiative cards with Perry Lane Hotel–verified initiatives before publication. */}
+				{/* TODO: Replace placeholder initiative cards with The Ritz-Carlton, Pentagon City–verified initiatives before publication. */}
 				<Box
 					role='note'
 					sx={{
@@ -2223,7 +2235,7 @@ const CircularFoodSystems = () => {
 							letterSpacing: '0.01em',
 						}}>
 						PLACEHOLDER CONTENT: Property-specific sustainability initiatives are pending review with
-						the Perry Lane Hotel team.
+						The Ritz-Carlton, Pentagon City team.
 					</Typography>
 				</Box>
 
@@ -2485,7 +2497,7 @@ const CircularFoodSystems = () => {
 							rel='noopener noreferrer'
 							variant='outlined'
 							disableElevation
-							aria-label='Book a room at Perry Lane Hotel'
+							aria-label='Book a room at The Ritz-Carlton, Pentagon City'
 							sx={{
 								...secondaryButtonSx,
 							}}>
@@ -2498,7 +2510,7 @@ const CircularFoodSystems = () => {
 							rel='noopener noreferrer'
 							variant='contained'
 							disableElevation
-							aria-label='Plan an event at Perry Lane Hotel'
+							aria-label='Plan an event at The Ritz-Carlton, Pentagon City'
 							sx={{
 								...primaryButtonSx,
 							}}>
@@ -2533,7 +2545,7 @@ const CircularFoodSystems = () => {
 							color: SURFACE_WHITE,
 							letterSpacing: '-0.01em',
 						}}>
-						Perry Lane Hotel
+						The Ritz-Carlton, Pentagon City
 					</Typography>
 					<Typography
 						sx={{
@@ -2542,7 +2554,7 @@ const CircularFoodSystems = () => {
 							color: 'rgba(255, 255, 255, 0.78)',
 							lineHeight: 1.6,
 						}}>
-						Savannah, Georgia · Sustainability reporting powered by BioGreen360
+						Arlington, Virginia · Sustainability reporting powered by BioGreen360
 					</Typography>
 				</Box>
 			</Box>

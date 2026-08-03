@@ -1,10 +1,10 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import perryLaneHotelLogo from '../assets/perry-lane-hotel-logo.png';
+import ritzCarltonPentagonCityLogo from '../assets/ritz-carlton-pentagon-city-logo.png';
 import { CORAL_LINK, SURFACE_WHITE } from '../theme/tokens';
 
 /**
- * Perry Lane Hotel header lockup.
+ * The Ritz-Carlton, Pentagon City header lockup.
  * White logo plate keeps the mark legible on the Dark Slate header.
  */
 const PropertyLockup = ({ onNavigateHome }) => {
@@ -22,7 +22,7 @@ const PropertyLockup = ({ onNavigateHome }) => {
 			component='a'
 			href='#'
 			onClick={handleClick}
-			aria-label='Perry Lane Hotel sustainability home'
+			aria-label='The Ritz-Carlton, Pentagon City sustainability home'
 			sx={{
 				display: 'inline-flex',
 				alignItems: 'center',
@@ -43,8 +43,8 @@ const PropertyLockup = ({ onNavigateHome }) => {
 			}}>
 			<Box
 				component='img'
-				src={perryLaneHotelLogo}
-				alt='Perry Lane Hotel logo featuring a geometric square icon above the hotel name.'
+				src={ritzCarltonPentagonCityLogo}
+				alt='The Ritz-Carlton, Pentagon City logo with lion-and-crown crest above the hotel name.'
 				sx={{
 					height: { xs: 44, md: 52 },
 					width: 'auto',

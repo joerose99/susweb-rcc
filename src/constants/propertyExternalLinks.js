@@ -1,21 +1,23 @@
 /**
- * Perry Lane Hotel — external destinations.
+ * The Ritz-Carlton, Pentagon City — external destinations.
  *
- * Header CTAs must not point at unrelated property URLs behind Perry Lane–branded labels.
+ * Header CTAs must not point at unrelated property URLs behind RCPC-branded labels.
  */
 
-/** Official Perry Lane Hotel property overview. */
-export const PROPERTY_OVERVIEW_URL = 'https://www.perrylanehotel.com/';
+/** Official The Ritz-Carlton, Pentagon City property overview. */
+export const PROPERTY_OVERVIEW_URL =
+	'https://www.ritzcarlton.com/en/hotels/waspc-the-ritz-carlton-pentagon-city/overview/';
 
 /**
  * Booking / reservations destination.
  */
+// TODO: replace with RCPC Marriott reservation URL (propertyCode WASPC)
 export const PROPERTY_RESERVATIONS_URL =
-	'https://www.marriott.com/reservation/availability.mi?cid=PAI_GLB00065K8_GLE000EJCY_GLF000YGCX&propertyCode=SAVLC';
+	'TODO: replace with RCPC Marriott reservation URL (propertyCode WASPC)';
 
-/** Official Perry Lane Hotel meetings & events inquiry destination. */
+/** Official The Ritz-Carlton, Pentagon City meetings & events inquiry destination. */
 export const PROPERTY_EVENTS_INQUIRY_URL =
-	'https://www.perrylanehotel.com/meetings/meeting-request';
+	'https://www.ritzcarlton.com/en/hotels/waspc-the-ritz-carlton-pentagon-city/events/';
 
 export const BIOGREEN360_URL = 'https://biogreen360.com/';
 

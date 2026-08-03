@@ -1,39 +1,42 @@
 /**
- * Perry Lane Hotel — Savannah, Georgia
- * Brand slate / sage visual system for the sustainability microsite.
+ * The Ritz-Carlton, Pentagon City — Arlington, Virginia
+ * Black / white / brass-gold visual system for the sustainability
+ * microsite, aligned to ritzcarlton.com property-page conventions:
+ * flat black-and-white hierarchy, gold used only as a small accent
+ * (icons, active-nav underline), sharp corners, no shadows.
  *
- * Brand Slate: primary brand and body text
- * Sage Accent: primary buttons and soft fills
- * Dark Sage: sustainability icons, rings, arrows, checkmarks
- * Coral: text links and subtle hover accents only
+ * Sustainability Green: pinned to the approved BioGreen360 logo mark,
+ * independent of property brand palette.
  */
 
-export const BRAND_SLATE = '#56626D';
-export const DARK_SLATE = '#46515B';
-export const SAGE_ACCENT = '#A7B58C';
-export const SAGE_ACCENT_HOVER = '#97A67C';
-export const SAGE_SOFT = 'rgba(167, 181, 140, 0.16)';
-export const DARK_SAGE = '#7C8D65';
-export const DARK_SAGE_SOFT = 'rgba(124, 141, 101, 0.14)';
-export const CORAL_LINK = '#D87568';
-export const CORAL_LINK_SOFT = 'rgba(216, 117, 104, 0.12)';
+export const BRAND_SLATE = '#1A1A1A';
+export const DARK_SLATE = '#000000';
+export const SAGE_ACCENT = '#9C7A3C'; // brass gold — icons, active nav underline, link hover
+export const SAGE_ACCENT_HOVER = '#82631F';
+export const SAGE_SOFT = 'rgba(156, 122, 60, 0.12)';
+export const DARK_SAGE = '#7A923B'; // unchanged — pinned to BioGreen360 logo
+export const DARK_SAGE_SOFT = 'rgba(122, 146, 59, 0.14)';
+export const CORAL_LINK = '#9C7A3C';
+export const CORAL_LINK_SOFT = 'rgba(156, 122, 60, 0.12)';
 export const SURFACE_WHITE = '#FFFFFF';
-export const SOFT_NEUTRAL = '#F6F6F3';
-export const PALE_SAGE_BG = '#F0F3EB';
-export const BODY_TEXT = '#56626D';
-export const MUTED_TEXT = 'rgba(86, 98, 109, 0.82)';
-export const BORDER = '#D8D9D4';
+export const SOFT_NEUTRAL = '#F7F7F7';
+export const PALE_SAGE_BG = '#E7E9EE'; // cool pale gray-blue alt-section band
+export const BODY_TEXT = '#5B5B5B';
+export const MUTED_TEXT = 'rgba(91, 91, 91, 0.85)';
+export const BORDER = '#1A1A1A';
 export const BORDER_LIGHT = BORDER;
-export const BORDER_SUBTLE = 'rgba(216, 217, 212, 0.9)';
+export const BORDER_SUBTLE = 'rgba(26, 26, 26, 0.16)';
 
 /** Sustainability icons / rings / arrows / checkmarks */
 export const SUSTAINABILITY_GREEN = DARK_SAGE;
 export const SUSTAINABILITY_GREEN_SOFT = DARK_SAGE_SOFT;
 
 export const FONT_HEADING =
-	'"Cormorant Garamond", Georgia, "Times New Roman", Times, serif';
+	'"Libre Caslon Display", Georgia, "Times New Roman", Times, serif';
 export const FONT_BODY =
-	'"Libre Baskerville", Georgia, "Times New Roman", Times, serif';
+	'"Libre Caslon Text", Georgia, "Times New Roman", Times, serif';
+/** Uppercase UI labels / buttons — matches ritzcarlton.com sans usage. */
+export const FONT_UI = '"Jost", "Helvetica Neue", Arial, sans-serif';
 
 export const CONTENT_MAX = 1360;
 
@@ -46,11 +49,11 @@ export const SPACE = {
 	contentGroup: { xs: 4.5, md: 6 },
 };
 
-export const RADIUS_BUTTON = '2px';
-export const RADIUS_CARD = '4px';
-export const RADIUS_IMAGE = '4px';
-export const RADIUS_PANEL = '4px';
-export const RADIUS_BADGE = '2px';
+export const RADIUS_BUTTON = '0px';
+export const RADIUS_CARD = '0px';
+export const RADIUS_IMAGE = '0px';
+export const RADIUS_PANEL = '0px';
+export const RADIUS_BADGE = '0px';
 
 export const SHADOW_CARD = 'none';
 export const SHADOW_IMAGE = 'none';
@@ -142,7 +145,7 @@ export const mediaPlaceholderSx = {
 	...mediaSx,
 	backgroundColor: SOFT_NEUTRAL,
 	backgroundImage:
-		'repeating-linear-gradient(135deg, transparent, transparent 10px, rgba(216, 217, 212, 0.35) 10px, rgba(216, 217, 212, 0.35) 11px)',
+		'repeating-linear-gradient(135deg, transparent, transparent 10px, rgba(26, 26, 26, 0.12) 10px, rgba(26, 26, 26, 0.12) 11px)',
 	minHeight: 220,
 	display: 'flex',
 	flexDirection: 'column',
@@ -153,24 +156,24 @@ export const mediaPlaceholderSx = {
 	textAlign: 'center',
 };
 
-/** Sage fill — primary CTA (e.g. Plan an Event) */
+/** Black fill — primary CTA (e.g. Plan an Event) */
 export const primaryButtonSx = {
-	fontFamily: FONT_BODY,
+	fontFamily: FONT_UI,
 	fontSize: '0.68rem',
 	fontWeight: 400,
 	letterSpacing: '0.1em',
 	textTransform: 'uppercase',
-	color: DARK_SLATE,
-	backgroundColor: SAGE_ACCENT,
-	border: `1px solid ${SAGE_ACCENT}`,
+	color: SURFACE_WHITE,
+	backgroundColor: DARK_SLATE,
+	border: `1px solid ${DARK_SLATE}`,
 	borderRadius: RADIUS_BUTTON,
 	boxShadow: 'none',
 	minHeight: 40,
 	px: { xs: 1.5, sm: 1.9 },
 	py: 0.55,
 	'&:hover': {
-		backgroundColor: SAGE_ACCENT_HOVER,
-		borderColor: SAGE_ACCENT_HOVER,
+		backgroundColor: '#222222',
+		borderColor: '#222222',
 		boxShadow: 'none',
 	},
 	'&:focus-visible': {
@@ -178,9 +181,9 @@ export const primaryButtonSx = {
 	},
 };
 
-/** Outlined slate — secondary CTA on light surfaces */
+/** Outlined black — secondary CTA on light surfaces */
 export const secondaryButtonSx = {
-	fontFamily: FONT_BODY,
+	fontFamily: FONT_UI,
 	fontSize: '0.68rem',
 	fontWeight: 400,
 	letterSpacing: '0.1em',
@@ -188,14 +191,13 @@ export const secondaryButtonSx = {
 	color: DARK_SLATE,
 	backgroundColor: 'transparent',
 	borderRadius: RADIUS_BUTTON,
-	borderColor: DARK_SLATE,
-	borderWidth: '1px',
+	border: `1px solid ${DARK_SLATE}`,
 	boxShadow: 'none',
 	minHeight: 40,
 	px: { xs: 1.5, sm: 1.9 },
 	py: 0.55,
 	'&:hover': {
-		backgroundColor: SAGE_SOFT,
+		backgroundColor: SOFT_NEUTRAL,
 		borderColor: DARK_SLATE,
 		color: DARK_SLATE,
 		boxShadow: 'none',
@@ -212,12 +214,12 @@ export const textLinkSx = {
 	transition: 'color 180ms ease, border-color 180ms ease',
 	'&:hover': {
 		color: CORAL_LINK,
-		borderBottomColor: 'rgba(216, 117, 104, 0.45)',
+		borderBottomColor: 'rgba(156, 122, 60, 0.45)',
 	},
 	'&:focus-visible': {
 		outline: `2px solid ${CORAL_LINK}`,
 		outlineOffset: '3px',
-		borderRadius: '2px',
+		borderRadius: RADIUS_BADGE,
 	},
 };
 
@@ -249,7 +251,7 @@ export const pageThemeSx = {
 		color: DARK_SLATE,
 	},
 	'& .micro-label': {
-		fontFamily: FONT_BODY,
+		fontFamily: FONT_UI,
 		fontSize: TYPE.label,
 		letterSpacing: '0.14em',
 		textTransform: 'uppercase',
@@ -272,14 +274,14 @@ export const pageThemeSx = {
 		'&:hover': {
 			color: CORAL_LINK,
 			textDecoration: 'underline',
-			textDecorationColor: 'rgba(216, 117, 104, 0.45)',
+			textDecorationColor: 'rgba(156, 122, 60, 0.45)',
 			textDecorationThickness: '1px',
 			borderBottomColor: 'transparent',
 		},
 		'&:focus-visible': {
 			outline: `2px solid ${CORAL_LINK}`,
 			outlineOffset: '3px',
-			borderRadius: '2px',
+			borderRadius: RADIUS_BADGE,
 		},
 	},
 	'& .lux-link--internal::after': {
@@ -315,7 +317,7 @@ export const pageThemeSx = {
 		},
 	},
 	'& .MuiButton-root': {
-		fontFamily: FONT_BODY,
+		fontFamily: FONT_UI,
 		borderRadius: RADIUS_BUTTON,
 		textTransform: 'uppercase',
 		letterSpacing: '0.1em',
@@ -324,10 +326,10 @@ export const pageThemeSx = {
 		minHeight: 40,
 		transition: 'background-color 200ms ease, border-color 200ms ease, color 200ms ease',
 		'&.MuiButton-contained': {
-			backgroundColor: SAGE_ACCENT,
-			color: DARK_SLATE,
+			backgroundColor: DARK_SLATE,
+			color: SURFACE_WHITE,
 			'&:hover': {
-				backgroundColor: SAGE_ACCENT_HOVER,
+				backgroundColor: '#222222',
 				boxShadow: 'none',
 			},
 		},
@@ -338,7 +340,7 @@ export const pageThemeSx = {
 			backgroundColor: 'transparent',
 			'&:hover': {
 				borderColor: DARK_SLATE,
-				backgroundColor: SAGE_SOFT,
+				backgroundColor: SOFT_NEUTRAL,
 				color: DARK_SLATE,
 				boxShadow: 'none',
 			},
