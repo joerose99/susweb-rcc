@@ -175,14 +175,14 @@ const StickyHeader = () => {
 			color: `${DARK_SLATE} !important`,
 			borderColor: `${SURFACE_WHITE} !important`,
 			backgroundColor: `${SURFACE_WHITE} !important`,
-			boxShadow: '0 6px 16px rgba(70, 81, 91, 0.22)',
+			boxShadow: '0 6px 16px rgba(0, 0, 0, 0.22)',
 			transform: 'scale(1.04)',
 		},
 		'&.MuiButton-outlined:hover': {
 			color: DARK_SLATE,
 			borderColor: SURFACE_WHITE,
 			backgroundColor: SURFACE_WHITE,
-			boxShadow: '0 6px 16px rgba(70, 81, 91, 0.22)',
+			boxShadow: '0 6px 16px rgba(0, 0, 0, 0.22)',
 			transform: 'scale(1.04)',
 		},
 		'&:focus-visible': {
@@ -211,14 +211,14 @@ const StickyHeader = () => {
 			color: `${DARK_SLATE} !important`,
 			borderColor: `${DARK_SLATE} !important`,
 			backgroundColor: `${SURFACE_WHITE} !important`,
-			boxShadow: '0 6px 16px rgba(70, 81, 91, 0.18)',
+			boxShadow: '0 6px 16px rgba(0, 0, 0, 0.18)',
 			transform: 'scale(1.04)',
 		},
 		'&.MuiButton-outlined:hover': {
 			color: DARK_SLATE,
 			borderColor: DARK_SLATE,
 			backgroundColor: SURFACE_WHITE,
-			boxShadow: '0 6px 16px rgba(70, 81, 91, 0.18)',
+			boxShadow: '0 6px 16px rgba(0, 0, 0, 0.18)',
 			transform: 'scale(1.04)',
 		},
 		'&:focus-visible': {
@@ -309,7 +309,7 @@ const StickyHeader = () => {
 		'&:focus-visible': {
 			outline: `2px solid ${SAGE_ACCENT}`,
 			outlineOffset: 4,
-			borderRadius: '2px',
+			borderRadius: '0px',
 			borderBottomColor: 'transparent',
 		},
 	});
@@ -323,7 +323,7 @@ const StickyHeader = () => {
 				zIndex: 1200,
 				backgroundColor: DARK_SLATE,
 				borderBottom: `1px solid rgba(255, 255, 255, 0.12)`,
-				boxShadow: scrolled ? '0 4px 16px rgba(70, 81, 91, 0.28)' : 'none',
+				boxShadow: scrolled ? '0 4px 16px rgba(0, 0, 0, 0.28)' : 'none',
 				transition: 'box-shadow 180ms ease',
 			}}>
 			<Box
@@ -408,7 +408,7 @@ const StickyHeader = () => {
 						display: 'inline-flex',
 						[DESKTOP_MQ]: { display: 'none' },
 						color: DARK_SLATE,
-						borderRadius: '2px',
+						borderRadius: '0px',
 						border: `1px solid ${BORDER_LIGHT}`,
 						backgroundColor: SURFACE_WHITE,
 						width: 44,

@@ -27,14 +27,10 @@ import howItWorksReportIcon from '../../assets/how-it-works-report.png';
 import elephantEquivalencyIcon from '../../assets/elephant-equivalency.png';
 import footballFieldEquivalencyIcon from '../../assets/football-field-equivalency.png';
 // TODO: Replace remaining temporary Perry Lane Hotel assets with approved The Ritz-Carlton, Pentagon City photography.
-// Pending RCPC replacement: heroPerryLaneHotelImage
-import heroPerryLaneHotelImage from '../../assets/hero-perry-lane-hotel.png';
-// Pending RCPC replacement: eventsPerryLaneRooftopImage
-import eventsPerryLaneRooftopImage from '../../assets/events-perry-lane-rooftop.png';
-// Pending RCPC replacement: biogreen360PartnershipImage
-import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-perry-lane-rooftop.png';
-// Pending RCPC replacement: howItWorksPerryLaneTerraceImage
-import howItWorksPerryLaneTerraceImage from '../../assets/how-it-works-perry-lane-terrace.png';
+import heroRitzCarltonPentagonCityImage from '../../assets/hero-ritz-carlton-pentagon-city.png';
+import eventsRitzCarltonPentagonCityImage from '../../assets/events-ritz-carlton-pentagon-city.png';
+import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-ritz-carlton-pentagon-city.png';
+import howItWorksRitzCarltonPentagonCityImage from '../../assets/how-it-works-ritz-carlton-pentagon-city.png';
 // Pending RCPC replacement: impactPerryLaneRooftopImage
 import impactPerryLaneRooftopImage from '../../assets/impact-perry-lane-rooftop.png';
 import StickyHeader from '../../components/StickyHeader';
@@ -75,19 +71,19 @@ import {
 const SENTENCE_LINK_SX = {
 	color: BODY_TEXT,
 	textDecoration: 'underline',
-	textDecorationColor: 'rgba(216, 117, 104, 0.4)',
+	textDecorationColor: 'rgba(156, 122, 60, 0.4)',
 	textUnderlineOffset: '3px',
 	textDecorationThickness: '1px',
 	cursor: 'pointer',
 	transition: 'color 180ms ease, text-decoration-color 180ms ease',
 	'&:hover': {
 		color: CORAL_LINK,
-		textDecorationColor: 'rgba(216, 117, 104, 0.7)',
+		textDecorationColor: 'rgba(156, 122, 60, 0.7)',
 	},
 	'&:focus-visible': {
 		outline: `2px solid ${CORAL_LINK}`,
 		outlineOffset: '2px',
-		borderRadius: '2px',
+		borderRadius: '0px',
 	},
 };
 
@@ -122,13 +118,13 @@ const BIOGREEN_LINK_SX = {
 	'&:hover': {
 		color: CORAL_LINK,
 		textDecoration: 'underline',
-		textDecorationColor: 'rgba(216, 117, 104, 0.55)',
+		textDecorationColor: 'rgba(156, 122, 60, 0.55)',
 		textUnderlineOffset: '2px',
 	},
 	'&:focus-visible': {
 		outline: `2px solid ${CORAL_LINK}`,
 		outlineOffset: '2px',
-		borderRadius: '2px',
+		borderRadius: '0px',
 	},
 };
 
@@ -332,7 +328,7 @@ const buildImpactMetrics = (poundsFed) => {
 	];
 };
 
-const REPORTING_ICON_COLOR = 'rgba(86, 98, 109, 0.75)';
+const REPORTING_ICON_COLOR = 'rgba(91, 91, 91, 0.75)';
 
 const buildEquivalencyCards = (poundsFed) => {
 	const hasPounds = poundsFed != null;
@@ -835,8 +831,8 @@ const CircularFoodSystems = () => {
 					}}>
 					<Box
 						component='img'
-						src={heroPerryLaneHotelImage}
-						alt='Temporary hero photography pending The Ritz-Carlton, Pentagon City asset replacement.'
+						src={heroRitzCarltonPentagonCityImage}
+						alt='The Ritz-Carlton, Pentagon City exterior at twilight, with illuminated facade lettering and entrance porte-cochère.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 9' },
@@ -1015,7 +1011,7 @@ const CircularFoodSystems = () => {
 				</Box>
 			</Box>
 
-			{/* Our Impact — Surface White */}
+			{/* Our Impact — Pale Sage Band */}
 			<Box
 				id='impact'
 				component='section'
@@ -1023,7 +1019,7 @@ const CircularFoodSystems = () => {
 				className='section section--alt'
 				sx={{
 					...sectionContainerSx,
-					...sectionBandColorSx(SURFACE_WHITE),
+					...sectionBandColorSx(PALE_SAGE_BG),
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Box
@@ -1152,7 +1148,7 @@ const CircularFoodSystems = () => {
 						sx={{
 							display: 'inline-flex',
 							lineHeight: 0,
-							borderRadius: '4px',
+							borderRadius: '0px',
 							'&:focus-visible': {
 								outline: `2px solid ${CORAL_LINK}`,
 								outlineOffset: '3px',
@@ -1239,7 +1235,7 @@ const CircularFoodSystems = () => {
 								sx={{
 									display: 'inline-flex',
 									lineHeight: 0,
-									borderRadius: '4px',
+									borderRadius: '0px',
 									flexShrink: 0,
 									'&:focus-visible': {
 										outline: `2px solid ${CORAL_LINK}`,
@@ -1351,7 +1347,7 @@ const CircularFoodSystems = () => {
 						<Box
 							component='img'
 							src={biogreen360PartnershipImage}
-							alt='Temporary partnership photography pending The Ritz-Carlton, Pentagon City asset replacement.'
+							alt='Gourmet salad with burrata, roasted beets, and pomegranate seeds beside a red cocktail on a white marble table.'
 							sx={{
 								width: '100%',
 								aspectRatio: '513 / 401',
@@ -1561,8 +1557,8 @@ const CircularFoodSystems = () => {
 					}}>
 					<Box
 						component='img'
-						src={howItWorksPerryLaneTerraceImage}
-						alt='Temporary how-it-works photography pending The Ritz-Carlton, Pentagon City asset replacement.'
+						src={howItWorksRitzCarltonPentagonCityImage}
+						alt='Shared gourmet dishes on a dark wood table, including dips with pita, seafood plates, and guests dining together.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '4 / 3' },
@@ -1625,7 +1621,7 @@ const CircularFoodSystems = () => {
 				</Box>
 			</Box>
 
-			{/* Live Sustainability Impact Reporting — rooftop background with cards on top */}
+			{/* Live Sustainability Impact Reporting — flat pale band */}
 			<Box
 				id='live-reporting'
 				component='section'
@@ -1640,14 +1636,6 @@ const CircularFoodSystems = () => {
 					alignItems: 'stretch',
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 					'& .lsir-card-value': { color: DARK_SLATE },
-					'&::before': {
-						...sectionBandColorSx(PALE_SAGE_BG)['&::before'],
-						backgroundColor: 'transparent',
-						backgroundImage: `url(${impactPerryLaneRooftopImage})`,
-						backgroundSize: 'cover',
-						backgroundPosition: 'center',
-						backgroundRepeat: 'no-repeat',
-					},
 				}}>
 				<Box
 					sx={{
@@ -1924,8 +1912,8 @@ const CircularFoodSystems = () => {
 
 					<Box
 						component='img'
-						src={eventsPerryLaneRooftopImage}
-						alt='Temporary events photography pending The Ritz-Carlton, Pentagon City asset replacement.'
+						src={eventsRitzCarltonPentagonCityImage}
+						alt='Grand ballroom at The Ritz-Carlton, Pentagon City set classroom-style with gray linen tables, navy doors, and tiered glass chandeliers.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 11' },
@@ -2429,7 +2417,7 @@ const CircularFoodSystems = () => {
 							sx={{
 								display: 'inline-flex',
 								lineHeight: 0,
-								borderRadius: '4px',
+								borderRadius: '0px',
 								'&:focus-visible': {
 									outline: `2px solid ${CORAL_LINK}`,
 									outlineOffset: '3px',

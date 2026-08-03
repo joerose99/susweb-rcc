@@ -32,13 +32,13 @@ const PropertyLockup = ({ onNavigateHome }) => {
 				maxWidth: '100%',
 				lineHeight: 0,
 				backgroundColor: SURFACE_WHITE,
-				borderRadius: '2px',
+				borderRadius: '0px',
 				px: { xs: 1, md: 1.25 },
 				py: { xs: 0.5, md: 0.65 },
 				'&:focus-visible': {
 					outline: `2px solid ${CORAL_LINK}`,
 					outlineOffset: 4,
-					borderRadius: '2px',
+					borderRadius: '0px',
 				},
 			}}>
 			<Box

@@ -3,22 +3,23 @@
 }
 
 :root {
-	--brand-slate: #56626d;
-	--dark-slate: #46515b;
-	--sage-accent: #a7b58c;
-	--dark-sage: #7c8d65;
-	--coral-link: #d87568;
+	--brand-slate: #1a1a1a;
+	--dark-slate: #000000;
+	--sage-accent: #9c7a3c;
+	--dark-sage: #7a923b;
+	--coral-link: #9c7a3c;
 	--surface-white: #ffffff;
-	--soft-neutral: #f6f6f3;
-	--pale-sage-bg: #f0f3eb;
-	--body-text: #56626d;
-	--border: #d8d9d4;
-	--font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', Times, serif;
-	--font-body: 'Libre Baskerville', Georgia, 'Times New Roman', Times, serif;
+	--soft-neutral: #f7f7f7;
+	--pale-sage-bg: #e7eefa;
+	--body-text: #5b5b5b;
+	--border: #1a1a1a;
+	--font-heading: 'Libre Caslon Display', Georgia, 'Times New Roman', Times, serif;
+	--font-body: 'Libre Caslon Text', Georgia, 'Times New Roman', Times, serif;
+	--font-ui: 'Jost', 'Helvetica Neue', Arial, sans-serif;
 	--content-max: 1360px;
-	--radius-button: 2px;
-	--radius-card: 4px;
-	--radius-image: 4px;
+	--radius-button: 0px;
+	--radius-card: 0px;
+	--radius-image: 0px;
 }
 
 html,
