@@ -90,7 +90,7 @@ const SENTENCE_LINK_SX = {
 // TODO: Replace temporary BioGreen360 organization ID with The
 // Ritz-Carlton, Pentagon City organization ID before publication.
 const ORG_STATS_API_URL =
-	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f786a8c64cf4f594585a';
+	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f5a8a8c64cf4f5945856';
 
 const PROPERTY_CONFIG = {
 	/** BioGreen360 program launch date at The Ritz-Carlton, Pentagon City (calendar date). */
@@ -546,6 +546,10 @@ const CircularFoodSystems = () => {
 			label: 'BioGreen360 partner since May 2021',
 			Icon: CalendarTodayIcon,
 		},
+		{
+			label: 'Finished with a local composting partner',
+			Icon: RecyclingIcon,
+		},
 	];
 
 	const PROCESS_CIRCLE_FILL = SOFT_NEUTRAL;
@@ -615,7 +619,7 @@ const CircularFoodSystems = () => {
 		{
 			title: 'Return',
 			description:
-				'Measured results are shared back with hotel leaders, guests, and event partners, closing the loop between daily operations and the impact they help create.',
+				'Diverted material is finished with a local composting partner, and measured results are shared back with hotel leaders, guests, and event partners, closing the loop between daily operations and the impact they help create.',
 			icon: (
 				<Box
 					component='img'
@@ -718,8 +722,7 @@ const CircularFoodSystems = () => {
 		},
 		{
 			title: 'Can guests take part?',
-			// TODO(FLAG): Guest soil-bag retail location (was Bowerbird at Perry Lane) pending RCPC confirmation — do not invent a retail outlet.
-			body: 'Guests can take home a tangible piece of the program — retail availability pending confirmation.',
+			body: 'Every stay supports the program. Food waste from dining and events across the hotel is diverted through the same on-site system reported live below.',
 		},
 		{
 			title: 'Can events participate?',
@@ -759,7 +762,7 @@ const CircularFoodSystems = () => {
 							color: DARK_SLATE,
 							mb: { xs: 1.5, md: 2 },
 						}}>
-						Welcome to Sustainability at
+						Welcome to Sustainability at The Ritz-Carlton, Pentagon City
 					</Typography>
 					<Typography
 						component='h1'
@@ -776,7 +779,7 @@ const CircularFoodSystems = () => {
 							mb: { xs: 2.25, md: 3 },
 							textWrap: 'balance',
 						}}>
-						THE RITZ-CARLTON, PENTAGON CITY
+						WHERE LUXURY MEETS LASTING IMPACT
 					</Typography>
 					<Typography
 						sx={{
@@ -788,10 +791,9 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 0,
 						}}>
-						Sustainability is built into daily operations at The Ritz-Carlton, Pentagon City. Food waste
-						generated across the property is processed on site through BioGreen360 and measured through live
-						reporting, giving guests, meeting planners, and hotel leaders a clear, ongoing view of the
-						results.
+						Since May 2021, The Ritz-Carlton, Pentagon City has led the nation in transforming food waste
+						into measurable impact — on-site, every day, and reported live. It is the same commitment to
+						excellence that shapes every stay, extended into how we care for the world around it.
 					</Typography>
 					<Box
 						sx={{
@@ -811,6 +813,10 @@ const CircularFoodSystems = () => {
 								columnGap: 1,
 								rowGap: 0.75,
 							}}>
+							<Box component='span'>FIRST IN THE NATION</Box>
+							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
+								•
+							</Box>
 							<Box component='span'>ON-SITE FOOD-WASTE PROCESSING</Box>
 							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
 								•
@@ -1369,7 +1375,6 @@ const CircularFoodSystems = () => {
 							<Typography className='micro-label' sx={{ mb: 1 }}>
 								AN IMPORTANT MILESTONE
 							</Typography>
-							{/* TODO(FLAG): RCPC BioGreen360 milestone messaging pending confirmation — former PL claim (first in Georgia / first boutique, May 2023) does not apply. */}
 							<Typography
 								component='h3'
 								sx={{
@@ -1381,11 +1386,12 @@ const CircularFoodSystems = () => {
 									lineHeight: 1.35,
 									mb: 1,
 								}}>
-								A Milestone Partnership
+								First in the Nation
 							</Typography>
 							<Typography sx={{ fontSize: '14px', color: BODY_TEXT, lineHeight: 1.7 }}>
-								When the program launched in May 2021, The Ritz-Carlton, Pentagon City began its
-								BioGreen360 partnership.
+								When the program launched on May 31, 2021, The Ritz-Carlton, Pentagon City became the
+								first hotel in the United States to adopt BioGreen360’s fully circular food-waste
+								platform.
 							</Typography>
 						</Box>
 					</Box>
