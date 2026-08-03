@@ -24,15 +24,12 @@ import biogreenHowItWorksLogo from '../../assets/biogreen-how-it-works.png';
 import howItWorksFoodIcon from '../../assets/how-it-works-food.png';
 import howItWorksSproutIcon from '../../assets/how-it-works-sprout.png';
 import howItWorksReportIcon from '../../assets/how-it-works-report.png';
-import elephantEquivalencyIcon from '../../assets/elephant-equivalency.png';
+import lionEquivalencyIcon from '../../assets/lion-equivalency.png';
 import footballFieldEquivalencyIcon from '../../assets/football-field-equivalency.png';
-// TODO: Replace remaining temporary Perry Lane Hotel assets with approved The Ritz-Carlton, Pentagon City photography.
 import heroRitzCarltonPentagonCityImage from '../../assets/hero-ritz-carlton-pentagon-city.png';
 import eventsRitzCarltonPentagonCityImage from '../../assets/events-ritz-carlton-pentagon-city.png';
 import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-ritz-carlton-pentagon-city.png';
 import howItWorksRitzCarltonPentagonCityImage from '../../assets/how-it-works-ritz-carlton-pentagon-city.png';
-// Pending RCPC replacement: impactPerryLaneRooftopImage
-import impactPerryLaneRooftopImage from '../../assets/impact-perry-lane-rooftop.png';
 import StickyHeader from '../../components/StickyHeader';
 import {
 	BIOGREEN360_URL,
@@ -161,10 +158,10 @@ const AVOIDED_MTCO2E_PER_SHORT_TON = 0.65;
 /** EPA urban tree seedling grown for 10 years (metric tons CO2e). */
 const EPA_MTCO2E_PER_URBAN_TREE_SEEDLING_10YR = 0.06;
 /**
- * Illustrative representative adult African elephant weight (~6 short tons).
- * Guest-facing copy should not imply every African elephant weighs exactly this amount.
+ * Illustrative representative adult lion weight (~400 lbs).
+ * Guest-facing copy should not imply every adult lion weighs exactly this amount.
  */
-const ADULT_AFRICAN_ELEPHANT_LBS = 12000;
+const ADULT_LION_LBS = 400;
 /** Acres per full NFL football field (including both end zones). */
 const NFL_FOOTBALL_FIELD_ACRES = 1.32;
 
@@ -183,8 +180,7 @@ const getEstimatedAcresFertilized = (poundsFed) =>
 	getShortTons(poundsFed) * ACRES_FERTILIZED_PER_SHORT_TON_DIVERTED;
 const getTreeSeedlingEquivalency = (poundsFed) =>
 	getAvoidedMtco2e(poundsFed) / EPA_MTCO2E_PER_URBAN_TREE_SEEDLING_10YR;
-const getAdultAfricanElephantEquivalency = (poundsFed) =>
-	poundsFed / ADULT_AFRICAN_ELEPHANT_LBS;
+const getAdultLionEquivalency = (poundsFed) => poundsFed / ADULT_LION_LBS;
 /** NFL fields = Our Impact estimated acres fertilized ÷ acres per field. */
 const getNflFootballFieldEquivalency = (poundsFed) =>
 	getEstimatedAcresFertilized(poundsFed) / NFL_FOOTBALL_FIELD_ACRES;
@@ -344,14 +340,14 @@ const buildEquivalencyCards = (poundsFed) => {
 			note: 'Equivalent to urban tree seedlings grown for 10 years using documented EPA conversion factors.',
 		},
 		{
-			iconImage: elephantEquivalencyIcon,
+			iconImage: lionEquivalencyIcon,
 			iconColor: SUSTAINABILITY_GREEN,
 			iconSize: { xs: 87.5, md: 100 },
 			label: 'Weight Equivalency',
 			value: hasPounds
-				? `${formatIllustrativeCount(getAdultAfricanElephantEquivalency(poundsFed))} adult African elephants`
+				? `${formatIllustrativeCount(getAdultLionEquivalency(poundsFed))} adult lions`
 				: MISSING_METRIC_VALUE,
-			note: 'Compared with a representative adult African elephant weight of approximately 6 tons.',
+			note: 'Compared with a representative adult lion weight of approximately 400 pounds.',
 		},
 		{
 			iconImage: footballFieldEquivalencyIcon,
@@ -691,7 +687,7 @@ const CircularFoodSystems = () => {
 			),
 			title: 'See the Impact',
 			description:
-				'Ask the events team about adding food-waste tracking to your gathering.',
+				'Receive a detailed Impact Recap capturing your event’s diversion results — ready to share with your team, your board, or your guests.',
 		},
 	];
 
@@ -1645,128 +1641,101 @@ const CircularFoodSystems = () => {
 				}}>
 				<Box
 					sx={{
-						...cardSx,
-						width: '100%',
-						maxWidth: 940,
-						alignSelf: 'flex-start',
-						backgroundColor: 'rgba(255, 255, 255, 0.86)',
-						backdropFilter: 'blur(6px)',
-						WebkitBackdropFilter: 'blur(6px)',
-						p: { xs: 2, md: 2.5 },
-						mb: { xs: 1.75, md: 2 },
+						display: 'flex',
+						flexDirection: { xs: 'column', sm: 'row' },
+						flexWrap: 'wrap',
+						justifyContent: 'space-between',
+						alignItems: { xs: 'flex-start', sm: 'baseline' },
+						gap: 1.5,
+						mb: 1,
 					}}>
-					<Typography className='micro-label' sx={{ mb: 1.25 }}>
-						IMPACT EQUIVALENCIES
-					</Typography>
-					<Typography
-						id='live-reporting-heading'
-						component='h2'
-						sx={{
-							fontFamily: FONT_HEADING,
-							fontSize: { xs: '28px', md: '34px' },
-							fontWeight: 500,
-							color: DARK_SLATE,
-							mb: 1.25,
-						}}>
-						Putting the Numbers in Perspective
-					</Typography>
-					<Box
-						sx={{
-							display: 'flex',
-							flexWrap: 'wrap',
-							justifyContent: 'space-between',
-							alignItems: { xs: 'flex-start', sm: 'center' },
-							gap: 1.25,
-							mb: 0,
-						}}>
-						<Typography sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.7, maxWidth: 720, flex: '1 1 240px' }}>
-							These comparisons translate cumulative program results into familiar reference points.
+					<Box sx={{ minWidth: 0 }}>
+						<Typography className='micro-label' sx={{ mb: 1.25 }}>
+							IMPACT EQUIVALENCIES
 						</Typography>
-						<Box
-							component='a'
-							href='#methodology'
-							onClick={(event) => {
-								event.preventDefault();
-								scrollToSection('methodology');
-							}}
-							className='lux-link lux-link--internal'
+						<Typography
+							id='live-reporting-heading'
+							component='h2'
 							sx={{
-								fontSize: '12px',
-								flexShrink: 0,
+								fontFamily: FONT_HEADING,
+								fontSize: { xs: '28px', md: '34px' },
+								fontWeight: 500,
+								color: DARK_SLATE,
 							}}>
-							Methodology
-						</Box>
+							Putting the Numbers in Perspective
+						</Typography>
+					</Box>
+					<Box
+						component='a'
+						href='#methodology'
+						onClick={(event) => {
+							event.preventDefault();
+							scrollToSection('methodology');
+						}}
+						className='lux-link lux-link--internal'
+						sx={{
+							fontSize: '12px',
+							flexShrink: 0,
+						}}>
+						Methodology
 					</Box>
 				</Box>
+				<Typography
+					sx={{
+						fontSize: '15px',
+						color: BODY_TEXT,
+						lineHeight: 1.7,
+						maxWidth: 880,
+						mb: 2.5,
+					}}>
+					These comparisons translate cumulative program results into familiar reference points.
+				</Typography>
+
 				<Box
 					sx={{
-						display: 'grid',
-						gridTemplateColumns: {
-							xs: '1fr',
-							sm: 'repeat(2, minmax(0, 1fr))',
-							md: 'repeat(3, minmax(0, 1fr))',
-						},
-						gap: { xs: 2, md: 2.5 },
+						display: 'flex',
+						flexDirection: { xs: 'column', md: 'row' },
 						alignItems: 'stretch',
+						justifyContent: 'space-between',
+						borderTop: `1px solid ${BORDER_LIGHT}`,
+						borderBottom: `1px solid ${BORDER_LIGHT}`,
+						py: { xs: 0.5, md: 2.5 },
 					}}>
-					{equivalencyCardsToRender.map((card) => {
+					{equivalencyCardsToRender.map((card, idx) => {
 						const Icon = card.icon;
+						const columnCount = equivalencyCardsToRender.length;
+						const isNotLast = idx < columnCount - 1;
 						return (
 							<Box
 								key={card.label}
 								sx={{
-									backgroundColor: 'rgba(255, 255, 255, 0.86)',
-									backdropFilter: 'blur(6px)',
-									WebkitBackdropFilter: 'blur(6px)',
-									border: '1px solid',
-									borderColor: BORDER_LIGHT,
-									borderRadius: RADIUS_CARD,
-									p: { xs: 2, md: 2.25 },
-									minHeight: { xs: 220, md: 228 },
-									height: '100%',
-									display: 'flex',
-									flexDirection: 'column',
+									flex: { md: '1 1 0' },
+									width: { xs: '100%', md: 'auto' },
+									minWidth: { md: 0 },
+									px: { xs: 0, md: 3 },
+									py: { xs: 2.25, md: 1.5 },
 									textAlign: 'center',
-									boxShadow: 'none',
+									borderRight: isNotLast
+										? { xs: 'none', md: `1px solid ${BORDER_LIGHT}` }
+										: 'none',
+									borderBottom: isNotLast
+										? { xs: `1px solid ${BORDER_LIGHT}`, md: 'none' }
+										: 'none',
 								}}>
-								<Typography className='micro-label lsir-card-title' sx={{ mb: 1.25 }}>
+								<Typography className='micro-label lsir-card-title' sx={{ mb: 0.75, display: 'block' }}>
 									{card.label}
 								</Typography>
-								<Typography
-									component='p'
-									className='lsir-card-value'
+								<Box
 									sx={{
-										fontFamily: FONT_HEADING,
-										fontSize: { xs: '24px', md: '28px' },
-										fontWeight: 500,
-										letterSpacing: '-0.015em',
-										lineHeight: 1.25,
-										mb: 0.75,
-										px: 0.5,
-										overflowWrap: 'break-word',
-										hyphens: 'auto',
+										display: 'flex',
+										justifyContent: 'center',
+										alignItems: 'center',
+										width: '100%',
+										minHeight: 48,
+										mb: 1,
+										lineHeight: 0,
 									}}>
-									{card.value}
-								</Typography>
-								<Typography
-									sx={{
-										fontSize: '12px',
-										color: MUTED_TEXT,
-										lineHeight: 1.5,
-										mb: 1.25,
-										maxWidth: 280,
-										mx: 'auto',
-									}}>
-									{card.note}
-								</Typography>
-								{card.iconImage ? (
-									<Box
-										sx={{
-											mt: 'auto',
-											pt: 1.25,
-											alignSelf: 'center',
-											lineHeight: 0,
-										}}>
+									{card.iconImage ? (
 										<Box
 											aria-hidden='true'
 											sx={{
@@ -1783,40 +1752,58 @@ const CircularFoodSystems = () => {
 												WebkitMaskPosition: 'center',
 											}}
 										/>
-									</Box>
-								) : (
-									<Icon
-										aria-hidden='true'
-										sx={{
-											fontSize: { xs: 70, md: 80 },
-											color: card.iconColor || REPORTING_ICON_COLOR,
-											mt: 'auto',
-											pt: 1.25,
-											alignSelf: 'center',
-										}}
-									/>
-								)}
+									) : (
+										<Icon
+											aria-hidden='true'
+											sx={{
+												fontSize: { xs: 70, md: 80 },
+												color: card.iconColor || REPORTING_ICON_COLOR,
+											}}
+										/>
+									)}
+								</Box>
+								<Typography
+									component='p'
+									className='lsir-card-value'
+									sx={{
+										fontFamily: FONT_HEADING,
+										fontSize: { xs: '24px', md: '28px' },
+										fontWeight: 500,
+										letterSpacing: '-0.015em',
+										lineHeight: 1.25,
+										px: 0.5,
+										overflowWrap: 'break-word',
+										hyphens: 'auto',
+										m: 0,
+									}}>
+									{card.value}
+								</Typography>
+								<Typography
+									sx={{
+										fontSize: '12px',
+										color: MUTED_TEXT,
+										lineHeight: 1.5,
+										mt: 1,
+										maxWidth: 280,
+										mx: 'auto',
+									}}>
+									{card.note}
+								</Typography>
 							</Box>
 						);
 					})}
 				</Box>
-				<Box
+
+				<Typography
 					sx={{
-						...cardSx,
-						width: 'fit-content',
-						maxWidth: { xs: '100%', sm: 660 },
-						alignSelf: 'flex-start',
-						backgroundColor: 'rgba(255, 255, 255, 0.86)',
-						backdropFilter: 'blur(6px)',
-						WebkitBackdropFilter: 'blur(6px)',
-						px: { xs: 1.75, md: 2 },
-						py: { xs: 1, md: 1.15 },
-						mt: { xs: 1.5, md: 1.75 },
+						fontSize: '12px',
+						color: MUTED_TEXT,
+						lineHeight: 1.65,
+						mt: { xs: 2.25, md: 2.5 },
+						maxWidth: 660,
 					}}>
-					<Typography sx={{ fontSize: '12px', color: MUTED_TEXT, m: 0 }}>
-						{equivalencyDisclaimer}
-					</Typography>
-				</Box>
+					{equivalencyDisclaimer}
+				</Typography>
 			</Box>
 
 			{/* Events — Surface White */}
@@ -1840,7 +1827,7 @@ const CircularFoodSystems = () => {
 					}}>
 					<Box>
 						<Typography className='micro-label' sx={{ mb: 1.5 }}>
-							SUSTAINABLE GATHERINGS
+							ZERO FOOD WASTE EVENTS
 						</Typography>
 						<Typography
 							id='events-heading'
@@ -1863,9 +1850,10 @@ const CircularFoodSystems = () => {
 								mb: 1.25,
 								maxWidth: 560,
 							}}>
-							The Ritz-Carlton, Pentagon City pairs refined event spaces with a thoughtful approach to food
-							waste, supporting everything from executive meetings and galas to weddings just minutes from
-							Washington, D.C.
+							Every meeting, gala, and wedding at The Ritz-Carlton, Pentagon City can be hosted as a Zero
+							Food Waste Event — a fully tracked program that diverts food waste generated during your
+							gathering through our on-site BioGreen360 system, with results measured from first course to
+							last.
 						</Typography>
 						<Typography
 							sx={{
@@ -1876,6 +1864,8 @@ const CircularFoodSystems = () => {
 								mb: 2.5,
 								maxWidth: 560,
 							}}>
+							It’s a meaningful way to bring purpose to your next gathering, backed by data you can share —
+							with corporate stakeholders, wedding guests, or your own sustainability reporting.
 							Coordination happens in advance with the hotel’s events team so menus, service plans, and
 							reporting scope can be aligned to your gathering.
 						</Typography>
@@ -1914,6 +1904,16 @@ const CircularFoodSystems = () => {
 								</Box>
 							))}
 						</Box>
+						<Typography
+							className='micro-label'
+							sx={{
+								mt: 2,
+								mb: 0,
+								lineHeight: 1.7,
+								maxWidth: 560,
+							}}>
+							ZERO FOOD WASTE EVENTS AVAILABLE FOR EVERY GATHERING
+						</Typography>
 					</Box>
 
 					<Box
@@ -1944,7 +1944,7 @@ const CircularFoodSystems = () => {
 						textAlign: 'center',
 						mb: { xs: 4, md: 5.5 },
 					}}>
-					Your Event, Thoughtfully Measured
+					How a Zero Food Waste Event Works
 				</Typography>
 
 				<Box
@@ -2032,7 +2032,6 @@ const CircularFoodSystems = () => {
 					))}
 				</Box>
 
-				{/* TODO(FLAG): Confirm event-specific tracking/recap is currently offered at RCPC before publishing this card's claims. */}
 				<Box
 					sx={{
 						...cardEmphasizedSx,
@@ -2055,7 +2054,7 @@ const CircularFoodSystems = () => {
 							letterSpacing: '-0.012em',
 							color: DARK_SLATE,
 						}}>
-						A Story You Can Share
+						Your Event, Thoughtfully Measured.
 					</Typography>
 					<Box component='ul' sx={{ m: 0, p: 0, listStyle: 'none' }}>
 						{eventPlannerDeliverables.map((item) => (
@@ -2091,7 +2090,7 @@ const CircularFoodSystems = () => {
 							lineHeight: 1.65,
 							mt: 1.75,
 						}}>
-						Designed to support internal reviews, attendee communications, and meaningful post-event
+						Designed to support internal reviews, stakeholder communications, and meaningful post-event
 						storytelling.
 					</Typography>
 				</Box>
@@ -2110,7 +2109,8 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 2,
 						}}>
-						Ask The Ritz-Carlton, Pentagon City’s events team about adding food-waste tracking to your gathering.
+						Every event at The Ritz-Carlton, Pentagon City can be planned as a Zero Food Waste Event. Speak
+						with our events team to bring measurable impact to your next gathering.
 					</Typography>
 					<Button
 						component='a'
