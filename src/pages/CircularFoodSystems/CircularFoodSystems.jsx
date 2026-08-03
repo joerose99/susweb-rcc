@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import GrassIcon from '@mui/icons-material/Grass';
-import GroupsIcon from '@mui/icons-material/Groups';
 import RecyclingIcon from '@mui/icons-material/Recycling';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
@@ -544,20 +543,12 @@ const CircularFoodSystems = () => {
 
 	const partnershipCapabilities = [
 		{
-			label: '100% of food waste diverted',
-			Icon: DinnerDiningIcon,
-		},
-		{
 			label: 'On-site processing and live measurement',
 			Icon: AssessmentOutlinedIcon,
 		},
 		{
-			label: 'Soil returned to The Ritz-Carlton, Pentagon City’s gardens',
-			Icon: GroupsIcon,
-		},
-		{
-			label: 'Event-specific impact reporting',
-			Icon: RecyclingIcon,
+			label: 'BioGreen360 partner since May 2021',
+			Icon: CalendarTodayIcon,
 		},
 	];
 
@@ -628,7 +619,7 @@ const CircularFoodSystems = () => {
 		{
 			title: 'Return',
 			description:
-				'Material is finished with local partners, and a portion of the resulting soil returns to The Ritz-Carlton, Pentagon City’s gardens.',
+				'Measured results are shared back with hotel leaders, guests, and event partners, closing the loop between daily operations and the impact they help create.',
 			icon: (
 				<Box
 					component='img'
@@ -700,7 +691,7 @@ const CircularFoodSystems = () => {
 			),
 			title: 'See the Impact',
 			description:
-				'Receive a concise recap of diversion results, estimated soil outcomes, and reporting context.',
+				'Ask the events team about adding food-waste tracking to your gathering.',
 		},
 	];
 
@@ -726,8 +717,8 @@ const CircularFoodSystems = () => {
 			body: 'Food waste generated across the property is diverted through the on-site BioGreen360 system.',
 		},
 		{
-			title: 'Where does the soil go?',
-			body: 'Material is processed with local partners, and a portion of the resulting soil returns to The Ritz-Carlton, Pentagon City’s herb garden and landscaping.',
+			title: 'How is progress shared?',
+			body: 'Live measurement creates a clear, cumulative record of diversion for hotel leaders, guests, and event planners.',
 		},
 		{
 			title: 'Can guests take part?',
@@ -736,7 +727,7 @@ const CircularFoodSystems = () => {
 		},
 		{
 			title: 'Can events participate?',
-			body: 'Qualifying meetings and celebrations can request dedicated tracking and a post-event impact recap.',
+			body: 'Ask the hotel’s events team about food-waste tracking for your gathering.',
 			requiresEvents: true,
 		},
 	].filter((card) => (card.requiresEvents ? eventsEnabled : true));
@@ -761,8 +752,18 @@ const CircularFoodSystems = () => {
 					},
 				}}>
 				<Box sx={{ textAlign: 'center' }}>
-					<Typography className='micro-label' sx={{ mb: { xs: 2, md: 2.5 } }}>
-						CIRCULAR HOSPITALITY, ROOTED IN SAVANNAH
+					<Typography
+						sx={{
+							fontFamily: FONT_HEADING,
+							fontStyle: 'italic',
+							fontWeight: 400,
+							fontSize: { xs: '18px', md: '22px' },
+							letterSpacing: '0.01em',
+							lineHeight: 1.4,
+							color: DARK_SLATE,
+							mb: { xs: 1.5, md: 2 },
+						}}>
+						Welcome to Sustainability at
 					</Typography>
 					<Typography
 						component='h1'
@@ -772,13 +773,14 @@ const CircularFoodSystems = () => {
 							fontWeight: 500,
 							letterSpacing: '-0.02em',
 							lineHeight: 1.12,
+							textTransform: 'uppercase',
 							color: DARK_SLATE,
 							maxWidth: 920,
 							mx: 'auto',
 							mb: { xs: 2.25, md: 3 },
 							textWrap: 'balance',
 						}}>
-						Where Thoughtful Hospitality Comes Full Circle.
+						THE RITZ-CARLTON, PENTAGON CITY
 					</Typography>
 					<Typography
 						sx={{
@@ -790,10 +792,10 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 0,
 						}}>
-						At The Ritz-Carlton, Pentagon City, sustainability is woven into the guest experience. Food waste generated
-						across the property is processed on site through BioGreen360, measured through live reporting,
-						and transformed with local partners into soil that can return to our gardens and the broader
-						community.
+						Sustainability is built into daily operations at The Ritz-Carlton, Pentagon City. Food waste
+						generated across the property is processed on site through BioGreen360 and measured through live
+						reporting, giving guests, meeting planners, and hotel leaders a clear, ongoing view of the
+						results.
 					</Typography>
 					<Box
 						sx={{
@@ -813,16 +815,12 @@ const CircularFoodSystems = () => {
 								columnGap: 1,
 								rowGap: 0.75,
 							}}>
-							<Box component='span'>100% FOOD-WASTE DIVERSION</Box>
+							<Box component='span'>ON-SITE FOOD-WASTE PROCESSING</Box>
 							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
 								•
 							</Box>
 							{/* TODO(FLAG): Micro-label copy pending RCPC approval — former "SOIL RETURNED TO PERRY LANE". */}
-							<Box component='span'>SOIL RETURNED TO THE PROPERTY</Box>
-							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
-								•
-							</Box>
-							<Box component='span'>EVENT IMPACT REPORTING</Box>
+							<Box component='span'>LIVE BIOGREEN360 REPORTING</Box>
 						</Typography>
 					</Box>
 				</Box>
@@ -889,21 +887,21 @@ const CircularFoodSystems = () => {
 							system.
 						</Box>
 						<Box component='li' sx={{ mb: 1 }}>
-							A portion of the resulting{' '}
+							Progress is shared through{' '}
 							<Box
 								component='a'
-								href='#how-it-works'
+								href='#impact'
 								onClick={(event) => {
 									event.preventDefault();
-									scrollToSection('how-it-works');
+									scrollToSection('impact');
 								}}
 								sx={SENTENCE_LINK_SX}>
-								soil returns
-							</Box>{' '}
-							to the property’s herb garden and landscaping.
+								live reporting
+							</Box>
+							, giving leaders and guests a clear view of diversion results.
 						</Box>
 						<Box component='li'>
-							Qualifying gatherings can receive dedicated tracking and a{' '}
+							Ask the hotel’s{' '}
 							<Box
 								component='a'
 								href='#events'
@@ -912,9 +910,9 @@ const CircularFoodSystems = () => {
 									scrollToSection('events');
 								}}
 								sx={SENTENCE_LINK_SX}>
-								post-event impact recap
-							</Box>
-							.
+								events team
+							</Box>{' '}
+							about food-waste tracking for your gathering.
 						</Box>
 					</Box>
 				</Box>
@@ -949,8 +947,8 @@ const CircularFoodSystems = () => {
 							maxWidth: 840,
 							mb: { xs: 3, md: 3.5 },
 						}}>
-						From the kitchen to the garden, The Ritz-Carlton, Pentagon City’s circular approach connects daily operations, guest
-						experiences, and memorable gatherings.
+						From daily operations to memorable gatherings, The Ritz-Carlton, Pentagon City’s circular approach
+						connects culinary teams, guests, and event planners.
 					</Typography>
 				</Box>
 				<Box
@@ -1268,9 +1266,9 @@ const CircularFoodSystems = () => {
 								maxWidth: 680,
 								mb: { xs: 3, md: 3.5 },
 							}}>
-							The Ritz-Carlton, Pentagon City’s collaboration with BioGreen360 connects on-site food-waste processing, live
-							measurement, and local soil creation in one circular program. The result supports daily hotel
-							operations while extending the impact back into the property’s gardens and guest experience.
+							The partnership between The Ritz-Carlton, Pentagon City and BioGreen360 connects on-site
+							food-waste processing with live measurement, giving hotel leaders, guests, and event planners a
+							clear view of the impact created each day.
 						</Typography>
 
 						<Typography
@@ -1293,8 +1291,8 @@ const CircularFoodSystems = () => {
 								maxWidth: 680,
 								mb: { xs: 2.5, md: 3 },
 							}}>
-							The program works alongside The Ritz-Carlton, Pentagon City’s culinary and banquet teams, helping divert food
-							waste while giving hotel leaders, guests, and event planners a clearer view of the impact.
+							The program works alongside the property’s culinary and banquet teams, helping divert food
+							waste while giving hotel leaders, guests, and event planners a clearer view of the results.
 						</Typography>
 
 						<Box
@@ -1340,45 +1338,6 @@ const CircularFoodSystems = () => {
 									</Box>
 								);
 							})}
-						</Box>
-
-						<Typography
-							component='h3'
-							sx={{
-								fontFamily: FONT_HEADING,
-								fontSize: { xs: '22px', md: '24px' },
-								fontWeight: 500,
-								color: DARK_SLATE,
-								letterSpacing: '-0.012em',
-								mb: 1.25,
-							}}>
-							From The Ritz-Carlton, Pentagon City, Back to The Ritz-Carlton, Pentagon City
-						</Typography>
-						<Typography
-							sx={{
-								fontSize: '16px',
-								color: BODY_TEXT,
-								lineHeight: 1.75,
-								maxWidth: 680,
-								mb: 2,
-							}}>
-							A portion of the soil created with local partners returns to the property, nourishing The
-							Ritz-Carlton, Pentagon City’s herb garden and landscaping and extending the story from kitchen to garden.
-						</Typography>
-						<Box
-							component='a'
-							href='#methodology'
-							onClick={(event) => {
-								event.preventDefault();
-								scrollToSection('methodology');
-							}}
-							className='lux-link lux-link--internal'
-							sx={{
-								fontSize: '12px',
-								letterSpacing: '0.08em',
-								textTransform: 'uppercase',
-							}}>
-							View processing definitions and methodology
 						</Box>
 					</Box>
 
@@ -1450,7 +1409,7 @@ const CircularFoodSystems = () => {
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Typography className='micro-label' sx={{ textAlign: 'center', mb: 1.5 }}>
-					FROM KITCHEN TO GARDEN
+					FROM CAPTURE TO IMPACT
 				</Typography>
 				<Typography
 					id='how-it-works-heading'
@@ -1475,8 +1434,8 @@ const CircularFoodSystems = () => {
 						mx: 'auto',
 						mb: { xs: 4, md: 5.5 },
 					}}>
-					The Ritz-Carlton, Pentagon City’s program follows a measurable path from daily hotel operations to locally created soil,
-					with a portion returning to nourish the property.
+					The Ritz-Carlton, Pentagon City’s program follows a measurable path from daily hotel operations
+					through on-site processing and live reporting.
 				</Typography>
 
 				<Box
@@ -1644,8 +1603,8 @@ const CircularFoodSystems = () => {
 						</Typography>
 						<Typography
 							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 2 }}>
-							The cycle continues beyond processing: a portion of the soil created with local partners comes
-							back to nourish the herb garden and landscaping that shape The Ritz-Carlton, Pentagon City experience.
+							Measured results help hotel leaders, guests, and event planners see the impact created through
+							daily operations.
 						</Typography>
 						<Box
 							component='a'
@@ -1910,9 +1869,9 @@ const CircularFoodSystems = () => {
 								mb: 1.25,
 								maxWidth: 560,
 							}}>
-							From rooftop celebrations to inspired business gatherings, The Ritz-Carlton, Pentagon City pairs gracious
-							Arlington, Virginia hospitality with a more thoughtful approach to food waste. Qualifying events can
-							include dedicated tracking and a tailored post-event impact recap.
+							The Ritz-Carlton, Pentagon City pairs refined event spaces with a thoughtful approach to food
+							waste, supporting everything from executive meetings and galas to weddings just minutes from
+							Washington, D.C.
 						</Typography>
 						<Typography
 							sx={{
@@ -1923,8 +1882,8 @@ const CircularFoodSystems = () => {
 								mb: 2.5,
 								maxWidth: 560,
 							}}>
-							Participation is coordinated in advance so menus, service plans, and reporting scope can be
-							aligned with the hotel’s events team.
+							Coordination happens in advance with the hotel’s events team so menus, service plans, and
+							reporting scope can be aligned to your gathering.
 						</Typography>
 						<Box
 							sx={{
@@ -2079,6 +2038,7 @@ const CircularFoodSystems = () => {
 					))}
 				</Box>
 
+				{/* TODO(FLAG): Confirm event-specific tracking/recap is currently offered at RCPC before publishing this card's claims. */}
 				<Box
 					sx={{
 						...cardEmphasizedSx,
