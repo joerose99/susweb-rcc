@@ -1,11 +1,11 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import ritzCarltonPentagonCityLogo from '../assets/ritz-carlton-pentagon-city-logo.png';
-import { CORAL_LINK, SURFACE_WHITE } from '../theme/tokens';
+import { CORAL_LINK } from '../theme/tokens';
 
 /**
  * The Ritz-Carlton, Pentagon City header lockup.
- * White logo plate keeps the mark legible on the Dark Slate header.
+ * White mark on transparent ground, sized for the black sticky header.
  */
 const PropertyLockup = ({ onNavigateHome }) => {
 	const handleClick = (event) => {
@@ -31,10 +31,6 @@ const PropertyLockup = ({ onNavigateHome }) => {
 				minWidth: 0,
 				maxWidth: '100%',
 				lineHeight: 0,
-				backgroundColor: SURFACE_WHITE,
-				borderRadius: '0px',
-				px: { xs: 1, md: 1.25 },
-				py: { xs: 0.5, md: 0.65 },
 				'&:focus-visible': {
 					outline: `2px solid ${CORAL_LINK}`,
 					outlineOffset: 4,
@@ -46,7 +42,7 @@ const PropertyLockup = ({ onNavigateHome }) => {
 				src={ritzCarltonPentagonCityLogo}
 				alt='The Ritz-Carlton, Pentagon City logo with lion-and-crown crest above the hotel name.'
 				sx={{
-					height: { xs: 44, md: 52 },
+					height: { xs: 52, md: 64 },
 					width: 'auto',
 					maxWidth: { xs: 200, sm: 240, md: 280 },
 					display: 'block',
