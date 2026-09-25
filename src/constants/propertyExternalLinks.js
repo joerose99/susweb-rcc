@@ -28,10 +28,9 @@ export const HEADER_DESKTOP_MIN_WIDTH = 1280;
 export const HEADER_SCROLL_MARGIN = { xs: '88px', md: '96px' };
 
 export const HEADER_NAV_ITEMS = [
-	{ label: 'Impact', href: '#impact', sectionId: 'impact' },
-	{ label: 'BioGreen360', href: '#biogreen360', sectionId: 'biogreen360' },
 	{ label: 'How It Works', href: '#how-it-works', sectionId: 'how-it-works' },
+	{ label: 'Impact', href: '#impact', sectionId: 'impact' },
 	{ label: 'Events', href: '#events', sectionId: 'events' },
 	{ label: 'Initiatives', href: '#initiatives', sectionId: 'initiatives' },
-	{ label: 'Methodology', href: '#methodology', sectionId: 'methodology' },
+	{ label: 'BioGreen360', href: '#biogreen360', sectionId: 'biogreen360' },
 ];

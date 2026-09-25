@@ -26,7 +26,6 @@ import howItWorksSproutIcon from '../../assets/how-it-works-sprout.png';
 import howItWorksReportIcon from '../../assets/how-it-works-report.png';
 import lionEquivalencyIcon from '../../assets/lion-equivalency.png';
 import footballFieldEquivalencyIcon from '../../assets/football-field-equivalency.png';
-import heroRitzCarltonPentagonCityImage from '../../assets/hero-ritz-carlton-pentagon-city.png';
 import eventsRitzCarltonPentagonCityImage from '../../assets/events-ritz-carlton-pentagon-city.png';
 import biogreen360PartnershipImage from '../../assets/biogreen360-partnership-ritz-carlton-pentagon-city.png';
 import howItWorksRitzCarltonPentagonCityImage from '../../assets/how-it-works-ritz-carlton-pentagon-city.png';
@@ -35,7 +34,6 @@ import {
 	BIOGREEN360_URL,
 	HEADER_SCROLL_MARGIN,
 	PROPERTY_EVENTS_INQUIRY_URL,
-	PROPERTY_RESERVATIONS_URL,
 } from '../../constants/propertyExternalLinks';
 import {
 	BODY_TEXT,
@@ -46,7 +44,6 @@ import {
 	FONT_HEADING,
 	MUTED_TEXT,
 	PALE_SAGE_BG,
-	RADIUS_CARD,
 	RADIUS_IMAGE,
 	SAGE_ACCENT,
 	SAGE_SOFT,
@@ -60,7 +57,6 @@ import {
 	containerSx,
 	pageThemeSx,
 	primaryButtonSx,
-	secondaryButtonSx,
 	sectionBandColorSx,
 	sectionContainerSx,
 } from '../../theme/tokens';
@@ -107,39 +103,10 @@ const EVENT_PROPERTY_FACTS = [
 	{ value: '~7,200 Sq. Ft.', label: 'Grand Ballroom' },
 ];
 
-const BIOGREEN_LINK_SX = {
-	color: 'inherit',
-	textDecoration: 'none',
-	cursor: 'pointer',
-	transition: 'color 160ms ease, text-decoration-color 160ms ease',
-	'&:hover': {
-		color: CORAL_LINK,
-		textDecoration: 'underline',
-		textDecorationColor: 'rgba(156, 122, 60, 0.55)',
-		textUnderlineOffset: '2px',
-	},
-	'&:focus-visible': {
-		outline: `2px solid ${CORAL_LINK}`,
-		outlineOffset: '2px',
-		borderRadius: '0px',
-	},
-};
-
-const BioGreenLink = () => (
-	<Box
-		component='a'
-		href={BIOGREEN360_URL}
-		target='_blank'
-		rel='noopener noreferrer'
-		sx={BIOGREEN_LINK_SX}>
-		BioGreen360
-	</Box>
-);
 
 const siteConfig = {
 	eventsEnabled: true,
 	restaurantEnabled: true,
-	bookingUrl: PROPERTY_RESERVATIONS_URL,
 	processingPathwayMode: 'mixed',
 	eventTrackingMode: 'by_request',
 	showEquivalencies: true,
@@ -531,7 +498,7 @@ const CircularFoodSystems = () => {
 		}
 	};
 
-	const { eventsEnabled, showEquivalencies } = siteConfig;
+	const { showEquivalencies } = siteConfig;
 
 	const partnershipCapabilities = [
 		{
@@ -548,7 +515,7 @@ const CircularFoodSystems = () => {
 		},
 	];
 
-	const PROCESS_CIRCLE_FILL = SOFT_NEUTRAL;
+	const PROCESS_CIRCLE_FILL = SURFACE_WHITE;
 
 	const primaryProcessingSteps = [
 		{
@@ -707,25 +674,6 @@ const CircularFoodSystems = () => {
 	const lastUpdatedLabel = formattedLastSync ?? 'Last sync: unavailable';
 	const formattedStatLastUpdate = formatLastSync(statLastUpdate);
 	const lastUpdatedDisplay = formattedStatLastUpdate ?? lastUpdatedLabel;
-	const programAtAGlanceCards = [
-		{
-			title: 'What happens to food waste?',
-			body: 'Food waste generated across the property is diverted through the on-site BioGreen360 system.',
-		},
-		{
-			title: 'How is progress shared?',
-			body: 'Live measurement creates a clear, cumulative record of diversion for hotel leaders, guests, and event planners.',
-		},
-		{
-			title: 'Can guests take part?',
-			body: 'Every stay supports the program. Food waste from dining and events across the hotel is diverted through the same on-site system reported live below.',
-		},
-		{
-			title: 'Can events participate?',
-			body: 'Ask the hotel’s events team about food-waste tracking for your gathering.',
-			requiresEvents: true,
-		},
-	].filter((card) => (card.requiresEvents ? eventsEnabled : true));
 
 	return (
 		<Box
@@ -825,32 +773,6 @@ const CircularFoodSystems = () => {
 
 				<Box
 					sx={{
-						width: '100%',
-						maxWidth: 1120,
-						mx: 'auto',
-						mt: { xs: 4, md: 5.5 },
-						mb: 0,
-					}}>
-					<Box
-						component='img'
-						src={heroRitzCarltonPentagonCityImage}
-						alt='The Ritz-Carlton, Pentagon City exterior at twilight, with illuminated facade lettering and entrance porte-cochère.'
-						sx={{
-							width: '100%',
-							aspectRatio: { xs: '16 / 10', md: '16 / 9' },
-							minHeight: { xs: 220, md: 360 },
-							objectFit: 'cover',
-							objectPosition: 'center',
-							borderRadius: RADIUS_IMAGE,
-							border: `1px solid ${BORDER_LIGHT}`,
-							boxShadow: SHADOW_IMAGE,
-							display: 'block',
-						}}
-					/>
-				</Box>
-
-				<Box
-					sx={{
 						maxWidth: 900,
 						mx: 'auto',
 						mt: { xs: 3, md: 4 },
@@ -916,100 +838,152 @@ const CircularFoodSystems = () => {
 				</Box>
 			</Box>
 
-			{/* Program at a Glance — Soft Neutral */}
+			{/* How it Works — White */}
 			<Box
-				className='section section--alt'
+				id='how-it-works'
+				component='section'
+				aria-labelledby='how-it-works-heading'
+				className='section section--base'
 				sx={{
 					...sectionContainerSx,
 					...sectionBandColorSx(SOFT_NEUTRAL),
-					pt: { xs: '48px', md: '64px' },
+					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
-				<Box sx={{ mt: 0 }}>
-					<Typography
-						component='h2'
-						sx={{
-							fontFamily: FONT_HEADING,
-							fontSize: { xs: '28px', md: '34px' },
-							fontWeight: 500,
-							color: DARK_SLATE,
-							mb: { xs: 1.5, md: 2 },
-							textAlign: 'left',
-						}}>
-						A More Thoughtful Stay, By Design
-					</Typography>
-					<Typography
-						sx={{
-							fontSize: { xs: '16px', md: '17px' },
-							color: BODY_TEXT,
-							lineHeight: 1.75,
-							maxWidth: 840,
-							mb: { xs: 3, md: 3.5 },
-						}}>
-						From daily operations to memorable gatherings, The Ritz-Carlton, Pentagon City’s circular approach
-						connects culinary teams, guests, and event planners.
-					</Typography>
+				<Typography className='micro-label' sx={{ textAlign: 'center', mb: 1.5 }}>
+					FROM CAPTURE TO IMPACT
+				</Typography>
+				<Typography
+					id='how-it-works-heading'
+					component='h2'
+					sx={{
+						fontFamily: FONT_HEADING,
+						fontSize: { xs: '28px', md: '34px' },
+						fontWeight: 500,
+						textAlign: 'center',
+						color: DARK_SLATE,
+						mb: { xs: 1.75, md: 2.25 },
+					}}>
+					How Food Waste Comes Full Circle
+				</Typography>
+				<Typography
+					sx={{
+						fontSize: { xs: '16px', md: '17px' },
+						color: BODY_TEXT,
+						lineHeight: 1.75,
+						textAlign: 'center',
+						maxWidth: 760,
+						mx: 'auto',
+						mb: { xs: 4, md: 5.5 },
+					}}>
+					The Ritz-Carlton, Pentagon City’s program follows a measurable path from daily hotel operations
+					through on-site processing and live reporting.
+				</Typography>
+
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: { xs: 'column', md: 'row' },
+						flexWrap: { xs: 'nowrap', md: 'nowrap' },
+						justifyContent: 'center',
+						alignItems: { xs: 'center', md: 'flex-start' },
+						gap: { xs: 3.5, md: 0 },
+					}}>
+					{primaryProcessingSteps.map((step, index) => (
+						<React.Fragment key={step.title}>
+							<Box
+								sx={{
+									display: 'flex',
+									flexDirection: 'column',
+									alignItems: 'center',
+									flex: { xs: '0 0 auto', md: '1 1 0' },
+									width: { xs: '100%', md: 'auto' },
+									minWidth: { xs: 0, md: 0 },
+									px: { md: 1 },
+									textAlign: 'center',
+								}}>
+								<Box
+									sx={{
+										width: { xs: 116, md: 128 },
+										height: { xs: 116, md: 128 },
+										flexShrink: 0,
+										borderRadius: '50%',
+										border: `2px solid ${SUSTAINABILITY_GREEN}`,
+										backgroundColor: PROCESS_CIRCLE_FILL,
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'center',
+										mb: { xs: 2, md: 2.5 },
+										overflow: 'hidden',
+									}}>
+									{step.icon}
+								</Box>
+								<Typography
+									component='h3'
+									sx={{
+										fontFamily: FONT_HEADING,
+										fontSize: { xs: '17px', md: '18px' },
+										fontWeight: 500,
+										letterSpacing: '-0.01em',
+										lineHeight: 1.35,
+										color: DARK_SLATE,
+										mb: 1,
+										maxWidth: 220,
+									}}>
+									{step.title}
+								</Typography>
+								<Typography
+									sx={{
+										fontSize: '14px',
+										lineHeight: 1.65,
+										color: BODY_TEXT,
+										maxWidth: 230,
+										mx: 'auto',
+									}}>
+									{step.description}
+								</Typography>
+							</Box>
+							{index < 3 && (
+								<Box
+									aria-hidden='true'
+									sx={{
+										display: { xs: 'none', md: 'flex' },
+										alignItems: 'center',
+										justifyContent: 'center',
+										flexShrink: 0,
+										px: 1.25,
+										height: { md: 128 },
+									}}>
+									<ArrowForwardIcon
+										sx={{ color: SUSTAINABILITY_GREEN, fontSize: 34 }}
+										aria-hidden='true'
+									/>
+								</Box>
+							)}
+						</React.Fragment>
+					))}
 				</Box>
 				<Box
 					sx={{
-						display: 'grid',
-						gridTemplateColumns: {
-							xs: '1fr',
-							sm: 'repeat(2, minmax(0, 1fr))',
-							lg: 'repeat(4, minmax(0, 1fr))',
-						},
-						gap: { xs: 1.75, sm: 2 },
-						alignItems: 'stretch',
+						mt: { xs: 6, md: 8.5 },
+						width: '100%',
+						maxWidth: 960,
+						mx: 'auto',
 					}}>
-					{programAtAGlanceCards.map((card) => (
-						<Box
-							key={card.title}
-							sx={{
-								backgroundColor: SURFACE_WHITE,
-								border: `1px solid ${BORDER_LIGHT}`,
-								borderRadius: RADIUS_CARD,
-								boxShadow: 'none',
-								p: { xs: 2, md: 2.25 },
-								display: 'flex',
-								flexDirection: 'column',
-								minHeight: { xs: 'auto', md: 168 },
-								height: '100%',
-							}}>
-							<Typography
-								component='h3'
-								sx={{
-									fontFamily: FONT_HEADING,
-									fontSize: { xs: '18px', md: '19px' },
-									fontWeight: 500,
-									letterSpacing: '-0.012em',
-									lineHeight: 1.3,
-									color: DARK_SLATE,
-									mb: 1.25,
-									minHeight: { md: '2.6em' },
-								}}>
-								{card.title}
-							</Typography>
-							<Typography sx={{ fontSize: '14px', color: BODY_TEXT, lineHeight: 1.65 }}>
-								{card.body}
-							</Typography>
-						</Box>
-					))}
-				</Box>
-				<Box sx={{ mt: { xs: 2.5, md: 3 } }}>
 					<Box
-						component='a'
-						href='#methodology'
-						onClick={(event) => {
-							event.preventDefault();
-							scrollToSection('methodology');
-						}}
-						className='lux-link lux-link--internal'
+						component='img'
+						src={howItWorksRitzCarltonPentagonCityImage}
+						alt='Shared gourmet dishes on a dark wood table, including dips with pita, seafood plates, and guests dining together.'
 						sx={{
-							fontSize: '13px',
-							letterSpacing: '0.06em',
-							textTransform: 'uppercase',
-						}}>
-						View methodology
-					</Box>
+							width: '100%',
+							aspectRatio: { xs: '16 / 10', md: '16 / 9' },
+							objectFit: 'cover',
+							objectPosition: 'center',
+							borderRadius: RADIUS_IMAGE,
+							border: `1px solid ${BORDER_LIGHT}`,
+							boxShadow: SHADOW_IMAGE,
+							display: 'block',
+						}}
+					/>
 				</Box>
 			</Box>
 
@@ -1022,6 +996,7 @@ const CircularFoodSystems = () => {
 				sx={{
 					...sectionContainerSx,
 					...sectionBandColorSx(PALE_SAGE_BG),
+					pb: { xs: '28px', md: '36px' },
 					scrollMarginTop: HEADER_SCROLL_MARGIN,
 				}}>
 				<Box
@@ -1136,8 +1111,178 @@ const CircularFoodSystems = () => {
 						);
 					})}
 				</Box>
+			</Box>
 
-				<Box sx={{ textAlign: 'center', mt: 2.25 }}>
+			{/* Live Sustainability Impact Reporting — flat pale band */}
+			<Box
+				id='live-reporting'
+				component='section'
+				aria-labelledby='live-reporting-heading'
+				className='section section--base live-reporting-section lsir-section'
+				sx={{
+					...sectionContainerSx,
+					...sectionBandColorSx(PALE_SAGE_BG, 'transparent'),
+					pt: { xs: '28px', md: '36px' },
+					pb: { xs: '48px', md: '64px' },
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'stretch',
+					scrollMarginTop: HEADER_SCROLL_MARGIN,
+					'& .lsir-card-value': { color: DARK_SLATE },
+				}}>
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: { xs: 'column', sm: 'row' },
+						flexWrap: 'wrap',
+						justifyContent: 'space-between',
+						alignItems: { xs: 'flex-start', sm: 'baseline' },
+						gap: 1.5,
+						mb: 1,
+					}}>
+					<Box sx={{ minWidth: 0 }}>
+						<Typography className='micro-label' sx={{ mb: 1.25 }}>
+							IMPACT EQUIVALENCIES
+						</Typography>
+						<Typography
+							id='live-reporting-heading'
+							component='h2'
+							sx={{
+								fontFamily: FONT_HEADING,
+								fontSize: { xs: '28px', md: '34px' },
+								fontWeight: 500,
+								color: DARK_SLATE,
+							}}>
+							Putting the Numbers in Perspective
+						</Typography>
+					</Box>
+				</Box>
+				<Typography
+					sx={{
+						fontSize: '15px',
+						color: BODY_TEXT,
+						lineHeight: 1.7,
+						maxWidth: 880,
+						mb: 2.5,
+					}}>
+					These comparisons translate cumulative program results into familiar reference points.
+				</Typography>
+
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: { xs: 'column', md: 'row' },
+						alignItems: 'stretch',
+						justifyContent: 'space-between',
+						borderTop: `1px solid ${BORDER_LIGHT}`,
+						borderBottom: `1px solid ${BORDER_LIGHT}`,
+						py: { xs: 0.5, md: 2.5 },
+					}}>
+					{equivalencyCardsToRender.map((card, idx) => {
+						const Icon = card.icon;
+						const columnCount = equivalencyCardsToRender.length;
+						const isNotLast = idx < columnCount - 1;
+						return (
+							<Box
+								key={card.label}
+								sx={{
+									flex: { md: '1 1 0' },
+									width: { xs: '100%', md: 'auto' },
+									minWidth: { md: 0 },
+									px: { xs: 0, md: 3 },
+									py: { xs: 2.25, md: 1.5 },
+									textAlign: 'center',
+									borderRight: isNotLast
+										? { xs: 'none', md: `1px solid ${BORDER_LIGHT}` }
+										: 'none',
+									borderBottom: isNotLast
+										? { xs: `1px solid ${BORDER_LIGHT}`, md: 'none' }
+										: 'none',
+								}}>
+								<Typography className='micro-label lsir-card-title' sx={{ mb: 0.75, display: 'block' }}>
+									{card.label}
+								</Typography>
+								<Box
+									sx={{
+										display: 'flex',
+										justifyContent: 'center',
+										alignItems: 'center',
+										width: '100%',
+										minHeight: 48,
+										mb: 1,
+										lineHeight: 0,
+									}}>
+									{card.iconImage ? (
+										<Box
+											aria-hidden='true'
+											sx={{
+												width: card.iconSize || { xs: 70, md: 80 },
+												height: card.iconSize || { xs: 70, md: 80 },
+												backgroundColor: card.iconColor || SUSTAINABILITY_GREEN,
+												maskImage: `url(${card.iconImage})`,
+												maskSize: 'contain',
+												maskRepeat: 'no-repeat',
+												maskPosition: 'center',
+												WebkitMaskImage: `url(${card.iconImage})`,
+												WebkitMaskSize: 'contain',
+												WebkitMaskRepeat: 'no-repeat',
+												WebkitMaskPosition: 'center',
+											}}
+										/>
+									) : (
+										<Icon
+											aria-hidden='true'
+											sx={{
+												fontSize: { xs: 70, md: 80 },
+												color: card.iconColor || REPORTING_ICON_COLOR,
+											}}
+										/>
+									)}
+								</Box>
+								<Typography
+									component='p'
+									className='lsir-card-value'
+									sx={{
+										fontFamily: FONT_HEADING,
+										fontSize: { xs: '24px', md: '28px' },
+										fontWeight: 500,
+										letterSpacing: '-0.015em',
+										lineHeight: 1.25,
+										px: 0.5,
+										overflowWrap: 'break-word',
+										hyphens: 'auto',
+										m: 0,
+									}}>
+									{card.value}
+								</Typography>
+								<Typography
+									sx={{
+										fontSize: '12px',
+										color: MUTED_TEXT,
+										lineHeight: 1.5,
+										mt: 1,
+										maxWidth: 280,
+										mx: 'auto',
+									}}>
+									{card.note}
+								</Typography>
+							</Box>
+						);
+					})}
+				</Box>
+
+				<Typography
+					sx={{
+						fontSize: '12px',
+						color: MUTED_TEXT,
+						lineHeight: 1.65,
+						mt: { xs: 2.25, md: 2.5 },
+						maxWidth: 660,
+					}}>
+					{equivalencyDisclaimer}
+				</Typography>
+
+				<Box sx={{ textAlign: 'center', mt: { xs: 3, md: 3.5 } }}>
 					<Typography className='micro-label' sx={{ mb: 0.5 }}>
 						LIVE REPORTING POWERED BY
 					</Typography>
@@ -1164,24 +1309,542 @@ const CircularFoodSystems = () => {
 						/>
 					</Box>
 				</Box>
+			</Box>
 
-				<Box sx={{ textAlign: 'center', mt: 1.5 }}>
-					<Box
-						component='a'
-						href='#methodology'
-						onClick={(event) => {
-							event.preventDefault();
-							scrollToSection('methodology');
-						}}
-						className='lux-link lux-link--internal'
-						sx={{
-							fontSize: '11px',
-							letterSpacing: '0.08em',
-							textTransform: 'uppercase',
-						}}>
-						Methodology
-					</Box>
+			{/* How a Zero Food Waste Event Works — White */}
+			<Box
+				id='events'
+				component='section'
+				aria-labelledby='zero-food-waste-event-heading'
+				className='section section--alt'
+				sx={{
+					...sectionContainerSx,
+					...sectionBandColorSx(SURFACE_WHITE),
+					scrollMarginTop: HEADER_SCROLL_MARGIN,
+				}}>
+				<Typography className='micro-label' sx={{ textAlign: 'center', mb: 1.5 }}>
+					ZERO FOOD WASTE EVENTS AVAILABLE FOR EVERY GATHERING
+				</Typography>
+				<Typography
+					id='zero-food-waste-event-heading'
+					component='h2'
+					sx={{
+						fontFamily: FONT_HEADING,
+						fontSize: { xs: '26px', md: '30px' },
+						fontWeight: 500,
+						letterSpacing: '-0.015em',
+						color: DARK_SLATE,
+						textAlign: 'center',
+						mb: { xs: 4, md: 5.5 },
+					}}>
+					How a Zero Food Waste Event Works
+				</Typography>
+
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: { xs: 'column', md: 'row' },
+						flexWrap: { xs: 'nowrap', md: 'nowrap' },
+						justifyContent: 'center',
+						alignItems: { xs: 'center', md: 'flex-start' },
+						gap: { xs: 3.5, md: 0 },
+						mb: { xs: 4.5, md: 5.5 },
+					}}>
+					{eventFlowSteps.map((step, idx) => (
+						<React.Fragment key={step.title}>
+							<Box
+								sx={{
+									display: 'flex',
+									flexDirection: 'column',
+									alignItems: 'center',
+									flex: { xs: '0 0 auto', md: '1 1 0' },
+									width: { xs: '100%', md: 'auto' },
+									minWidth: { xs: 0, md: 0 },
+									px: { md: 1 },
+									textAlign: 'center',
+								}}>
+								<Box
+									sx={{
+										width: { xs: 116, md: 128 },
+										height: { xs: 116, md: 128 },
+										flexShrink: 0,
+										borderRadius: '50%',
+										border: `2px solid ${SUSTAINABILITY_GREEN}`,
+										backgroundColor: PROCESS_CIRCLE_FILL,
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'center',
+										mb: { xs: 2, md: 2.5 },
+										overflow: 'hidden',
+									}}>
+									{step.icon}
+								</Box>
+								<Typography
+									component='h4'
+									sx={{
+										fontFamily: FONT_HEADING,
+										fontSize: { xs: '17px', md: '18px' },
+										fontWeight: 500,
+										letterSpacing: '-0.01em',
+										lineHeight: 1.35,
+										color: DARK_SLATE,
+										mb: 1,
+										maxWidth: 240,
+									}}>
+									{step.title}
+								</Typography>
+								<Typography
+									sx={{
+										fontSize: '14px',
+										lineHeight: 1.65,
+										color: BODY_TEXT,
+										maxWidth: 250,
+										mx: 'auto',
+									}}>
+									{step.description}
+								</Typography>
+							</Box>
+							{idx < 2 && (
+								<Box
+									aria-hidden='true'
+									sx={{
+										display: { xs: 'none', md: 'flex' },
+										alignItems: 'center',
+										justifyContent: 'center',
+										flexShrink: 0,
+										px: 1.25,
+										height: { md: 128 },
+									}}>
+									<ArrowForwardIcon
+										sx={{ color: SUSTAINABILITY_GREEN, fontSize: 34 }}
+										aria-hidden='true'
+									/>
+								</Box>
+							)}
+						</React.Fragment>
+					))}
 				</Box>
+
+				<Box
+					sx={{
+						...cardEmphasizedSx,
+						backgroundColor: SURFACE_WHITE,
+						p: { xs: 2.5, md: 3 },
+						maxWidth: 720,
+						mx: 'auto',
+						mb: { xs: 3, md: 4 },
+					}}>
+					<Typography className='micro-label' sx={{ mb: 1 }}>
+						YOUR EVENT IMPACT RECAP
+					</Typography>
+					<Typography
+						component='h3'
+						sx={{
+							fontFamily: FONT_HEADING,
+							fontSize: { xs: '22px', md: '24px' },
+							fontWeight: 500,
+							mb: 1.5,
+							letterSpacing: '-0.012em',
+							color: DARK_SLATE,
+						}}>
+						Your Event, Thoughtfully Measured.
+					</Typography>
+					<Box component='ul' sx={{ m: 0, p: 0, listStyle: 'none' }}>
+						{eventPlannerDeliverables.map((item) => (
+							<Box
+								component='li'
+								key={item}
+								sx={{
+									display: 'flex',
+									alignItems: 'flex-start',
+									gap: 1.1,
+									fontSize: '14px',
+									lineHeight: 1.7,
+									color: BODY_TEXT,
+									mb: 0.85,
+								}}>
+								<CheckCircleOutlineIcon
+									aria-hidden='true'
+									sx={{
+										color: SUSTAINABILITY_GREEN,
+										fontSize: 20,
+										mt: '2px',
+										flexShrink: 0,
+									}}
+								/>
+								<span>{item}</span>
+							</Box>
+						))}
+					</Box>
+					<Typography
+						sx={{
+							fontSize: '13px',
+							color: MUTED_TEXT,
+							lineHeight: 1.65,
+							mt: 1.75,
+						}}>
+						Designed to support internal reviews, stakeholder communications, and meaningful post-event
+						storytelling.
+					</Typography>
+				</Box>
+			</Box>
+			{/* Events — Celebrate */}
+			<Box
+				component='section'
+				aria-labelledby='events-heading'
+				className='section section--base'
+				sx={{
+					...sectionContainerSx,
+					...sectionBandColorSx(SOFT_NEUTRAL),
+					scrollMarginTop: HEADER_SCROLL_MARGIN,
+				}}>
+				<Box
+					sx={{
+						display: 'grid',
+						gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 1.1fr) minmax(0, 0.95fr)' },
+						gap: { xs: 3, md: 5 },
+						alignItems: 'start',
+						mb: { xs: 3, md: 4 },
+					}}>
+					<Box>
+						<Typography className='micro-label' sx={{ mb: 1.5 }}>
+							ZERO FOOD WASTE EVENTS
+						</Typography>
+						<Typography
+							id='events-heading'
+							component='h2'
+							sx={{
+								fontFamily: FONT_HEADING,
+								fontSize: { xs: '28px', md: '34px' },
+								fontWeight: 500,
+								color: DARK_SLATE,
+								mb: 1.75,
+							}}>
+							Celebrate Beautifully. Measure What Matters.
+						</Typography>
+						<Typography
+							sx={{
+								fontSize: '16px',
+								fontWeight: 400,
+								color: BODY_TEXT,
+								lineHeight: 1.8,
+								mb: 1.25,
+								maxWidth: 560,
+							}}>
+							Every meeting, gala, and wedding at The Ritz-Carlton, Pentagon City can be hosted as a Zero
+							Food Waste Event — a fully tracked program that diverts food waste generated during your
+							gathering through our on-site BioGreen360 system, with results measured from first course to
+							last.
+						</Typography>
+						<Typography
+							sx={{
+								fontSize: '16px',
+								fontWeight: 400,
+								color: BODY_TEXT,
+								lineHeight: 1.8,
+								mb: 2.5,
+								maxWidth: 560,
+							}}>
+							It’s a meaningful way to bring purpose to your next gathering, backed by data you can share —
+							with corporate stakeholders, wedding guests, or your own sustainability reporting.
+							Coordination happens in advance with the hotel’s events team so menus, service plans, and
+							reporting scope can be aligned to your gathering.
+						</Typography>
+						<Box
+							sx={{
+								display: 'grid',
+								gridTemplateColumns: {
+									xs: '1fr',
+									sm: 'repeat(3, minmax(0, 1fr))',
+								},
+								gap: { xs: 1.5, sm: 2 },
+								maxWidth: 560,
+							}}>
+							{EVENT_PROPERTY_FACTS.map((fact) => (
+								<Box key={fact.label} sx={{ minWidth: 0 }}>
+									<Typography
+										sx={{
+											fontFamily: FONT_HEADING,
+											fontSize: { xs: '18px', md: '20px' },
+											fontWeight: 500,
+											color: DARK_SLATE,
+											lineHeight: 1.2,
+											letterSpacing: '-0.01em',
+										}}>
+										{fact.value}
+									</Typography>
+									<Typography
+										sx={{
+											fontSize: '11px',
+											color: MUTED_TEXT,
+											lineHeight: 1.35,
+											mt: 0.35,
+										}}>
+										{fact.label}
+									</Typography>
+								</Box>
+							))}
+						</Box>
+					</Box>
+
+					<Box
+						component='img'
+						src={eventsRitzCarltonPentagonCityImage}
+						alt='Grand ballroom at The Ritz-Carlton, Pentagon City set classroom-style with gray linen tables, navy doors, and tiered glass chandeliers.'
+						sx={{
+							width: '100%',
+							aspectRatio: { xs: '16 / 10', md: '16 / 11' },
+							objectFit: 'cover',
+							objectPosition: 'center',
+							borderRadius: RADIUS_IMAGE,
+							border: `1px solid ${BORDER_LIGHT}`,
+							boxShadow: SHADOW_IMAGE,
+							display: 'block',
+						}}
+					/>
+				</Box>
+
+
+				<Box
+					sx={{
+						textAlign: 'center',
+						pt: { xs: 0.5, md: 1 },
+					}}>
+					<Typography
+						sx={{
+							fontSize: '14px',
+							color: MUTED_TEXT,
+							lineHeight: 1.65,
+							maxWidth: 520,
+							mx: 'auto',
+							mb: 2,
+						}}>
+						Every event at The Ritz-Carlton, Pentagon City can be planned as a Zero Food Waste Event. Speak
+						with our events team to bring measurable impact to your next gathering.
+					</Typography>
+					<Button
+						component='a'
+						href={PROPERTY_EVENTS_INQUIRY_URL}
+						target='_blank'
+						rel='noopener noreferrer'
+						variant='contained'
+						disableElevation
+						aria-label='Start planning an event at The Ritz-Carlton, Pentagon City'
+						sx={{
+							...primaryButtonSx,
+							px: { xs: 2.5, md: 3.25 },
+							py: { xs: 1, md: 1.1 },
+							fontSize: { xs: '0.72rem', md: '0.75rem' },
+						}}>
+						Start Planning
+					</Button>
+				</Box>
+			</Box>
+			{/* Additional Sustainability Initiatives — White */}
+			<Box
+				id='initiatives'
+				component='section'
+				aria-labelledby='initiatives-heading'
+				className='section section--base'
+				sx={{
+					...sectionContainerSx,
+					...sectionBandColorSx(SURFACE_WHITE),
+					scrollMarginTop: HEADER_SCROLL_MARGIN,
+				}}>
+				<Typography className='micro-label' sx={{ mb: 1.5 }}>
+					BEYOND FOOD WASTE
+				</Typography>
+				<Typography
+					id='initiatives-heading'
+					component='h2'
+					sx={{
+						fontFamily: FONT_HEADING,
+						fontSize: { xs: '28px', md: '34px' },
+						fontWeight: 500,
+						color: DARK_SLATE,
+						mb: 1.75,
+					}}>
+					Sustainability Across the Property
+				</Typography>
+				<Typography
+					sx={{
+						fontSize: '16px',
+						color: BODY_TEXT,
+						lineHeight: 1.75,
+						maxWidth: 820,
+						mb: { xs: 3, md: 3.5 },
+					}}>
+					Additional initiatives support efficient building operations, resource conservation, guest
+					convenience, and lower-impact transportation.
+				</Typography>
+
+				{/* TODO: Replace placeholder initiative cards with The Ritz-Carlton, Pentagon City–verified initiatives before publication. */}
+				<Box
+					role='note'
+					sx={{
+						...cardSx,
+						p: { xs: 2, md: 2.25 },
+						mb: { xs: 3.5, md: 4.5 },
+						maxWidth: 820,
+						borderLeft: `4px solid ${SAGE_ACCENT}`,
+						backgroundColor: SAGE_SOFT,
+					}}>
+					<Typography
+						sx={{
+							fontSize: '14px',
+							fontWeight: 500,
+							color: DARK_SLATE,
+							lineHeight: 1.65,
+							letterSpacing: '0.01em',
+						}}>
+						PLACEHOLDER CONTENT: Property-specific sustainability initiatives are pending review with
+						The Ritz-Carlton, Pentagon City team.
+					</Typography>
+				</Box>
+
+				{initiativeCategories.map((category, categoryIndex) => {
+					const renderCard = (item) => {
+						const Icon = item.icon;
+						return (
+							<Box
+								key={item.title}
+								sx={{
+									...cardSx,
+									p: { xs: 2.25, md: 2.5 },
+									display: 'flex',
+									flexDirection: 'column',
+									alignItems: 'flex-start',
+									textAlign: 'left',
+									height: '100%',
+								}}>
+								<Icon
+									aria-hidden='true'
+									sx={{ color: SUSTAINABILITY_GREEN, fontSize: 32, mb: 1.25 }}
+								/>
+								<Typography
+									component='h3'
+									sx={{
+										fontFamily: FONT_HEADING,
+										fontSize: '17px',
+										fontWeight: 500,
+										color: DARK_SLATE,
+										mb: 0.85,
+										letterSpacing: '-0.01em',
+										lineHeight: 1.3,
+									}}>
+									{item.title}
+								</Typography>
+								<Typography
+									sx={{
+										fontSize: '14px',
+										color: BODY_TEXT,
+										lineHeight: 1.65,
+									}}>
+									{item.description}
+								</Typography>
+								{item.details && (
+									<Box
+										component='ul'
+										sx={{
+											m: 0,
+											mt: 1.25,
+											pl: 0,
+											listStyle: 'none',
+											width: '100%',
+										}}>
+										{item.details.map((detail) => (
+											<Box
+												component='li'
+												key={detail}
+												sx={{
+													display: 'flex',
+													alignItems: 'flex-start',
+													gap: 0.85,
+													fontSize: '13px',
+													lineHeight: 1.55,
+													color: BODY_TEXT,
+													mb: 0.55,
+												}}>
+												<CheckCircleOutlineIcon
+													aria-hidden='true'
+													sx={{
+														color: SUSTAINABILITY_GREEN,
+														fontSize: 16,
+														mt: '2px',
+														flexShrink: 0,
+													}}
+												/>
+												<span>{detail}</span>
+											</Box>
+										))}
+									</Box>
+								)}
+							</Box>
+						);
+					};
+
+					return (
+						<Box
+							key={category.label}
+							sx={{
+								mb:
+									categoryIndex < initiativeCategories.length - 1
+										? { xs: 5, md: 7 }
+										: 0,
+							}}>
+							<Typography className='micro-label' sx={{ mb: { xs: 2, md: 2.5 } }}>
+								{category.label}
+							</Typography>
+
+							{category.layout === 'three-plus-two' ? (
+								<>
+									<Box
+										sx={{
+											display: 'grid',
+											gridTemplateColumns: {
+												xs: '1fr',
+												sm: 'repeat(2, minmax(0, 1fr))',
+												md: 'repeat(3, minmax(0, 1fr))',
+											},
+											gap: { xs: 2, md: 2.25 },
+											mb: { xs: 2, md: 2.25 },
+										}}>
+										{category.items.slice(0, 3).map(renderCard)}
+									</Box>
+									<Box
+										sx={{
+											display: 'grid',
+											gridTemplateColumns: {
+												xs: '1fr',
+												sm: 'repeat(2, minmax(0, 1fr))',
+											},
+											gap: { xs: 2, md: 2.25 },
+											maxWidth: { md: '66.666%' },
+											mx: { md: 'auto' },
+										}}>
+										{category.items.slice(3).map(renderCard)}
+									</Box>
+								</>
+							) : (
+								<Box
+									sx={{
+										display: 'grid',
+										gridTemplateColumns: {
+											xs: '1fr',
+											sm: 'repeat(2, minmax(0, 1fr))',
+											md:
+												category.layout === 'two'
+													? 'repeat(2, minmax(0, 1fr))'
+													: 'repeat(3, minmax(0, 1fr))',
+										},
+										gap: { xs: 2, md: 2.25 },
+									}}>
+									{category.items.map(renderCard)}
+								</Box>
+							)}
+						</Box>
+					);
+				})}
 			</Box>
 
 			{/* BioGreen360 Partnership — Soft Neutral */}
@@ -1390,1086 +2053,6 @@ const CircularFoodSystems = () => {
 								platform.
 							</Typography>
 						</Box>
-					</Box>
-				</Box>
-			</Box>
-
-			{/* How it Works — White */}
-			{/* NOTE: Main How It Works section (below Partnership) */}
-			<Box
-				id='how-it-works'
-				component='section'
-				aria-labelledby='how-it-works-heading'
-				className='section section--alt'
-				sx={{
-					...sectionContainerSx,
-					...sectionBandColorSx(SURFACE_WHITE),
-					scrollMarginTop: HEADER_SCROLL_MARGIN,
-				}}>
-				<Typography className='micro-label' sx={{ textAlign: 'center', mb: 1.5 }}>
-					FROM CAPTURE TO IMPACT
-				</Typography>
-				<Typography
-					id='how-it-works-heading'
-					component='h2'
-					sx={{
-						fontFamily: FONT_HEADING,
-						fontSize: { xs: '28px', md: '34px' },
-						fontWeight: 500,
-						textAlign: 'center',
-						color: DARK_SLATE,
-						mb: { xs: 1.75, md: 2.25 },
-					}}>
-					How Food Waste Comes Full Circle
-				</Typography>
-				<Typography
-					sx={{
-						fontSize: { xs: '16px', md: '17px' },
-						color: BODY_TEXT,
-						lineHeight: 1.75,
-						textAlign: 'center',
-						maxWidth: 760,
-						mx: 'auto',
-						mb: { xs: 4, md: 5.5 },
-					}}>
-					The Ritz-Carlton, Pentagon City’s program follows a measurable path from daily hotel operations
-					through on-site processing and live reporting.
-				</Typography>
-
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: { xs: 'column', md: 'row' },
-						flexWrap: { xs: 'nowrap', md: 'nowrap' },
-						justifyContent: 'center',
-						alignItems: { xs: 'center', md: 'flex-start' },
-						gap: { xs: 3.5, md: 0 },
-					}}>
-					{primaryProcessingSteps.map((step, index) => (
-						<React.Fragment key={step.title}>
-							<Box
-								sx={{
-									display: 'flex',
-									flexDirection: 'column',
-									alignItems: 'center',
-									flex: { xs: '0 0 auto', md: '1 1 0' },
-									width: { xs: '100%', md: 'auto' },
-									minWidth: { xs: 0, md: 0 },
-									px: { md: 1 },
-									textAlign: 'center',
-								}}>
-								<Box
-									sx={{
-										width: { xs: 116, md: 128 },
-										height: { xs: 116, md: 128 },
-										flexShrink: 0,
-										borderRadius: '50%',
-										border: `2px solid ${SUSTAINABILITY_GREEN}`,
-										backgroundColor: PROCESS_CIRCLE_FILL,
-										display: 'flex',
-										alignItems: 'center',
-										justifyContent: 'center',
-										mb: { xs: 2, md: 2.5 },
-										overflow: 'hidden',
-									}}>
-									{step.icon}
-								</Box>
-								<Typography
-									component='h3'
-									sx={{
-										fontFamily: FONT_HEADING,
-										fontSize: { xs: '17px', md: '18px' },
-										fontWeight: 500,
-										letterSpacing: '-0.01em',
-										lineHeight: 1.35,
-										color: DARK_SLATE,
-										mb: 1,
-										maxWidth: 220,
-									}}>
-									{step.title}
-								</Typography>
-								<Typography
-									sx={{
-										fontSize: '14px',
-										lineHeight: 1.65,
-										color: BODY_TEXT,
-										maxWidth: 230,
-										mx: 'auto',
-									}}>
-									{step.description}
-								</Typography>
-							</Box>
-							{index < 3 && (
-								<Box
-									aria-hidden='true'
-									sx={{
-										display: { xs: 'none', md: 'flex' },
-										alignItems: 'center',
-										justifyContent: 'center',
-										flexShrink: 0,
-										px: 1.25,
-										height: { md: 128 },
-									}}>
-									<ArrowForwardIcon
-										sx={{ color: SUSTAINABILITY_GREEN, fontSize: 34 }}
-										aria-hidden='true'
-									/>
-								</Box>
-							)}
-						</React.Fragment>
-					))}
-				</Box>
-				<Typography
-					sx={{
-						fontSize: '13px',
-						color: MUTED_TEXT,
-						textAlign: 'center',
-						mt: { xs: 3.5, md: 4.5 },
-						maxWidth: 820,
-						mx: 'auto',
-						lineHeight: 1.7,
-					}}>
-					See{' '}
-					<Box
-						component='a'
-						href='#methodology'
-						onClick={(event) => {
-							event.preventDefault();
-							scrollToSection('methodology');
-						}}
-						sx={{
-							...SENTENCE_LINK_SX,
-							fontSize: 'inherit',
-							color: MUTED_TEXT,
-							'&:hover': {
-								color: CORAL_LINK,
-							},
-						}}>
-						Methodology
-					</Box>{' '}
-					for reporting definitions, conversion assumptions, and program scope.
-				</Typography>
-				<Box
-					sx={{
-						mt: { xs: 6, md: 8.5 },
-						display: 'grid',
-						gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 1fr) minmax(0, 1fr)' },
-						gap: { xs: 3.5, md: 5.5 },
-						alignItems: 'start',
-					}}>
-					<Box
-						component='img'
-						src={howItWorksRitzCarltonPentagonCityImage}
-						alt='Shared gourmet dishes on a dark wood table, including dips with pita, seafood plates, and guests dining together.'
-						sx={{
-							width: '100%',
-							aspectRatio: { xs: '16 / 10', md: '4 / 3' },
-							objectFit: 'cover',
-							objectPosition: 'center',
-							borderRadius: RADIUS_IMAGE,
-							border: `1px solid ${BORDER_LIGHT}`,
-							boxShadow: SHADOW_IMAGE,
-							display: 'block',
-						}}
-					/>
-					<Box>
-						<Typography className='micro-label' sx={{ mb: 1 }}>
-							CIRCULAR BY DESIGN
-						</Typography>
-						<Typography
-							component='h3'
-							sx={{
-								fontFamily: FONT_HEADING,
-								fontSize: { xs: '26px', md: '30px' },
-								fontWeight: 500,
-								letterSpacing: '-0.015em',
-								lineHeight: 1.3,
-								color: DARK_SLATE,
-								mb: 1.5,
-							}}>
-							A System Woven Into the Guest Experience
-						</Typography>
-						<Typography
-							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.25 }}>
-							Behind the scenes, BioGreen360 gives The Ritz-Carlton, Pentagon City’s teams a practical way to manage food waste
-							as part of daily operations.
-						</Typography>
-						<Typography
-							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 1.25 }}>
-							Live measurement brings visibility to the work, allowing progress to be shared with guests,
-							event planners, and hotel leaders.
-						</Typography>
-						<Typography
-							sx={{ fontSize: '15px', color: BODY_TEXT, lineHeight: 1.75, mb: 2 }}>
-							Measured results help hotel leaders, guests, and event planners see the impact created through
-							daily operations.
-						</Typography>
-						<Box
-							component='a'
-							href='#methodology'
-							onClick={(event) => {
-								event.preventDefault();
-								scrollToSection('methodology');
-							}}
-							className='lux-link lux-link--internal'
-							sx={{
-								fontSize: '12px',
-								letterSpacing: '0.08em',
-								textTransform: 'uppercase',
-							}}>
-							View processing definitions and methodology
-						</Box>
-					</Box>
-				</Box>
-			</Box>
-
-			{/* Live Sustainability Impact Reporting — flat pale band */}
-			<Box
-				id='live-reporting'
-				component='section'
-				aria-labelledby='live-reporting-heading'
-				className='section section--base live-reporting-section lsir-section'
-				sx={{
-					...sectionContainerSx,
-					...sectionBandColorSx(PALE_SAGE_BG),
-					py: { xs: '54px', md: '86px' },
-					display: 'flex',
-					flexDirection: 'column',
-					alignItems: 'stretch',
-					scrollMarginTop: HEADER_SCROLL_MARGIN,
-					'& .lsir-card-value': { color: DARK_SLATE },
-				}}>
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: { xs: 'column', sm: 'row' },
-						flexWrap: 'wrap',
-						justifyContent: 'space-between',
-						alignItems: { xs: 'flex-start', sm: 'baseline' },
-						gap: 1.5,
-						mb: 1,
-					}}>
-					<Box sx={{ minWidth: 0 }}>
-						<Typography className='micro-label' sx={{ mb: 1.25 }}>
-							IMPACT EQUIVALENCIES
-						</Typography>
-						<Typography
-							id='live-reporting-heading'
-							component='h2'
-							sx={{
-								fontFamily: FONT_HEADING,
-								fontSize: { xs: '28px', md: '34px' },
-								fontWeight: 500,
-								color: DARK_SLATE,
-							}}>
-							Putting the Numbers in Perspective
-						</Typography>
-					</Box>
-					<Box
-						component='a'
-						href='#methodology'
-						onClick={(event) => {
-							event.preventDefault();
-							scrollToSection('methodology');
-						}}
-						className='lux-link lux-link--internal'
-						sx={{
-							fontSize: '12px',
-							flexShrink: 0,
-						}}>
-						Methodology
-					</Box>
-				</Box>
-				<Typography
-					sx={{
-						fontSize: '15px',
-						color: BODY_TEXT,
-						lineHeight: 1.7,
-						maxWidth: 880,
-						mb: 2.5,
-					}}>
-					These comparisons translate cumulative program results into familiar reference points.
-				</Typography>
-
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: { xs: 'column', md: 'row' },
-						alignItems: 'stretch',
-						justifyContent: 'space-between',
-						borderTop: `1px solid ${BORDER_LIGHT}`,
-						borderBottom: `1px solid ${BORDER_LIGHT}`,
-						py: { xs: 0.5, md: 2.5 },
-					}}>
-					{equivalencyCardsToRender.map((card, idx) => {
-						const Icon = card.icon;
-						const columnCount = equivalencyCardsToRender.length;
-						const isNotLast = idx < columnCount - 1;
-						return (
-							<Box
-								key={card.label}
-								sx={{
-									flex: { md: '1 1 0' },
-									width: { xs: '100%', md: 'auto' },
-									minWidth: { md: 0 },
-									px: { xs: 0, md: 3 },
-									py: { xs: 2.25, md: 1.5 },
-									textAlign: 'center',
-									borderRight: isNotLast
-										? { xs: 'none', md: `1px solid ${BORDER_LIGHT}` }
-										: 'none',
-									borderBottom: isNotLast
-										? { xs: `1px solid ${BORDER_LIGHT}`, md: 'none' }
-										: 'none',
-								}}>
-								<Typography className='micro-label lsir-card-title' sx={{ mb: 0.75, display: 'block' }}>
-									{card.label}
-								</Typography>
-								<Box
-									sx={{
-										display: 'flex',
-										justifyContent: 'center',
-										alignItems: 'center',
-										width: '100%',
-										minHeight: 48,
-										mb: 1,
-										lineHeight: 0,
-									}}>
-									{card.iconImage ? (
-										<Box
-											aria-hidden='true'
-											sx={{
-												width: card.iconSize || { xs: 70, md: 80 },
-												height: card.iconSize || { xs: 70, md: 80 },
-												backgroundColor: card.iconColor || SUSTAINABILITY_GREEN,
-												maskImage: `url(${card.iconImage})`,
-												maskSize: 'contain',
-												maskRepeat: 'no-repeat',
-												maskPosition: 'center',
-												WebkitMaskImage: `url(${card.iconImage})`,
-												WebkitMaskSize: 'contain',
-												WebkitMaskRepeat: 'no-repeat',
-												WebkitMaskPosition: 'center',
-											}}
-										/>
-									) : (
-										<Icon
-											aria-hidden='true'
-											sx={{
-												fontSize: { xs: 70, md: 80 },
-												color: card.iconColor || REPORTING_ICON_COLOR,
-											}}
-										/>
-									)}
-								</Box>
-								<Typography
-									component='p'
-									className='lsir-card-value'
-									sx={{
-										fontFamily: FONT_HEADING,
-										fontSize: { xs: '24px', md: '28px' },
-										fontWeight: 500,
-										letterSpacing: '-0.015em',
-										lineHeight: 1.25,
-										px: 0.5,
-										overflowWrap: 'break-word',
-										hyphens: 'auto',
-										m: 0,
-									}}>
-									{card.value}
-								</Typography>
-								<Typography
-									sx={{
-										fontSize: '12px',
-										color: MUTED_TEXT,
-										lineHeight: 1.5,
-										mt: 1,
-										maxWidth: 280,
-										mx: 'auto',
-									}}>
-									{card.note}
-								</Typography>
-							</Box>
-						);
-					})}
-				</Box>
-
-				<Typography
-					sx={{
-						fontSize: '12px',
-						color: MUTED_TEXT,
-						lineHeight: 1.65,
-						mt: { xs: 2.25, md: 2.5 },
-						maxWidth: 660,
-					}}>
-					{equivalencyDisclaimer}
-				</Typography>
-			</Box>
-
-			{/* Events — Surface White */}
-			<Box
-				id='events'
-				component='section'
-				aria-labelledby='events-heading'
-				className='section section--alt'
-				sx={{
-					...sectionContainerSx,
-					...sectionBandColorSx(SURFACE_WHITE),
-					scrollMarginTop: HEADER_SCROLL_MARGIN,
-				}}>
-				<Box
-					sx={{
-						display: 'grid',
-						gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 1.1fr) minmax(0, 0.95fr)' },
-						gap: { xs: 3, md: 5 },
-						alignItems: 'start',
-						mb: { xs: 4.8, md: 6.8 },
-					}}>
-					<Box>
-						<Typography className='micro-label' sx={{ mb: 1.5 }}>
-							ZERO FOOD WASTE EVENTS
-						</Typography>
-						<Typography
-							id='events-heading'
-							component='h2'
-							sx={{
-								fontFamily: FONT_HEADING,
-								fontSize: { xs: '28px', md: '34px' },
-								fontWeight: 500,
-								color: DARK_SLATE,
-								mb: 1.75,
-							}}>
-							Celebrate Beautifully. Measure What Matters.
-						</Typography>
-						<Typography
-							sx={{
-								fontSize: '16px',
-								fontWeight: 400,
-								color: BODY_TEXT,
-								lineHeight: 1.8,
-								mb: 1.25,
-								maxWidth: 560,
-							}}>
-							Every meeting, gala, and wedding at The Ritz-Carlton, Pentagon City can be hosted as a Zero
-							Food Waste Event — a fully tracked program that diverts food waste generated during your
-							gathering through our on-site BioGreen360 system, with results measured from first course to
-							last.
-						</Typography>
-						<Typography
-							sx={{
-								fontSize: '16px',
-								fontWeight: 400,
-								color: BODY_TEXT,
-								lineHeight: 1.8,
-								mb: 2.5,
-								maxWidth: 560,
-							}}>
-							It’s a meaningful way to bring purpose to your next gathering, backed by data you can share —
-							with corporate stakeholders, wedding guests, or your own sustainability reporting.
-							Coordination happens in advance with the hotel’s events team so menus, service plans, and
-							reporting scope can be aligned to your gathering.
-						</Typography>
-						<Box
-							sx={{
-								display: 'grid',
-								gridTemplateColumns: {
-									xs: '1fr',
-									sm: 'repeat(3, minmax(0, 1fr))',
-								},
-								gap: { xs: 1.5, sm: 2 },
-								maxWidth: 560,
-							}}>
-							{EVENT_PROPERTY_FACTS.map((fact) => (
-								<Box key={fact.label} sx={{ minWidth: 0 }}>
-									<Typography
-										sx={{
-											fontFamily: FONT_HEADING,
-											fontSize: { xs: '18px', md: '20px' },
-											fontWeight: 500,
-											color: DARK_SLATE,
-											lineHeight: 1.2,
-											letterSpacing: '-0.01em',
-										}}>
-										{fact.value}
-									</Typography>
-									<Typography
-										sx={{
-											fontSize: '11px',
-											color: MUTED_TEXT,
-											lineHeight: 1.35,
-											mt: 0.35,
-										}}>
-										{fact.label}
-									</Typography>
-								</Box>
-							))}
-						</Box>
-						<Typography
-							className='micro-label'
-							sx={{
-								mt: 2,
-								mb: 0,
-								lineHeight: 1.7,
-								maxWidth: 560,
-							}}>
-							ZERO FOOD WASTE EVENTS AVAILABLE FOR EVERY GATHERING
-						</Typography>
-					</Box>
-
-					<Box
-						component='img'
-						src={eventsRitzCarltonPentagonCityImage}
-						alt='Grand ballroom at The Ritz-Carlton, Pentagon City set classroom-style with gray linen tables, navy doors, and tiered glass chandeliers.'
-						sx={{
-							width: '100%',
-							aspectRatio: { xs: '16 / 10', md: '16 / 11' },
-							objectFit: 'cover',
-							objectPosition: 'center',
-							borderRadius: RADIUS_IMAGE,
-							border: `1px solid ${BORDER_LIGHT}`,
-							boxShadow: SHADOW_IMAGE,
-							display: 'block',
-						}}
-					/>
-				</Box>
-
-				<Typography
-					component='h3'
-					sx={{
-						fontFamily: FONT_HEADING,
-						fontSize: { xs: '26px', md: '30px' },
-						fontWeight: 500,
-						letterSpacing: '-0.015em',
-						color: DARK_SLATE,
-						textAlign: 'center',
-						mb: { xs: 4, md: 5.5 },
-					}}>
-					How a Zero Food Waste Event Works
-				</Typography>
-
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: { xs: 'column', md: 'row' },
-						flexWrap: { xs: 'nowrap', md: 'nowrap' },
-						justifyContent: 'center',
-						alignItems: { xs: 'center', md: 'flex-start' },
-						gap: { xs: 3.5, md: 0 },
-						mb: { xs: 4.5, md: 5.5 },
-					}}>
-					{eventFlowSteps.map((step, idx) => (
-						<React.Fragment key={step.title}>
-							<Box
-								sx={{
-									display: 'flex',
-									flexDirection: 'column',
-									alignItems: 'center',
-									flex: { xs: '0 0 auto', md: '1 1 0' },
-									width: { xs: '100%', md: 'auto' },
-									minWidth: { xs: 0, md: 0 },
-									px: { md: 1 },
-									textAlign: 'center',
-								}}>
-								<Box
-									sx={{
-										width: { xs: 116, md: 128 },
-										height: { xs: 116, md: 128 },
-										flexShrink: 0,
-										borderRadius: '50%',
-										border: `2px solid ${SUSTAINABILITY_GREEN}`,
-										backgroundColor: PROCESS_CIRCLE_FILL,
-										display: 'flex',
-										alignItems: 'center',
-										justifyContent: 'center',
-										mb: { xs: 2, md: 2.5 },
-										overflow: 'hidden',
-									}}>
-									{step.icon}
-								</Box>
-								<Typography
-									component='h4'
-									sx={{
-										fontFamily: FONT_HEADING,
-										fontSize: { xs: '17px', md: '18px' },
-										fontWeight: 500,
-										letterSpacing: '-0.01em',
-										lineHeight: 1.35,
-										color: DARK_SLATE,
-										mb: 1,
-										maxWidth: 240,
-									}}>
-									{step.title}
-								</Typography>
-								<Typography
-									sx={{
-										fontSize: '14px',
-										lineHeight: 1.65,
-										color: BODY_TEXT,
-										maxWidth: 250,
-										mx: 'auto',
-									}}>
-									{step.description}
-								</Typography>
-							</Box>
-							{idx < 2 && (
-								<Box
-									aria-hidden='true'
-									sx={{
-										display: { xs: 'none', md: 'flex' },
-										alignItems: 'center',
-										justifyContent: 'center',
-										flexShrink: 0,
-										px: 1.25,
-										height: { md: 128 },
-									}}>
-									<ArrowForwardIcon
-										sx={{ color: SUSTAINABILITY_GREEN, fontSize: 34 }}
-										aria-hidden='true'
-									/>
-								</Box>
-							)}
-						</React.Fragment>
-					))}
-				</Box>
-
-				<Box
-					sx={{
-						...cardEmphasizedSx,
-						backgroundColor: SURFACE_WHITE,
-						p: { xs: 2.5, md: 3 },
-						maxWidth: 720,
-						mx: 'auto',
-						mb: { xs: 3, md: 4 },
-					}}>
-					<Typography className='micro-label' sx={{ mb: 1 }}>
-						YOUR EVENT IMPACT RECAP
-					</Typography>
-					<Typography
-						component='h3'
-						sx={{
-							fontFamily: FONT_HEADING,
-							fontSize: { xs: '22px', md: '24px' },
-							fontWeight: 500,
-							mb: 1.5,
-							letterSpacing: '-0.012em',
-							color: DARK_SLATE,
-						}}>
-						Your Event, Thoughtfully Measured.
-					</Typography>
-					<Box component='ul' sx={{ m: 0, p: 0, listStyle: 'none' }}>
-						{eventPlannerDeliverables.map((item) => (
-							<Box
-								component='li'
-								key={item}
-								sx={{
-									display: 'flex',
-									alignItems: 'flex-start',
-									gap: 1.1,
-									fontSize: '14px',
-									lineHeight: 1.7,
-									color: BODY_TEXT,
-									mb: 0.85,
-								}}>
-								<CheckCircleOutlineIcon
-									aria-hidden='true'
-									sx={{
-										color: SUSTAINABILITY_GREEN,
-										fontSize: 20,
-										mt: '2px',
-										flexShrink: 0,
-									}}
-								/>
-								<span>{item}</span>
-							</Box>
-						))}
-					</Box>
-					<Typography
-						sx={{
-							fontSize: '13px',
-							color: MUTED_TEXT,
-							lineHeight: 1.65,
-							mt: 1.75,
-						}}>
-						Designed to support internal reviews, stakeholder communications, and meaningful post-event
-						storytelling.
-					</Typography>
-				</Box>
-
-				<Box
-					sx={{
-						textAlign: 'center',
-						pt: { xs: 0.5, md: 1 },
-					}}>
-					<Typography
-						sx={{
-							fontSize: '14px',
-							color: MUTED_TEXT,
-							lineHeight: 1.65,
-							maxWidth: 520,
-							mx: 'auto',
-							mb: 2,
-						}}>
-						Every event at The Ritz-Carlton, Pentagon City can be planned as a Zero Food Waste Event. Speak
-						with our events team to bring measurable impact to your next gathering.
-					</Typography>
-					<Button
-						component='a'
-						href={PROPERTY_EVENTS_INQUIRY_URL}
-						target='_blank'
-						rel='noopener noreferrer'
-						variant='contained'
-						disableElevation
-						aria-label='Start planning an event at The Ritz-Carlton, Pentagon City'
-						sx={{
-							...primaryButtonSx,
-							px: { xs: 2.5, md: 3.25 },
-							py: { xs: 1, md: 1.1 },
-							fontSize: { xs: '0.72rem', md: '0.75rem' },
-						}}>
-						Start Planning
-					</Button>
-				</Box>
-			</Box>
-
-			{/* Additional Sustainability Initiatives — Soft Neutral */}
-			<Box
-				id='initiatives'
-				component='section'
-				aria-labelledby='initiatives-heading'
-				className='section section--alt'
-				sx={{
-					...sectionContainerSx,
-					...sectionBandColorSx(SOFT_NEUTRAL),
-					scrollMarginTop: HEADER_SCROLL_MARGIN,
-				}}>
-				<Typography className='micro-label' sx={{ mb: 1.5 }}>
-					BEYOND FOOD WASTE
-				</Typography>
-				<Typography
-					id='initiatives-heading'
-					component='h2'
-					sx={{
-						fontFamily: FONT_HEADING,
-						fontSize: { xs: '28px', md: '34px' },
-						fontWeight: 500,
-						color: DARK_SLATE,
-						mb: 1.75,
-					}}>
-					Sustainability Across the Property
-				</Typography>
-				<Typography
-					sx={{
-						fontSize: '16px',
-						color: BODY_TEXT,
-						lineHeight: 1.75,
-						maxWidth: 820,
-						mb: { xs: 3, md: 3.5 },
-					}}>
-					Additional initiatives support efficient building operations, resource conservation, guest
-					convenience, and lower-impact transportation.
-				</Typography>
-
-				{/* TODO: Replace placeholder initiative cards with The Ritz-Carlton, Pentagon City–verified initiatives before publication. */}
-				<Box
-					role='note'
-					sx={{
-						...cardSx,
-						p: { xs: 2, md: 2.25 },
-						mb: { xs: 3.5, md: 4.5 },
-						maxWidth: 820,
-						borderLeft: `4px solid ${SAGE_ACCENT}`,
-						backgroundColor: SAGE_SOFT,
-					}}>
-					<Typography
-						sx={{
-							fontSize: '14px',
-							fontWeight: 500,
-							color: DARK_SLATE,
-							lineHeight: 1.65,
-							letterSpacing: '0.01em',
-						}}>
-						PLACEHOLDER CONTENT: Property-specific sustainability initiatives are pending review with
-						The Ritz-Carlton, Pentagon City team.
-					</Typography>
-				</Box>
-
-				{initiativeCategories.map((category, categoryIndex) => {
-					const renderCard = (item) => {
-						const Icon = item.icon;
-						return (
-							<Box
-								key={item.title}
-								sx={{
-									...cardSx,
-									p: { xs: 2.25, md: 2.5 },
-									display: 'flex',
-									flexDirection: 'column',
-									alignItems: 'flex-start',
-									textAlign: 'left',
-									height: '100%',
-								}}>
-								<Icon
-									aria-hidden='true'
-									sx={{ color: SUSTAINABILITY_GREEN, fontSize: 32, mb: 1.25 }}
-								/>
-								<Typography
-									component='h3'
-									sx={{
-										fontFamily: FONT_HEADING,
-										fontSize: '17px',
-										fontWeight: 500,
-										color: DARK_SLATE,
-										mb: 0.85,
-										letterSpacing: '-0.01em',
-										lineHeight: 1.3,
-									}}>
-									{item.title}
-								</Typography>
-								<Typography
-									sx={{
-										fontSize: '14px',
-										color: BODY_TEXT,
-										lineHeight: 1.65,
-									}}>
-									{item.description}
-								</Typography>
-								{item.details && (
-									<Box
-										component='ul'
-										sx={{
-											m: 0,
-											mt: 1.25,
-											pl: 0,
-											listStyle: 'none',
-											width: '100%',
-										}}>
-										{item.details.map((detail) => (
-											<Box
-												component='li'
-												key={detail}
-												sx={{
-													display: 'flex',
-													alignItems: 'flex-start',
-													gap: 0.85,
-													fontSize: '13px',
-													lineHeight: 1.55,
-													color: BODY_TEXT,
-													mb: 0.55,
-												}}>
-												<CheckCircleOutlineIcon
-													aria-hidden='true'
-													sx={{
-														color: SUSTAINABILITY_GREEN,
-														fontSize: 16,
-														mt: '2px',
-														flexShrink: 0,
-													}}
-												/>
-												<span>{detail}</span>
-											</Box>
-										))}
-									</Box>
-								)}
-							</Box>
-						);
-					};
-
-					return (
-						<Box
-							key={category.label}
-							sx={{
-								mb:
-									categoryIndex < initiativeCategories.length - 1
-										? { xs: 5, md: 7 }
-										: 0,
-							}}>
-							<Typography className='micro-label' sx={{ mb: { xs: 2, md: 2.5 } }}>
-								{category.label}
-							</Typography>
-
-							{category.layout === 'three-plus-two' ? (
-								<>
-									<Box
-										sx={{
-											display: 'grid',
-											gridTemplateColumns: {
-												xs: '1fr',
-												sm: 'repeat(2, minmax(0, 1fr))',
-												md: 'repeat(3, minmax(0, 1fr))',
-											},
-											gap: { xs: 2, md: 2.25 },
-											mb: { xs: 2, md: 2.25 },
-										}}>
-										{category.items.slice(0, 3).map(renderCard)}
-									</Box>
-									<Box
-										sx={{
-											display: 'grid',
-											gridTemplateColumns: {
-												xs: '1fr',
-												sm: 'repeat(2, minmax(0, 1fr))',
-											},
-											gap: { xs: 2, md: 2.25 },
-											maxWidth: { md: '66.666%' },
-											mx: { md: 'auto' },
-										}}>
-										{category.items.slice(3).map(renderCard)}
-									</Box>
-								</>
-							) : (
-								<Box
-									sx={{
-										display: 'grid',
-										gridTemplateColumns: {
-											xs: '1fr',
-											sm: 'repeat(2, minmax(0, 1fr))',
-											md:
-												category.layout === 'two'
-													? 'repeat(2, minmax(0, 1fr))'
-													: 'repeat(3, minmax(0, 1fr))',
-										},
-										gap: { xs: 2, md: 2.25 },
-									}}>
-									{category.items.map(renderCard)}
-								</Box>
-							)}
-						</Box>
-					);
-				})}
-			</Box>
-
-			{/* Methodology / Transparency — White */}
-			<Box
-				id='methodology'
-				component='section'
-				aria-labelledby='methodology-heading'
-				sx={{
-					...sectionBandColorSx(SURFACE_WHITE),
-					scrollMarginTop: HEADER_SCROLL_MARGIN,
-				}}>
-				<Box sx={sectionContainerSx}>
-					<Typography
-						id='methodology-heading'
-						component='h2'
-						sx={{
-							fontFamily: FONT_HEADING,
-							fontSize: { xs: '28px', md: '34px' },
-							fontWeight: 500,
-							mb: 1.5,
-							color: DARK_SLATE,
-						}}>
-						Methodology and Reporting
-					</Typography>
-					<Typography
-						sx={{
-							fontSize: '15px',
-							color: BODY_TEXT,
-							lineHeight: 1.8,
-							maxWidth: 1040,
-							mb: 1.25,
-						}}>
-						Metrics combine measured on-site inputs with standard conversion factors to
-						estimate diversion, soil output, and climate equivalencies.
-					</Typography>
-					<Typography
-						sx={{
-							fontSize: '15px',
-							color: BODY_TEXT,
-							lineHeight: 1.8,
-							maxWidth: 1040,
-							mb: 2,
-						}}>
-						Where possible, values reflect property-level activity. Equivalencies are
-						directional and provided for context-not audited carbon claims.
-					</Typography>
-
-					<Typography
-						component='h3'
-						sx={{
-							fontFamily: FONT_HEADING,
-							fontSize: '24px',
-							fontWeight: 500,
-							letterSpacing: '-0.012em',
-							mb: 1,
-							color: DARK_SLATE,
-						}}>
-						How to Read These Metrics
-					</Typography>
-					<Box
-						component='ul'
-						sx={{ m: 0, pl: 2.25, color: BODY_TEXT, mb: 2 }}>
-						<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.8 }}>
-							Food scrap diversion is based on measured on-site capture and processing
-							volumes.
-						</Box>
-						<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.8 }}>
-							Soil amendment output is estimated using operating conversion assumptions.
-						</Box>
-						<Box component='li' sx={{ fontSize: '14px', lineHeight: 1.8 }}>
-							Climate equivalencies are illustrative and use standardized reference factors.
-						</Box>
-					</Box>
-
-					<Box sx={{ mb: 2.5 }}>
-						<Typography sx={{ fontSize: '12px', color: MUTED_TEXT, mb: 0.5 }}>
-							Sustainability reporting powered by <BioGreenLink />
-						</Typography>
-						<Box
-							component='a'
-							href={BIOGREEN360_URL}
-							target='_blank'
-							rel='noopener noreferrer'
-							aria-label='BioGreen360 — visit website'
-							sx={{
-								display: 'inline-flex',
-								lineHeight: 0,
-								borderRadius: '0px',
-								'&:focus-visible': {
-									outline: `2px solid ${CORAL_LINK}`,
-									outlineOffset: '3px',
-								},
-							}}>
-							<Box
-								component='img'
-								src={poweredByBioGreen}
-								alt='BioGreen360'
-								sx={{ height: 28 }}
-							/>
-						</Box>
-					</Box>
-
-					<Typography sx={{ fontSize: '12px', color: MUTED_TEXT, mb: 2.5 }}>
-						Reported sustainability metrics are estimates based on measured inputs and
-						standardized conversion factors; actual impacts may vary.
-					</Typography>
-
-					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5, alignItems: 'center' }}>
-						<Button
-							component='a'
-							href={siteConfig.bookingUrl}
-							target='_blank'
-							rel='noopener noreferrer'
-							variant='outlined'
-							disableElevation
-							aria-label='Book a room at The Ritz-Carlton, Pentagon City'
-							sx={{
-								...secondaryButtonSx,
-							}}>
-							Book a Room
-						</Button>
-						<Button
-							component='a'
-							href={PROPERTY_EVENTS_INQUIRY_URL}
-							target='_blank'
-							rel='noopener noreferrer'
-							variant='contained'
-							disableElevation
-							aria-label='Plan an event at The Ritz-Carlton, Pentagon City'
-							sx={{
-								...primaryButtonSx,
-							}}>
-							Plan an Event
-						</Button>
 					</Box>
 				</Box>
 			</Box>
