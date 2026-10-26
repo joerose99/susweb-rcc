@@ -78,7 +78,7 @@ const SENTENCE_LINK_SX = {
 // TODO: Replace temporary BioGreen360 organization ID with The
 // Ritz-Carlton, Chicago organization ID before publication.
 const ORG_STATS_API_URL =
-	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f5a8a8c64cf4f5945856';
+	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f786a8c64cf4f594585b';
 
 const PROPERTY_CONFIG = {
 	/** BioGreen360 program launch date at The Ritz-Carlton, Chicago (calendar date). */
