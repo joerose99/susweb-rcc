@@ -1,23 +1,23 @@
 /**
- * The Ritz-Carlton, Pentagon City — external destinations.
+ * The Ritz-Carlton, Chicago — external destinations.
  *
- * Header CTAs must not point at unrelated property URLs behind RCPC-branded labels.
+ * Header CTAs must not point at unrelated property URLs behind Chicago-branded labels.
  */
 
-/** Official The Ritz-Carlton, Pentagon City property overview. */
+/** Official The Ritz-Carlton, Chicago property overview. */
 export const PROPERTY_OVERVIEW_URL =
-	'https://www.ritzcarlton.com/en/hotels/waspc-the-ritz-carlton-pentagon-city/overview/';
+	'https://www.ritzcarlton.com/en/hotels/chirz-the-ritz-carlton-chicago/overview/';
 
 /**
  * Booking / reservations destination.
+ * Official rooms page for The Ritz-Carlton, Chicago (property code CHIRZ).
  */
-// TODO: replace with RCPC Marriott reservation URL (propertyCode WASPC)
 export const PROPERTY_RESERVATIONS_URL =
-	'TODO: replace with RCPC Marriott reservation URL (propertyCode WASPC)';
+	'https://www.ritzcarlton.com/en/hotels/chirz-the-ritz-carlton-chicago/rooms/';
 
-/** Official The Ritz-Carlton, Pentagon City meetings & events inquiry destination. */
+/** Official The Ritz-Carlton, Chicago meetings & events inquiry destination. */
 export const PROPERTY_EVENTS_INQUIRY_URL =
-	'https://www.ritzcarlton.com/en/hotels/waspc-the-ritz-carlton-pentagon-city/events/';
+	'https://www.ritzcarlton.com/en/hotels/chirz-the-ritz-carlton-chicago/events/';
 
 export const BIOGREEN360_URL = 'https://biogreen360.com/';
 

@@ -1,5 +1,5 @@
 /**
- * The Ritz-Carlton, Pentagon City — Arlington, Virginia
+ * The Ritz-Carlton, Chicago — Chicago, Illinois
  * Black / white / brass-gold visual system for the sustainability
  * microsite, aligned to ritzcarlton.com property-page conventions:
  * flat black-and-white hierarchy, gold used only as a small accent

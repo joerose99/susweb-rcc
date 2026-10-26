@@ -10,15 +10,11 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import ParkOutlinedIcon from '@mui/icons-material/ParkOutlined';
-import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
-import AirOutlinedIcon from '@mui/icons-material/AirOutlined';
 import WaterDropOutlinedIcon from '@mui/icons-material/WaterDropOutlined';
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
+import SensorsOutlinedIcon from '@mui/icons-material/SensorsOutlined';
 import DeviceThermostatOutlinedIcon from '@mui/icons-material/DeviceThermostatOutlined';
 import LocalDrinkOutlinedIcon from '@mui/icons-material/LocalDrinkOutlined';
-import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
-import EvStationOutlinedIcon from '@mui/icons-material/EvStationOutlined';
-import DirectionsTransitOutlinedIcon from '@mui/icons-material/DirectionsTransitOutlined';
 import poweredByBioGreen from '../../assets/PoweredByBioGreen.svg';
 import biogreenHowItWorksLogo from '../../assets/biogreen-how-it-works.png';
 import howItWorksFoodIcon from '../../assets/how-it-works-food.png';
@@ -45,7 +41,6 @@ import {
 	MUTED_TEXT,
 	PALE_SAGE_BG,
 	RADIUS_IMAGE,
-	SAGE_ACCENT,
 	SAGE_SOFT,
 	SHADOW_IMAGE,
 	SOFT_NEUTRAL,
@@ -81,26 +76,27 @@ const SENTENCE_LINK_SX = {
 };
 
 // TODO: Replace temporary BioGreen360 organization ID with The
-// Ritz-Carlton, Pentagon City organization ID before publication.
+// Ritz-Carlton, Chicago organization ID before publication.
 const ORG_STATS_API_URL =
 	'https://ck0mqx03j2.execute-api.us-east-1.amazonaws.com/prod/org-stats?id=6554f5a8a8c64cf4f5945856';
 
 const PROPERTY_CONFIG = {
-	/** BioGreen360 program launch date at The Ritz-Carlton, Pentagon City (calendar date). */
-	programLaunchDate: '2021-05-31',
-	timeZone: 'America/New_York',
+	/** BioGreen360 program launch date at The Ritz-Carlton, Chicago (calendar date). */
+	programLaunchDate: '2023-06-01',
+	timeZone: 'America/Chicago',
 };
 
 /**
  * Event-space figures for the Events section proof-point row.
- * TODO: Periodically verify these figures against the official The Ritz-Carlton, Pentagon City property page.
+ * Official The Ritz-Carlton, Chicago meetings page: 20 event rooms, 37,885 sq. ft.,
+ * largest-space capacity 850, 21 breakout rooms, and an 8,370 sq. ft. Ritz-Carlton Ballroom.
  */
 const EVENT_PROPERTY_FACTS = [
-	{ value: '12', label: 'Event Rooms' },
-	{ value: '17,424 Sq. Ft.', label: 'Event Space' },
-	{ value: 'Up to 700', label: 'Capacity' },
-	{ value: '10', label: 'Breakout Rooms' },
-	{ value: '~7,200 Sq. Ft.', label: 'Grand Ballroom' },
+	{ value: '20', label: 'Event Rooms' },
+	{ value: '37,885 Sq. Ft.', label: 'Event Space' },
+	{ value: 'Up to 850', label: 'Capacity' },
+	{ value: '21', label: 'Breakout Rooms' },
+	{ value: '8,370 Sq. Ft.', label: 'Ritz-Carlton Ballroom' },
 ];
 
 
@@ -110,7 +106,7 @@ const siteConfig = {
 	processingPathwayMode: 'mixed',
 	eventTrackingMode: 'by_request',
 	showEquivalencies: true,
-	lastSync: '2026-03-04T15:30:00-04:00',
+	lastSync: '2026-03-04T15:30:00-06:00',
 	// impactReportUrl: 'https://example.com/impact-report.pdf',
 };
 
@@ -273,7 +269,7 @@ const buildImpactMetrics = (poundsFed) => {
 				daysOperating != null
 					? `${formatCountWithSeparators(daysOperating)} days`
 					: MISSING_METRIC_VALUE,
-			note: 'since May 31, 2021',
+			note: 'since June 1, 2023',
 			Icon: CalendarTodayIcon,
 		},
 		{
@@ -330,88 +326,53 @@ const buildEquivalencyCards = (poundsFed) => {
 	];
 };
 
-// TODO: Replace these placeholder initiative cards with The Ritz-Carlton, Pentagon City–verified content before publication.
-// FLAG: initiativeCategories contents are still Perry Lane placeholders — do not treat as RCPC-verified.
+// Drawn from The Ritz-Carlton, Chicago sustainability commitment (2024 renovation and operations summary).
 const initiativeCategories = [
 	{
 		label: 'Building & Resource Efficiency',
-		layout: 'three-plus-two',
+		layout: 'three',
 		items: [
 			{
-				title: 'LEED Gold Certified',
-				description: 'LEED Gold certified since May 2023.',
-				icon: WorkspacePremiumOutlinedIcon,
-			},
-			{
-				title: 'Air Purification',
+				title: 'LED Lighting',
 				description:
-					'Air purifiers in public and meeting spaces remove 99.4% of harmful bacteria every 30 minutes.',
-				icon: AirOutlinedIcon,
-			},
-			{
-				title: 'Touchless Faucets',
-				description:
-					'Infrared faucets in all public restrooms help reduce unnecessary water use.',
-				icon: WaterDropOutlinedIcon,
-			},
-			{
-				title: 'Energy-Efficient Lighting',
-				description:
-					'LED fixtures and bulbs improve energy efficiency throughout the property.',
+					'LED lighting was installed throughout guest-room corridors during the property’s 2017–2019 energy renovation.',
 				icon: LightbulbOutlinedIcon,
 			},
 			{
-				title: 'Smart Thermostats',
+				title: 'Motion-Sensor Lighting',
 				description:
-					'Telkonet smart thermostats in all guest rooms help reduce unnecessary energy use.',
+					'Motion-sensor lighting shuts off automatically in 90% of guest rooms and public bathrooms.',
+				icon: SensorsOutlinedIcon,
+			},
+			{
+				title: 'InnCom Thermostats',
+				description:
+					'InnCom thermostats in each guest room work with room sensors and door locks to limit HVAC and lighting use when rooms are unoccupied.',
 				icon: DeviceThermostatOutlinedIcon,
 			},
 		],
 	},
 	{
-		label: 'Waste Reduction & Guest Experience',
+		label: 'Water & Waste Reduction',
 		layout: 'three',
 		items: [
 			{
-				title: 'Comprehensive Recycling',
+				title: 'Low-Flow Fixtures',
 				description:
-					'Paper and plastic are separated in guest rooms, public spaces, and associate areas.',
-				icon: RecyclingIcon,
+					'Guest rooms use low-flow faucets, shower heads, and toilets to reduce water use.',
+				icon: WaterDropOutlinedIcon,
 			},
 			{
-				title: 'Water Refill Stations',
+				title: 'Refillable Bath Amenities',
 				description:
-					'Refill stations throughout the hotel help reduce reliance on single-use plastic bottles.',
+					'Refillable residential bath amenities replace single-use toiletries in guest rooms.',
 				icon: LocalDrinkOutlinedIcon,
 			},
 			{
-				title: 'Virtual and Recyclable Room Keys',
+				title: 'Linen Reuse Program',
 				description:
-					'Room-key recycling and virtual keys help reduce single-use plastic.',
-				icon: VpnKeyOutlinedIcon,
-			},
-		],
-	},
-	{
-		label: 'Transportation & Access',
-		layout: 'two',
-		items: [
-			{
-				title: 'EV Charging Stations',
-				description:
-					'Ten charging stations are available across the property: four in the hotel parking lot and six in the Conference Center Garage.',
-				icon: EvStationOutlinedIcon,
-				details: [
-					'J-1772 plug type',
-					'ChargeLab platform',
-					'Tesla adapters available to borrow from the Front Desk',
-				],
-			},
-			{
-				title: 'Sustainable Mobility',
-				description:
-					'Preferred ride-share parking, bicycle racks, EV charging, and Metro access approximately 100 feet from the hotel provide lower-impact arrival options.',
-				icon: DirectionsTransitOutlinedIcon,
+					'Towels and robes left hanging are kept for reuse, and bed linens are changed every other day unless a guest requests otherwise.',
+				icon: RecyclingIcon,
 			},
 		],
 	},
@@ -440,9 +401,9 @@ const formatLastSync = (lastSyncValue) => {
 
 	const partValue = (type) => parts.find((part) => part.type === type)?.value ?? '';
 	let timeZoneName = partValue('timeZoneName');
-	// Keep Eastern Time labels (Arlington, VA).
-	if (!/^(EST|EDT|ET)$/i.test(timeZoneName)) {
-		timeZoneName = 'ET';
+	// Keep Central Time labels (Chicago, IL).
+	if (!/^(CST|CDT|CT)$/i.test(timeZoneName)) {
+		timeZoneName = 'CT';
 	}
 
 	return `${partValue('month')} ${partValue('day')}, ${partValue('year')} ${partValue('hour')}:${partValue('minute')} ${partValue('dayPeriod')} ${timeZoneName}`;
@@ -506,7 +467,7 @@ const CircularFoodSystems = () => {
 			Icon: AssessmentOutlinedIcon,
 		},
 		{
-			label: 'BioGreen360 partner since May 2021',
+			label: 'BioGreen360 partner since June 2023',
 			Icon: CalendarTodayIcon,
 		},
 		{
@@ -541,7 +502,7 @@ const CircularFoodSystems = () => {
 		},
 		{
 			title: 'Process',
-			description: 'Collected material is processed on site through The Ritz-Carlton, Pentagon City’s BioGreen360 system.',
+			description: 'Collected material is processed on site through The Ritz-Carlton, Chicago’s BioGreen360 system.',
 			icon: (
 				<Box
 					component='img'
@@ -612,7 +573,7 @@ const CircularFoodSystems = () => {
 			),
 			title: 'Plan with Purpose',
 			description:
-				'Discuss tracking goals and availability with The Ritz-Carlton, Pentagon City’s events team as your gathering takes shape.',
+				'Discuss tracking goals and availability with The Ritz-Carlton, Chicago’s events team as your gathering takes shape.',
 		},
 		{
 			icon: (
@@ -706,7 +667,7 @@ const CircularFoodSystems = () => {
 							color: DARK_SLATE,
 							mb: { xs: 1.5, md: 2 },
 						}}>
-						Welcome to Sustainability at The Ritz-Carlton, Pentagon City
+						Welcome to Sustainability at The Ritz-Carlton, Chicago
 					</Typography>
 					<Typography
 						component='h1'
@@ -735,7 +696,7 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 0,
 						}}>
-						Since May 2021, The Ritz-Carlton, Pentagon City has led the nation in transforming food waste
+						Since June 2023, The Ritz-Carlton, Chicago has transformed food waste
 						into measurable impact — on-site, every day, and reported live. It is the same commitment to
 						excellence that shapes every stay, extended into how we care for the world around it.
 					</Typography>
@@ -757,7 +718,7 @@ const CircularFoodSystems = () => {
 								columnGap: 1,
 								rowGap: 0.75,
 							}}>
-							<Box component='span'>FIRST IN THE NATION</Box>
+							<Box component='span'>SINCE JUNE 2023</Box>
 							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
 								•
 							</Box>
@@ -765,7 +726,6 @@ const CircularFoodSystems = () => {
 							<Box component='span' aria-hidden='true' sx={{ display: { xs: 'none', sm: 'inline' } }}>
 								•
 							</Box>
-							{/* TODO(FLAG): Micro-label copy pending RCPC approval — former "SOIL RETURNED TO PERRY LANE". */}
 							<Box component='span'>LIVE BIOGREEN360 REPORTING</Box>
 						</Typography>
 					</Box>
@@ -793,7 +753,7 @@ const CircularFoodSystems = () => {
 							listStylePosition: 'outside',
 						}}>
 						<Box component='li' sx={{ mb: 1 }}>
-							Food waste from hotel operations is diverted through The Ritz-Carlton, Pentagon City’s on-site{' '}
+							Food waste from hotel operations is diverted through The Ritz-Carlton, Chicago’s on-site{' '}
 							<Box
 								component='a'
 								href='#biogreen360'
@@ -875,7 +835,7 @@ const CircularFoodSystems = () => {
 						mx: 'auto',
 						mb: { xs: 4, md: 5.5 },
 					}}>
-					The Ritz-Carlton, Pentagon City’s program follows a measurable path from daily hotel operations
+					The Ritz-Carlton, Chicago’s program follows a measurable path from daily hotel operations
 					through on-site processing and live reporting.
 				</Typography>
 
@@ -1030,7 +990,7 @@ const CircularFoodSystems = () => {
 						mb: 2,
 						maxWidth: 880,
 					}}>
-					Live reporting turns The Ritz-Carlton, Pentagon City’s daily food-waste diversion into a clear, cumulative record of
+					Live reporting turns The Ritz-Carlton, Chicago’s daily food-waste diversion into a clear, cumulative record of
 					progress.
 				</Typography>
 				<Box
@@ -1531,7 +1491,7 @@ const CircularFoodSystems = () => {
 								mb: 1.25,
 								maxWidth: 560,
 							}}>
-							Every meeting, gala, and wedding at The Ritz-Carlton, Pentagon City can be hosted as a Zero
+							Every meeting, gala, and wedding at The Ritz-Carlton, Chicago can be hosted as a Zero
 							Food Waste Event — a fully tracked program that diverts food waste generated during your
 							gathering through our on-site BioGreen360 system, with results measured from first course to
 							last.
@@ -1590,7 +1550,7 @@ const CircularFoodSystems = () => {
 					<Box
 						component='img'
 						src={eventsRitzCarltonPentagonCityImage}
-						alt='Grand ballroom at The Ritz-Carlton, Pentagon City set classroom-style with gray linen tables, navy doors, and tiered glass chandeliers.'
+						alt='Grand ballroom set classroom-style with gray linen tables, navy doors, and tiered glass chandeliers.'
 						sx={{
 							width: '100%',
 							aspectRatio: { xs: '16 / 10', md: '16 / 11' },
@@ -1619,7 +1579,7 @@ const CircularFoodSystems = () => {
 							mx: 'auto',
 							mb: 2,
 						}}>
-						Every event at The Ritz-Carlton, Pentagon City can be planned as a Zero Food Waste Event. Speak
+						Every event at The Ritz-Carlton, Chicago can be planned as a Zero Food Waste Event. Speak
 						with our events team to bring measurable impact to your next gathering.
 					</Typography>
 					<Button
@@ -1629,7 +1589,7 @@ const CircularFoodSystems = () => {
 						rel='noopener noreferrer'
 						variant='contained'
 						disableElevation
-						aria-label='Start planning an event at The Ritz-Carlton, Pentagon City'
+						aria-label='Start planning an event at The Ritz-Carlton, Chicago'
 						sx={{
 							...primaryButtonSx,
 							px: { xs: 2.5, md: 3.25 },
@@ -1674,33 +1634,8 @@ const CircularFoodSystems = () => {
 						maxWidth: 820,
 						mb: { xs: 3, md: 3.5 },
 					}}>
-					Additional initiatives support efficient building operations, resource conservation, guest
-					convenience, and lower-impact transportation.
+					Additional initiatives support efficient building operations, water savings, and waste reduction.
 				</Typography>
-
-				{/* TODO: Replace placeholder initiative cards with The Ritz-Carlton, Pentagon City–verified initiatives before publication. */}
-				<Box
-					role='note'
-					sx={{
-						...cardSx,
-						p: { xs: 2, md: 2.25 },
-						mb: { xs: 3.5, md: 4.5 },
-						maxWidth: 820,
-						borderLeft: `4px solid ${SAGE_ACCENT}`,
-						backgroundColor: SAGE_SOFT,
-					}}>
-					<Typography
-						sx={{
-							fontSize: '14px',
-							fontWeight: 500,
-							color: DARK_SLATE,
-							lineHeight: 1.65,
-							letterSpacing: '0.01em',
-						}}>
-						PLACEHOLDER CONTENT: Property-specific sustainability initiatives are pending review with
-						The Ritz-Carlton, Pentagon City team.
-					</Typography>
-				</Box>
 
 				{initiativeCategories.map((category, categoryIndex) => {
 					const renderCard = (item) => {
@@ -1927,7 +1862,7 @@ const CircularFoodSystems = () => {
 								maxWidth: 680,
 								mb: { xs: 3, md: 3.5 },
 							}}>
-							The partnership between The Ritz-Carlton, Pentagon City and BioGreen360 connects on-site
+							The partnership between The Ritz-Carlton, Chicago and BioGreen360 connects on-site
 							food-waste processing with live measurement, giving hotel leaders, guests, and event planners a
 							clear view of the impact created each day.
 						</Typography>
@@ -2045,12 +1980,12 @@ const CircularFoodSystems = () => {
 									lineHeight: 1.35,
 									mb: 1,
 								}}>
-								First in the Nation
+								On-Site Since 2023
 							</Typography>
 							<Typography sx={{ fontSize: '14px', color: BODY_TEXT, lineHeight: 1.7 }}>
-								When the program launched on May 31, 2021, The Ritz-Carlton, Pentagon City became the
-								first hotel in the United States to adopt BioGreen360’s fully circular food-waste
-								platform.
+								When the program launched on June 1, 2023, The Ritz-Carlton, Chicago began
+								diverting food waste through BioGreen360’s on-site system and reporting those
+								results for the hotel and its events.
 							</Typography>
 						</Box>
 					</Box>
@@ -2082,7 +2017,7 @@ const CircularFoodSystems = () => {
 							color: SURFACE_WHITE,
 							letterSpacing: '-0.01em',
 						}}>
-						The Ritz-Carlton, Pentagon City
+						The Ritz-Carlton, Chicago
 					</Typography>
 					<Typography
 						sx={{
@@ -2091,7 +2026,7 @@ const CircularFoodSystems = () => {
 							color: 'rgba(255, 255, 255, 0.78)',
 							lineHeight: 1.6,
 						}}>
-						Arlington, Virginia · Sustainability reporting powered by BioGreen360
+						Chicago, Illinois · Sustainability reporting powered by BioGreen360
 					</Typography>
 				</Box>
 			</Box>

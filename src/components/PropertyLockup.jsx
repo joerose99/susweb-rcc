@@ -1,10 +1,10 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import ritzCarltonPentagonCityLogo from '../assets/ritz-carlton-pentagon-city-logo.png';
+import ritzCarltonChicagoLogo from '../assets/ritz-carlton-chicago-logo.png';
 import { CORAL_LINK } from '../theme/tokens';
 
 /**
- * The Ritz-Carlton, Pentagon City header lockup.
+ * The Ritz-Carlton, Chicago header lockup.
  * White mark on transparent ground, sized for the black sticky header.
  */
 const PropertyLockup = ({ onNavigateHome }) => {
@@ -22,7 +22,7 @@ const PropertyLockup = ({ onNavigateHome }) => {
 			component='a'
 			href='#'
 			onClick={handleClick}
-			aria-label='The Ritz-Carlton, Pentagon City sustainability home'
+			aria-label='The Ritz-Carlton, Chicago sustainability home'
 			sx={{
 				display: 'inline-flex',
 				alignItems: 'center',
@@ -39,8 +39,8 @@ const PropertyLockup = ({ onNavigateHome }) => {
 			}}>
 			<Box
 				component='img'
-				src={ritzCarltonPentagonCityLogo}
-				alt='The Ritz-Carlton, Pentagon City logo with lion-and-crown crest above the hotel name.'
+				src={ritzCarltonChicagoLogo}
+				alt='The Ritz-Carlton, Chicago logo with lion-and-crown crest above the hotel name.'
 				sx={{
 					height: { xs: 52, md: 64 },
 					width: 'auto',
