@@ -15,9 +15,7 @@ export const SAGE_ACCENT = '#9C7A3C'; // brass gold — icons, active nav underl
 export const SAGE_ACCENT_HOVER = '#82631F';
 export const SAGE_SOFT = 'rgba(156, 122, 60, 0.12)';
 export const DARK_SAGE = '#7A923B'; // unchanged — pinned to BioGreen360 logo
-export const DARK_SAGE_SOFT = 'rgba(122, 146, 59, 0.14)';
 export const CORAL_LINK = '#9C7A3C';
-export const CORAL_LINK_SOFT = 'rgba(156, 122, 60, 0.12)';
 export const SURFACE_WHITE = '#FFFFFF';
 export const SOFT_NEUTRAL = '#F7F7F7';
 export const PALE_SAGE_BG = '#E7EEFA'; // cool pale blue band — sampled from ritzcarlton.com
@@ -25,11 +23,9 @@ export const BODY_TEXT = '#5B5B5B';
 export const MUTED_TEXT = 'rgba(91, 91, 91, 0.85)';
 export const BORDER = '#1A1A1A';
 export const BORDER_LIGHT = BORDER;
-export const BORDER_SUBTLE = 'rgba(26, 26, 26, 0.16)';
 
 /** Sustainability icons / rings / arrows / checkmarks */
 export const SUSTAINABILITY_GREEN = DARK_SAGE;
-export const SUSTAINABILITY_GREEN_SOFT = DARK_SAGE_SOFT;
 
 export const FONT_HEADING =
 	'"Libre Caslon Display", Georgia, "Times New Roman", Times, serif';
@@ -41,30 +37,18 @@ export const FONT_UI = '"Jost", "Helvetica Neue", Arial, sans-serif';
 export const CONTENT_MAX = 1360;
 
 export const SECTION_PY = { xs: '72px', md: '112px' };
-export const SECTION_PY_COMPACT = { xs: '64px', md: '88px' };
-
-export const SPACE = {
-	headingToIntro: { xs: 1.75, md: 2.25 },
-	introToContent: { xs: 4, md: 5.5 },
-	contentGroup: { xs: 4.5, md: 6 },
-};
 
 export const RADIUS_BUTTON = '0px';
 export const RADIUS_CARD = '0px';
 export const RADIUS_IMAGE = '0px';
-export const RADIUS_PANEL = '0px';
 export const RADIUS_BADGE = '0px';
 
 export const SHADOW_CARD = 'none';
 export const SHADOW_IMAGE = 'none';
-export const SHADOW_HOVER = 'none';
 export const SHADOW_FOCUS = `0 0 0 2px ${SURFACE_WHITE}, 0 0 0 4px ${SAGE_ACCENT}`;
 
 export const TYPE = {
 	h1: { xs: '2.5rem', sm: '3.25rem', md: '64px' },
-	h2: { xs: '30px', md: '40px' },
-	h3: { xs: '22px', md: '26px' },
-	body: { xs: '16px', md: '17px' },
 	label: '12px',
 };
 
@@ -101,14 +85,6 @@ export const sectionBandBaseSx = {
 	},
 };
 
-export const sectionBandAltSx = {
-	...sectionBandBaseSx,
-	'&::before': {
-		...sectionBandBaseSx['&::before'],
-		backgroundColor: 'var(--bg-alt)',
-	},
-};
-
 /** Full-bleed section band with an explicit background token. */
 export const sectionBandColorSx = (backgroundColor, dividerColor = BORDER) => ({
 	...sectionBandBaseSx,
@@ -131,29 +107,6 @@ export const cardEmphasizedSx = {
 	backgroundColor: SURFACE_WHITE,
 	borderLeft: `3px solid ${SAGE_ACCENT}`,
 	boxShadow: SHADOW_CARD,
-};
-
-export const mediaSx = {
-	borderRadius: RADIUS_IMAGE,
-	border: `1px solid ${BORDER}`,
-	boxShadow: SHADOW_IMAGE,
-	display: 'block',
-	objectFit: 'cover',
-};
-
-export const mediaPlaceholderSx = {
-	...mediaSx,
-	backgroundColor: SOFT_NEUTRAL,
-	backgroundImage:
-		'repeating-linear-gradient(135deg, transparent, transparent 10px, rgba(26, 26, 26, 0.12) 10px, rgba(26, 26, 26, 0.12) 11px)',
-	minHeight: 220,
-	display: 'flex',
-	flexDirection: 'column',
-	alignItems: 'center',
-	justifyContent: 'center',
-	gap: 1,
-	px: 3,
-	textAlign: 'center',
 };
 
 /** Black fill — primary CTA (e.g. Plan an Event) */
@@ -204,22 +157,6 @@ export const secondaryButtonSx = {
 	},
 	'&:focus-visible': {
 		boxShadow: SHADOW_FOCUS,
-	},
-};
-
-export const textLinkSx = {
-	color: BODY_TEXT,
-	textDecoration: 'none',
-	borderBottom: `1px solid transparent`,
-	transition: 'color 180ms ease, border-color 180ms ease',
-	'&:hover': {
-		color: CORAL_LINK,
-		borderBottomColor: 'rgba(156, 122, 60, 0.45)',
-	},
-	'&:focus-visible': {
-		outline: `2px solid ${CORAL_LINK}`,
-		outlineOffset: '3px',
-		borderRadius: RADIUS_BADGE,
 	},
 };
 

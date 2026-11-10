@@ -101,13 +101,8 @@ const EVENT_PROPERTY_FACTS = [
 
 
 const siteConfig = {
-	eventsEnabled: true,
-	restaurantEnabled: true,
-	processingPathwayMode: 'mixed',
-	eventTrackingMode: 'by_request',
 	showEquivalencies: true,
 	lastSync: '2026-03-04T15:30:00-06:00',
-	// impactReportUrl: 'https://example.com/impact-report.pdf',
 };
 
 const MISSING_METRIC_VALUE = '-';

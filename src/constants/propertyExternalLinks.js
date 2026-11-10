@@ -4,10 +4,6 @@
  * Header CTAs must not point at unrelated property URLs behind Chicago-branded labels.
  */
 
-/** Official The Ritz-Carlton, Chicago property overview. */
-export const PROPERTY_OVERVIEW_URL =
-	'https://www.ritzcarlton.com/en/hotels/chirz-the-ritz-carlton-chicago/overview/';
-
 /**
  * Booking / reservations destination.
  * Official rooms page for The Ritz-Carlton, Chicago (property code CHIRZ).
